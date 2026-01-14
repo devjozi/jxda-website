@@ -1,0 +1,1 @@
+Target stack (after migration): Next.js (SSG)

@@ -4,6 +4,8 @@ Repo: https://github.com/devjozi/jxda-website
 Branch for current work: feature/theme-next  
 Owner: [Your name / Digital Support JXD]
 
+Note: Next.js is not yet initialized. This branch prepares for controlled migration.
+
 How to run (local):
 1. Ensure Node.js 18+ installed
 2. In repo root: `npm install`

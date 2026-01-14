@@ -7,6 +7,8 @@ This project will become the JX Distribution public website built with:
 - Tailwind CSS
 - Deployed as static files to Hostinger
 
+Current state: production coming-soon page built with Vite; Next.js migration pending.
+
 ## Quick start (local)
 1. Install dependencies:
    npm install
