@@ -1,0 +1,54 @@
+name: Build and Deploy (Next.js static → Hostinger)
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - 'feature/**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Export static site
+        run: npm run export
+
+      - name: Determine deploy target
+        id: deploy_target
+        run: |
+          BRANCH=${GITHUB_REF#refs/heads/}
+          if [ "$BRANCH" = "main" ]; then TARGET="public_html"; \
+          elif [ "$BRANCH" = "develop" ]; then TARGET="staging"; \
+          else TARGET="previews/$BRANCH"; fi
+          echo "BRANCH=$BRANCH" >> $GITHUB_ENV
+          echo "TARGET=$TARGET" >> $GITHUB_ENV
+          echo "Deploying branch $BRANCH to $TARGET"
+
+      - name: Prepare SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.HOSTINGER_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p "${{ secrets.HOSTINGER_PORT }}" "${{ secrets.HOSTINGER_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Deploy to Hostinger (rsync)
+        run: |
+          TARGET_PATH="${{ secrets.HOSTINGER_DEPLOY_PATH }}/${TARGET}"
+          echo "Deploy path: $TARGET_PATH"
+          rsync -avz --delete -e "ssh -p ${{ secrets.HOSTINGER_PORT }}" ./out/ "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:$TARGET_PATH/"
+

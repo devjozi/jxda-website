@@ -1,0 +1,36 @@
+[
+  {
+    "id": "jx-seed-01",
+    "title": "Maize Seed (Certified Hybrid)",
+    "price": 45.00,
+    "currency": "GHS",
+    "short": "High yield certified hybrid maize seed.",
+    "long": "Certified hybrid maize seed suitable for Ghanaian climates. High germination, drought resistant, recommended for small and medium farms.",
+    "images": ["/assets/products/maize-seed-01.jpg"],
+    "sku": "JX-SEED-001",
+    "availability": "in_stock"
+  },
+  {
+    "id": "jx-fertilizer-01",
+    "title": "Balanced NPK Fertilizer (25kg)",
+    "price": 180.00,
+    "currency": "GHS",
+    "short": "Balanced NPK fertilizer for improved crop growth.",
+    "long": "25kg bag of balanced NPK fertilizer for use on a variety of crops. Improves soil fertility and crop yields when used as directed.",
+    "images": ["/assets/products/npk-25kg.jpg"],
+    "sku": "JX-FERT-025",
+    "availability": "in_stock"
+  },
+  {
+    "id": "jx-pest-01",
+    "title": "Crop Protection - Insecticide (500ml)",
+    "price": 30.00,
+    "currency": "GHS",
+    "short": "Broad-spectrum insecticide for common crop pests.",
+    "long": "500ml insecticide for control of common pests on vegetables and cereals. Follow label instructions for safe use.",
+    "images": ["/assets/products/insecticide-500ml.jpg"],
+    "sku": "JX-PST-500",
+    "availability": "limited_stock"
+  }
+]
+
