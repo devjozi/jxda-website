@@ -33,3 +33,6 @@ dist-ssr
 
 # debug
 npm-debug.log*
+
+# others
+*.bak
