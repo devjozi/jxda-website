@@ -1,263 +1,128 @@
-# PROGRESS LOG — JX Distribution Website Migration
+# PROGRESS LOG — JX Distribution Website
 
-**Last Updated:** 2025-01-27  
+**Last Updated:** 2025-02-07  
 **Branch:** `feature/theme-next`  
-**Status:** 🟡 In Progress (Structure Phase)
+**Status:** Migration in progress; commerce prioritized next
 
 ---
 
-## 🎯 **Current Phase: Template Structure Migration**
+## Direction (Priority)
 
-**Goal:** Convert Logicraft HTML template to Next.js structure WITHOUT changing design.
-
-**Strategy:** Section-by-section conversion (Header → Footer → Body → Pages)
+JX Distribution sells online. **Commerce is prioritized** (product list, product details, checkout, payment). The template-based marketing site remains the design source: finish a minimal set of pages from the reference template, then build commerce. Progress below is preserved so the site can be continued whenever picked up and matches the reference design. **Next.js is the plan for both** marketing site and commerce (one app).
 
 ---
 
-## ✅ **Completed**
+## ✅ Completed
 
-### **Phase 1: Foundation Setup** ✅
-- [x] Next.js 16 initialized with TypeScript
+### Phase 1: Foundation Setup ✅
+- [x] Next.js initialized with TypeScript
 - [x] App Router configured
 - [x] Static export configured (`output: 'export'`)
-- [x] Template assets organized in `/public`
-  - [x] CSS files (Bootstrap, Font Awesome, template styles)
-  - [x] JS files (jQuery, Bootstrap, carousel, etc.)
-  - [x] Images (logos, backgrounds, icons)
-  - [x] Fonts (Font Awesome, Glyphicons, icon fonts)
+- [x] Template assets in `/public` (CSS, JS, images, fonts)
 
-**Commit:** `df767f9` - "feat: Initialize Next.js with Bootstrap template structure"
+### Phase 2: Global Layout ✅
+- [x] `app/layout.tsx` — all template CSS/JS loaded in order
+- [x] Meta tags and SEO basics
+- [x] `app/globals.css`
 
----
+### Phase 3: Header Component ✅
+- [x] Converted from template (logo, top bar, nav with dropdowns, Request a Quote, mobile menu)
+- [x] File: `app/components/Header.tsx`
 
-### **Phase 2: Global Layout** ✅
-- [x] `app/layout.tsx` created
-- [x] All template CSS loaded in correct order
-- [x] All template JS loaded with proper strategies
-- [x] Meta tags and SEO basics configured
+### Phase 4: Footer Component ✅
+- [x] Converted from template (3 columns: logo/description/newsletter, quick links, contact; copyright; social icons)
+- [x] File: `app/components/Footer.tsx`
 
-**Files:**
-- `app/layout.tsx` - Root layout with all CSS/JS imports
-- `app/globals.css` - Minimal global styles
-
----
-
-### **Phase 3: Header Component** ✅
-- [x] Converted from template HTML (lines 55-164)
-- [x] Top bar with contact info (phone, email)
-- [x] Logo area with branding
-- [x] Full navigation menu with dropdowns:
-  - Home (2 variants)
-  - Company (5 pages)
-  - Projects (2 pages)
-  - Services (2 pages)
-  - Features (5 items + nested submenu)
-  - News (3 pages)
-  - Contact
-- [x] "Request a Quote" button
-- [x] Mobile hamburger menu structure
-
-**Files:**
-- `app/components/Header.tsx`
-
-**Commit:** `cfe2c4e` - "feat: Convert Header to exact Logicraft template structure"
-
-**Known Issues:**
-- Icon fonts may not display (will fix during customization)
+### Phase 5: Homepage Body (Partial) ✅
+- [x] Hero/Banner carousel (3 slides)
+- [x] Features Light (3 service boxes)
+- [ ] Remaining sections (see below)
 
 ---
 
-### **Phase 4: Footer Component** ✅
-- [x] Converted from template HTML (lines 828-917)
-- [x] 3-column layout:
-  - Column 1: Logo, description, newsletter form
-  - Column 2: Quick Links (10 navigation items)
-  - Column 3: Contact info (address, email, phone)
-- [x] Copyright bar with attribution
-- [x] Social media icons (5 platforms)
+## ⏳ In Progress / Next
 
-**Files:**
-- `app/components/Footer.tsx`
+### Phase 5: Homepage Body Sections (Template)
 
-**Commit:** `[pending]` - "feat: Convert Footer structure from template"
+**Reference:** `reference/original-template/logicraft-main/theme/index.html` (body between header and footer)
 
-**Known Issues:**
-- Icon fonts need path verification
-- List bullets may not display (template CSS dependency)
+| # | Section | Status |
+|---|---------|--------|
+| 1 | Hero/Banner slider | ✅ Done |
+| 2 | Features Light (3 cards) | ✅ Done |
+| 3 | "Why Logicraft?" / ts-service-area (6 benefits) | ⏳ Next |
+| 4 | Services showcase (6 items) | [ ] |
+| 5 | FAQ | [ ] |
+| 6 | Testimonials | [ ] |
+| 7 | Statistics/Facts | [ ] |
+| 8 | Latest news | [ ] |
+| 9 | Call-to-action | [ ] |
+| 10 | Quote/forms | [ ] |
 
----
+**When continuing template work:** Pick up from section 3 using the reference HTML and existing `app/page.tsx` structure. Keep Bootstrap classes and structure so the site matches the reference.
 
-## ⏳ **In Progress**
+### Phase 6: Homepage Completion (Template)
+- [ ] Convert all body sections above
+- [ ] `npm run build` → verify `/out`
+- [ ] Optional: About, Services, Contact from template
 
-### **Phase 5: Homepage Body Sections** 🔄
-
-**Location in template:** Lines 165-827 (between header and footer)
-
-**Sections to convert:**
-1. [ ] Hero/Banner slider
-2. [ ] Services grid (3 cards)
-3. [ ] "Why Choose Us" section
-4. [ ] Services showcase (6 items)
-5. [ ] FAQ section
-6. [ ] Testimonials/Client reviews
-7. [ ] Statistics/Facts counters
-8. [ ] Latest news/Blog preview
-9. [ ] Call-to-action sections
-10. [ ] Quote request forms
-
-**Next Step:** Extract and convert hero/banner section first.
-
-**Working File:** `homepage-body.txt` (extracted from template)
-
-### **Phase 5: Homepage Body Sections** 🔄
-
-**Progress:** 20% complete (2 of 10 sections done)
-
-✅ **Completed Sections:**
-1. Hero/Banner carousel (3 slides) - Line 176
-2. Features Light (3 service boxes) - Line 236
-
-⏳ **Next Section:** "Why Logicraft?" (6 benefits grid)
----
-
-## 📋 **Upcoming Tasks**
-
-### **Phase 6: Homepage Completion**
-- [ ] Convert all body sections to React components
-- [ ] Test static export: `npm run build`
-- [ ] Verify output in `/out` folder
-- [ ] Test deployment to Hostinger (preview)
-
-### **Phase 7: Additional Pages**
-- [ ] About page (`about.html`)
-- [ ] Services page (`service.html`)
-- [ ] Projects page (`project-all.html`)
-- [ ] Contact page (`contact.html`)
-- [ ] Team page (`team.html`)
-- [ ] FAQ page (`faq.html`)
-
-### **Phase 8: Customization Phase**
-- [ ] Replace placeholder text with JX Distribution content
-- [ ] Update contact information (Ghana details)
-- [ ] Replace logos with JX branding
-- [ ] Fix icon font loading issues
-- [ ] Optimize images
-- [ ] Update social media links
-
-### **Phase 9: Production Deployment**
-- [ ] Final testing
-- [ ] Build static site: `npm run build`
-- [ ] Upload `/out` to Hostinger
-- [ ] Verify live site
-- [ ] Merge `feature/theme-next` → `main`
+### Commerce (Priority After Minimal Pages)
+- [ ] Product list page
+- [ ] Product detail page(s)
+- [ ] Checkout flow
+- [ ] Payment integration
+- [ ] Deploy (main site + commerce)
 
 ---
 
-## 🎯 **Project Structure**
+## 🎯 Project Structure
 
 ```
-jxda-website/
-├── app/
-│   ├── components/
-│   │   ├── Header.tsx       ✅ Complete
-│   │   └── Footer.tsx       ✅ Complete
-│   ├── layout.tsx           ✅ Complete
-│   ├── page.tsx             🔄 Basic structure (needs body sections)
-│   └── globals.css          ✅ Complete
-├── public/
-│   ├── css/                 ✅ All template CSS
-│   ├── js/                  ✅ All template JS
-│   ├── images/              ✅ All template images
-│   └── fonts/               ✅ All template fonts
-├── reference/
-│   └── original-template/   ✅ Source template preserved
-└── [config files]           ✅ Complete
+app/
+├── components/
+│   ├── Header.tsx       ✅
+│   └── Footer.tsx       ✅
+├── layout.tsx           ✅
+├── page.tsx             🔄 Homepage (hero + features done; more sections to add)
+└── globals.css          ✅
+public/
+├── css/                 Template CSS
+├── js/                  Template JS
+├── images/              Template images
+└── fonts/               Template fonts
+reference/original-template/   Source of truth for design
 ```
 
 ---
 
-## 🔧 **Technical Decisions Made**
+## 🔧 Technical Decisions
 
-### **Why Next.js Static Export?**
-- Hostinger hosting requires static HTML/CSS/JS
-- No server-side rendering needed at this stage
-- Future expansion possible (add API routes later)
-
-### **Why Keep Bootstrap/Template Assets?**
-- Migration is structural, NOT a redesign
-- Visual fidelity to original template is critical
-- No Tailwind conversion (adds complexity)
-- Will optimize later if needed
-
-### **Why Component-Based Structure?**
-- Easier to maintain (Header/Footer reusable)
-- Scalable for future pages
-- Standard React/Next.js pattern
+- **Next.js for everything:** Marketing site and commerce in one Next.js app (static export; add API only if payment needs it).
+- **Template fidelity:** No visual change from reference; Bootstrap/template assets kept.
+- **Commerce:** Structure (e.g. `/shop`) and payment provider TBD — see PROJECT_DIRECTION.md for options and tradeoffs.
 
 ---
 
-## 🚨 **Known Issues & Notes**
+## 🚨 Known Issues (Template)
 
-### **Icon Fonts Not Displaying**
-**Symptoms:** Social media icons, contact icons, bullets show as squares/missing  
-**Cause:** Font file paths in CSS may be incorrect for Next.js public folder  
-**Status:** Deferred to customization phase  
-**Fix Required:** Verify `public/fonts/iconfont/` files and CSS paths  
-
-### **Template Placeholder Content**
-**Note:** All text/contact info is from original template  
-**Action Required:** Replace during customization phase with JX Distribution details
+- **Icon fonts:** May show as squares; font paths in CSS may need adjustment for `/public`. Deferred; fix in customization or when touching assets.
+- **Content:** Placeholder template text; replace with JX content later.
 
 ---
 
-## 📝 **How to Resume Work**
+## 📝 How to Resume
 
-### **For Current Developer:**
-1. Pull latest: `git pull origin feature/theme-next`
-2. Install deps: `npm install` (if new machine)
-3. Start dev: `npm run dev`
-4. Check this file for current phase
-5. Continue from "In Progress" section
-
-### **For New Developer/AI:**
-1. Read: `MIGRATION_PLAN.md` (understand strategy)
-2. Read: `AI_COLLABORATION.md` (understand rules)
-3. Read: `PROGRESS.md` (this file - understand current state)
-4. Check: `git log --oneline -n 10` (see recent commits)
-5. Run: `npm run dev` (verify setup works)
-6. Continue from current phase above
+1. `git pull` (e.g. `feature/theme-next`), `npm install`, `npm run dev`
+2. Read **PROGRESS.md** (this file) and **MIGRATION_PLAN.md**
+3. **Template work:** Use `reference/original-template/logicraft-main/theme/index.html` (and other theme HTML) as source; add sections to `app/page.tsx` or new pages
+4. **Commerce work:** See **PROJECT_DIRECTION.md** and next steps under "Commerce" above
 
 ---
 
-## 📊 **Completion Metrics**
+## 🔗 References
 
-**Overall Progress:** ~35% complete
-
-- ✅ Setup & Configuration: 100%
-- ✅ Header Component: 100%
-- ✅ Footer Component: 100%
-- 🔄 Homepage Body: 0%
-- ⏳ Additional Pages: 0%
-- ⏳ Customization: 0%
-- ⏳ Deployment: 0%
-
-**Estimated Remaining:**
-- Homepage body: ~4-6 hours (10 sections)
-- Additional pages: ~6-8 hours (6 pages)
-- Customization: ~2-3 hours
-- Testing & deployment: ~1-2 hours
-
-**Total Estimated:** ~13-19 hours of focused work remaining
-
----
-
-## 🔗 **Quick Links**
-
-- **Repository:** https://github.com/devjozi/jxda-website
-- **Branch:** `feature/theme-next`
-- **Template Demo:** https://furioustheme-logicraft.netlify.app/
-- **Template Backup:** `reference/original-template/`
-
----
-
-**Update Instructions:** After completing each phase, update the ✅ Completed section and move the phase from ⏳ In Progress to ✅ Completed. Add commit hash and brief notes.
+- **MIGRATION_PLAN.md** — Template migration strategy (unchanged; commerce added as priority)
+- **PROJECT_DIRECTION.md** — Commerce scope and decisions (with options/tradeoffs)
+- **DEV_SETUP.md** — Environment and AI tooling
+- Template backup: `reference/original-template/`
+- Repo: https://github.com/devjozi/jxda-website

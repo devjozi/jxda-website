@@ -1,126 +1,77 @@
 # MIGRATION PLAN — JX Distribution Website
 
 ## Purpose
-This document explains how the current static Bootstrap/HTML template
-will be migrated into a structured Next.js project **without changing
-the visual design or introducing unnecessary complexity**.
 
-Next.js is used for **structure, scalability, and future growth**, not
-to build a complex React application at this stage.
+Migrate the Logicraft Bootstrap/HTML template into a structured Next.js project **without changing the visual design**. The site must match the reference template (`reference/original-template/`) so it can be continued whenever picked up.
+
+**Commerce is now prioritized** for delivery, but this migration plan stays in place: template fidelity and progress so far are preserved. Work order: finish minimal marketing page set from this plan, then commerce (products, checkout, payment). Next.js is used for **both** the marketing site and the commerce section (one app unless there is a reason to split).
 
 ---
 
 ## Current State (Baseline)
 
-- A static "Coming Soon" page
-- Built with:
-  - HTML5
-  - Bootstrap
-  - CSS3
-  - JavaScript
+- Static "Coming Soon" page (or template conversion in progress)
+- Template: HTML5, Bootstrap, CSS3, JavaScript
 - Hosted on Hostinger
-- Already live and approved
-
-This state is considered **stable** and should not be broken.
+- Reference: `reference/original-template/logicraft-main/theme/`
 
 ---
 
-## Target State (After Migration)
+## Target State
 
-- Website still behaves as a **static site**
-- Uses **Next.js static export**
-- Deployed as plain HTML/CSS/JS to Hostinger
-- Supports:
-  - Multiple pages
-  - Product listings
-  - Easier maintenance
-  - Cleaner structure for future contributors
+- **Marketing site:** Matches template design (reference directory). Next.js static export. Multiple pages, Header/Footer, all body sections as in template.
+- **Commerce:** Same Next.js app (recommended): product list, product detail, checkout, payment. Subdomain or `/shop` TBD.
+- Deployed as static (or static + API if payment requires it) to Hostinger.
 
 ---
 
-## Why Next.js Is Being Used
+## Why Next.js (for entire project)
 
-Next.js is introduced **only** to solve these problems:
+- Page structure and routing (marketing + commerce)
+- Clean separation of layout, pages, components
+- Static export for Hostinger; add API routes only if needed (e.g. payment)
+- One codebase for main site + shop keeps things simple
 
-1. Page structure and routing as the site grows
-2. Cleaner separation of layout, pages, and data
-3. Easier future expansion (products, services, blog, etc.)
-4. Static export compatible with Hostinger hosting
-
-❗ Next.js is **not** being used for:
-- Server-side rendering
-- APIs
-- Authentication
-- Complex React state management
+**Not used for:** full SSR, auth, or complex state unless later required.
 
 ---
 
-## Migration Strategy (Safe & Controlled)
+## Migration Strategy (Template Fidelity)
 
 ### Phase 1 — Template Preservation
-- Keep the original Bootstrap template design
-- Do **not** redesign or refactor styles yet
-- CSS, JS, fonts, and images remain unchanged
+- Keep original Bootstrap/template design
+- Do not redesign or refactor styles
+- CSS, JS, fonts, images in `/public` unchanged in behavior
 
 ### Phase 2 — Structural Mapping
-- Convert HTML files into Next.js pages:
-  - `index.html` → `app/page.tsx` or `pages/index.tsx`
-- Move shared sections (header, footer) into layout components
-- Link Bootstrap CSS and JS globally
+- Convert template HTML to Next.js: `index.html` → `app/page.tsx`
+- Shared sections → layout components (Header, Footer)
+- Load Bootstrap/template CSS and JS globally
 
 ### Phase 3 — Asset Organization
-- Move assets into `/public`
-- Ensure all paths work with static export
-- Verify images, fonts, and vendor scripts load correctly
+- Assets in `/public`; paths work with static export
+- Images, fonts, vendor scripts load correctly
 
-### Phase 4 — Data Preparation (Light)
-- Introduce simple static data files (e.g. `products.json`)
-- No database
-- No API calls
-- Build-time only usage
+### Phase 4 — Data (Light)
+- Static data (e.g. `products.json`) at build time
+- No database or API unless commerce/payment requires it
 
----
-
-## Non-Goals (Important)
-
-This migration will **not** include:
-
-- Tailwind rewrite (yet)
-- CI/CD pipelines
-- Hosting changes
-- Backend logic
-- User authentication
-
-These will be considered **later**, when needed.
+### Phase 5+ — Commerce (Priority)
+- After minimal marketing pages are in place: product listing, product detail pages, checkout, payment integration. Same Next.js app.
 
 ---
 
-## Deployment Model
+## Success Criteria (Migration)
 
-- Next.js builds static files using:
-npm run build
-npm run export
-
-- Output folder: `./out`
-- Upload contents of `./out` to Hostinger
-- Same deployment approach as current site
+- Site looks identical to reference template where converted
+- All converted pages load; assets resolve
+- Static export builds without errors
+- Progress is documented in PROGRESS.md so work can continue anytime
 
 ---
 
-## Success Criteria
+## References
 
-Migration is considered successful when:
-
-- Site looks identical to the original template
-- All pages load correctly
-- Assets resolve correctly
-- Static export works without errors
-- No regression from the current "Coming Soon" page
-
----
-
-## Ownership & Responsibility
-
-- Migration controlled and reviewed manually
-- Changes committed incrementally
-- Stability takes priority over speed
+- **PROGRESS.md** — What’s done and what’s next (template sections + commerce)
+- **PROJECT_DIRECTION.md** — Commerce priority and scope
+- **reference/original-template/** — Source of truth for design

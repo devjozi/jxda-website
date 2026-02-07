@@ -1,36 +1,36 @@
-# HANDOFF — JX Distribution Website (quick)
+# HANDOFF — JX Distribution (quick)
 
 Repo: https://github.com/devjozi/jxda-website  
-Branch for current work: feature/theme-next  
-Owner: [Your name / Digital Support JXD]
+Branch for current work: `feature/theme-next` (or active branch)
 
-Note: Next.js is not yet initialized. This branch prepares for controlled migration.
+**Direction:** E-commerce first. Conclude minimal marketing pages; build commerce subdomain (products, product details, checkout, payment).
 
-How to run (local):
-1. Ensure Node.js 18+ installed
-2. In repo root: `npm install`
-3. Start dev server: `npm run dev`
+## Run locally
 
-How to build & export (production):
-- `npm run build && npm run export`
-- Static output directory: `./out`
+```bash
+npm install
+npm run dev
+```
 
-Where to deploy:
-- Hostinger SSH target (example): /home/<user>/public_html (production)
-- Previews: /home/<user>/previews/<branch-name> (preview folders)
+Build: `npm run build` → output in `./out`.
 
-Important files (for quick restart):
-- PLAYBOOK.md (project plan & context)
-- HANDOFF.md (this file)
-- README.md (detailed quickstart)
-- ARCHITECTURE.md (deployment + branch mapping)
-- products.json (sample product data)
-- .github/workflows/deploy.yml (CI/CD)
+## Deploy
 
-Secrets (GitHub): see .env.example (do NOT commit actual values).
+- Hostinger SSH (e.g. `/home/<user>/public_html` for production)
+- Previews: `/home/<user>/previews/<branch>`
 
-Acceptance criteria for a publishable PR:
-- `npm run build && npm run export` completes without errors
-- `./out/index.html` exists and loads in a browser
-- Mobile responsiveness checked on preview URL
+## Important files
 
+- **PROJECT_DIRECTION.md** — scope and priorities
+- **PROGRESS.md** — current phase and tasks
+- **DEV_SETUP.md** — environment and AI tooling
+- **ARCHITECTURE.md** — stack and deployment
+- `.github/workflows/deploy.yml` — CI/CD
+
+Secrets: `.env.example`; real values in GitHub Secrets.
+
+## Acceptance for PR
+
+- `npm run build` completes
+- `./out` contains valid static site
+- Preview URL checked (responsive, links)

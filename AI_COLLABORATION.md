@@ -49,6 +49,15 @@ The goal is:
 
 ---
 
+6. **Decisions: explain options and tradeoffs**
+   - When presenting a decision (e.g. subdomain vs path, payment provider):
+     - State each choice and what it means in practice
+     - Summarize tradeoffs (pros/cons)
+     - Give a best-practice recommendation and why
+   - Apply this in PROJECT_DIRECTION.md and when proposing architecture or product choices
+
+---
+
 ## When Unsure
 
 If anything is ambiguous:
