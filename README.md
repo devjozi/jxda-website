@@ -17,6 +17,7 @@ Build static export: `npm run build` → output in `./out`.
 
 ## Key docs
 
+- **PREVIEW_AND_PUBLISH.md** — what to click and expect in the browser, then how to build and publish
 - **PROJECT_DIRECTION.md** — scope, commerce subdomain, priorities
 - **PROGRESS.md** — current phase and checklist
 - **HANDOFF.md** — quick restart and deploy

@@ -1,10 +1,8 @@
 /**
- * Header Component
- * 
- * Converted from Logicraft template index.html
- * Structure preserved exactly as in original template
- * Only syntax changes: class → className, self-closing tags
+ * Header — Logicraft template structure; JX branding and Shop link.
  */
+
+import { SITE } from '../../lib/site';
 
 export default function Header() {
   return (
@@ -14,12 +12,10 @@ export default function Header() {
           <div className="row">
             <div className="logo-area clearfix">
               <div className="logo col-lg-3 col-md-12">
-                <a href="index.html">
-                  <img src="images/logo.png" alt="" />
+                <a href="/">
+                  <img src="/images/logo.png" alt={SITE.name} />
                 </a>
               </div>
-              {/* logo end */}
-              
               <div className="col-lg-9 col-md-12 pull-right">
                 <ul className="top-info unstyled">
                   <li>
@@ -27,8 +23,8 @@ export default function Header() {
                       <i className="icon icon-phone3"></i>
                     </span>
                     <div className="info-wrapper">
-                      <p className="info-title">24/7 Response Time</p>
-                      <p className="info-subtitle">(+9) 847-291-4353</p>
+                      <p className="info-title">Contact</p>
+                      <p className="info-subtitle">{SITE.phone}</p>
                     </div>
                   </li>
                   <li>
@@ -36,8 +32,8 @@ export default function Header() {
                       <i className="icon icon-envelope"></i>
                     </span>
                     <div className="info-wrapper">
-                      <p className="info-title">Send Your Query</p>
-                      <p className="info-subtitle">mail@example.com</p>
+                      <p className="info-title">Email</p>
+                      <p className="info-subtitle">{SITE.email}</p>
                     </div>
                   </li>
                 </ul>
@@ -69,17 +65,12 @@ export default function Header() {
               
               <div className="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
                 <ul className="navbar-nav">
-                  <li className="nav-item dropdown active">
-                    <a className="nav-link" href="#" data-toggle="dropdown">
-                      Home<i className="fa fa-angle-down"></i>
-                    </a>
-                    <ul className="dropdown-menu" role="menu">
-                      <li className="active"><a href="index.html">Home One</a></li>
-                      <li><a href="index-2.html">Home Two</a></li>
-                    </ul>
+                  <li className="nav-item active">
+                    <a className="nav-link" href="/">Home</a>
                   </li>
-                  {/* li end */}
-                  
+                  <li className="nav-item">
+                    <a className="nav-link" href="/shop">Shop</a>
+                  </li>
                   <li className="nav-item dropdown">
                     <a className="nav-link" href="#" data-toggle="dropdown">
                       Company<i className="fa fa-angle-down"></i>
@@ -150,13 +141,12 @@ export default function Header() {
                   </li>
                   {/* li end */}
                   
-                  <li className="nav-item dropdown">
-                    <a href="contact.html">Contact</a>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/#quote-area">Contact</a>
                   </li>
                 </ul>
-                {/* Nav ul end */}
               </div>
-              <a href="" className="top-right-btn btn btn-primary">Request a Quote</a>
+              <a href="/#quote-area" className="top-right-btn btn btn-primary">Request a Quote</a>
               {/* Top bar btn */}
             </nav>
           </div>

@@ -1,10 +1,8 @@
 /**
- * Footer Component
- * 
- * Converted from Logicraft template index.html (lines 828-917)
- * Structure preserved exactly as in original template
- * Only syntax changes: class → className, self-closing tags
+ * Footer — Logicraft structure; JX branding and contact from lib/site.
  */
+
+import { SITE } from '../../lib/site';
 
 export default function Footer() {
   return (
@@ -14,9 +12,9 @@ export default function Footer() {
           <div className="row">
             <div className="col-lg-4 col-md-12 footer-widget footer-about">
               <div className="footer-logo">
-                <img src="images/footer-logo.png" alt="" />
+                <img src="/images/footer-logo.png" alt={SITE.name} />
               </div>
-              <p>Transline Logistics is the UK's leading freight forwarding, Midst brought winged midst beast years, be very was. Brought that called creeping</p>
+              <p>{SITE.name} — {SITE.tagline}. Your trusted logistics and distribution partner.</p>
               <h3 className="widget-title">Subscribe Newsletter!</h3>
               <form className="newsletter-form" id="newsletter-form" action="#" method="post">
                 <div className="form-group">
@@ -39,16 +37,11 @@ export default function Footer() {
             <div className="col-lg-4 col-md-6 footer-widget">
               <h3 className="widget-title">Quick Links</h3>
               <ul className="list-dash">
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="service.html">Our Services</a></li>
-                <li><a href="project-all.html">Projects</a></li>
-                <li><a href="team.html">Our Team</a></li>
-                <li><a href="faq.html">FAQs</a></li>
-                <li><a href="news-left-sidebar.html">Our Blog</a></li>
-                <li><a href="news-right-sidebar.html">Why Need Agent?</a></li>
-                <li><a href="pricing-table.html">Investments</a></li>
-                <li><a href="contact.html">Consultation</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/shop">Shop</a></li>
+                <li><a href="/#ts-services">Our Services</a></li>
+                <li><a href="/#testimonial-area">FAQs</a></li>
+                <li><a href="/#quote-area">Contact Us</a></li>
               </ul>
             </div>
             
@@ -60,7 +53,7 @@ export default function Footer() {
                 </span>
                 <div className="ts-contact-content">
                   <h3 className="ts-contact-title">Address</h3>
-                  <p>370 Grove Street East Northport, NY 11731</p>
+                  <p>{SITE.address}</p>
                 </div>
                 {/* Contact content end */}
               </div>
@@ -70,8 +63,8 @@ export default function Footer() {
                   <i className="icon icon-envelope"></i>
                 </span>
                 <div className="ts-contact-content">
-                  <h3 className="ts-contact-title">Email Address</h3>
-                  <p>support@transline.com</p>
+                  <h3 className="ts-contact-title">Email</h3>
+                  <p>{SITE.email}</p>
                 </div>
                 {/* Contact content end */}
               </div>
@@ -81,8 +74,8 @@ export default function Footer() {
                   <i className="icon icon-phone3"></i>
                 </span>
                 <div className="ts-contact-content">
-                  <h3 className="ts-contact-title">Phone Number</h3>
-                  <p>+1(0123) 4567 890, +1(0231) 3421 453</p>
+                  <h3 className="ts-contact-title">Phone</h3>
+                  <p>{SITE.phone}</p>
                 </div>
                 {/* Contact content end */}
               </div>
@@ -99,17 +92,16 @@ export default function Footer() {
           <div className="row">
             <div className="col-lg-6 col-md-12">
               <div className="copyright-info">
-                <span>Copyright © 2022 a theme by <a href="https://furioustheme.com">Furioustheme</a></span>
+                <span>© {new Date().getFullYear()} {SITE.name}. Theme: Logicraft (Furioustheme).</span>
               </div>
             </div>
             <div className="col-lg-6 col-md-12">
               <div className="footer-social text-right">
                 <ul>
-                  <li><a href="https://facebook.com"><i className="fa fa-facebook"></i></a></li>
-                  <li><a href="https://twitter.com"><i className="fa fa-twitter"></i></a></li>
-                  <li><a href="https://plus.google.com"><i className="fa fa-google-plus"></i></a></li>
-                  <li><a href="https://github.com"><i className="fa fa-github"></i></a></li>
-                  <li><a href="https://instagram.com"><i className="fa fa-instagram"></i></a></li>
+                  <li><a href={SITE.social.facebook} aria-label="Facebook"><i className="fa fa-facebook"></i></a></li>
+                  <li><a href={SITE.social.twitter} aria-label="Twitter"><i className="fa fa-twitter"></i></a></li>
+                  <li><a href={SITE.social.linkedin} aria-label="LinkedIn"><i className="fa fa-linkedin"></i></a></li>
+                  <li><a href={SITE.social.instagram} aria-label="Instagram"><i className="fa fa-instagram"></i></a></li>
                 </ul>
               </div>
             </div>

@@ -3,9 +3,11 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "JX Distribution Africa - Logistics & Distribution Solutions",
-  description: "Your trusted logistics and distribution partner across Africa. Professional freight, warehousing, and supply chain solutions.",
-  keywords: "logistics, distribution, freight, warehousing, Africa, Ghana, supply chain",
+  title: "JX Distribution Africa - Sales, Marketing & Distribution",
+  description:
+    "JX Distribution Africa is a registered Ghanaian company focused on sales, marketing, distribution of products and research across Africa, with coverage across all 16 regions of Ghana.",
+  keywords:
+    "JX Distribution Africa, sales, marketing, distribution, research, B2B, B2C, Ghana, 16 regions, Africa, route to market, logistics",
 };
 
 export default function RootLayout({
@@ -16,23 +18,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Bootstrap CSS */}
-        <link 
-          rel="stylesheet" 
-          href="/css/bootstrap.min.css" 
-        />
-        
-        {/* Bootstrap Icons (if template uses them) */}
-        <link 
-          rel="stylesheet" 
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-        />
-        
-        {/* Template Custom CSS - Add all CSS files from your template */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/css/animate.css" />
+        <link rel="stylesheet" href="/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="/css/icon-font.css" />
+        <link rel="stylesheet" href="/css/owl.carousel.min.css" />
+        <link rel="stylesheet" href="/css/owl.theme.default.min.css" />
         <link rel="stylesheet" href="/css/style.css" />
-        {/* Add other CSS files as needed, for example: */}
-        {/* <link rel="stylesheet" href="/css/responsive.css" /> */}
-        {/* <link rel="stylesheet" href="/css/animate.css" /> */}
+        <link rel="stylesheet" href="/css/responsive.css" />
       </head>
       <body suppressHydrationWarning>
         {children}
@@ -43,15 +37,11 @@ export default function RootLayout({
           strategy="beforeInteractive" 
         />
         
-        {/* Bootstrap Bundle JS (from CDN temporarily) */}
-        <Script 
-          src="/js/bootstrap.bundle.min.js" 
-          strategy="lazyOnload" 
-        />
-        
-        {/* Template Custom JS - Add all JS files from your template */}
-        {/* <Script src="/js/main.js" strategy="lazyOnload" /> */}
-        {/* <Script src="/js/custom.js" strategy="lazyOnload" /> */}
+        <Script src="/js/bootstrap.bundle.min.js" strategy="lazyOnload" />
+        <Script src="/js/waypoints.min.js" strategy="lazyOnload" />
+        <Script src="/js/jquery.counterup.min.js" strategy="lazyOnload" />
+        <Script src="/js/owl.carousel.min.js" strategy="lazyOnload" />
+        <Script src="/js/custom.js" strategy="lazyOnload" />
       </body>
     </html>
   );
