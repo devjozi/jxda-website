@@ -1,7 +1,6 @@
 /**
  * Homepage Component
  *
- * Converted from Logicraft template index.html (reference/original-template/).
  * Sections: Hero, Features Light, Why JX, Our Services, FAQ, Testimonials, Facts, Quote/CTA.
  */
 
@@ -33,7 +32,7 @@ export default function Home() {
                   </p>
                   <p>
                     <a className="slider btn btn-primary" href="/#ts-features-light">Know More</a>
-                    <a className="slider btn btn-border" href="/shop">View Products</a>
+                    <a className="slider btn btn-border" href="/shop">Get a Quick Quote</a>
                   </p>
                 </div>
                 {/* Col end */}
@@ -49,13 +48,13 @@ export default function Home() {
             <div className="container">
               <div className="slider-content text-center">
                 <div className="col-md-12">
-                  <h2 className="slide-title title-light">We handle sales and distribution</h2>
-                  <h3 className="slide-sub-title">You focus on your business</h3>
+                  <h2 className="slide-title title-light">Sell More Across Ghana</h2>
+                  <h3 className="slide-sub-title">Without Hiring a Sales Team</h3>
                   <p className="slider-description lead">
-                    From B2B to B2C, we activate, sell and report in real time.
+                    We help brands enter new markets, drive retail sails, and grow distribution across all 16 regions with measurable field execution and live reporting.
                   </p>
                   <p>
-                    <a className="slider btn btn-primary" href="/shop">Our Products</a>
+                    <a className="slider btn btn-primary" href="/shop">Request a Call Back</a>
                   </p>
                 </div>
                 {/* Col end */}
@@ -74,7 +73,7 @@ export default function Home() {
                   <h2 className="slide-title title-light">17 years of experience</h2>
                   <h3 className="slide-sub-title">Strong Distribution Network</h3>
                   <p>
-                    <a className="slider btn btn-primary" href="/shop">View Products</a>
+                    <a className="slider btn btn-primary" href="/shop">Request a Call Back</a>
                   </p>
                 </div>
                 {/* Col end */}
@@ -107,8 +106,8 @@ export default function Home() {
                   <div className="feature-img">
                     <img src="/images/icon/service-1.png" alt="" />
                   </div>
-                  <h3 className="ts-feature-title">Reliable Services</h3>
-                  <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings.</p>
+                  <h3 className="ts-feature-title">Get Your Products Into More Shops</h3>
+                  <p>We drive B2B sales directly to wholealers and retailers to increase availability and reorder volume</p>
                   <a className="slider btn btn-primary" href="/shop">Read More</a>
                 </div>
               </div>
@@ -119,8 +118,8 @@ export default function Home() {
                   <div className="feature-img">
                     <img src="/images/icon/service-2.png" alt="" />
                   </div>
-                  <h3 className="ts-feature-title">Global Coverage</h3>
-                  <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings.</p>
+                  <h3 className="ts-feature-title">Expand Into All 16 Regions</h3>
+                  <p>Our field teams and warehouse support help you penetrate new territories without operation stress.</p>
                   <a className="slider btn btn-primary" href="/shop">Read More</a>
                 </div>
               </div>
@@ -131,8 +130,8 @@ export default function Home() {
                   <div className="feature-img">
                     <img src="/images/icon/service-3.png" alt="" />
                   </div>
-                  <h3 className="ts-feature-title">Cost Savings</h3>
-                  <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings.</p>
+                  <h3 className="ts-feature-title">See Results with Live Reporting</h3>
+                  <p>Get clear updates on sales activity, market execution, and activation performance, so you know what's working.</p>
                   <a className="slider btn btn-primary" href="/shop">Read More</a>
                 </div>
               </div>
@@ -159,8 +158,8 @@ export default function Home() {
                       <img src="/images/icon/why-1.png" alt="" />
                     </div>
                     <div className="ts-service-box-info">
-                      <h3 className="service-box-title">Trusted expertise</h3>
-                      <p>10–20+ years of experience in sales, marketing and distribution for leading brands.</p>
+                      <h3 className="service-box-title">Experienced Sales Professionals</h3>
+                      <p>A trained team with 10 - 20+ years experience driving growth for brands in Ghana.</p>
                     </div>
                   </div>
                   <div className="gap-15"></div>
@@ -169,8 +168,8 @@ export default function Home() {
                       <img src="/images/icon/why-2.png" alt="" />
                     </div>
                     <div className="ts-service-box-info">
-                      <h3 className="service-box-title">Safe, compliant operations</h3>
-                      <p>Zero harm at work and respect for consumers — we do not sell or market alcoholic products or content.</p>
+                      <h3 className="service-box-title">Strong Field Activation</h3>
+                      <p>We execute roadshows, open market activation and modern trade campaigns that convert attention into sales.</p>
                     </div>
                   </div>
                   <div className="gap-15"></div>
@@ -179,8 +178,8 @@ export default function Home() {
                       <img src="/images/icon/why-4.png" alt="" />
                     </div>
                     <div className="ts-service-box-info">
-                      <h3 className="service-box-title">Self-performing teams</h3>
-                      <p>In-house field and sales force that executes, measures and improves your activations.</p>
+                      <h3 className="service-box-title">Nationwide Coverage</h3>
+                      <p>Active presence across all 16 regions to support product penetration and expansion.</p>
                     </div>
                   </div>
                 </div>
@@ -195,8 +194,8 @@ export default function Home() {
                       <img src="/images/icon/why-3.png" alt="" />
                     </div>
                     <div className="ts-service-box-info">
-                      <h3 className="service-box-title">Real-time reporting</h3>
-                      <p>Live sales and activation reporting through automated, digital tools.</p>
+                      <h3 className="service-box-title">Target-Based Execution</h3>
+                      <p>We focus on performance, so you spend smarter and get measurable outcomes.</p>
                     </div>
                   </div>
                   <div className="gap-15"></div>
@@ -205,8 +204,8 @@ export default function Home() {
                       <img src="/images/icon/why-5.png" alt="" />
                     </div>
                     <div className="ts-service-box-info">
-                      <h3 className="service-box-title">16 regions coverage</h3>
-                      <p>Stationed teams and warehouses across all 16 regions of Ghana.</p>
+                      <h3 className="service-box-title">Real-Time Reporting</h3>
+                      <p>Live reporting and automation that keeps you informed and in control.</p>
                     </div>
                   </div>
                   <div className="gap-15"></div>
@@ -215,8 +214,8 @@ export default function Home() {
                       <img src="/images/icon/why-6.png" alt="" />
                     </div>
                     <div className="ts-service-box-info">
-                      <h3 className="service-box-title">Health &amp; Safety</h3>
-                      <p>Standards that protect people and products.</p>
+                      <h3 className="service-box-title">Safe &amp; Complaint Operations</h3>
+                      <p>We uphold strong ethical standards and do not sell or market alcoholic products.</p>
                     </div>
                   </div>
                 </div>
@@ -275,7 +274,7 @@ export default function Home() {
                   <div className="ts-service-content">
                     <h3 className="service-title">{s.title}</h3>
                     <p>{s.desc}</p>
-                    <p><a className="link-more" href="/shop">View Products <i className="icon icon-right-arrow2"></i></a></p>
+                    <p><a className="link-more" href="/shop">Talk to our Team<i className="icon icon-right-arrow2"></i></a></p>
                   </div>
                 </div>
               </div>
@@ -295,31 +294,31 @@ export default function Home() {
               <div className="accordion accordion-area" id="accordion">
                 <div className="accordion-item">
                   <h2 className="accordion-header" id="headingOne">
-                    <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">What do I get when my account is paid off?</button>
+                    <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Do you cover all regions in Ghana?</button>
                   </h2>
                   <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion">
                     <div className="accordion-body">
-                      <p>A business strategy is the means by which it sets out to achieve its desired ends. We have a culturally diverse team ready to support you.</p>
+                      <p>Yes. We operate across all 16 regions with stationed teams and warehouse support.</p>
                     </div>
                   </div>
                 </div>
                 <div className="accordion-item">
                   <h2 className="accordion-header" id="headingTwo">
-                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">My payment was postmarked on the due date, why is it considered late?</button>
+                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Do you work with new brands and startups?</button>
                   </h2>
                   <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
                     <div className="accordion-body">
-                      <p>Payments are processed upon receipt. Contact us with your reference number and we will assist.</p>
+                      <p>Yes. We support both startups and established brands ready to grow market share.</p>
                     </div>
                   </div>
                 </div>
                 <div className="accordion-item">
                   <h2 className="accordion-header" id="headingThree">
-                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">How can I track my order?</button>
+                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Do you do both B2B and B2C sales?</button>
                   </h2>
                   <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordion">
                     <div className="accordion-body">
-                      <p>You will receive a tracking link by email. You can also contact us for real-time updates.</p>
+                      <p>Yes. We sell to wholesalers/retailers and also run consumer activations.</p>
                     </div>
                   </div>
                 </div>

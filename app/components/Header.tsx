@@ -76,11 +76,9 @@ export default function Header() {
                       Company<i className="fa fa-angle-down"></i>
                     </a>
                     <ul className="dropdown-menu" role="menu">
-                      <li><a href="about.html">About Us</a></li>
-                      <li><a href="team.html">Our Team</a></li>
-                      <li><a href="pricing-table.html">Pricing</a></li>
-                      <li><a href="faq.html">Faq</a></li>
-                      <li><a href="gallery.html">Gallery</a></li>
+                      <li><a href="/about">About Us</a></li>
+                      <li><a href="/services">Our Services</a></li>
+                      <li><a href="/contact">Contact Us</a></li>
                     </ul>
                   </li>
                   {/* li end */}
@@ -101,8 +99,13 @@ export default function Header() {
                       Services<i className="fa fa-angle-down"></i>
                     </a>
                     <ul className="dropdown-menu" role="menu">
-                      <li><a href="service.html">Services All</a></li>
-                      <li><a href="service-single.html">Services Single</a></li>
+                      <li><a href="/services">All Services</a></li>
+                      <li><a href="/services/b2b-sales-merchandising">B2B Sales & Merchandising</a></li>
+                      <li><a href="/services/b2c-consumer-activation">B2C Consumer Activation</a></li>
+                      <li><a href="/services/route-to-market-development">Route to Market Development</a></li>
+                      <li><a href="/services/market-surveys-research">Market Surveys & Research</a></li>
+                      <li><a href="/services/logistics-distribution-management">Logistics & Distribution Management</a></li>
+                      <li><a href="/services/branding-events-digital-marketing">Branding, Events & Digital Marketing</a></li>
                     </ul>
                   </li>
                   {/* li end */}
@@ -142,11 +145,11 @@ export default function Header() {
                   {/* li end */}
                   
                   <li className="nav-item">
-                    <a className="nav-link" href="/#quote-area">Contact</a>
+                    <a className="nav-link" href="/contact">Contact</a>
                   </li>
                 </ul>
               </div>
-              <a href="/#quote-area" className="top-right-btn btn btn-primary">Request a Quote</a>
+              <a href="/contact" className="top-right-btn btn btn-primary">Request a Quote</a>
               {/* Top bar btn */}
             </nav>
           </div>
