@@ -1,5 +1,14 @@
 /**
- * Header — Logicraft template structure; JX branding and Shop link.
+ * Header — JX Distribution navigation
+ * 
+ * Clean navigation structure without broken links:
+ * - Home
+ * - Shop
+ * - Company (About, Services, Contact)
+ * - Services (with all 6 service links)
+ * - Contact
+ * 
+ * Removed: Projects dropdown, Features dropdown, News dropdown (until implemented)
  */
 
 import { SITE } from '../../lib/site';
@@ -44,17 +53,17 @@ export default function Header() {
           </div>
         </div>
         {/* Container end */}
-        
+
         <div className="site-nav-inner site-navigation navigation navdown">
           <div className="container">
             <nav className="navbar navbar-expand-lg">
-              <button 
-                className="navbar-toggler" 
-                type="button" 
-                data-toggle="collapse" 
-                data-target="#navbarSupportedContent" 
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent"
-                aria-expanded="false" 
+                aria-expanded="false"
                 aria-label="Toggle navigation"
               >
                 <span className="navbar-toggler-icon">
@@ -62,7 +71,7 @@ export default function Header() {
                 </span>
               </button>
               {/* End of Navbar toggler */}
-              
+
               <div className="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
                 <ul className="navbar-nav">
                   <li className="nav-item active">
@@ -82,18 +91,7 @@ export default function Header() {
                     </ul>
                   </li>
                   {/* li end */}
-                  
-                  <li className="nav-item dropdown">
-                    <a className="nav-link" href="#" data-toggle="dropdown">
-                      Projects<i className="fa fa-angle-down"></i>
-                    </a>
-                    <ul className="dropdown-menu" role="menu">
-                      <li><a href="project-all.html">Projects All</a></li>
-                      <li><a href="#">Projects Single</a></li>
-                    </ul>
-                  </li>
-                  {/* li end */}
-                  
+
                   <li className="nav-item dropdown">
                     <a className="nav-link" href="#" data-toggle="dropdown">
                       Services<i className="fa fa-angle-down"></i>
@@ -109,41 +107,7 @@ export default function Header() {
                     </ul>
                   </li>
                   {/* li end */}
-                  
-                  <li className="nav-item dropdown">
-                    <a className="nav-link" href="#" data-toggle="dropdown">
-                      Features<i className="fa fa-angle-down"></i>
-                    </a>
-                    <ul className="dropdown-menu" role="menu">
-                      <li><a href="addons-1.html">Addons 1</a></li>
-                      <li><a href="addons-2.html">Addons 2</a></li>
-                      <li><a href="addons-3.html">Addons 3</a></li>
-                      <li><a href="#">404</a></li>
-                      <li className="dropdown-submenu">
-                        <a className="nav-link" href="#" data-toggle="dropdown">Parent Menu</a>
-                        <ul className="dropdown-menu">
-                          <li><a href="#">Child Menu 1</a></li>
-                          <li><a href="#">Child Menu 2</a></li>
-                          <li><a href="#">Child Menu 3</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  {/* li end */}
-                  
-                  <li className="nav-item dropdown">
-                    <a className="nav-link" href="#" data-toggle="dropdown">
-                      News
-                      <i className="fa fa-angle-down"></i>
-                    </a>
-                    <ul className="dropdown-menu" role="menu">
-                      <li><a href="news-left-sidebar.html">Blog With Right Sidebar</a></li>
-                      <li><a href="news-right-sidebar.html">Blog With Left Sidebar</a></li>
-                      <li><a href="news-single.html">Single News</a></li>
-                    </ul>
-                  </li>
-                  {/* li end */}
-                  
+
                   <li className="nav-item">
                     <a className="nav-link" href="/contact">Contact</a>
                   </li>
