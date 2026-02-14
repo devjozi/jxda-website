@@ -1,5 +1,14 @@
 /**
- * Header — Logicraft template structure; JX branding and Shop link.
+ * Header — JX Distribution navigation
+ * 
+ * Clean navigation structure without broken links:
+ * - Home
+ * - Shop
+ * - Company (About, Services, Contact)
+ * - Services (with all 6 service links)
+ * - Contact
+ * 
+ * Removed: Projects dropdown, Features dropdown, News dropdown (until implemented)
  */
 
 import { SITE } from '../../lib/site';
@@ -44,17 +53,17 @@ export default function Header() {
           </div>
         </div>
         {/* Container end */}
-        
+
         <div className="site-nav-inner site-navigation navigation navdown">
           <div className="container">
             <nav className="navbar navbar-expand-lg">
-              <button 
-                className="navbar-toggler" 
-                type="button" 
-                data-toggle="collapse" 
-                data-target="#navbarSupportedContent" 
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent"
-                aria-expanded="false" 
+                aria-expanded="false"
                 aria-label="Toggle navigation"
               >
                 <span className="navbar-toggler-icon">
@@ -62,7 +71,7 @@ export default function Header() {
                 </span>
               </button>
               {/* End of Navbar toggler */}
-              
+
               <div className="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
                 <ul className="navbar-nav">
                   <li className="nav-item active">
@@ -76,77 +85,35 @@ export default function Header() {
                       Company<i className="fa fa-angle-down"></i>
                     </a>
                     <ul className="dropdown-menu" role="menu">
-                      <li><a href="about.html">About Us</a></li>
-                      <li><a href="team.html">Our Team</a></li>
-                      <li><a href="pricing-table.html">Pricing</a></li>
-                      <li><a href="faq.html">Faq</a></li>
-                      <li><a href="gallery.html">Gallery</a></li>
+                      <li><a href="/about">About Us</a></li>
+                      <li><a href="/services">Our Services</a></li>
+                      <li><a href="/contact">Contact Us</a></li>
                     </ul>
                   </li>
                   {/* li end */}
-                  
-                  <li className="nav-item dropdown">
-                    <a className="nav-link" href="#" data-toggle="dropdown">
-                      Projects<i className="fa fa-angle-down"></i>
-                    </a>
-                    <ul className="dropdown-menu" role="menu">
-                      <li><a href="project-all.html">Projects All</a></li>
-                      <li><a href="#">Projects Single</a></li>
-                    </ul>
-                  </li>
-                  {/* li end */}
-                  
+
                   <li className="nav-item dropdown">
                     <a className="nav-link" href="#" data-toggle="dropdown">
                       Services<i className="fa fa-angle-down"></i>
                     </a>
                     <ul className="dropdown-menu" role="menu">
-                      <li><a href="service.html">Services All</a></li>
-                      <li><a href="service-single.html">Services Single</a></li>
+                      <li><a href="/services">All Services</a></li>
+                      <li><a href="/services/b2b-sales-merchandising">B2B Sales & Merchandising</a></li>
+                      <li><a href="/services/b2c-consumer-activation">B2C Consumer Activation</a></li>
+                      <li><a href="/services/route-to-market-development">Route to Market Development</a></li>
+                      <li><a href="/services/market-surveys-research">Market Surveys & Research</a></li>
+                      <li><a href="/services/logistics-distribution-management">Logistics & Distribution Management</a></li>
+                      <li><a href="/services/branding-events-digital-marketing">Branding, Events & Digital Marketing</a></li>
                     </ul>
                   </li>
                   {/* li end */}
-                  
-                  <li className="nav-item dropdown">
-                    <a className="nav-link" href="#" data-toggle="dropdown">
-                      Features<i className="fa fa-angle-down"></i>
-                    </a>
-                    <ul className="dropdown-menu" role="menu">
-                      <li><a href="addons-1.html">Addons 1</a></li>
-                      <li><a href="addons-2.html">Addons 2</a></li>
-                      <li><a href="addons-3.html">Addons 3</a></li>
-                      <li><a href="#">404</a></li>
-                      <li className="dropdown-submenu">
-                        <a className="nav-link" href="#" data-toggle="dropdown">Parent Menu</a>
-                        <ul className="dropdown-menu">
-                          <li><a href="#">Child Menu 1</a></li>
-                          <li><a href="#">Child Menu 2</a></li>
-                          <li><a href="#">Child Menu 3</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  {/* li end */}
-                  
-                  <li className="nav-item dropdown">
-                    <a className="nav-link" href="#" data-toggle="dropdown">
-                      News
-                      <i className="fa fa-angle-down"></i>
-                    </a>
-                    <ul className="dropdown-menu" role="menu">
-                      <li><a href="news-left-sidebar.html">Blog With Right Sidebar</a></li>
-                      <li><a href="news-right-sidebar.html">Blog With Left Sidebar</a></li>
-                      <li><a href="news-single.html">Single News</a></li>
-                    </ul>
-                  </li>
-                  {/* li end */}
-                  
+
                   <li className="nav-item">
-                    <a className="nav-link" href="/#quote-area">Contact</a>
+                    <a className="nav-link" href="/contact">Contact</a>
                   </li>
                 </ul>
               </div>
-              <a href="/#quote-area" className="top-right-btn btn btn-primary">Request a Quote</a>
+              <a href="/contact" className="top-right-btn btn btn-primary">Request a Quote</a>
               {/* Top bar btn */}
             </nav>
           </div>

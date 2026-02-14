@@ -39,9 +39,9 @@ export default function Footer() {
               <ul className="list-dash">
                 <li><a href="/">Home</a></li>
                 <li><a href="/shop">Shop</a></li>
-                <li><a href="/#ts-services">Our Services</a></li>
-                <li><a href="/#testimonial-area">FAQs</a></li>
-                <li><a href="/#quote-area">Contact Us</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/services">Our Services</a></li>
+                <li><a href="/contact">Contact Us</a></li>
               </ul>
             </div>
             
