@@ -1,14 +1,13 @@
-name: Build and Deploy (Next.js static → Hostinger)
+name: Build and Deploy (Hostinger Node.js)
 
 on:
   push:
     branches:
       - main
-      - develop
-      - 'feature/**'
 
 jobs:
   build-and-deploy:
+    if: ${{ secrets.HOSTINGER_SSH_KEY != '' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -25,19 +24,12 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Export static site
-        run: npm run export
-
       - name: Determine deploy target
-        id: deploy_target
         run: |
           BRANCH=${GITHUB_REF#refs/heads/}
-          if [ "$BRANCH" = "main" ]; then TARGET="public_html"; \
-          elif [ "$BRANCH" = "develop" ]; then TARGET="staging"; \
-          else TARGET="previews/$BRANCH"; fi
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
-          echo "TARGET=$TARGET" >> $GITHUB_ENV
-          echo "Deploying branch $BRANCH to $TARGET"
+          echo "TARGET_PATH=${{ secrets.HOSTINGER_DEPLOY_PATH }}" >> $GITHUB_ENV
+          echo "Deploying branch $BRANCH to ${{ secrets.HOSTINGER_DEPLOY_PATH }}"
 
       - name: Prepare SSH key
         run: |
@@ -48,7 +40,17 @@ jobs:
 
       - name: Deploy to Hostinger (rsync)
         run: |
-          TARGET_PATH="${{ secrets.HOSTINGER_DEPLOY_PATH }}/${TARGET}"
           echo "Deploy path: $TARGET_PATH"
-          rsync -avz --delete -e "ssh -p ${{ secrets.HOSTINGER_PORT }}" ./out/ "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:$TARGET_PATH/"
+          rsync -avz --delete \
+            --exclude ".git" \
+            --exclude "node_modules" \
+            --exclude ".github" \
+            --exclude "reference" \
+            -e "ssh -p ${{ secrets.HOSTINGER_PORT }}" ./ "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:$TARGET_PATH/"
+
+      - name: Install server dependencies and restart
+        if: ${{ secrets.HOSTINGER_RESTART_CMD != '' }}
+        run: |
+          ssh -p "${{ secrets.HOSTINGER_PORT }}" "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}" \
+            "cd $TARGET_PATH && npm ci --omit=dev && ${{ secrets.HOSTINGER_RESTART_CMD }}"
 
