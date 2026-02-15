@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { buildWhatsAppUrl } from '../../lib/site';
 
 /**
  * Request a call back form — prevents default submit and shows thank-you.
@@ -11,6 +12,24 @@ export default function QuoteForm() {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    const form = new FormData(e.currentTarget);
+    const name = String(form.get('name') ?? '').trim();
+    const email = String(form.get('email') ?? '').trim();
+    const message = String(form.get('message') ?? '').trim();
+
+    // Build a single WhatsApp message from the form input for quick follow-up.
+    const whatsappMessage = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      message ? `Message: ${message}` : null,
+    ].filter(Boolean).join('\n');
+
+    const whatsappUrl = buildWhatsAppUrl(whatsappMessage);
+    if (whatsappUrl !== '#') {
+      window.open(whatsappUrl, '_blank', 'noreferrer');
+    }
+
     setSubmitted(true);
   }
 
