@@ -28,6 +28,8 @@ export default function Home() {
           <li className="active" data-bs-target="#main-slide" data-bs-slide-to="0"></li>
           <li data-bs-target="#main-slide" data-bs-slide-to="1"></li>
           <li data-bs-target="#main-slide" data-bs-slide-to="2"></li>
+          <li data-bs-target="#main-slide" data-bs-slide-to="3"></li>
+          <li data-bs-target="#main-slide" data-bs-slide-to="4"></li>
         </ol>
         <div className="carousel-inner">
           <div className="carousel-item active" style={{backgroundImage: 'url(/images/slider/bg1.jpg)'}}>
@@ -92,6 +94,50 @@ export default function Home() {
             {/* Container end */}
           </div>
           {/* Carousel item 3 end */}
+
+          {/* Carousel item 4 */}
+          <div className="carousel-item" style={{backgroundImage: 'url(/images/slider/bg2.jpg)'}}>
+            <div className="container">
+              <div className="slider-content text-left">
+                <div className="col-md-12">
+                  <h2 className="slide-title title-light">B2C Consumer Activation</h2>
+                  <h3 className="slide-sub-title">Drive demand where it matters</h3>
+                  <p className="slider-description lead">
+                    We execute in-market activations that convert attention into repeat purchases across Ghana.
+                  </p>
+                  <p>
+                    <a className="slider btn btn-primary" href={whatsappLinks.servicesTalk} target="_blank" rel="noreferrer">Talk to our Team</a>
+                  </p>
+                </div>
+                {/* Col end */}
+              </div>
+              {/* Slider content end */}
+            </div>
+            {/* Container end */}
+          </div>
+          {/* Carousel item 4 end */}
+
+          {/* Carousel item 5 */}
+          <div className="carousel-item" style={{backgroundImage: 'url(/images/slider/bg1.jpg)'}}>
+            <div className="container">
+              <div className="slider-content text-center">
+                <div className="col-md-12">
+                  <h2 className="slide-title title-light">B2B Vendor Growth</h2>
+                  <h3 className="slide-sub-title">Boost wholesale and retail sell-through</h3>
+                  <p className="slider-description lead">
+                    Our field teams drive listings, merchandising, and reorder velocity for your products.
+                  </p>
+                  <p>
+                    <a className="slider btn btn-primary" href={whatsappLinks.quickQuote} target="_blank" rel="noreferrer">Get a Quick Quote</a>
+                  </p>
+                </div>
+                {/* Col end */}
+              </div>
+              {/* Slider content end */}
+            </div>
+            {/* Container end */}
+          </div>
+          {/* Carousel item 5 end */}
         </div>
         {/* Carousel inner end */}
         
