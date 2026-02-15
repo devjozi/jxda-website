@@ -1,4 +1,5 @@
 # JX Distribution — Website
+<!-- Purpose: Project overview, setup, and deployment pointers. -->
 
 JX Distribution sells online. This repo is the main site and (planned) commerce subdomain.
 
@@ -33,7 +34,7 @@ Start production server: `npm run start`
 
 ## Deploy
 
-- `develop` → preview (preview domain)
+- `develop` → preview (https://www.preview.jxdistributionafrica.com)
 - `main` → production (Hostinger Node app)
 
 Secrets: see `.env.example`; store real values in GitHub Secrets.

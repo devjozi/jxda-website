@@ -1,4 +1,5 @@
 # HANDOFF — JX Distribution (quick)
+<!-- Purpose: Quick restart and deploy reference for handoff. -->
 
 Repo: https://github.com/devjozi/jxda-website  
 Branch for current work: `feature/theme-next` (or active branch)
@@ -18,7 +19,7 @@ Start production server: `npm run start`
 ## Deploy
 
 - Hostinger GitHub Integration on `develop` (preview) and `main` (production)
-- Preview domain: `https://preview.domainname.com`
+- Preview domain: `https://www.preview.jxdistributionafrica.com`
 - Production path: `/home/<user>/public_html`
 - Restart in hPanel Node.js Dashboard after deploy if needed
 

@@ -1,4 +1,5 @@
 # Preview and publish — JX Distribution
+<!-- Purpose: Steps for local preview, internal preview, and publish. -->
 
 Use this to **preview locally** and then **publish** the site.
 
@@ -133,7 +134,7 @@ Open http://localhost:3000. Click through Home → Shop → one product → Chec
 ### 3. Publish to Hostinger (Node.js)
 
 **CI/CD (recommended):**
-- Push to `develop` for internal preview at `https://preview.domainname.com`.
+- Push to `develop` for internal preview at `https://www.preview.jxdistributionafrica.com`.
 - Push to `main` for production; Hostinger GitHub Integration deploys the live app.
 
 **Manual (if needed):**

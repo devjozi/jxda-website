@@ -1,4 +1,5 @@
 # Architecture — JX Distribution
+<!-- Purpose: Summarize architecture and deployment model. -->
 
 ## Stack
 
@@ -31,7 +32,7 @@
 
 ### Preview/Staging
 - **Trigger:** Push to `develop`
-- **URL:** `https://preview.domainname.com`
+- **URL:** `https://www.preview.jxdistributionafrica.com`
 - **Purpose:** Internal preview before production
 
 ### Production (Automatic)
