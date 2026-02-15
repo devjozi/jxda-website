@@ -17,7 +17,8 @@ Start production server: `npm run start`
 
 ## Deploy
 
-- Hostinger GitHub Integration on `main`
+- Hostinger GitHub Integration on `develop` (preview) and `main` (production)
+- Preview domain: `https://preview.domainname.com`
 - Production path: `/home/<user>/public_html`
 - Restart in hPanel Node.js Dashboard after deploy if needed
 

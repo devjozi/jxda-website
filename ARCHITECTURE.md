@@ -30,7 +30,9 @@
 - Hot reload enabled
 
 ### Preview/Staging
-- Not configured yet (production-only deploys from `main`)
+- **Trigger:** Push to `develop`
+- **URL:** `https://preview.domainname.com`
+- **Purpose:** Internal preview before production
 
 ### Production (Automatic)
 - **Trigger:** Push to `main`

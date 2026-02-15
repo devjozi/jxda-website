@@ -2,8 +2,8 @@
 
 **Last Updated:** 2026-02-15  
 **Version:** 0.3.2  
-**Branch:** `feature/enable-server-routes`  
-**Status:** Deployment foundation in progress (Hostinger Node.js, production-only)
+**Branch:** `develop`  
+**Status:** Deployment foundation in progress (Hostinger Node.js, preview on develop)
 
 ---
 

@@ -132,7 +132,9 @@ Open http://localhost:3000. Click through Home → Shop → one product → Chec
 
 ### 3. Publish to Hostinger (Node.js)
 
-**CI/CD (recommended):** Push to `main`; Hostinger GitHub Integration pulls and deploys the production app.
+**CI/CD (recommended):**
+- Push to `develop` for internal preview at `https://preview.domainname.com`.
+- Push to `main` for production; Hostinger GitHub Integration deploys the live app.
 
 **Manual (if needed):**
 1. Upload the project to your Hostinger app path (production or preview).

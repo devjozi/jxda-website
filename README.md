@@ -27,6 +27,7 @@ Start production server: `npm run start`
 
 ## Deploy
 
+- `develop` → preview (preview domain)
 - `main` → production (Hostinger Node app)
 
 Secrets: see `.env.example`; store real values in GitHub Secrets.
