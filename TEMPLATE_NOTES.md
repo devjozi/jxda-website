@@ -41,7 +41,7 @@ Next.js is used only for:
 
 - Do NOT rewrite Bootstrap styles into Tailwind
 - Do NOT convert everything into React components aggressively
-- Do NOT introduce backend logic or APIs
+- Do NOT introduce backend logic beyond planned API routes
 - Do NOT optimize prematurely
 
 ---
@@ -57,7 +57,7 @@ Next.js is used only for:
 ## Goal of Migration
 
 End result should be:
-- A static Next.js-exported website
+- A server-capable Next.js website
 - Identical look to the original template
 - Easier to add pages, products, and content later
 

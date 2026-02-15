@@ -19,9 +19,9 @@ Migrate the Logicraft Bootstrap/HTML template into a structured Next.js project 
 
 ## Target State
 
-- **Marketing site:** Matches template design (reference directory). Next.js static export. Multiple pages, Header/Footer, all body sections as in template.
+- **Marketing site:** Matches template design (reference directory). Next.js server-capable build. Multiple pages, Header/Footer, all body sections as in template.
 - **Commerce:** Same Next.js app (recommended): product list, product detail, checkout, payment. Subdomain or `/shop` TBD.
-- Deployed as static (or static + API if payment requires it) to Hostinger.
+- Deployed as a Node.js app to Hostinger with API routes available.
 
 ---
 
@@ -29,7 +29,7 @@ Migrate the Logicraft Bootstrap/HTML template into a structured Next.js project 
 
 - Page structure and routing (marketing + commerce)
 - Clean separation of layout, pages, components
-- Static export for Hostinger; add API routes only if needed (e.g. payment)
+- Server-capable Next.js for Hostinger; API routes available when needed (e.g. payment)
 - One codebase for main site + shop keeps things simple
 
 **Not used for:** full SSR, auth, or complex state unless later required.
@@ -49,7 +49,7 @@ Migrate the Logicraft Bootstrap/HTML template into a structured Next.js project 
 - Load Bootstrap/template CSS and JS globally
 
 ### Phase 3 — Asset Organization
-- Assets in `/public`; paths work with static export
+- Assets in `/public`; paths work with Next.js server build
 - Images, fonts, vendor scripts load correctly
 
 ### Phase 4 — Data (Light)
@@ -65,7 +65,7 @@ Migrate the Logicraft Bootstrap/HTML template into a structured Next.js project 
 
 - Site looks identical to reference template where converted
 - All converted pages load; assets resolve
-- Static export builds without errors
+- Server build completes without errors
 - Progress is documented in PROGRESS.md so work can continue anytime
 
 ---

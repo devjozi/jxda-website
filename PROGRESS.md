@@ -1,9 +1,9 @@
 # PROGRESS LOG — JX Distribution Website
 
 **Last Updated:** 2026-02-15  
-**Version:** 0.3.0  
+**Version:** 0.3.2  
 **Branch:** `develop`  
-**Status:** Planning complete, ready for execution with CI/CD
+**Status:** Deployment foundation in progress (Hostinger Node.js, preview on develop)
 
 ---
 
@@ -12,14 +12,14 @@
 - **Homepage:** Hero, Features Light, Why JX, Our Services (6), FAQ + Testimonials, Facts, Quote/CTA — all converted from reference template.
 - **Commerce:** `/shop` (product list), `/shop/[slug]` (product detail), `/shop/checkout` (placeholder). Product data in `lib/products.ts`.
 - **JX customization:** Site config in `lib/site.ts`; Header/Footer use JX name, contact placeholders, Shop link; Quick Links and copyright updated.
-- **Preview and publish:** Use **PREVIEW_AND_PUBLISH.md** for step-by-step browser checks and Hostinger publish.
+- **Preview and publish:** Use **PREVIEW_AND_PUBLISH.md** for step-by-step browser checks and Hostinger Node deploy.
 
 ---
 
 ## ✅ Completed
 
 ### Phase 1–4 (Foundation, Layout, Header, Footer)
-- Next.js + static export, template assets in `/public`, `app/layout.tsx`, `app/components/Header.tsx`, `app/components/Footer.tsx`.
+- Next.js server mode, template assets in `/public`, `app/layout.tsx`, `app/components/Header.tsx`, `app/components/Footer.tsx`.
 
 ### Phase 5: Homepage body sections
 | # | Section | Status |
@@ -93,5 +93,8 @@
 ## Versioning
 
 - **0.1.0** — Foundation, layout, Header, Footer, hero + features light.
-- **0.2.0** — Full homepage sections, commerce (shop/list/detail/checkout), JX config and Header/Footer customization, PREVIEW_CHECKLIST.- **0.3.0** — Planning phase complete: PROJECT_PLAN.md, BRANCHING_STRATEGY.md, AGENT_PROMPT.md, ready for CI/CD deployment.
+- **0.2.0** — Full homepage sections, commerce (shop/list/detail/checkout), JX config and Header/Footer customization, PREVIEW_CHECKLIST.
+- **0.3.0** — Planning phase complete: PROJECT_PLAN.md, BRANCHING_STRATEGY.md, AGENT_PROMPT.md, ready for CI/CD deployment.
+- **0.3.1** — Enable server mode, add initial deployment docs and env setup.
+- **0.3.2** — Align docs and CI/CD for Hostinger Node.js deployment.
 After completing a logical chunk of work, bump `version` in `package.json` and add a short line under “Versioning” above.
