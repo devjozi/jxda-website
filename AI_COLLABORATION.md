@@ -1,5 +1,7 @@
 # AI COLLABORATION RULES — JX Distribution Website
 
+**⚡ If you are an AI agent working on this project, read [AGENT_PROMPT.md](AGENT_PROMPT.md) first for complete execution instructions.**
+
 This file defines how AI tools must assist on this project.
 
 The goal is:
