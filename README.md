@@ -17,12 +17,18 @@ Build static export: `npm run build` → output in `./out`.
 
 ## Key docs
 
-- **PREVIEW_AND_PUBLISH.md** — what to click and expect in the browser, then how to build and publish
-- **PROJECT_DIRECTION.md** — scope, commerce subdomain, priorities
-- **PROGRESS.md** — current phase and checklist
-- **HANDOFF.md** — quick restart and deploy
-- **ARCHITECTURE.md** — stack and deployment
-- **DEV_SETUP.md** — environment and AI tooling for continuation
+### For Execution
+- **[PROJECT_PLAN.md](PROJECT_PLAN.md)** — Complete task list, sprint breakdown, acceptance criteria ⭐ START HERE
+- **[AGENT_PROMPT.md](AGENT_PROMPT.md)** — Instructions for AI agents to execute tasks autonomously
+- **[BRANCHING_STRATEGY.md](BRANCHING_STRATEGY.md)** — Git workflow, one branch per task
+
+### For Context
+- **[PROJECT_DIRECTION.md](PROJECT_DIRECTION.md)** — scope, commerce subdomain, priorities
+- **[PROGRESS.md](PROGRESS.md)** — current phase and checklist
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** — stack and deployment
+- **[HANDOFF.md](HANDOFF.md)** — quick restart and deploy
+- **[DEV_SETUP.md](DEV_SETUP.md)** — environment and AI tooling for continuation
+- **[PREVIEW_AND_PUBLISH.md](PREVIEW_AND_PUBLISH.md)** — what to click and expect in the browser, then how to build and publish
 
 ## Deploy
 
