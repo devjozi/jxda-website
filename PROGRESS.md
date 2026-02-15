@@ -1,9 +1,9 @@
 # PROGRESS LOG — JX Distribution Website
 
-**Last Updated:** 2025-02-07  
-**Version:** 0.2.0  
-**Branch:** `feature/theme-next` (or current)  
-**Status:** Template sections + commerce + JX customization in place
+**Last Updated:** 2026-02-15  
+**Version:** 0.3.0  
+**Branch:** `develop`  
+**Status:** Planning complete, ready for execution with CI/CD
 
 ---
 
@@ -52,10 +52,11 @@
 
 ## ⏳ Next steps
 
-- **Preview:** Run `npm run dev`, open http://localhost:3000, follow **PREVIEW_CHECKLIST.md**.
-- **Payment:** Add Paystack (or chosen provider) to checkout when ready.
-- **Content:** Replace placeholder copy and add real contact details in `lib/site.ts`.
-- **Optional:** Latest news section on homepage; About/Contact as standalone pages if needed.
+- **PRIORITY 0:** Execute deployment foundation (see [PROJECT_PLAN.md](PROJECT_PLAN.md) Priority 0)
+- **Sprint 1:** WhatsApp CTA integration
+- **Sprint 2:** Real product catalog (awaiting product list)
+- **Sprint 3:** Shopping cart and checkout
+- **See:** [PROJECT_PLAN.md](PROJECT_PLAN.md) for complete roadmap
 
 ---
 
@@ -92,6 +93,5 @@
 ## Versioning
 
 - **0.1.0** — Foundation, layout, Header, Footer, hero + features light.
-- **0.2.0** — Full homepage sections, commerce (shop/list/detail/checkout), JX config and Header/Footer customization, PREVIEW_CHECKLIST.
-
+- **0.2.0** — Full homepage sections, commerce (shop/list/detail/checkout), JX config and Header/Footer customization, PREVIEW_CHECKLIST.- **0.3.0** — Planning phase complete: PROJECT_PLAN.md, BRANCHING_STRATEGY.md, AGENT_PROMPT.md, ready for CI/CD deployment.
 After completing a logical chunk of work, bump `version` in `package.json` and add a short line under “Versioning” above.
