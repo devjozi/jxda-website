@@ -2,7 +2,7 @@
 
 JX Distribution sells online. This repo is the main site and (planned) commerce subdomain.
 
-**Stack:** Next.js (static export), TypeScript, Bootstrap/template assets. Deployed to Hostinger.
+**Stack:** Next.js (server-capable), TypeScript, Bootstrap/template assets. Deployed to Hostinger.
 
 **Priority:** Get a working commerce experience (product list, product details, checkout, payment). Marketing pages concluded to a minimal set first.
 
@@ -13,7 +13,8 @@ npm install
 npm run dev
 ```
 
-Build static export: `npm run build` → output in `./out`.
+Build: `npm run build`
+Start production server: `npm run start`
 
 ## Key docs
 
@@ -26,8 +27,6 @@ Build static export: `npm run build` → output in `./out`.
 
 ## Deploy
 
-- `main` → production (Hostinger `public_html`)
-- `develop` → staging
-- `feature/*` → preview
+- `main` → production (Hostinger Node app)
 
 Secrets: see `.env.example`; store real values in GitHub Secrets.

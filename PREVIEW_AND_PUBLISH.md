@@ -114,30 +114,30 @@ Open **http://localhost:3000** (or the URL shown in the terminal).
 
 ## Part 2: Build and publish
 
-### 1. Build static export
+### 1. Build production server
 
 ```bash
 npm run build
 ```
 
-- **Expect:** Build finishes without errors.  
-- Output is in the **`out`** folder (Next.js static export).
+- **Expect:** Build finishes without errors.
 
 ### 2. Test the built site locally (optional)
 
-Serve the `out` folder with a static server, e.g.:
-
 ```bash
-npx serve out
+npm run start
 ```
 
-Open the URL shown (e.g. http://localhost:3000). Click through Home → Shop → one product → Checkout and 404 as above to confirm behavior matches dev.
+Open http://localhost:3000. Click through Home → Shop → one product → Checkout and 404 as above to confirm behavior matches dev.
 
-### 3. Publish to Hostinger
+### 3. Publish to Hostinger (Node.js)
 
-1. Upload the **contents** of the `out` folder to your Hostinger **public_html** (or the folder that serves your domain).  
-2. Do **not** upload the `out` folder itself; upload the files inside it (e.g. `index.html`, `shop/`, assets, etc.).  
-3. Ensure the site is served over the correct domain (and that DNS points to Hostinger if needed).
+**CI/CD (recommended):** Push to `main`; Hostinger GitHub Integration pulls and deploys the production app.
+
+**Manual (if needed):**
+1. Upload the project to your Hostinger app path (production or preview).
+2. On the server, run `npm ci --omit=dev`.
+3. Start or restart the Node app in the Hostinger hPanel Node.js Dashboard.
 
 ### 4. After publish — what to check on the live site
 
@@ -153,5 +153,5 @@ Open the URL shown (e.g. http://localhost:3000). Click through Home → Shop →
 ## Summary
 
 - **Preview:** `npm run dev` → open http://localhost:3000 → use the table and sections above to click and verify.  
-- **Publish:** `npm run build` → upload contents of `out` to Hostinger `public_html` → re-check the same flows on the live URL.  
+- **Publish:** `npm run build` → deploy to Hostinger Node app (CI/CD preferred) → re-check the same flows on the live URL.  
 - **Content:** Edit `lib/site.ts` (and optionally `lib/products.ts`) when you have final copy, then build and deploy again.

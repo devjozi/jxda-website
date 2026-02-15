@@ -12,12 +12,14 @@ npm install
 npm run dev
 ```
 
-Build: `npm run build` → output in `./out`.
+Build: `npm run build`
+Start production server: `npm run start`
 
 ## Deploy
 
-- Hostinger SSH (e.g. `/home/<user>/public_html` for production)
-- Previews: `/home/<user>/previews/<branch>`
+- Hostinger GitHub Integration on `main`
+- Production path: `/home/<user>/public_html`
+- Restart in hPanel Node.js Dashboard after deploy if needed
 
 ## Important files
 
@@ -32,5 +34,5 @@ Secrets: `.env.example`; real values in GitHub Secrets.
 ## Acceptance for PR
 
 - `npm run build` completes
-- `./out` contains valid static site
+- `npm run start` serves the built site without errors
 - Preview URL checked (responsive, links)
