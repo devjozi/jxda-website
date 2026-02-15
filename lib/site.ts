@@ -21,4 +21,20 @@ export const SITE = {
     linkedin: '#',
     instagram: '#',
   },
+  whatsapp: {
+    // Digits only for wa.me links.
+    number: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '233XXXXXXXXX').replace(/\D/g, ''),
+    message: process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ?? "Hi, I'm interested in JX Distribution services.",
+  },
 } as const;
+
+export function buildWhatsAppUrl(message?: string) {
+  const number = SITE.whatsapp.number;
+  if (!number) {
+    return '#';
+  }
+
+  const text = (message ?? SITE.whatsapp.message).trim();
+  const query = text ? `?text=${encodeURIComponent(text)}` : '';
+  return `https://wa.me/${number}${query}`;
+}

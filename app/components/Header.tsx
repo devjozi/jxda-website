@@ -11,9 +11,12 @@
  * Removed: Projects dropdown, Features dropdown, News dropdown (until implemented)
  */
 
-import { SITE } from '../../lib/site';
+import { SITE, buildWhatsAppUrl } from '../../lib/site';
 
 export default function Header() {
+  // WhatsApp CTA for the primary header button.
+  const quoteUrl = buildWhatsAppUrl('Hi, I would like a quote for distribution services.');
+
   return (
     <div className="site-top-2">
       <header className="header nav-down" id="header-2">
@@ -113,7 +116,14 @@ export default function Header() {
                   </li>
                 </ul>
               </div>
-              <a href="/contact" className="top-right-btn btn btn-primary">Request a Quote</a>
+              <a
+                href={quoteUrl}
+                className="top-right-btn btn btn-primary"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Request a Quote
+              </a>
               {/* Top bar btn */}
             </nav>
           </div>
