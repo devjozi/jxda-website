@@ -1,8 +1,10 @@
+# Purpose: Build and deploy static export to Hostinger via SSH.
 name: Build and Deploy (Hostinger Node.js)
 
 on:
   push:
     branches:
+      - develop
       - main
 
 jobs:
@@ -21,15 +23,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: Build (static export)
+        run: npm run build:static
 
       - name: Determine deploy target
         run: |
           BRANCH=${GITHUB_REF#refs/heads/}
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
-          echo "TARGET_PATH=${{ secrets.HOSTINGER_DEPLOY_PATH }}" >> $GITHUB_ENV
-          echo "Deploying branch $BRANCH to ${{ secrets.HOSTINGER_DEPLOY_PATH }}"
+          if [ "$BRANCH" = "develop" ]; then
+            echo "TARGET_PATH=${{ secrets.HOSTINGER_DEPLOY_PATH_PREVIEW }}" >> $GITHUB_ENV
+            echo "Deploying develop to ${{ secrets.HOSTINGER_DEPLOY_PATH_PREVIEW }}"
+          else
+            echo "TARGET_PATH=${{ secrets.HOSTINGER_DEPLOY_PATH_PROD }}" >> $GITHUB_ENV
+            echo "Deploying main to ${{ secrets.HOSTINGER_DEPLOY_PATH_PROD }}"
+          fi
 
       - name: Prepare SSH key
         run: |
@@ -46,7 +53,7 @@ jobs:
             --exclude "node_modules" \
             --exclude ".github" \
             --exclude "reference" \
-            -e "ssh -p ${{ secrets.HOSTINGER_PORT }}" ./ "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:$TARGET_PATH/"
+            -e "ssh -p ${{ secrets.HOSTINGER_PORT }}" ./out/ "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:$TARGET_PATH/"
 
       - name: Install server dependencies and restart
         if: ${{ secrets.HOSTINGER_RESTART_CMD != '' }}
