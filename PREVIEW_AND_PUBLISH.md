@@ -113,34 +113,43 @@ Open **http://localhost:3000** (or the URL shown in the terminal).
 
 ---
 
-## Part 2: Build and publish
+## Part 2: Build and publish (static hosting)
 
-### 1. Build production server
+### 1. Build static export
 
 ```bash
-npm run build
+npm run build:static
 ```
 
-- **Expect:** Build finishes without errors.
+- **Expect:** Build finishes without errors and outputs `/out`.
 
 ### 2. Test the built site locally (optional)
 
 ```bash
-npm run start
+npx serve out
 ```
 
-Open http://localhost:3000. Click through Home → Shop → one product → Checkout and 404 as above to confirm behavior matches dev.
+Open the URL shown. Click through Home → Shop → one product → Checkout and 404 as above to confirm behavior matches dev.
 
-### 3. Publish to Hostinger (Node.js)
+### 3. Publish to Hostinger (static)
 
 **CI/CD (recommended):**
-- Push to `develop` for internal preview at `https://www.preview.jxdistributionafrica.com`.
-- Push to `main` for production; Hostinger GitHub Integration deploys the live app.
+- Push to `develop` for internal preview at `https://preview.jxdisributionafrica.com`.
+- Push to `main` for production; GitHub Actions deploys `/out` to Hostinger.
+
+**GitHub Secrets required (Actions):**
+- `HOSTINGER_SSH_KEY`
+- `HOSTINGER_HOST`
+- `HOSTINGER_PORT`
+- `HOSTINGER_USER`
+- `HOSTINGER_DEPLOY_PATH_PREVIEW` (preview root path)
+- `HOSTINGER_DEPLOY_PATH_PROD` (production root path)
 
 **Manual (if needed):**
-1. Upload the project to your Hostinger app path (production or preview).
-2. On the server, run `npm ci --omit=dev`.
-3. Start or restart the Node app in the Hostinger hPanel Node.js Dashboard.
+1. Upload the **contents of `/out`** to the preview folder:
+  - `/home/u959952771/domains/jxdistributionafrica.com/public_html/preview`
+2. Upload the **contents of `/out`** to production:
+  - `/home/u959952771/domains/jxdistributionafrica.com/public_html`
 
 ### 4. After publish — what to check on the live site
 
@@ -150,6 +159,11 @@ Open http://localhost:3000. Click through Home → Shop → one product → Chec
 - `/shop/checkout` shows “Coming soon”.  
 - A wrong URL (e.g. `/shop/not-a-product`) shows the 404 page.  
 - Update **`lib/site.ts`** with real Ghana contact details and social links, then rebuild and re-upload so the live site shows correct info.
+
+### 5. Contact form (serverless)
+
+- Set `NEXT_PUBLIC_CONTACT_FORM_ACTION` in `.env.local` to your provider endpoint (Formspree/Getform/etc.).
+- Example (Formspree): `https://formspree.io/f/yourFormId`
 
 ---
 

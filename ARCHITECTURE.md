@@ -3,11 +3,11 @@
 
 ## Stack
 
-- **Next.js for entire project:** Main site and commerce are in the same Next.js app (server-capable). No change of plan: both use Next.js.
+- **Next.js for entire project:** Main site and commerce are in the same Next.js app (server-capable), with static export used on current hosting plan.
 - **Main site:** TypeScript, Bootstrap/template CSS and JS in `/public`; design matches `reference/original-template/`
 - **Commerce (planned):** Product list, product detail, checkout, payment; route TBD (e.g. `/shop`) or subdomain
-- **Build:** `npm run build`
-- **Hosting:** Hostinger with Node.js support
+- **Build:** `npm run build` (server) or `npm run build:static` (current hosting)
+- **Hosting:** Hostinger static now; upgrade to Node.js plan later
 
 ## Structure
 
@@ -22,7 +22,11 @@
 
 ## CI/CD
 
-- GitHub Actions: build, optional lint; deploy to Hostinger via SSH (see `.github/workflows/deploy.yml`)
+- GitHub Actions: static export deploy to Hostinger via SSH (see `.github/workflows/deploy.yml`)
+
+### Static Export Constraints
+- API routes (e.g., `/api/contact`) are not available on static hosting.
+- Use external serverless endpoints for forms and email.
 
 ## Deployment
 
@@ -32,7 +36,7 @@
 
 ### Preview/Staging
 - **Trigger:** Push to `develop`
-- **URL:** `https://www.preview.jxdistributionafrica.com`
+- **URL:** `https://preview.jxdisributionafrica.com`
 - **Purpose:** Internal preview before production
 
 ### Production (Automatic)
@@ -40,14 +44,12 @@
 - **URL:** `https://www.jxdistributionafrica.com` (custom domain)
 - **Process:**
 	1. Push to `main`
-	2. Hostinger GitHub Integration deploys
-	3. Restart app in hPanel if needed
-	4. Verify production
+	2. GitHub Actions deploys static export
+	3. Verify production
 
 ### Environment Variables
 - **Local:** `.env.local` (gitignored)
-- **Hostinger:** Set in Node app environment or `.env.local`
-- **Required:**
-	- `RESEND_API_KEY` -- Email service
+- **Hostinger:** Not required for static export
+- **Required (static):**
+	- `NEXT_PUBLIC_CONTACT_FORM_ACTION` -- Serverless form endpoint
 	- `NEXT_PUBLIC_WHATSAPP_NUMBER` -- WhatsApp business number (future)
-	- `DATABASE_URL` -- Database connection (future)
