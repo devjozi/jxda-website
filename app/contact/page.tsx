@@ -1,32 +1,12 @@
+// Purpose: Contact page with serverless form submission for static hosting.
 'use client';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { useState } from 'react';
+import { SITE } from '../../lib/site';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    website: '',
-    message: ''
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // You can add email sending logic here
-    alert('Thank you for your message. We will get back to you soon!');
-    setFormData({ name: '', email: '', website: '', message: '' });
-  };
+  const formAction = SITE.contactForm.action;
 
   return (
     <>
@@ -118,63 +98,60 @@ export default function Contact() {
                 <div className="col-lg-6">
                   <h3 className="column-title">Get in Touch</h3>
                   <div className="contact-submit-box contact-box form-box">
-                    <form className="contact-form" id="contact-form" onSubmit={handleSubmit}>
+                    <form
+                      className="contact-form"
+                      id="contact-form"
+                      action={formAction || undefined}
+                      method="POST"
+                    >
                       <div className="error-container"></div>
                       <div className="row">
                         <div className="col-lg-12">
                           <div className="form-group">
-                            <input 
-                              className="form-control form-name" 
-                              id="name" 
-                              name="name" 
-                              placeholder="Full Name" 
-                              type="text" 
-                              value={formData.name}
-                              onChange={handleChange}
-                              required 
+                            <input
+                              className="form-control form-name"
+                              id="name"
+                              name="name"
+                              placeholder="Full Name"
+                              type="text"
+                              required
                             />
                           </div>
                         </div>
 
                         <div className="col-lg-12">
                           <div className="form-group">
-                            <input 
-                              className="form-control form-website" 
-                              id="website" 
-                              name="website" 
-                              placeholder="Website (Optional)" 
-                              type="url" 
-                              value={formData.website}
-                              onChange={handleChange}
+                            <input
+                              className="form-control form-website"
+                              id="website"
+                              name="website"
+                              placeholder="Website (Optional)"
+                              type="url"
                             />
                           </div>
                         </div>
 
                         <div className="col-lg-12">
                           <div className="form-group">
-                            <input 
-                              className="form-control form-email" 
-                              id="email" 
-                              name="email" 
-                              placeholder="Email Address" 
-                              type="email" 
-                              value={formData.email}
-                              onChange={handleChange}
-                              required 
+                            <input
+                              className="form-control form-email"
+                              id="email"
+                              name="email"
+                              placeholder="Email Address"
+                              type="email"
+                              required
                             />
                           </div>
                         </div>
 
                         <div className="col-lg-12">
                           <div className="form-group">
-                            <textarea 
-                              className="form-control form-message required-field" 
-                              id="message" 
-                              name="message" 
-                              placeholder="Tell us about your project or requirements..." 
+                            <textarea
+                              className="form-control form-message required-field"
+                              id="message"
+                              name="message"
+                              placeholder="Tell us about your project or requirements..."
                               rows={8}
-                              value={formData.message}
-                              onChange={handleChange}
                               required
                             ></textarea>
                           </div>

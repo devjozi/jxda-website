@@ -26,6 +26,10 @@ export const SITE = {
     number: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '233XXXXXXXXX').replace(/\D/g, ''),
     message: process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ?? "Hi, I'm interested in JX Distribution services.",
   },
+  contactForm: {
+    // External form endpoint (Formspree/Getform/etc.).
+    action: process.env.NEXT_PUBLIC_CONTACT_FORM_ACTION ?? '',
+  },
 } as const;
 
 export function buildWhatsAppUrl(message?: string) {
