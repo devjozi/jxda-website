@@ -1,9 +1,9 @@
 # PROGRESS LOG — JX Distribution Website
 
-**Last Updated:** 2026-02-15  
-**Version:** 0.3.2  
-**Branch:** `develop`  
-**Status:** Deployment foundation in progress (Hostinger Node.js, preview on develop)
+**Last Updated:** 2026-02-17
+**Version:** 0.4.0
+**Branch:** `feature/product-catalog-infrastructure`
+**Status:** Product catalog infrastructure complete; awaiting real product data
 
 ---
 
@@ -35,11 +35,19 @@
 | 9 | Latest news (template) | ⏳ Optional |
 | 10 | Quote request forms (integrated in CTA) | ✅ |
 
-### Commerce (initial)
-- [x] Product list page (`/shop`)
-- [x] Product detail page (`/shop/[slug]`)
+### Commerce (enhanced - Sprint 2)
+- [x] Product list page (`/shop`) with category filtering and search
+- [x] Product detail page (`/shop/[slug]`) with enhanced display
 - [x] Checkout placeholder (`/shop/checkout`)
-- [x] Static product data (`lib/products.ts`)
+- [x] Enhanced product schema with 5 categories (FMCG, Spareparts, Electronics, Fabrics, Agricultural Inputs)
+- [x] 8 example products across all categories
+- [x] CSV import system for easy product data updates
+- [x] Category filtering (client-side, instant)
+- [x] Product search (name, description, category)
+- [x] "Price on Request" support for B2B products
+- [x] SKU tracking and display
+- [x] Product import documentation (IMPORTING-PRODUCTS.md)
+- [ ] Import 100+ real products when product list provided
 
 ### JX customization (initial)
 - [x] `lib/site.ts` — site name, tagline, address, email, phone, social (placeholders)
@@ -54,7 +62,7 @@
 
 - **PRIORITY 0:** Execute deployment foundation (see [PROJECT_PLAN.md](PROJECT_PLAN.md) Priority 0)
 - **Sprint 1:** WhatsApp CTA integration
-- **Sprint 2:** Real product catalog (awaiting product list)
+- **Sprint 2 (In Progress):** Product catalog infrastructure ✅ complete; awaiting real product data
 - **Sprint 3:** Shopping cart and checkout
 - **See:** [PROJECT_PLAN.md](PROJECT_PLAN.md) for complete roadmap
 
@@ -65,11 +73,15 @@
 | Path | Purpose |
 |------|---------|
 | `app/page.tsx` | Homepage (all sections) |
-| `app/shop/page.tsx` | Shop product list |
-| `app/shop/[slug]/page.tsx` | Product detail |
+| `app/shop/page.tsx` | Shop product list with category filtering and search |
+| `app/shop/[slug]/page.tsx` | Product detail with enhanced display |
 | `app/shop/checkout/page.tsx` | Checkout placeholder |
 | `lib/site.ts` | JX branding and contact config |
-| `lib/products.ts` | Product data |
+| `lib/products.ts` | Product data with enhanced schema and categories |
+| `lib/product-data-import.ts` | CSV import utilities and validation |
+| `scripts/import-products.ts` | CLI script for importing products |
+| `PRODUCT-DATA-TEMPLATE.csv` | CSV template with example products |
+| `IMPORTING-PRODUCTS.md` | Complete guide for product data management |
 | `app/components/Header.tsx` | Header (JX + Shop) |
 | `app/components/Footer.tsx` | Footer (JX + Quick Links) |
 | **PREVIEW_AND_PUBLISH.md** | What to do in the browser + how to build and publish |
@@ -78,10 +90,20 @@
 
 ## Recent changes (ready for review)
 
+**Product Catalog Infrastructure (Sprint 2 - v0.4.0):**
+- **Enhanced product schema:** Added 5 product categories (FMCG, Spareparts, Electronics, Fabrics, Agricultural Inputs) with optional fields for SKU, stock status, and tags. Replaced 4 placeholder service products with 8 realistic example products across all categories.
+- **CSV import system:** Complete infrastructure for importing product data from CSV files with validation, automatic slug generation, and detailed error reporting. Non-technical team members can update products via `npm run import-products products.csv`.
+- **Category filtering:** Client-side filtering on shop page with buttons showing product counts per category. Instant filtering without page reload.
+- **Product search:** Real-time search across product names, descriptions, and categories. Combines with category filtering for powerful navigation.
+- **Enhanced product display:** Product detail pages now show category badges, SKU codes, "Price on Request" for B2B products, and stock status. CTA button text changes based on pricing model.
+- **Documentation:** Comprehensive IMPORTING-PRODUCTS.md guide covering CSV format, import workflow, validation rules, image management, and troubleshooting.
+- **Ready for data:** Infrastructure complete and tested. Awaiting real product list to import 100+ products.
+
+**Previous changes:**
 - **Layout:** Full template CSS loaded (animate, font-awesome, icon-font, owl.carousel, responsive). JS: waypoints, counterUp, owl.carousel, custom.js so carousel, testimonials, and fact counters work.
 - **FAQ:** Updated to Bootstrap 5 accordion (data-bs-toggle / accordion-item) so expand/collapse works.
 - **Hero carousel:** Uses data-bs-ride / data-bs-target / data-bs-slide for Bootstrap 5.
-- **Quote form:** Replaced with `QuoteForm` client component; submit shows “Thank you — We’ll be in touch” (no backend yet).
+- **Quote form:** Replaced with `QuoteForm` client component; submit shows "Thank you — We'll be in touch" (no backend yet).
 - **404:** `app/not-found.tsx` with Header/Footer and Home/Shop links.
 
 ## Known issues
