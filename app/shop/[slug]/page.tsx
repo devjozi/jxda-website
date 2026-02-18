@@ -43,12 +43,33 @@ export default async function ProductPage({ params }: Props) {
             <img src={product.image} className="img-fluid rounded" alt={product.name} />
           </div>
           <div className="col-md-7">
+            <span className="badge bg-secondary mb-2">{product.category}</span>
             <h1 className="mb-2">{product.name}</h1>
-            {product.category && <p className="text-muted small">{product.category}</p>}
+            {product.sku && <p className="text-muted small">SKU: {product.sku}</p>}
             <p className="lead">{product.description}</p>
-            <p className="h4 mb-4">{product.currency} {product.price}</p>
-            <Link href={`/shop/checkout?product=${product.slug}`} className="btn btn-primary me-2">Add to cart / Checkout</Link>
-            <Link href="/shop" className="btn btn-outline-secondary">Back to shop</Link>
+            {product.price > 0 ? (
+              <p className="h4 text-primary mb-4">
+                {product.currency} {product.price.toFixed(2)}
+              </p>
+            ) : (
+              <p className="h5 text-muted mb-4">
+                Price on Request — Contact Us for Pricing
+              </p>
+            )}
+            {product.inStock !== false && (
+              <p className="badge bg-success mb-3">In Stock</p>
+            )}
+            <div>
+              <Link
+                href={`/shop/checkout?product=${product.slug}`}
+                className="btn btn-primary me-2"
+              >
+                {product.price > 0 ? 'Add to cart / Checkout' : 'Request Quote'}
+              </Link>
+              <Link href="/shop" className="btn btn-outline-secondary">
+                Back to shop
+              </Link>
+            </div>
           </div>
         </div>
       </div>
