@@ -119,4 +119,5 @@
 - **0.3.0** — Planning phase complete: PROJECT_PLAN.md, BRANCHING_STRATEGY.md, AGENT_PROMPT.md, ready for CI/CD deployment.
 - **0.3.1** — Enable server mode, add initial deployment docs and env setup.
 - **0.3.2** — Align docs and CI/CD for Hostinger Node.js deployment.
-After completing a logical chunk of work, bump `version` in `package.json` and add a short line under “Versioning” above.
+- **0.4.0** — Product catalog infrastructure: Enhanced schema with 5 categories, CSV import system, category filtering, search, "Price on Request" support, comprehensive documentation.
+After completing a logical chunk of work, bump `version` in `package.json` and add a short line under "Versioning" above.
