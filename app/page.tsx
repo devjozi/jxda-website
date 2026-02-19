@@ -346,33 +346,45 @@ export default function Home() {
               <div className="accordion-title">
                 <h3 className="column-title"><span>Our FAQ</span> Frequently Asked Questions</h3>
               </div>
-              <div className="accordion accordion-area" id="accordion">
-                <div className="accordion-item">
-                  <h2 className="accordion-header" id="headingOne">
-                    <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Do you cover all regions in Ghana?</button>
-                  </h2>
-                  <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion">
-                    <div className="accordion-body">
+              <div id="accordion" className="accordion-area">
+                <div className="card">
+                  <div className="card-header" id="headingOne">
+                    <h5 className="mb-0">
+                      <a href="#" className="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Do you cover all regions in Ghana?
+                      </a>
+                    </h5>
+                  </div>
+                  <div className="collapse show" id="collapseOne" aria-labelledby="headingOne" data-bs-parent="#accordion">
+                    <div className="card-body">
                       <p>Yes. We operate across all 16 regions with stationed teams and warehouse support.</p>
                     </div>
                   </div>
                 </div>
-                <div className="accordion-item">
-                  <h2 className="accordion-header" id="headingTwo">
-                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Do you work with new brands and startups?</button>
-                  </h2>
-                  <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
-                    <div className="accordion-body">
+                <div className="card">
+                  <div className="card-header" id="headingTwo">
+                    <h5 className="mb-0">
+                      <a href="#" className="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Do you work with new brands and startups?
+                      </a>
+                    </h5>
+                  </div>
+                  <div className="collapse" id="collapseTwo" aria-labelledby="headingTwo" data-bs-parent="#accordion">
+                    <div className="card-body">
                       <p>Yes. We support both startups and established brands ready to grow market share.</p>
                     </div>
                   </div>
                 </div>
-                <div className="accordion-item">
-                  <h2 className="accordion-header" id="headingThree">
-                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Do you do both B2B and B2C sales?</button>
-                  </h2>
-                  <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordion">
-                    <div className="accordion-body">
+                <div className="card">
+                  <div className="card-header" id="headingThree">
+                    <h5 className="mb-0">
+                      <a href="#" className="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Do you do both B2B and B2C sales?
+                      </a>
+                    </h5>
+                  </div>
+                  <div className="collapse" id="collapseThree" aria-labelledby="headingThree" data-bs-parent="#accordion">
+                    <div className="card-body">
                       <p>Yes. We sell to wholesalers/retailers and also run consumer activations.</p>
                     </div>
                   </div>
