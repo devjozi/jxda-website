@@ -60,6 +60,10 @@ export default function Header() {
         <div className="site-nav-inner site-navigation navigation navdown">
           <div className="container">
             <nav className="navbar navbar-expand-lg">
+              {/* Logo shown only when nav is in fixed/sticky state (scrolled) */}
+              <a href="/" className="sticky-brand">
+                <img src="/images/logo.png" alt={SITE.name} />
+              </a>
               <button
                 className="navbar-toggler"
                 type="button"

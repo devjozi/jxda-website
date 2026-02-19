@@ -1,0 +1,4 @@
+/* Sticky nav logo: hidden by default, visible only when nav is scrolled/fixed */
+.sticky-brand { display: none; }
+.site-nav-inner.fixed .sticky-brand { display: inline-block; margin-right: 15px; }
+.site-nav-inner.fixed .sticky-brand img { height: 40px; width: auto; }
