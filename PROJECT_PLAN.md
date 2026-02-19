@@ -52,10 +52,10 @@ Transform JX Distribution Africa website from a marketing-only site to a **full-
 |---|------|--------|--------|
 | 1.1 | Add WhatsApp config to site.ts | `feature/whatsapp-integration` | ✅ Done |
 | 1.2 | Update homepage carousel CTAs | `feature/whatsapp-integration` | ✅ Done |
-| 1.3 | Update features "Read More" links | `feature/whatsapp-integration` | 🔴 Not Started |
-| 1.4 | Update services "Talk to our Team" | `feature/whatsapp-integration` | 🔴 Not Started |
-| 1.5 | Update header "Request a Quote" | `feature/whatsapp-integration` | 🔴 Not Started |
-| 1.6 | Update request callback form | `feature/whatsapp-integration` | 🔴 Not Started |
+| 1.3 | Update features "Read More" links | `feature/whatsapp-integration` | ✅ Done |
+| 1.4 | Update services "Talk to our Team" | `feature/whatsapp-integration` | ✅ Done |
+| 1.5 | Update header "Request a Quote" | `feature/whatsapp-integration` | ✅ Done |
+| 1.6 | Update request callback form | `feature/whatsapp-integration` | ✅ Done |
 | 1.7 | Add 4th carousel slide | `feature/carousel-updates` | ✅ Done |
 | 1.8 | Add consumer/vendor slides | `feature/carousel-updates` | ✅ Done |
 
@@ -293,12 +293,12 @@ Transform JX Distribution Africa website from a marketing-only site to a **full-
 
 ## 📊 **PROGRESS TRACKING**
 
-**Overall Completion:** 18% (11/60 tasks)
+**Overall Completion:** 25% (15/60 tasks)
 
 | Sprint | Tasks | Completed | Progress |
 |--------|-------|-----------|----------|
 | Priority 0: Deployment | 5 | 0 | 0% |
-| Sprint 1: WhatsApp CTAs | 8 | 4 | 50% |
+| Sprint 1: WhatsApp CTAs | 8 | 8 | 100% |
 | Sprint 2: Product Catalog | 8 | 5 | 63% |
 | Sprint 3: Cart & Checkout | 9 | 2 | 22% |
 | Sprint 4: Content Updates | 12 | 0 | 0% |
