@@ -25,6 +25,9 @@ jobs:
 
       - name: Build (static export)
         run: npm run build:static
+        env:
+          NEXT_PUBLIC_WHATSAPP_NUMBER: ${{ secrets.NEXT_PUBLIC_WHATSAPP_NUMBER }}
+          NEXT_PUBLIC_WHATSAPP_MESSAGE: ${{ secrets.NEXT_PUBLIC_WHATSAPP_MESSAGE }}
 
       - name: Determine deploy target
         run: |
