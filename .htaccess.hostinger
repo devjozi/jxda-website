@@ -1,0 +1,102 @@
+# JX Distribution Website - Apache Configuration
+# Place this file in the public_html/ directory on Hostinger
+
+<IfModule mod_rewrite.c>
+    # Enable rewrite engine
+    RewriteEngine On
+    RewriteBase /
+
+    # Redirect HTTP to HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Remove .html extension from URLs
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+    # Serve index.html for directory requests
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /index.html [L]
+</IfModule>
+
+# Enable Gzip Compression for static assets
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+    AddOutputFilterByType DEFLATE application/javascript application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# Set Cache-Control headers for static assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # HTML files
+    ExpiresByType text/html "access plus 1 day"
+
+    # CSS and JavaScript
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+
+    # Images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+
+    # Fonts
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+
+    # Default
+    ExpiresDefault "access plus 2 weeks"
+</IfModule>
+
+# Prevent access to sensitive files
+<FilesMatch "\.env">
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "\.env\.local">
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "^package\.json">
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "^\.git">
+    Deny from all
+</FilesMatch>
+
+# Security headers
+<IfModule mod_headers.c>
+    # Prevent MIME type sniffing
+    Header set X-Content-Type-Options "nosniff"
+
+    # Enable XSS protection
+    Header set X-XSS-Protection "1; mode=block"
+
+    # Prevent clickjacking
+    Header set X-Frame-Options "SAMEORIGIN"
+
+    # Referrer policy
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Enable HSTS (optional - uncomment after testing)
+    # Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# Block access to backup files
+<FilesMatch "\.(bak|backup|old|tmp|swp)$">
+    Deny from all
+</FilesMatch>
+
+# Additional security rules
+<FilesMatch "\.php$">
+    Deny from all
+</FilesMatch>
