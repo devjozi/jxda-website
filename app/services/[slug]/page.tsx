@@ -1,3 +1,4 @@
+// Purpose: Service detail page with static params for export builds.
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { notFound } from 'next/navigation';
@@ -142,6 +143,10 @@ const serviceData: { [key: string]: any } = {
     ]
   }
 };
+
+export function generateStaticParams() {
+  return Object.keys(serviceData).map((slug) => ({ slug }));
+}
 
 export default function ServiceSingle({ params }: { params: { slug: string } }) {
   const service = serviceData[params.slug];

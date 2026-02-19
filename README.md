@@ -15,6 +15,7 @@ npm run dev
 ```
 
 Build: `npm run build`
+Build (static hosting): `npm run build:static`
 Start production server: `npm run start`
 
 ## Key docs
@@ -34,7 +35,7 @@ Start production server: `npm run start`
 
 ## Deploy
 
-- `develop` → preview (https://www.preview.jxdistributionafrica.com)
-- `main` → production (Hostinger Node app)
+- `develop` → preview (https://preview.jxdisributionafrica.com)
+- `main` → production (Hostinger static export)
 
 Secrets: see `.env.example`; store real values in GitHub Secrets.
