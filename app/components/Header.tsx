@@ -60,11 +60,15 @@ export default function Header() {
         <div className="site-nav-inner site-navigation navigation navdown">
           <div className="container">
             <nav className="navbar navbar-expand-lg">
+              {/* Logo shown only when nav is in fixed/sticky state (scrolled) */}
+              <a href="/" className="sticky-brand">
+                <img src="/images/logo.png" alt={SITE.name} />
+              </a>
               <button
                 className="navbar-toggler"
                 type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent"
                 aria-expanded="false"
                 aria-label="Toggle navigation"
@@ -84,7 +88,7 @@ export default function Header() {
                     <a className="nav-link" href="/shop">Shop</a>
                   </li>
                   <li className="nav-item dropdown">
-                    <a className="nav-link" href="#" data-toggle="dropdown">
+                    <a className="nav-link" href="#" data-bs-toggle="dropdown">
                       Company<i className="fa fa-angle-down"></i>
                     </a>
                     <ul className="dropdown-menu" role="menu">
@@ -96,7 +100,7 @@ export default function Header() {
                   {/* li end */}
 
                   <li className="nav-item dropdown">
-                    <a className="nav-link" href="#" data-toggle="dropdown">
+                    <a className="nav-link" href="#" data-bs-toggle="dropdown">
                       Services<i className="fa fa-angle-down"></i>
                     </a>
                     <ul className="dropdown-menu" role="menu">
