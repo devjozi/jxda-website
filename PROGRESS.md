@@ -1,9 +1,9 @@
 # PROGRESS LOG — JX Distribution Website
 
-**Last Updated:** 2026-02-18  
+**Last Updated:** 2026-02-19
 **Version:** 0.5.0  
 **Branch:** `develop`  
-**Status:** Product catalog live (54 products), WhatsApp order workflow, deployment docs ready
+**Status:** Product catalog live (53 products), WhatsApp order workflow, CI/CD pipeline ready
 
 ---
 
@@ -55,10 +55,9 @@
 
 ## ⏳ Next steps
 
-- **Sprint 1 (remaining):** Wire features/services/header CTAs to WhatsApp (tasks 1.3–1.6)
 - **Sprint 2 (remaining):** Source real product images, update homepage services images (tasks 2.2, 2.3, 2.8)
 - **Sprint 3 (remaining):** Full cart + localStorage persistence + order email (tasks 3.1–3.4, 3.6–3.8)
-- **Priority 0:** CI/CD deployment pipeline for Hostinger Node.js
+- **Deploy:** Add `NEXT_PUBLIC_WHATSAPP_NUMBER` GitHub Actions secret before first CI deploy
 - **See:** [PROJECT_PLAN.md](PROJECT_PLAN.md) for complete roadmap
 
 ---

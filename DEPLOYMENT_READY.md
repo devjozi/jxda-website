@@ -2,7 +2,7 @@
 
 **Date:** February 18, 2026  
 **Status:** Ready for Hostinger Deployment  
-**Version:** 0.4.0
+**Version:** 0.5.0
 
 ## Summary
 
@@ -138,13 +138,18 @@ Thank you for choosing JX Distribution!
 
 ## Environment Configuration
 
-Currently configured with:
-- **WhatsApp Number:** +233 53 883 8135
-- **Contact Email:** info@jxdistributionafrica.com
-- **Company Phone:** +233 53 883 8135
-- **Company Address:** Accra, Ghana
+Contact and branding values are configured via environment variables — never hardcoded.
 
-To change these values:
+| Variable | Where to set | Purpose |
+|----------|------|---------|
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | `.env.local` + GitHub secret | WhatsApp business number (digits only, e.g. `233538838135`) |
+| `NEXT_PUBLIC_WHATSAPP_MESSAGE` | `.env.local` + GitHub secret (optional) | Default WhatsApp greeting message |
+| `NEXT_PUBLIC_CONTACT_FORM_ACTION` | `.env.local` + GitHub secret (optional) | Formspree/Getform endpoint |
+
+**Required before CI/CD deploy:**
+Add `NEXT_PUBLIC_WHATSAPP_NUMBER` to GitHub → Settings → Secrets and variables → Actions.
+
+To change non-sensitive values (company name, address, email):
 1. Edit `lib/site.ts`
 2. Update the `SITE` object
 3. Run: `npm run build:static`
