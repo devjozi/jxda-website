@@ -11,7 +11,10 @@ export type Product = {
   price: number;
   currency: string;
   image: string;
-  category?: string;
+  category: string;
+  sku?: string;
+  inStock?: boolean;
+  tags?: string[];
 };
 
 export const PRODUCTS: Product[] = [
