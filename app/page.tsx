@@ -11,6 +11,7 @@ import { buildWhatsAppUrl } from '../lib/site';
 
 export default function Home() {
   const featureLearnMore = buildWhatsAppUrl('Hi, I want to learn more about your services.');
+  const servicesTalk = buildWhatsAppUrl('Hi, I want to talk to your team about distribution services.');
 
   return (
     <>
@@ -277,7 +278,7 @@ export default function Home() {
                   <div className="ts-service-content">
                     <h3 className="service-title">{s.title}</h3>
                     <p>{s.desc}</p>
-                    <p><a className="link-more" href="/shop">Talk to our Team<i className="icon icon-right-arrow2"></i></a></p>
+                    <p><a className="link-more" href={servicesTalk} target="_blank" rel="noreferrer">Talk to our Team<i className="icon icon-right-arrow2"></i></a></p>
                   </div>
                 </div>
               </div>
