@@ -7,8 +7,11 @@
 import Header from './components/Header';
 import Footer from './components/Footer';
 import QuoteForm from './components/QuoteForm';
+import { buildWhatsAppUrl } from '../lib/site';
 
 export default function Home() {
+  const featureLearnMore = buildWhatsAppUrl('Hi, I want to learn more about your services.');
+
   return (
     <>
       <Header />
@@ -108,7 +111,7 @@ export default function Home() {
                   </div>
                   <h3 className="ts-feature-title">Get Your Products Into More Shops</h3>
                   <p>We drive B2B sales directly to wholealers and retailers to increase availability and reorder volume</p>
-                  <a className="slider btn btn-primary" href="/shop">Read More</a>
+                  <a className="slider btn btn-primary" href={featureLearnMore} target="_blank" rel="noreferrer">Read More</a>
                 </div>
               </div>
             </div>
@@ -120,7 +123,7 @@ export default function Home() {
                   </div>
                   <h3 className="ts-feature-title">Expand Into All 16 Regions</h3>
                   <p>Our field teams and warehouse support help you penetrate new territories without operation stress.</p>
-                  <a className="slider btn btn-primary" href="/shop">Read More</a>
+                  <a className="slider btn btn-primary" href={featureLearnMore} target="_blank" rel="noreferrer">Read More</a>
                 </div>
               </div>
             </div>
@@ -132,7 +135,7 @@ export default function Home() {
                   </div>
                   <h3 className="ts-feature-title">See Results with Live Reporting</h3>
                   <p>Get clear updates on sales activity, market execution, and activation performance, so you know what's working.</p>
-                  <a className="slider btn btn-primary" href="/shop">Read More</a>
+                  <a className="slider btn btn-primary" href={featureLearnMore} target="_blank" rel="noreferrer">Read More</a>
                 </div>
               </div>
               {/* feature box-3 end */}
