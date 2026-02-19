@@ -143,8 +143,22 @@ const serviceData: { [key: string]: any } = {
   }
 };
 
-export default function ServiceSingle({ params }: { params: { slug: string } }) {
-  const service = serviceData[params.slug];
+export function generateStaticParams() {
+  return Object.keys(serviceData).map((slug) => ({ slug }));
+}
+
+type Props = { params: Promise<{ slug: string }> };
+
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  const service = serviceData[slug];
+  if (!service) return { title: 'Service — JX Distribution' };
+  return { title: `${service.title} — JX Distribution Africa` };
+}
+
+export default async function ServiceSingle({ params }: Props) {
+  const { slug } = await params;
+  const service = serviceData[slug];
 
   if (!service) {
     notFound();
@@ -164,7 +178,7 @@ export default function ServiceSingle({ params }: { params: { slug: string } }) 
                 <ol className="breadcrumb">
                   <li>Home</li>
                   <li><a href="/services">Services</a></li>
-                  <li><a href={`/services/${params.slug}`}>{service.title}</a></li>
+                  <li><a href={`/services/${slug}`}>{service.title}</a></li>
                 </ol>
               </div>
             </div>

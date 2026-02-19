@@ -32,7 +32,7 @@ export default function Home() {
                   </p>
                   <p>
                     <a className="slider btn btn-primary" href="/#ts-features-light">Know More</a>
-                    <a className="slider btn btn-border" href="/shop">Get a Quick Quote</a>
+                    <a className="slider btn btn-border" href="/#quote-area">Get a Quick Quote</a>
                   </p>
                 </div>
                 {/* Col end */}
@@ -54,7 +54,7 @@ export default function Home() {
                     We help brands enter new markets, drive retail sails, and grow distribution across all 16 regions with measurable field execution and live reporting.
                   </p>
                   <p>
-                    <a className="slider btn btn-primary" href="/shop">Request a Call Back</a>
+                    <a className="slider btn btn-primary" href="/contact">Request a Call Back</a>
                   </p>
                 </div>
                 {/* Col end */}
@@ -73,7 +73,7 @@ export default function Home() {
                   <h2 className="slide-title title-light">17 years of experience</h2>
                   <h3 className="slide-sub-title">Strong Distribution Network</h3>
                   <p>
-                    <a className="slider btn btn-primary" href="/shop">Request a Call Back</a>
+                    <a className="slider btn btn-primary" href="/contact">Request a Call Back</a>
                   </p>
                 </div>
                 {/* Col end */}
@@ -107,8 +107,8 @@ export default function Home() {
                     <img src="/images/icon/service-1.png" alt="" />
                   </div>
                   <h3 className="ts-feature-title">Get Your Products Into More Shops</h3>
-                  <p>We drive B2B sales directly to wholealers and retailers to increase availability and reorder volume</p>
-                  <a className="slider btn btn-primary" href="/shop">Read More</a>
+                  <p>We drive B2B sales directly to wholesalers and retailers to increase availability and reorder volume</p>
+                  <a className="slider btn btn-primary" href="/services/b2b-sales-merchandising">Read More</a>
                 </div>
               </div>
             </div>
@@ -120,7 +120,7 @@ export default function Home() {
                   </div>
                   <h3 className="ts-feature-title">Expand Into All 16 Regions</h3>
                   <p>Our field teams and warehouse support help you penetrate new territories without operation stress.</p>
-                  <a className="slider btn btn-primary" href="/shop">Read More</a>
+                  <a className="slider btn btn-primary" href="/services/route-to-market-development">Read More</a>
                 </div>
               </div>
             </div>
@@ -132,7 +132,7 @@ export default function Home() {
                   </div>
                   <h3 className="ts-feature-title">See Results with Live Reporting</h3>
                   <p>Get clear updates on sales activity, market execution, and activation performance, so you know what's working.</p>
-                  <a className="slider btn btn-primary" href="/shop">Read More</a>
+                  <a className="slider btn btn-primary" href="/services/logistics-distribution-management">Read More</a>
                 </div>
               </div>
               {/* feature box-3 end */}
@@ -239,31 +239,37 @@ export default function Home() {
                 img: 'service1.jpg',
                 title: 'B2B Sales & Merchandising',
                 desc: 'Direct sales and marketing activities to retailers and wholesalers (B2B).',
+                slug: 'b2b-sales-merchandising',
               },
               {
                 img: 'service2.jpg',
                 title: 'B2C Consumer Activation',
                 desc: 'Direct consumer sales and activation in open markets, modern trade and road shows.',
+                slug: 'b2c-consumer-activation',
               },
               {
                 img: 'service3.jpg',
                 title: 'Route to Market Development',
                 desc: 'Design and execution of route to market and route to consumer strategies.',
+                slug: 'route-to-market-development',
               },
               {
                 img: 'service4.jpg',
                 title: 'Market Surveys & Research',
                 desc: 'Field research, market surveys and customer data build to support decisions.',
+                slug: 'market-surveys-research',
               },
               {
                 img: 'service5.jpg',
                 title: 'Logistics & Distribution Management',
                 desc: 'Distribution and delivery management across channels with stationed warehouses.',
+                slug: 'logistics-distribution-management',
               },
               {
                 img: 'service6.jpg',
                 title: 'Branding, Events & Digital Marketing',
                 desc: 'Branding, events and digital marketing to keep your products top of mind.',
+                slug: 'branding-events-digital-marketing',
               },
             ].map((s, i) => (
               <div className="col-lg-4 col-md-12" key={i}>
@@ -274,7 +280,7 @@ export default function Home() {
                   <div className="ts-service-content">
                     <h3 className="service-title">{s.title}</h3>
                     <p>{s.desc}</p>
-                    <p><a className="link-more" href="/shop">Talk to our Team<i className="icon icon-right-arrow2"></i></a></p>
+                    <p><a className="link-more" href={`/services/${s.slug}`}>Read More<i className="icon icon-right-arrow2"></i></a></p>
                   </div>
                 </div>
               </div>
