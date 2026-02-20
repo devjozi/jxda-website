@@ -39,3 +39,4 @@ Start production server: `npm run start`
 - `main` → production (Hostinger static export)
 
 Secrets: see `.env.example`; store real values in GitHub Secrets.
+# Test
