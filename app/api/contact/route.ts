@@ -7,17 +7,30 @@
  * 
  * Environment variable required in .env.local:
  * RESEND_API_KEY=re_your_api_key_here
+ * 
+ * Note: This route is NOT used in static export mode (Hostinger Premium).
+ * In static export, the contact form uses Formspree (see NEXT_PUBLIC_CONTACT_FORM_ACTION).
+ * This route is only active when deploying to Node.js hosting (Vercel, etc.).
  */
 
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-// Initialize Resend with API key from environment variable
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: NextRequest) {
   try {
-    // Parse request body
+    // Initialize Resend at runtime (not at module load time)
+    // This allows static export builds to succeed even without RESEND_API_KEY
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    
+    if (!process.env.RESEND_API_KEY) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Email service not configured. Please set RESEND_API_KEY environment variable.',
+        },
+        { status: 503 }
+      );
+    }
     const { name, email, website, message } = await request.json();
 
     // Validate required fields
