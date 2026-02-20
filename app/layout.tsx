@@ -38,8 +38,6 @@ export default function RootLayout({
         />
         
         <Script src="/js/bootstrap.bundle.min.js" strategy="lazyOnload" />
-        <Script src="/js/waypoints.min.js" strategy="lazyOnload" />
-        <Script src="/js/jquery.counterup.min.js" strategy="lazyOnload" />
         <Script src="/js/owl.carousel.min.js" strategy="lazyOnload" />
         <Script src="/js/custom.js" strategy="lazyOnload" />
       </body>

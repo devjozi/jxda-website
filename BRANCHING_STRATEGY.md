@@ -98,6 +98,42 @@ Format: `release/v<version>`
 
 ## 🔄 **WORKFLOW RULES**
 
+## 🔒 **BRANCH PROTECTION POLICY (ENFORCED)**
+
+Apply these settings to `main` in GitHub:
+
+### Required settings
+- ✅ **Require a pull request before merging**
+- ✅ **Require approvals**: minimum 1
+- ✅ **Dismiss stale approvals when new commits are pushed**
+- ✅ **Require conversation resolution before merging**
+- ✅ **Require status checks to pass before merging**
+- ✅ **Require branches to be up to date before merging**
+- ✅ **Restrict who can push to matching branches**
+- ✅ **Do not allow bypassing the above settings**
+
+### Required status checks (must be selected in branch protection)
+- `Quality Gate / quality`
+- `Security Scan / npm-audit`
+- `Security Scan / codeql`
+
+### Direct push policy
+- ❌ **No direct pushes to `main`**
+- ✅ Merge to `main` only via PR from `develop` (or release/hotfix PR)
+
+### Optional strict settings (recommended)
+- ✅ Require linear history
+- ✅ Include administrators in enforcement
+
+### Setup steps (GitHub UI)
+1. Repo → **Settings** → **Branches**
+2. Under **Branch protection rules**, add/edit rule for `main`
+3. Enable the required settings above
+4. Select required checks listed above
+5. Save rule
+
+> Note: Branch protection is enforced server-side by GitHub and cannot be guaranteed by local git settings alone.
+
 ### **Rule 1: One Branch = One Task**
 
 ✅ **CORRECT:**

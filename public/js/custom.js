@@ -388,17 +388,20 @@ jQuery(function ($) {
    /* ----------------------------------------------------------- */
    $(document).ready(function () {
 
-      $(".gallery-popup").colorbox({
-         rel: 'gallery-popup',
-         transition: "fade",
-         innerHeight: "500"
-      });
+      // Safely initialize colorbox if available
+      if (typeof $.colorbox === 'function') {
+         $(".gallery-popup").colorbox({
+            rel: 'gallery-popup',
+            transition: "fade",
+            innerHeight: "500"
+         });
 
-      $(".popup").colorbox({
-         iframe: true,
-         innerWidth: 600,
-         innerHeight: 400
-      });
+         $(".popup").colorbox({
+            iframe: true,
+            innerWidth: 600,
+            innerHeight: 400
+         });
+      }
 
    });
 
@@ -407,10 +410,13 @@ jQuery(function ($) {
    /*  Counter
    /* ----------------------------------------------------------- */
 
-   $('.counterUp').counterUp({
-      delay: 10,
-      time: 1000
-   });
+   // Safely initialize counterUp if available
+   if (jQuery.fn.counterUp) {
+      $('.counterUp').counterUp({
+         delay: 10,
+         time: 1000
+      });
+   }
 
 
 
