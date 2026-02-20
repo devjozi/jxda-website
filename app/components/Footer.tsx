@@ -14,7 +14,7 @@ export default function Footer() {
               <div className="footer-logo">
                 <img src="/images/footer-logo.png" alt={SITE.name} />
               </div>
-              <p>{SITE.name} — {SITE.tagline}. Your trusted logistics and distribution partner.</p>
+              <p>{SITE.name} — {SITE.tagline} We sell products, grow brands, and strengthen market penetration through disciplined execution.</p>
               <h3 className="widget-title">Subscribe Newsletter!</h3>
               <form className="newsletter-form" id="newsletter-form" action="#" method="post">
                 <div className="form-group">

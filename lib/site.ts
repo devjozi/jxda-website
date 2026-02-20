@@ -5,15 +5,15 @@
 
 export const SITE = {
   name: 'JX Distribution Africa',
-  tagline: 'Sales, Marketing & Distribution Across Africa',
+  tagline: 'Just produce or import, we will sell.',
   // Registered Ghanaian company with coverage across all 16 regions.
-  address: 'Accra, Ghana (coverage across all 16 regions)',
+  address: 'Headquartered in Ghana with operations across all 16 regions',
   // Replace with the official contact email for JX Distribution Africa.
   email: 'info@jxdistributionafrica.com',
   // Replace with the official phone number.
   phone: '+233 XX XXX XXXX',
   // Public note from the company profile.
-  note: 'We do not sell or market alcoholic products or content.',
+  note: 'We do not sell or market alcoholic, gambling, and tobacco products.',
   // Replace social URLs with real profiles when available.
   social: {
     facebook: '#',
@@ -24,7 +24,7 @@ export const SITE = {
   whatsapp: {
     // Digits only for wa.me links.
     number: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '233XXXXXXXXX').replace(/\D/g, ''),
-    message: process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ?? "Hi, I'm interested in JX Distribution services.",
+    message: process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ?? "Hi, I want to grow sales and market coverage with JX Distribution Africa.",
   },
   contactForm: {
     // External form endpoint (Formspree/Getform/etc.).

@@ -37,7 +37,7 @@ export default function QuoteForm() {
     return (
       <div className="qutoe-form-inner-le">
         <h2 className="column-title"><span>Thank you</span> We&apos;ll be in touch</h2>
-        <p className="text-muted">Your request has been received. We will contact you shortly.</p>
+        <p className="text-muted">Your request has been received. Our team will contact you shortly with the next execution steps.</p>
       </div>
     );
   }
@@ -45,7 +45,7 @@ export default function QuoteForm() {
   return (
     <div className="col-lg-7 qutoe-form-inner-le">
       <form className="contact-form" id="contact-form" onSubmit={handleSubmit} method="post">
-        <h2 className="column-title"><span>We are always ready</span> Request a call back</h2>
+        <h2 className="column-title"><span>Ready to Grow Sales and Expand Coverage?</span>Request a Call Back</h2>
         <div className="row">
           <div className="col-lg-12">
             <div className="form-group">
@@ -59,7 +59,7 @@ export default function QuoteForm() {
           </div>
           <div className="col-lg-12">
             <div className="form-group">
-              <textarea className="form-control form-message" id="message" name="message" placeholder="Comments" rows={5}></textarea>
+              <textarea className="form-control form-message" id="message" name="message" placeholder="Tell us about your product and coverage goals" rows={5}></textarea>
             </div>
           </div>
         </div>
