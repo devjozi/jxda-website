@@ -18,8 +18,22 @@
 
 ## ✅ Completed
 
+### Priority 0: Deployment Foundation ⚡ COMPLETE
+- [x] Static export as primary deployment mode (Hostinger Premium compatible)
+- [x] Build verified: `npm run build:static` generates 69 static pages
+- [x] Contact form via Formspree (serverless, no backend needed)
+- [x] GitHub Actions configured (`build → deploy to Hostinger preview/production`)
+- [x] Environment variables documented (`.env.example`)
+- [x] Deployment guides created:
+  - `HOSTINGER_STATIC_EXPORT.md` — Architecture & deployment process
+  - `GITHUB_ACTIONS_SETUP.md` — 5-minute GitHub secret setup
+- [x] Next.js config supports conditional static export
+- [x] Project prepared for future Node.js migration (Vercel/Hostinger Business)
+
+**Status:** Ready to deploy to Hostinger. See `GITHUB_ACTIONS_SETUP.md` for next steps.
+
 ### Phase 1–4 (Foundation, Layout, Header, Footer)
-- Next.js server mode, template assets in `/public`, `app/layout.tsx`, `app/components/Header.tsx`, `app/components/Footer.tsx`.
+- Next.js static export mode, template assets in `/public`, `app/layout.tsx`, `app/components/Header.tsx`, `app/components/Footer.tsx`.
 
 ### Phase 5: Homepage body sections
 | # | Section | Status |
@@ -55,9 +69,18 @@
 
 ## ⏳ Next steps
 
+### Immediate (Deploy to Hostinger)
+1. **Set up GitHub Actions secrets** (5 min) — See `GITHUB_ACTIONS_SETUP.md`
+   - Hostinger SSH credentials
+   - WhatsApp number and message
+   - Formspree contact form endpoint
+2. **Test deployment** — Push to `develop`, verify preview environment
+3. **QA on preview** — Browser testing checklist in `PREVIEW_CHECKLIST.md`
+4. **Deploy to production** — Merge `develop → main`, verify live site
+
+### After Deploy
 - **Sprint 2 (remaining):** Source real product images, update homepage services images (tasks 2.2, 2.3, 2.8)
 - **Sprint 3 (remaining):** Full cart + localStorage persistence + order email (tasks 3.1–3.4, 3.6–3.8)
-- **Deploy:** Add `NEXT_PUBLIC_WHATSAPP_NUMBER` GitHub Actions secret before first CI deploy
 - **See:** [PROJECT_PLAN.md](PROJECT_PLAN.md) for complete roadmap
 
 ---
