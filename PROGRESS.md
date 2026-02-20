@@ -1,17 +1,18 @@
 # PROGRESS LOG — JX Distribution Website
 
-**Last Updated:** 2026-02-19
-**Version:** 0.5.0  
-**Branch:** `develop`  
-**Status:** Product catalog live (53 products), WhatsApp order workflow, CI/CD pipeline ready
+**Last Updated:** 2026-02-20
+**Version:** 0.6.0
+**Branch:** `chore/update-company-profile-copy-2026-02-19` → merge target: `develop`
+**Status:** Shop catalogue overhauled (SEO, CRO, UX), unit tests added (45 passing)
 
 ---
 
 ## Current state
 
 - **Homepage:** Hero, Features Light, Why JX, Our Services (6), FAQ + Testimonials, Facts, Quote/CTA — all converted from reference template.
-- **Commerce:** `/shop` (54 products, category filter, search), `/shop/[slug]` (detail + WhatsApp order), `/shop/checkout` (WhatsApp order workflow). Categories in `lib/products.ts`.
+- **Commerce:** `/shop` (53 products, category cards, sticky filter/sort bar, trust strip, SEO metadata), `/shop/[slug]` (JSON-LD Product schema, rich metadata with Ghana-targeted keywords, trust signals, related products, WhatsApp CTA above fold), `/shop/checkout` (WhatsApp order workflow). Categories in `lib/products.ts`.
 - **JX customization:** Site config in `lib/site.ts`; Header/Footer use JX name, contact placeholders, Shop link; Quick Links and copyright updated.
+- **Testing:** 45 unit tests passing across 4 test files (`shop-filters`, `products`, `site`, `contact-route`).
 - **Preview and publish:** Use **PREVIEW_AND_PUBLISH.md** for step-by-step browser checks and Hostinger Node deploy.
 
 ---
@@ -53,10 +54,23 @@
 - [x] Product list page (`/shop`) with category filter and search
 - [x] Product detail page (`/shop/[slug]`) with WhatsApp order form
 - [x] Checkout page (`/shop/checkout`) with WhatsApp order workflow
-- [x] 54 real Autoparts + multi-category products in `lib/products.ts`
+- [x] 53 real Autoparts + multi-category products in `lib/products.ts`
 - [x] `PRODUCT_CATEGORIES` constants: Autoparts, FMCG, Electronics, Fabrics, Agricultural Inputs
 - [x] CSV import system (`scripts/import-products.ts`, `PRODUCT-DATA-TEMPLATE.csv`)
 - [x] `WhatsAppOrder` component for structured order messages
+
+### Shop catalogue SEO/CRO/UX overhaul (v0.6.0)
+- [x] `app/shop/page.tsx` converted to server component — exports full `Metadata` (title, description, OG, keywords)
+- [x] `app/components/ShopClient.tsx` — new client island: category cards with icons, sticky filter+sort bar, trust strip, hover-lift product cards, quick WhatsApp button per card
+- [x] `lib/shop-filters.ts` — pure filter/sort functions extracted from UI (testable, reusable)
+- [x] `app/shop/[slug]/page.tsx` — JSON-LD `Product` + `BreadcrumbList` schema, per-product `generateMetadata` (Ghana-targeted keywords), trust signals grid, related products section, above-fold WhatsApp CTA
+- [x] `app/shop/page.tsx` — page banner added (matches site style), server-side metadata
+- [x] Duplicate-safe sort (does not mutate source array)
+
+### Testing (v0.6.0)
+- [x] `tests/shop-filters.test.ts` — 22 tests covering filter, sort, combined logic
+- [x] `tests/products.test.ts` — 18 tests covering catalogue data integrity and utility functions
+- [x] All 45 tests passing (`npm test`)
 
 ### JX customization (initial)
 - [x] `lib/site.ts` — site name, tagline, address, email, phone, social (placeholders)
@@ -90,11 +104,13 @@
 | Path | Purpose |
 |------|---------|
 | `app/page.tsx` | Homepage (all sections) |
-| `app/shop/page.tsx` | Shop product list |
-| `app/shop/[slug]/page.tsx` | Product detail |
+| `app/shop/page.tsx` | Shop listing — server component with SEO metadata + banner |
+| `app/shop/[slug]/page.tsx` | Product detail — JSON-LD schema, rich metadata, related products |
 | `app/shop/checkout/page.tsx` | Checkout placeholder |
+| `app/components/ShopClient.tsx` | Client island: category cards, sticky filter/sort, product grid |
+| `lib/shop-filters.ts` | Pure filter + sort functions (used by ShopClient) |
 | `lib/site.ts` | JX branding and contact config |
-| `lib/products.ts` | Product data |
+| `lib/products.ts` | Product data (53 products) |
 | `app/components/Header.tsx` | Header (JX + Shop) |
 | `app/components/Footer.tsx` | Footer (JX + Quick Links) |
 | **PREVIEW_AND_PUBLISH.md** | What to do in the browser + how to build and publish |
@@ -102,8 +118,21 @@
 | `lib/product-data-import.ts` | CSV import utilities |
 | `scripts/import-products.ts` | CLI import script |
 | **IMPORTING-PRODUCTS.md** | Product data import guide |
+| `tests/shop-filters.test.ts` | Unit tests — filter/sort logic (22 tests) |
+| `tests/products.test.ts` | Unit tests — catalogue data integrity (18 tests) |
 
 ---
+
+## Recent changes (v0.6.0)
+
+- **Shop listing overhaul:** `app/shop/page.tsx` is now a server component exporting full SEO `Metadata`; client-side state delegated to new `ShopClient` component.
+- **ShopClient:** Category quick-nav cards with Font Awesome icons; sticky search + category pills + sort bar; trust strip; hover-lift product cards; per-card WhatsApp quick-order button.
+- **Filter/sort logic extracted:** `lib/shop-filters.ts` contains pure `filterProducts`, `sortProducts`, and `applyShopFilters` functions — decoupled from React, fully unit-testable.
+- **Product detail SEO:** `generateMetadata` now outputs per-product title, description, Ghana-targeted keywords, canonical URL, and Open Graph tags.
+- **JSON-LD schema:** Every product page now emits `Product` (with offers, availability, areaServed: Ghana) and `BreadcrumbList` structured data — eligible for rich results in Google Search.
+- **Trust signals:** Both listing and detail pages include the Official Distributor / Genuine Products / 16 Regions / 24/7 Support trust strip.
+- **Related products:** Product detail pages show up to 4 items from the same category.
+- **Unit tests:** 40 new tests added (22 × shop-filters, 18 × products). Total suite: 45 tests, all passing.
 
 ## Recent changes (v0.5.0)
 
@@ -137,4 +166,5 @@
 - **0.3.2** — Align docs and CI/CD for Hostinger Node.js deployment.
 - **0.4.0** — Real product catalog infrastructure: enhanced schema, import system, category filter, search.
 - **0.5.0** — 54 real Autoparts catalog, WhatsApp order workflow, new carousel slides, real contact data, deployment docs.
+- **0.6.0** — Shop SEO/CRO/UX overhaul: server metadata, JSON-LD Product schema, ShopClient component, shop-filters lib, 40 new unit tests (45 total passing).
 After completing a logical chunk of work, bump `version` in `package.json` and add a short line under “Versioning” above.
