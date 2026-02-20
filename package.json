@@ -8,7 +8,12 @@
     "build:static": "STATIC_EXPORT=true next build",
     "export": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run lint && npm run typecheck && npm run test && npm run build:static",
+    "audit:high": "npm audit --audit-level=high",
+    "audit:fix": "npm audit fix",
     "test": "vitest run",
     "import-products": "tsx scripts/import-products.ts"
   },
