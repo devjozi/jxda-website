@@ -5,39 +5,51 @@ export default function Services() {
   const services = [
     {
       img: 'service1.jpg',
-      title: 'B2B Sales & Merchandising',
-      desc: 'Direct sales and marketing activities to retailers and wholesalers (B2B). We help you get your products into more shops and increase reorder volume.',
-      link: '/services/b2b-sales-merchandising'
+      title: 'Route-to-Market & Route-to-Consumer Development',
+      desc: 'Structured market entry planning, territory mapping, and channel strategy to improve product availability and conversion.',
+      link: '/services/route-to-market-and-route-to-consumer-development'
     },
     {
       img: 'service2.jpg',
-      title: 'B2C Consumer Activation',
-      desc: 'Direct consumer sales and activation in open markets, modern trade and road shows. We create engaging experiences that drive consumer purchase.',
-      link: '/services/b2c-consumer-activation'
+      title: 'Social Media Marketing & Activation Campaigns',
+      desc: 'Integrated digital and on-ground activation campaigns that drive awareness, trial, and repeat buying.',
+      link: '/services/social-media-marketing-and-activation-campaigns'
     },
     {
       img: 'service3.jpg',
-      title: 'Route to Market Development',
-      desc: 'Design and execution of route to market and route to consumer strategies. We develop efficient pathways to reach your target customers.',
-      link: '/services/route-to-market-development'
+      title: 'Distribution & Logistics Coordination',
+      desc: 'Distribution planning, warehousing coordination, and channel fulfillment support across retail, wholesale, and key accounts.',
+      link: '/services/distribution-and-logistics-coordination'
     },
     {
       img: 'service4.jpg',
-      title: 'Market Surveys & Research',
-      desc: 'Field research, market surveys and customer data build to support decisions. We provide actionable insights to guide your business strategy.',
-      link: '/services/market-surveys-research'
+      title: 'Market Research & Consumer Intelligence',
+      desc: 'Field research and market intelligence that provide decision-ready insights for pricing, placement, and growth.',
+      link: '/services/market-research-and-consumer-intelligence'
     },
     {
       img: 'service5.jpg',
-      title: 'Logistics & Distribution Management',
-      desc: 'Distribution and delivery management across channels with stationed warehouses. We ensure your products reach the right place at the right time.',
-      link: '/services/logistics-distribution-management'
+      title: 'Procurement',
+      desc: 'Procurement execution support for product sourcing and trade requirements aligned with your market expansion goals.',
+      link: '/services/procurement'
     },
     {
       img: 'service6.jpg',
-      title: 'Branding, Events & Digital Marketing',
-      desc: 'Branding, events and digital marketing to keep your products top of mind. We create compelling campaigns that build brand awareness.',
-      link: '/services/branding-events-digital-marketing'
+      title: 'Sales Team Training & Performance Management',
+      desc: 'Sales capability development, supervision, and performance management to improve execution quality and accountability.',
+      link: '/services/sales-team-training-and-performance-management'
+    },
+    {
+      img: 'service2.jpg',
+      title: 'Call Center Services for Companies',
+      desc: 'Standby 24/7 call center and telesales support with structured customer engagement and follow-up.',
+      link: '/services/call-center-services-for-companies'
+    },
+    {
+      img: 'service6.jpg',
+      title: 'Sales Automation & Reporting',
+      desc: 'Automated sales reporting, market coverage tracking, team productivity monitoring, and execution dashboards.',
+      link: '/services/sales-automation-and-reporting'
     }
   ];
 
@@ -68,14 +80,13 @@ export default function Services() {
           <div className="container">
             <div className="row text-center">
               <div className="col-md-12">
-                <h2 className="section-title"><span>We make distribution easy</span>Our Comprehensive Services</h2>
+                <h2 className="section-title"><span>What We Do</span>Our Core Services</h2>
               </div>
             </div>
-            
-            {/* First Row */}
+
             <div className="row">
-              {services.slice(0, 3).map((service, index) => (
-                <div className="col-lg-4 col-md-12" key={index}>
+              {services.map((service, index) => (
+                <div className="col-lg-3 col-md-6" key={index}>
                   <div className="ts-service-box">
                     <div className="ts-service-image-wrapper">
                       <img className="img-fluid" src={`/images/services/${service.img}`} alt={service.title} />
@@ -89,25 +100,11 @@ export default function Services() {
                 </div>
               ))}
             </div>
-
-            <div className="gap-60"></div>
-
-            {/* Second Row */}
+            <div className="gap-40"></div>
             <div className="row">
-              {services.slice(3, 6).map((service, index) => (
-                <div className="col-lg-4 col-md-12" key={index + 3}>
-                  <div className="ts-service-box">
-                    <div className="ts-service-image-wrapper">
-                      <img className="img-fluid" src={`/images/services/${service.img}`} alt={service.title} />
-                    </div>
-                    <div className="ts-service-content">
-                      <h3 className="service-title">{service.title}</h3>
-                      <p>{service.desc}</p>
-                      <p><a className="link-more" href={service.link}>Read More <i className="icon icon-right-arrow2"></i></a></p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+              <div className="col-md-12 text-center">
+                <p>Additional support: Product branding, events support, digital marketing.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -118,8 +115,8 @@ export default function Services() {
         <div className="container">
           <div className="row">
             <div className="col-lg-8 align-self-center">
-              <h3 className="call-to-action-title">Ready to grow your business across Ghana?</h3>
-              <p>Let us help you expand your distribution network and increase sales with our expert services.</p>
+              <h3 className="call-to-action-title">Ready to grow sales and expand coverage?</h3>
+              <p>Whether you already operate in Ghana or plan to launch a local or imported product, we deliver structured market execution at scale.</p>
             </div>
             <div className="col-lg-4 text-right">
               <a className="btn btn-box" href="/contact">Get Started</a>
