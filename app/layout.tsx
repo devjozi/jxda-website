@@ -3,11 +3,11 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "JX Distribution Africa - Sales, Marketing & Distribution",
+  title: "JX Distribution Africa - Just produce or import, we will sell.",
   description:
-    "JX Distribution Africa is a registered Ghanaian company focused on sales, marketing, distribution of products and research across Africa, with coverage across all 16 regions of Ghana.",
+    "JX Distribution Africa is a registered market execution and distribution company headquartered in Ghana, delivering sales execution, distribution management, marketing activation, market research, and sales automation across all 16 regions.",
   keywords:
-    "JX Distribution Africa, sales, marketing, distribution, research, B2B, B2C, Ghana, 16 regions, Africa, route to market, logistics",
+    "JX Distribution Africa, Ghana distribution company, sales execution, route to market, route to consumer, distribution management, marketing activation, market research, call center services, sales automation",
 };
 
 export default function RootLayout({

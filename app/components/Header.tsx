@@ -5,7 +5,7 @@
  * - Home
  * - Shop
  * - Company (About, Services, Contact)
- * - Services (with all 6 service links)
+ * - Services (with all 8 service links)
  * - Contact
  * 
  * Removed: Projects dropdown, Features dropdown, News dropdown (until implemented)
@@ -15,7 +15,7 @@ import { SITE, buildWhatsAppUrl } from '../../lib/site';
 
 export default function Header() {
   // WhatsApp CTA for the primary header button.
-  const quoteUrl = buildWhatsAppUrl('Hi, I would like a quote for distribution services.');
+  const quoteUrl = buildWhatsAppUrl('Hi, I want support with sales execution and distribution in Ghana.');
 
   return (
     <div className="site-top-2">
@@ -105,12 +105,14 @@ export default function Header() {
                     </a>
                     <ul className="dropdown-menu" role="menu">
                       <li><a href="/services">All Services</a></li>
-                      <li><a href="/services/b2b-sales-merchandising">B2B Sales & Merchandising</a></li>
-                      <li><a href="/services/b2c-consumer-activation">B2C Consumer Activation</a></li>
-                      <li><a href="/services/route-to-market-development">Route to Market Development</a></li>
-                      <li><a href="/services/market-surveys-research">Market Surveys & Research</a></li>
-                      <li><a href="/services/logistics-distribution-management">Logistics & Distribution Management</a></li>
-                      <li><a href="/services/branding-events-digital-marketing">Branding, Events & Digital Marketing</a></li>
+                      <li><a href="/services/route-to-market-and-route-to-consumer-development">Route-to-Market & Route-to-Consumer Development</a></li>
+                      <li><a href="/services/social-media-marketing-and-activation-campaigns">Social Media Marketing & Activation Campaigns</a></li>
+                      <li><a href="/services/distribution-and-logistics-coordination">Distribution & Logistics Coordination</a></li>
+                      <li><a href="/services/market-research-and-consumer-intelligence">Market Research & Consumer Intelligence</a></li>
+                      <li><a href="/services/procurement">Procurement</a></li>
+                      <li><a href="/services/sales-team-training-and-performance-management">Sales Team Training & Performance Management</a></li>
+                      <li><a href="/services/call-center-services-for-companies">Call Center Services for Companies</a></li>
+                      <li><a href="/services/sales-automation-and-reporting">Sales Automation & Reporting</a></li>
                     </ul>
                   </li>
                   {/* li end */}

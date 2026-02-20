@@ -12,10 +12,10 @@ import { buildWhatsAppUrl } from '../lib/site';
 export default function Home() {
   // Centralized WhatsApp links for homepage CTAs.
   const whatsappLinks = {
-    quickQuote: buildWhatsAppUrl('Hi, I need a quick quote for distribution services.'),
-    callBack: buildWhatsAppUrl('Hi, please call me back about distribution services.'),
-    featureLearnMore: buildWhatsAppUrl('Hi, I want to learn more about your services.'),
-    servicesTalk: buildWhatsAppUrl('Hi, I want to talk to your team about distribution services.'),
+    quickQuote: buildWhatsAppUrl('Hi, just produce or import, we will sell. I need a quick quote.'),
+    callBack: buildWhatsAppUrl('Hi, please call me back about nationwide sales execution and distribution.'),
+    featureLearnMore: buildWhatsAppUrl('Hi, I want to learn more about your execution model and services.'),
+    servicesTalk: buildWhatsAppUrl('Hi, I want to talk to your team about growing sales and market penetration.'),
   };
 
   return (
@@ -36,10 +36,10 @@ export default function Home() {
             <div className="container">
               <div className="slider-content text-left">
                 <div className="col-md-12">
-                  <h2 className="slide-title title-light">You have products</h2>
-                  <h3 className="slide-sub-title">We connect them to consumers</h3>
+                  <h2 className="slide-title title-light">Just produce or import,</h2>
+                  <h3 className="slide-sub-title">we will sell.</h3>
                   <p className="slider-description lead">
-                    We discover, develop and create relationships between consumers and products across Ghana and Africa.
+                    JX Distribution Africa is a registered distribution and market execution company headquartered in Ghana.
                   </p>
                   <p>
                     <a className="slider btn btn-primary" href="/#ts-features-light">Know More</a>
@@ -59,10 +59,10 @@ export default function Home() {
             <div className="container">
               <div className="slider-content text-center">
                 <div className="col-md-12">
-                  <h2 className="slide-title title-light">Sell More Across Ghana</h2>
-                  <h3 className="slide-sub-title">Without Hiring a Sales Team</h3>
+                  <h2 className="slide-title title-light">Sales Execution at Scale</h2>
+                  <h3 className="slide-sub-title">Nationwide Coverage Across 16 Regions</h3>
                   <p className="slider-description lead">
-                    We help brands enter new markets, drive retail sails, and grow distribution across all 16 regions with measurable field execution and live reporting.
+                    We support local and international brands with disciplined execution in retail, wholesale, key accounts, activations, and street channels.
                   </p>
                   <p>
                     <a className="slider btn btn-primary" href={whatsappLinks.callBack} target="_blank" rel="noreferrer">Request a Call Back</a>
@@ -81,8 +81,8 @@ export default function Home() {
             <div className="container">
               <div className="slider-content text-right">
                 <div className="col-md-12">
-                  <h2 className="slide-title title-light">17 years of experience</h2>
-                  <h3 className="slide-sub-title">Strong Distribution Network</h3>
+                  <h2 className="slide-title title-light">A Decade of Market Experience</h2>
+                  <h3 className="slide-sub-title">Priceless Partnerships Across Markets</h3>
                   <p>
                     <a className="slider btn btn-primary" href={whatsappLinks.callBack} target="_blank" rel="noreferrer">Request a Call Back</a>
                   </p>
@@ -100,10 +100,10 @@ export default function Home() {
             <div className="container">
               <div className="slider-content text-left">
                 <div className="col-md-12">
-                  <h2 className="slide-title title-light">B2C Consumer Activation</h2>
-                  <h3 className="slide-sub-title">Drive demand where it matters</h3>
+                  <h2 className="slide-title title-light">Activation & Consumer Conversion</h2>
+                  <h3 className="slide-sub-title">Drive Demand Where It Matters</h3>
                   <p className="slider-description lead">
-                    We execute in-market activations that convert attention into repeat purchases across Ghana.
+                    We deliver social media marketing and activation campaigns that convert awareness into measurable sales.
                   </p>
                   <p>
                     <a className="slider btn btn-primary" href={whatsappLinks.servicesTalk} target="_blank" rel="noreferrer">Talk to our Team</a>
@@ -122,10 +122,10 @@ export default function Home() {
             <div className="container">
               <div className="slider-content text-center">
                 <div className="col-md-12">
-                  <h2 className="slide-title title-light">B2B Vendor Growth</h2>
-                  <h3 className="slide-sub-title">Boost wholesale and retail sell-through</h3>
+                  <h2 className="slide-title title-light">Sales Automation & Reporting</h2>
+                  <h3 className="slide-sub-title">Execution Visibility You Can Trust</h3>
                   <p className="slider-description lead">
-                    Our field teams drive listings, merchandising, and reorder velocity for your products.
+                    Structured reporting tracks sales performance, market coverage, POS deployment, productivity, and campaign outcomes.
                   </p>
                   <p>
                     <a className="slider btn btn-primary" href={whatsappLinks.quickQuote} target="_blank" rel="noreferrer">Get a Quick Quote</a>
@@ -161,8 +161,8 @@ export default function Home() {
                   <div className="feature-img">
                     <img src="/images/icon/service-1.png" alt="" />
                   </div>
-                  <h3 className="ts-feature-title">Get Your Products Into More Shops</h3>
-                  <p>We drive B2B sales directly to wholealers and retailers to increase availability and reorder volume</p>
+                  <h3 className="ts-feature-title">Structured Sales Execution</h3>
+                  <p>We execute with a clear framework: assessment, territory design, stocking plans, conversion, and optimization.</p>
                   <a className="slider btn btn-primary" href={whatsappLinks.featureLearnMore} target="_blank" rel="noreferrer">Read More</a>
                 </div>
               </div>
@@ -173,8 +173,8 @@ export default function Home() {
                   <div className="feature-img">
                     <img src="/images/icon/service-2.png" alt="" />
                   </div>
-                  <h3 className="ts-feature-title">Expand Into All 16 Regions</h3>
-                  <p>Our field teams and warehouse support help you penetrate new territories without operation stress.</p>
+                  <h3 className="ts-feature-title">Nationwide Operational Footprint</h3>
+                  <p>Operations across all 16 regions of Ghana with field teams, logistics coordination, and warehousing support.</p>
                   <a className="slider btn btn-primary" href={whatsappLinks.featureLearnMore} target="_blank" rel="noreferrer">Read More</a>
                 </div>
               </div>
@@ -185,8 +185,8 @@ export default function Home() {
                   <div className="feature-img">
                     <img src="/images/icon/service-3.png" alt="" />
                   </div>
-                  <h3 className="ts-feature-title">See Results with Live Reporting</h3>
-                  <p>Get clear updates on sales activity, market execution, and activation performance, so you know what's working.</p>
+                  <h3 className="ts-feature-title">Measurable Reporting</h3>
+                  <p>Sales automation systems provide structured tracking of performance, penetration progress, and execution quality.</p>
                   <a className="slider btn btn-primary" href={whatsappLinks.featureLearnMore} target="_blank" rel="noreferrer">Read More</a>
                 </div>
               </div>
@@ -202,7 +202,7 @@ export default function Home() {
           <div className="container">
             <div className="row text-center">
               <div className="col-md-12">
-                <h2 className="section-title"><span>Don&apos;t Miss a Thing</span>Why JX Distribution Africa?</h2>
+                <h2 className="section-title"><span>Why Partner With JX</span>Why Companies Choose JX Distribution Africa</h2>
               </div>
             </div>
             <div className="row">
@@ -213,8 +213,8 @@ export default function Home() {
                       <img src="/images/icon/why-1.png" alt="" />
                     </div>
                     <div className="ts-service-box-info">
-                      <h3 className="service-box-title">Experienced Sales Professionals</h3>
-                      <p>A trained team with 10 - 20+ years experience driving growth for brands in Ghana.</p>
+                      <h3 className="service-box-title">Experienced Execution Team</h3>
+                      <p>Professional sales and distribution leadership with 10–20 years practical industry exposure.</p>
                     </div>
                   </div>
                   <div className="gap-15"></div>
@@ -223,8 +223,8 @@ export default function Home() {
                       <img src="/images/icon/why-2.png" alt="" />
                     </div>
                     <div className="ts-service-box-info">
-                      <h3 className="service-box-title">Strong Field Activation</h3>
-                      <p>We execute roadshows, open market activation and modern trade campaigns that convert attention into sales.</p>
+                      <h3 className="service-box-title">Tailored Activation Strength</h3>
+                      <p>Product and trade activations designed to accelerate visibility, trial, and sales conversion.</p>
                     </div>
                   </div>
                   <div className="gap-15"></div>
@@ -234,7 +234,7 @@ export default function Home() {
                     </div>
                     <div className="ts-service-box-info">
                       <h3 className="service-box-title">Nationwide Coverage</h3>
-                      <p>Active presence across all 16 regions to support product penetration and expansion.</p>
+                      <p>Operational reach across all 16 regions in Ghana with structured regional penetration.</p>
                     </div>
                   </div>
                 </div>
@@ -249,8 +249,8 @@ export default function Home() {
                       <img src="/images/icon/why-3.png" alt="" />
                     </div>
                     <div className="ts-service-box-info">
-                      <h3 className="service-box-title">Target-Based Execution</h3>
-                      <p>We focus on performance, so you spend smarter and get measurable outcomes.</p>
+                      <h3 className="service-box-title">Cost-Effective Engagement Models</h3>
+                      <p>Commission-based, target-based, project-based, and retainer-based options for flexible engagement.</p>
                     </div>
                   </div>
                   <div className="gap-15"></div>
@@ -259,8 +259,8 @@ export default function Home() {
                       <img src="/images/icon/why-5.png" alt="" />
                     </div>
                     <div className="ts-service-box-info">
-                      <h3 className="service-box-title">Real-Time Reporting</h3>
-                      <p>Live reporting and automation that keeps you informed and in control.</p>
+                      <h3 className="service-box-title">Automation & Accountability</h3>
+                      <p>Sales automation and reporting provide clear visibility into growth, coverage, and productivity.</p>
                     </div>
                   </div>
                   <div className="gap-15"></div>
@@ -269,8 +269,8 @@ export default function Home() {
                       <img src="/images/icon/why-6.png" alt="" />
                     </div>
                     <div className="ts-service-box-info">
-                      <h3 className="service-box-title">Safe &amp; Complaint Operations</h3>
-                      <p>We uphold strong ethical standards and do not sell or market alcoholic products.</p>
+                      <h3 className="service-box-title">24/7 Customer Support</h3>
+                      <p>Standby call center and telesales support with strict compliance: no alcoholic, gambling, or tobacco products.</p>
                     </div>
                   </div>
                 </div>
@@ -280,7 +280,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Our Services — 6 items, ref: index.html ~379 */}
+      {/* Our Services — 8 core pillars */}
       <section className="ts-services solid-bg" id="ts-services">
         <div className="container">
           <div className="row text-center">
@@ -292,36 +292,46 @@ export default function Home() {
             {[
               {
                 img: 'service1.jpg',
-                title: 'B2B Sales & Merchandising',
-                desc: 'Direct sales and marketing activities to retailers and wholesalers (B2B).',
+                title: 'Route-to-Market & Route-to-Consumer Development',
+                desc: 'Channel strategy and route design for structured market penetration.',
               },
               {
                 img: 'service2.jpg',
-                title: 'B2C Consumer Activation',
-                desc: 'Direct consumer sales and activation in open markets, modern trade and road shows.',
+                title: 'Social Media Marketing & Activation Campaigns',
+                desc: 'Integrated digital and field activations that drive conversion.',
               },
               {
                 img: 'service3.jpg',
-                title: 'Route to Market Development',
-                desc: 'Design and execution of route to market and route to consumer strategies.',
+                title: 'Distribution & Logistics Coordination',
+                desc: 'Stocking, warehousing, and distribution coordination across key channels.',
               },
               {
                 img: 'service4.jpg',
-                title: 'Market Surveys & Research',
-                desc: 'Field research, market surveys and customer data build to support decisions.',
+                title: 'Market Research & Consumer Intelligence',
+                desc: 'Field insights and intelligence for better execution decisions.',
               },
               {
                 img: 'service5.jpg',
-                title: 'Logistics & Distribution Management',
-                desc: 'Distribution and delivery management across channels with stationed warehouses.',
+                title: 'Procurement',
+                desc: 'Procurement support aligned to sales, channel, and replenishment needs.',
               },
               {
                 img: 'service6.jpg',
-                title: 'Branding, Events & Digital Marketing',
-                desc: 'Branding, events and digital marketing to keep your products top of mind.',
+                title: 'Sales Team Training & Performance Management',
+                desc: 'Sales capability development, supervision, and accountability.',
+              },
+              {
+                img: 'service2.jpg',
+                title: 'Call Center Services for Companies',
+                desc: '24/7 call center and telesales support for customer engagement.',
+              },
+              {
+                img: 'service6.jpg',
+                title: 'Sales Automation & Reporting',
+                desc: 'Automated tracking of sales, coverage, campaign, and team performance.',
               },
             ].map((s, i) => (
-              <div className="col-lg-4 col-md-12" key={i}>
+              <div className="col-lg-3 col-md-6" key={i}>
                 <div className="ts-service-box">
                   <div className="ts-service-image-wrapper">
                     <img className="img-fluid" src={`/images/services/${s.img}`} alt={s.title} />
@@ -334,6 +344,11 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+          <div className="row">
+            <div className="col-md-12 text-center">
+              <p>Additional support: Product branding, events support, digital marketing.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -351,13 +366,13 @@ export default function Home() {
                   <div className="card-header" id="headingOne">
                     <h5 className="mb-0">
                       <a href="#" className="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Do you cover all regions in Ghana?
+                        Do you operate nationwide in Ghana?
                       </a>
                     </h5>
                   </div>
                   <div className="collapse show" id="collapseOne" aria-labelledby="headingOne" data-bs-parent="#accordion">
                     <div className="card-body">
-                      <p>Yes. We operate across all 16 regions with stationed teams and warehouse support.</p>
+                      <p>Yes. We operate across all 16 regions with field teams, logistics, and warehousing support.</p>
                     </div>
                   </div>
                 </div>
@@ -365,13 +380,13 @@ export default function Home() {
                   <div className="card-header" id="headingTwo">
                     <h5 className="mb-0">
                       <a href="#" className="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Do you work with new brands and startups?
+                        Can you support imported and made-in-Ghana products?
                       </a>
                     </h5>
                   </div>
                   <div className="collapse" id="collapseTwo" aria-labelledby="headingTwo" data-bs-parent="#accordion">
                     <div className="card-body">
-                      <p>Yes. We support both startups and established brands ready to grow market share.</p>
+                      <p>Yes. We support local and international brands launching or scaling products in Ghana.</p>
                     </div>
                   </div>
                 </div>
@@ -379,41 +394,41 @@ export default function Home() {
                   <div className="card-header" id="headingThree">
                     <h5 className="mb-0">
                       <a href="#" className="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Do you do both B2B and B2C sales?
+                        What engagement models do you offer?
                       </a>
                     </h5>
                   </div>
                   <div className="collapse" id="collapseThree" aria-labelledby="headingThree" data-bs-parent="#accordion">
                     <div className="card-body">
-                      <p>Yes. We sell to wholesalers/retailers and also run consumer activations.</p>
+                      <p>We offer commission-based, target-based, project-based, and retainer-based engagement models.</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col-lg-6 testimonial-client">
-              <h2 className="column-title"><span>What They Said</span> Client Testimonials</h2>
+              <h2 className="column-title"><span>How We Work</span>Our Execution Model</h2>
               <div className="owl-carousel owl-theme testimonial-slide owl-dark" id="testimonial-slide">
                 <div className="item">
                   <div className="quote-item quote-square">
-                    <span className="quote-text">Professional and reliable. JX Distribution delivered on time and kept us informed throughout.</span>
+                    <span className="quote-text">01 Market Assessment &amp; Channel Strategy  •  02 Territory Mapping &amp; Route Design  •  03 Product Stocking &amp; Distribution Planning  •  04 Structured Sales Execution (steps to a call)</span>
                     <div className="quote-item-footer">
                       <img className="testimonial-thumb" src="/images/clients/testimonial1.png" alt="testimonial" />
                       <div className="quote-item-info">
-                        <p className="quote-author">Gabriel Denis</p>
-                        <span className="quote-subtext">Chairman, OKT</span>
+                        <p className="quote-author">Execution Sequence</p>
+                        <span className="quote-subtext">Operational Framework</span>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="item">
                   <div className="quote-item quote-square">
-                    <span className="quote-text">Clear communication and seamless logistics. We recommend JX for distribution across the region.</span>
+                    <span className="quote-text">05 Activation &amp; Consumer Conversion  •  06 Customer Acquisition &amp; Data/Coverage Build  •  07 Reporting, Review &amp; Optimization  •  08 Standby 24/7 Call Center and Telesales Team</span>
                     <div className="quote-item-footer">
                       <img className="testimonial-thumb" src="/images/clients/testimonial2.png" alt="testimonial" />
                       <div className="quote-item-info">
-                        <h3 className="quote-author">Weldon Cash</h3>
-                        <span className="quote-subtext">CFO, First Choice</span>
+                        <h3 className="quote-author">Execution Sequence</h3>
+                        <span className="quote-subtext">Performance Loop</span>
                       </div>
                     </div>
                   </div>
@@ -429,7 +444,7 @@ export default function Home() {
         <div className="container">
           <div className="row">
             <div className="col-lg-5 col-md-12 column-left-title">
-              <h2 className="column-title">Experience in Logistics &amp; Distribution.</h2>
+              <h2 className="column-title">Sales Channel Records in Millions</h2>
             </div>
             <div className="col-lg-7 col-md-12">
               <div className="container">
@@ -438,8 +453,8 @@ export default function Home() {
                     <div className="ts-facts-bg">
                       <img src="/images/icon/fact1.png" alt="" />
                       <div className="ts-facts-content">
-                        <h4 className="ts-facts-num"><span className="counterUp">2435</span></h4>
-                        <p className="facts-desc">Office Worldwide</p>
+                        <h4 className="ts-facts-num"><span className="counterUp">31</span>m</h4>
+                        <p className="facts-desc">Retailers (Data Reach)</p>
                       </div>
                     </div>
                   </div>
@@ -447,8 +462,8 @@ export default function Home() {
                     <div className="ts-facts-bg">
                       <img src="/images/icon/fact2.png" alt="" />
                       <div className="ts-facts-content">
-                        <h4 className="ts-facts-num"><span className="counterUp">467</span></h4>
-                        <p className="facts-desc">KM Per Year</p>
+                        <h4 className="ts-facts-num"><span className="counterUp">31</span>m</h4>
+                        <p className="facts-desc">Wholesalers (Data Reach)</p>
                       </div>
                     </div>
                   </div>
@@ -456,8 +471,8 @@ export default function Home() {
                     <div className="ts-facts-bg">
                       <img src="/images/icon/fact3.png" alt="" />
                       <div className="ts-facts-content">
-                        <h4 className="ts-facts-num"><span className="counterUp">858588</span></h4>
-                        <p className="facts-desc">Tons of Goods</p>
+                        <h4 className="ts-facts-num"><span className="counterUp">31</span>m</h4>
+                        <p className="facts-desc">Key Accounts (Data Reach)</p>
                       </div>
                     </div>
                   </div>
@@ -474,7 +489,7 @@ export default function Home() {
           <div className="row">
             <div className="col-lg-5">
               <div className="quote_form">
-                <h2 className="column-title"><span>Delivery &amp; return solutions worldwide</span>Get a Quick Quote</h2>
+                <h2 className="column-title"><span>Ready to Grow Sales and Expand Coverage?</span>Get a Quick Quote</h2>
                 <div className="quote-img">
                   <img className="img-fluid" src="/images/alltransport.png" alt="transport" />
                 </div>
