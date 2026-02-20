@@ -29,9 +29,10 @@ export default function About() {
           <div className="container">
             <div className="row">
               <div className="col-lg-6 about-desc">
-                <h2 className="column-title"><span>We are</span> Africa's Leading Distribution Company</h2>
-                <p className="bold-text">JX Distribution Africa is a registered Ghanaian company focused on sales, marketing, distribution of products and research across Africa, with coverage across all 16 regions of Ghana.</p>
-                <p>With 17 years of experience in logistics and distribution, we discover, develop and create relationships between consumers and products across Ghana and Africa. Our team of experienced sales professionals helps brands enter new markets, drive retail sales, and grow distribution with measurable field execution and live reporting.</p>
+                <h2 className="column-title"><span>Who We Are</span>Company Overview</h2>
+                <p className="bold-text">JX Distribution Africa is a registered distribution and market execution company headquartered in Ghana.</p>
+                <p>We support local and international brands with structured solutions in sales execution, distribution management, marketing activation, and market research &amp; intelligence. Our mandate is clear: we sell products, grow brands, and strengthen market penetration through disciplined execution.</p>
+                <p>We have been in the industry for a decade, resulting in priceless experience and strong partnerships with clients and consumers across various markets.</p>
                 <a href="/services" className="top-right-btn btn btn-primary">Our Services</a>
                 <a href="/contact" className="top-right-btn btn btn-secondary">Contact Us</a>
               </div>
@@ -43,80 +44,96 @@ export default function About() {
         </div>
       </section>
 
-      {/* Company Progress */}
+      {/* Nationwide Coverage */}
       <section id="tw-service-value" className="tw-service-value bg-offwhite">
-        <h2 className="column-title text-center">Company Growth</h2>
+        <h2 className="column-title text-center">Nationwide Operational Coverage</h2>
         <div className="container">
+          <div className="row">
+            <div className="col-md-12 text-center">
+              <p>JX Distribution Africa operates across all 16 regions of Ghana, supported by field teams, logistics, and warehousing capacity.</p>
+              <p>We execute across retail shops, wholesale, modern trade &amp; key accounts, activations, and street vendors/hawkers.</p>
+            </div>
+          </div>
+          <div className="gap-20"></div>
           <div className="row">
             <div className="col-md-3 col-lg-3 text-center">
               <div className="percent-area">
-                <div className="chart" data-percent="75">
-                  <p className="percent">75%</p>
+                <div className="chart" data-percent="85">
+                  <p className="percent">Retail</p>
                 </div>
-                <p className="column-title">2018</p>
+                <p className="column-title">Retail Shops</p>
               </div>
             </div>
             <div className="col-md-3 col-lg-3 text-center">
               <div className="percent-area">
-                <div className="chart" data-percent="82">
-                  <p className="percent">82%</p>
+                <div className="chart" data-percent="78">
+                  <p className="percent">Wholesale</p>
                 </div>
-                <p className="column-title">2020</p>
+                <p className="column-title">Wholesalers</p>
               </div>
             </div>
             <div className="col-md-3 col-lg-3 text-center">
               <div className="percent-area">
-                <div className="chart" data-percent="89">
-                  <p className="percent">89%</p>
+                <div className="chart" data-percent="72">
+                  <p className="percent">Key Accts</p>
                 </div>
-                <p className="column-title">2022</p>
+                <p className="column-title">Key Accounts</p>
               </div>
             </div>
             <div className="col-md-3 col-lg-3 text-center">
               <div className="percent-area">
-                <div className="chart" data-percent="95">
-                  <p className="percent">95%</p>
+                <div className="chart" data-percent="90">
+                  <p className="percent">Coverage</p>
                 </div>
-                <p className="column-title">2024</p>
+                <p className="column-title">All 16 Regions</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Core Values */}
+      {/* Team Advantage */}
       <section id="ts-features-light" className="ts-features-light">
         <div className="container">
           <div className="row text-center">
             <div className="col-md-12">
-              <h2 className="section-title"><span>Don't Miss a Thing</span>Our Core Values</h2>
+              <h2 className="section-title"><span>Our Team Advantage</span>Experienced Execution Leadership</h2>
             </div>
           </div>
           <div className="row">
-            <div className="col-lg-4 col-md-4 text-center">
+            <div className="col-lg-3 col-md-6 text-center">
               <div className="ts-feature-box">
                 <div className="ts-feature-info">
-                  <img src="/images/icon/why-1.png" alt="Integrity" />
-                  <h3 className="ts-feature-title">Integrity</h3>
-                  <p>We uphold strong ethical standards and maintain transparency in all our business relationships and operations.</p>
+                  <img src="/images/icon/why-1.png" alt="Field execution discipline" />
+                  <h3 className="ts-feature-title">Field Execution Discipline</h3>
+                  <p>Operations led by professionals with 10–20 years practical industry experience across multinational and local markets.</p>
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 col-md-4 text-center">
+            <div className="col-lg-3 col-md-6 text-center">
               <div className="ts-feature-box">
                 <div className="ts-feature-info">
-                  <img src="/images/icon/why-3.png" alt="Excellence" />
-                  <h3 className="ts-feature-title">Excellence</h3>
-                  <p>We deliver exceptional service through experienced professionals who are committed to achieving outstanding results for our clients.</p>
+                  <img src="/images/icon/why-3.png" alt="Call center and supervision" />
+                  <h3 className="ts-feature-title">Call Center &amp; Sales Supervision</h3>
+                  <p>Expert call center services and professional sales supervision to maintain execution quality and customer responsiveness.</p>
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 col-md-4 text-center">
+            <div className="col-lg-3 col-md-6 text-center">
               <div className="ts-feature-box">
                 <div className="ts-feature-info">
-                  <img src="/images/icon/why-2.png" alt="Customer Focus" />
-                  <h3 className="ts-feature-title">Customer Focus</h3>
-                  <p>Our clients' success is our success. We build lasting partnerships through reliable service and measurable outcomes.</p>
+                  <img src="/images/icon/why-2.png" alt="Trade knowledge" />
+                  <h3 className="ts-feature-title">Trade &amp; Customer Expertise</h3>
+                  <p>Trade knowledge and customer engagement expertise with up to 31 million wholesale, retail, and key account customer-base data across Ghana and West Africa.</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-3 col-md-6 text-center">
+              <div className="ts-feature-box">
+                <div className="ts-feature-info">
+                  <img src="/images/icon/why-4.png" alt="Performance culture" />
+                  <h3 className="ts-feature-title">Performance-Driven Culture</h3>
+                  <p>Adequate logistics and warehousing support in Ghana and other West African countries for reliable execution.</p>
                 </div>
               </div>
             </div>
