@@ -1,0 +1,29 @@
+name: Live Smoke Monitor
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/30 * * * *'
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target:
+          - name: preview
+            url: https://www.preview.jxdistributionafrica.com
+          - name: production
+            url: https://www.jxdistributionafrica.com
+    steps:
+      - name: Check homepage
+        run: |
+          curl -fLsS "${{ matrix.target.url }}/" | grep -qi "JX Distribution"
+
+      - name: Check shop page
+        run: |
+          curl -fLsS "${{ matrix.target.url }}/shop/" | grep -qi "shop\|product"
+
+      - name: Check contact page
+        run: |
+          curl -fLsS "${{ matrix.target.url }}/contact/" | grep -qi "contact"

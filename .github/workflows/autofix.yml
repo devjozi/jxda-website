@@ -1,0 +1,55 @@
+name: Safe Autofix
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 4 * * *'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run safe dependency autofix
+        run: npm run audit:fix || true
+
+      - name: Run lint autofix
+        run: npm run lint:fix || true
+
+      - name: Run validation after autofix
+        run: npm run check
+        env:
+          NEXT_PUBLIC_WHATSAPP_NUMBER: ${{ secrets.NEXT_PUBLIC_WHATSAPP_NUMBER }}
+          NEXT_PUBLIC_WHATSAPP_MESSAGE: ${{ secrets.NEXT_PUBLIC_WHATSAPP_MESSAGE }}
+          NEXT_PUBLIC_CONTACT_FORM_ACTION: ${{ secrets.NEXT_PUBLIC_CONTACT_FORM_ACTION }}
+
+      - name: Create pull request for autofixes
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: chore/auto-safe-fixes
+          commit-message: "chore: apply safe automated fixes"
+          title: "chore: automated safe fixes"
+          body: |
+            This PR was created automatically and includes only safe fixes:
+            - npm audit fix
+            - eslint --fix
+
+            Validation (`npm run check`) passed before PR creation.
+          labels: |
+            automation
+            maintenance
