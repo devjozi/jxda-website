@@ -1,4 +1,5 @@
 // Purpose: Service detail page with static params for export builds.
+import Link from 'next/link';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { notFound } from 'next/navigation';
@@ -214,8 +215,8 @@ export default function ServiceSingle({ params }: { params: { slug: string } }) 
                 <h1 className="banner-title">{service.title}</h1>
                 <ol className="breadcrumb">
                   <li>Home</li>
-                  <li><a href="/services">Services</a></li>
-                  <li><a href={`/services/${params.slug}`}>{service.title}</a></li>
+                  <li><Link href="/services">Services</Link></li>
+                  <li><Link href={`/services/${params.slug}`}>{service.title}</Link></li>
                 </ol>
               </div>
             </div>
@@ -233,14 +234,14 @@ export default function ServiceSingle({ params }: { params: { slug: string } }) 
               <div className="sidebar">
                 <div className="widget no-padding no-border">
                   <ul className="service-menu">
-                    <li><a href="/services/route-to-market-and-route-to-consumer-development">Route-to-Market & Route-to-Consumer Development</a></li>
-                    <li><a href="/services/social-media-marketing-and-activation-campaigns">Social Media Marketing & Activation Campaigns</a></li>
-                    <li><a href="/services/distribution-and-logistics-coordination">Distribution & Logistics Coordination</a></li>
-                    <li><a href="/services/market-research-and-consumer-intelligence">Market Research & Consumer Intelligence</a></li>
-                    <li><a href="/services/procurement">Procurement</a></li>
-                    <li><a href="/services/sales-team-training-and-performance-management">Sales Team Training & Performance Management</a></li>
-                    <li><a href="/services/call-center-services-for-companies">Call Center Services for Companies</a></li>
-                    <li><a href="/services/sales-automation-and-reporting">Sales Automation & Reporting</a></li>
+                    <li><Link href="/services/route-to-market-and-route-to-consumer-development">Route-to-Market & Route-to-Consumer Development</Link></li>
+                    <li><Link href="/services/social-media-marketing-and-activation-campaigns">Social Media Marketing & Activation Campaigns</Link></li>
+                    <li><Link href="/services/distribution-and-logistics-coordination">Distribution & Logistics Coordination</Link></li>
+                    <li><Link href="/services/market-research-and-consumer-intelligence">Market Research & Consumer Intelligence</Link></li>
+                    <li><Link href="/services/procurement">Procurement</Link></li>
+                    <li><Link href="/services/sales-team-training-and-performance-management">Sales Team Training & Performance Management</Link></li>
+                    <li><Link href="/services/call-center-services-for-companies">Call Center Services for Companies</Link></li>
+                    <li><Link href="/services/sales-automation-and-reporting">Sales Automation & Reporting</Link></li>
                   </ul>
                 </div>
                 <div className="widget no-padding testimonial-static">
@@ -297,7 +298,7 @@ export default function ServiceSingle({ params }: { params: { slug: string } }) 
                       <p>We support local and international brands with structured execution across Ghana and West Africa.</p>
                     </div>
                     <div className="col-lg-4 text-right">
-                      <a className="btn btn-box" href="/contact">Contact Us</a>
+                      <Link className="btn btn-box" href="/contact">Contact Us</Link>
                     </div>
                   </div>
                 </div>

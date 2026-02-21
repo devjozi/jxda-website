@@ -2,6 +2,7 @@
  * Footer — Logicraft structure; JX branding and contact from lib/site.
  */
 
+import Link from 'next/link';
 import { SITE } from '../../lib/site';
 
 export default function Footer() {
@@ -37,11 +38,11 @@ export default function Footer() {
             <div className="col-lg-4 col-md-6 footer-widget">
               <h3 className="widget-title">Quick Links</h3>
               <ul className="list-dash">
-                <li><a href="/">Home</a></li>
-                <li><a href="/shop">Shop</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/services">Our Services</a></li>
-                <li><a href="/contact">Contact Us</a></li>
+                <li><Link href="/">Home</Link></li>
+                <li><Link href="/shop">Shop</Link></li>
+                <li><Link href="/about">About Us</Link></li>
+                <li><Link href="/services">Our Services</Link></li>
+                <li><Link href="/contact">Contact Us</Link></li>
               </ul>
             </div>
             

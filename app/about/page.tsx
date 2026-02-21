@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -15,7 +16,7 @@ export default function About() {
                 <h1 className="banner-title">About Us</h1>
                 <ol className="breadcrumb">
                   <li>Home</li>
-                  <li><a href="/about">About Us</a></li>
+                  <li><Link href="/about">About Us</Link></li>
                 </ol>
               </div>
             </div>
@@ -33,8 +34,8 @@ export default function About() {
                 <p className="bold-text">JX Distribution Africa is a registered distribution and market execution company headquartered in Ghana.</p>
                 <p>We support local and international brands with structured solutions in sales execution, distribution management, marketing activation, and market research &amp; intelligence. Our mandate is clear: we sell products, grow brands, and strengthen market penetration through disciplined execution.</p>
                 <p>We have been in the industry for a decade, resulting in priceless experience and strong partnerships with clients and consumers across various markets.</p>
-                <a href="/services" className="top-right-btn btn btn-primary">Our Services</a>
-                <a href="/contact" className="top-right-btn btn btn-secondary">Contact Us</a>
+                <Link href="/services" className="top-right-btn btn btn-primary">Our Services</Link>
+                <Link href="/contact" className="top-right-btn btn btn-secondary">Contact Us</Link>
               </div>
               <div className="col-lg-6 text-md-center mrt-40">
                 <img className="img-fluid" src="/images/pages/work_circle.jpg" alt="JX Distribution Africa Work" />

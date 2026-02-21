@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -66,7 +67,7 @@ export default function Services() {
                 <h1 className="banner-title">Services</h1>
                 <ol className="breadcrumb">
                   <li>Home</li>
-                  <li><a href="/services">All Services</a></li>
+                  <li><Link href="/services">All Services</Link></li>
                 </ol>
               </div>
             </div>
@@ -94,7 +95,7 @@ export default function Services() {
                     <div className="ts-service-content">
                       <h3 className="service-title">{service.title}</h3>
                       <p>{service.desc}</p>
-                      <p><a className="link-more" href={service.link}>Read More <i className="icon icon-right-arrow2"></i></a></p>
+                      <p><Link className="link-more" href={service.link}>Read More <i className="icon icon-right-arrow2"></i></Link></p>
                     </div>
                   </div>
                 </div>
@@ -119,7 +120,7 @@ export default function Services() {
               <p>Whether you already operate in Ghana or plan to launch a local or imported product, we deliver structured market execution at scale.</p>
             </div>
             <div className="col-lg-4 text-right">
-              <a className="btn btn-box" href="/contact">Get Started</a>
+              <Link className="btn btn-box" href="/contact">Get Started</Link>
             </div>
           </div>
         </div>

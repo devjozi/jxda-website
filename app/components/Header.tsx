@@ -11,6 +11,7 @@
  * Removed: Projects dropdown, Features dropdown, News dropdown (until implemented)
  */
 
+import Link from 'next/link';
 import { SITE, buildWhatsAppUrl } from '../../lib/site';
 
 export default function Header() {
@@ -24,9 +25,9 @@ export default function Header() {
           <div className="row">
             <div className="logo-area clearfix">
               <div className="logo col-lg-3 col-md-12">
-                <a href="/">
+                <Link href="/">
                   <img src="/images/logo.png" alt={SITE.name} />
-                </a>
+                </Link>
               </div>
               <div className="col-lg-9 col-md-12 pull-right">
                 <ul className="top-info unstyled">
@@ -61,9 +62,9 @@ export default function Header() {
           <div className="container">
             <nav className="navbar navbar-expand-lg">
               {/* Logo shown only when nav is in fixed/sticky state (scrolled) */}
-              <a href="/" className="sticky-brand">
+              <Link href="/" className="sticky-brand">
                 <img src="/images/logo.png" alt={SITE.name} />
-              </a>
+              </Link>
               <button
                 className="navbar-toggler"
                 type="button"
@@ -82,19 +83,19 @@ export default function Header() {
               <div className="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
                 <ul className="navbar-nav">
                   <li className="nav-item active">
-                    <a className="nav-link" href="/">Home</a>
+                    <Link className="nav-link" href="/">Home</Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="/shop">Shop</a>
+                    <Link className="nav-link" href="/shop">Shop</Link>
                   </li>
                   <li className="nav-item dropdown">
                     <a className="nav-link" href="#" data-bs-toggle="dropdown">
                       Company<i className="fa fa-angle-down"></i>
                     </a>
                     <ul className="dropdown-menu" role="menu">
-                      <li><a href="/about">About Us</a></li>
-                      <li><a href="/services">Our Services</a></li>
-                      <li><a href="/contact">Contact Us</a></li>
+                      <li><Link href="/about">About Us</Link></li>
+                      <li><Link href="/services">Our Services</Link></li>
+                      <li><Link href="/contact">Contact Us</Link></li>
                     </ul>
                   </li>
                   {/* li end */}
@@ -104,21 +105,21 @@ export default function Header() {
                       Services<i className="fa fa-angle-down"></i>
                     </a>
                     <ul className="dropdown-menu" role="menu">
-                      <li><a href="/services">All Services</a></li>
-                      <li><a href="/services/route-to-market-and-route-to-consumer-development">Route-to-Market & Route-to-Consumer Development</a></li>
-                      <li><a href="/services/social-media-marketing-and-activation-campaigns">Social Media Marketing & Activation Campaigns</a></li>
-                      <li><a href="/services/distribution-and-logistics-coordination">Distribution & Logistics Coordination</a></li>
-                      <li><a href="/services/market-research-and-consumer-intelligence">Market Research & Consumer Intelligence</a></li>
-                      <li><a href="/services/procurement">Procurement</a></li>
-                      <li><a href="/services/sales-team-training-and-performance-management">Sales Team Training & Performance Management</a></li>
-                      <li><a href="/services/call-center-services-for-companies">Call Center Services for Companies</a></li>
-                      <li><a href="/services/sales-automation-and-reporting">Sales Automation & Reporting</a></li>
+                      <li><Link href="/services">All Services</Link></li>
+                      <li><Link href="/services/route-to-market-and-route-to-consumer-development">Route-to-Market & Route-to-Consumer Development</Link></li>
+                      <li><Link href="/services/social-media-marketing-and-activation-campaigns">Social Media Marketing & Activation Campaigns</Link></li>
+                      <li><Link href="/services/distribution-and-logistics-coordination">Distribution & Logistics Coordination</Link></li>
+                      <li><Link href="/services/market-research-and-consumer-intelligence">Market Research & Consumer Intelligence</Link></li>
+                      <li><Link href="/services/procurement">Procurement</Link></li>
+                      <li><Link href="/services/sales-team-training-and-performance-management">Sales Team Training & Performance Management</Link></li>
+                      <li><Link href="/services/call-center-services-for-companies">Call Center Services for Companies</Link></li>
+                      <li><Link href="/services/sales-automation-and-reporting">Sales Automation & Reporting</Link></li>
                     </ul>
                   </li>
                   {/* li end */}
 
                   <li className="nav-item">
-                    <a className="nav-link" href="/contact">Contact</a>
+                    <Link className="nav-link" href="/contact">Contact</Link>
                   </li>
                 </ul>
               </div>

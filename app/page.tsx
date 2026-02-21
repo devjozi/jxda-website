@@ -4,6 +4,7 @@
  * Sections: Hero, Features Light, Why JX, Our Services, FAQ, Testimonials, Facts, Quote/CTA.
  */
 
+import Link from 'next/link';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import QuoteForm from './components/QuoteForm';
@@ -42,7 +43,7 @@ export default function Home() {
                     JX Distribution Africa is a registered distribution and market execution company headquartered in Ghana.
                   </p>
                   <p>
-                    <a className="slider btn btn-primary" href="/#ts-features-light">Know More</a>
+                    <Link className="slider btn btn-primary" href="/#ts-features-light">Know More</Link>
                     <a className="slider btn btn-border" href={whatsappLinks.quickQuote} target="_blank" rel="noreferrer">Get a Quick Quote</a>
                   </p>
                 </div>
