@@ -1,9 +1,9 @@
 # PROGRESS LOG — JX Distribution Website
 
-**Last Updated:** 2026-02-19
+**Last Updated:** 2026-02-20
 **Version:** 0.5.0  
 **Branch:** `develop`  
-**Status:** Product catalog live (53 products), WhatsApp order workflow, CI/CD pipeline ready
+**Status:** Product catalog live (54 products), WhatsApp order workflow, CI/CD pipeline ready, lint blockers resolved on internal routing
 
 ---
 
@@ -115,6 +115,13 @@
 - **WhatsApp config:** Real Ghana number + social links in `lib/site.ts`.
 - **Import system:** `scripts/import-products.ts` + `PRODUCT-DATA-TEMPLATE.csv`.
 - **Deployment docs:** Hostinger static deployment guide, .htaccess, verification script.
+
+## Latest updates (2026-02-20)
+
+- **Internal routing lint fixes:** Replaced internal `<a>` navigation with `next/link` in `app/about/page.tsx`, `app/components/Footer.tsx`, `app/components/Header.tsx`, `app/page.tsx`, `app/services/page.tsx`, and `app/services/[slug]/page.tsx`.
+- **Validation:** `npm run check` now passes end-to-end (`lint`, `typecheck`, `test`, `build:static`) with warnings only.
+- **Current lint posture:** 0 errors, warnings remain for `@next/next/no-img-element` and `@next/next/no-css-tags`.
+- **GitHub hygiene:** Existing open PR #1 was closed to keep execution focused on `develop`.
 
 ## Previous changes (stable)
 
