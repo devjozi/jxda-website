@@ -17,6 +17,7 @@ export const SITE = {
   // Replace social URLs with real profiles when available.
   social: {
     facebook: 'https://web.facebook.com/JxDistribution',
+    twitter: '#',
     TikTok: '#',
     linkedin: 'https://www.linkedin.com/company/jx-distribution/',
     instagram: 'https://www.instagram.com/jxdistribution/',
