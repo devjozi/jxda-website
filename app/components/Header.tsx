@@ -11,10 +11,22 @@
  * Removed: Projects dropdown, Features dropdown, News dropdown (until implemented)
  */
 
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { SITE, buildWhatsAppUrl } from '../../lib/site';
 
 export default function Header() {
+  const pathname = usePathname();
+
+  const isHome = pathname === '/';
+  const isShop = pathname === '/shop' || pathname.startsWith('/shop/');
+  const isAbout = pathname === '/about';
+  const isServices = pathname === '/services' || pathname.startsWith('/services/');
+  const isContact = pathname === '/contact';
+  const isCompany = isAbout || isServices || isContact;
+
   // WhatsApp CTA for the primary header button.
   const quoteUrl = buildWhatsAppUrl('Hi, I want support with sales execution and distribution in Ghana.');
 
@@ -82,14 +94,14 @@ export default function Header() {
 
               <div className="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
                 <ul className="navbar-nav">
-                  <li className="nav-item active">
-                    <Link className="nav-link" href="/">Home</Link>
+                  <li className={`nav-item${isHome ? ' active' : ''}`}>
+                    <Link className={`nav-link${isHome ? ' active' : ''}`} href="/">Home</Link>
                   </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" href="/shop">Shop</Link>
+                  <li className={`nav-item${isShop ? ' active' : ''}`}>
+                    <Link className={`nav-link${isShop ? ' active' : ''}`} href="/shop">Shop</Link>
                   </li>
-                  <li className="nav-item dropdown">
-                    <a className="nav-link" href="#" data-bs-toggle="dropdown">
+                  <li className={`nav-item dropdown${isCompany ? ' active' : ''}`}>
+                    <a className={`nav-link${isCompany ? ' active' : ''}`} href="#" data-bs-toggle="dropdown">
                       Company<i className="fa fa-angle-down"></i>
                     </a>
                     <ul className="dropdown-menu" role="menu">
@@ -100,8 +112,8 @@ export default function Header() {
                   </li>
                   {/* li end */}
 
-                  <li className="nav-item dropdown">
-                    <a className="nav-link" href="#" data-bs-toggle="dropdown">
+                  <li className={`nav-item dropdown${isServices ? ' active' : ''}`}>
+                    <a className={`nav-link${isServices ? ' active' : ''}`} href="#" data-bs-toggle="dropdown">
                       Services<i className="fa fa-angle-down"></i>
                     </a>
                     <ul className="dropdown-menu" role="menu">
@@ -118,8 +130,8 @@ export default function Header() {
                   </li>
                   {/* li end */}
 
-                  <li className="nav-item">
-                    <Link className="nav-link" href="/contact">Contact</Link>
+                  <li className={`nav-item${isContact ? ' active' : ''}`}>
+                    <Link className={`nav-link${isContact ? ' active' : ''}`} href="/contact">Contact</Link>
                   </li>
                 </ul>
               </div>
