@@ -152,28 +152,6 @@ export default async function ProductPage({ params }: Props) {
 
       <Header />
 
-      {/* ── Page Banner ────────────────────────────────────────────────────── */}
-      <div
-        className="banner-area"
-        id="banner-area"
-        style={{ backgroundImage: 'url(/images/banner/banner1.jpg)' }}
-      >
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col">
-              <div className="banner-heading">
-                <h1 className="banner-title">{product.name}</h1>
-                <ol className="breadcrumb">
-                  <li><Link href="/">Home</Link></li>
-                  <li><Link href="/shop">Shop</Link></li>
-                  <li>{product.category}</li>
-                </ol>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* ── Trust Bar ──────────────────────────────────────────────────────── */}
       <div className="py-2" style={{ background: '#1a2e4a', color: '#fff', fontSize: '0.8rem' }}>
         <div className="container">
