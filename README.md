@@ -20,6 +20,8 @@ Start production server: `npm run start`
 
 ## Key docs
 
+> Status source of truth: use `PROGRESS.md` first (truth-synced). Treat older plan/deployment docs as historical snapshots unless updated more recently.
+
 ### For Execution
 - **[PROJECT_PLAN.md](PROJECT_PLAN.md)** — Complete task list, sprint breakdown, acceptance criteria ⭐ START HERE
 - **[AGENT_PROMPT.md](AGENT_PROMPT.md)** — Instructions for AI agents to execute tasks autonomously

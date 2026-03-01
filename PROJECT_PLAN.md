@@ -204,6 +204,7 @@ Transform JX Distribution Africa website from a marketing-only site to a **full-
 | 6.6 | Cross-browser testing | `fix/browser-compatibility` | 🔴 Not Started |
 | 6.7 | Accessibility audit | `fix/accessibility` | 🔴 Not Started |
 | 6.8 | Performance optimization | `fix/performance` | 🔴 Not Started |
+| 6.9 | Fix navbar current-page indicator stuck on Home | `fix/nav-active-indicator` | 🔴 Not Started |
 
 **Acceptance Criteria:**
 - ✅ Site works perfectly on mobile, tablet, desktop
@@ -216,6 +217,26 @@ Transform JX Distribution Africa website from a marketing-only site to a **full-
 **Branches:** `fix/mobile-navigation`, `fix/responsive-images`, `fix/responsive-buttons`, `fix/responsive-typography`, `fix/cta-buttons`, `fix/browser-compatibility`, `fix/accessibility`, `fix/performance`  
 **Dependencies:** Sprint 1-5 complete (test final site)  
 **Estimated Time:** 8-12 hours
+
+---
+
+### **SPRINT 9: EXPERIENCE POLISH (MINIMAL + HIGH IMPACT)**
+
+**Goal:** Add efficient, professional, minimal interaction polish that improves engagement without bloating the site.
+
+| # | Task | Branch | Status |
+|---|------|--------|--------|
+| 9.1 | Add site-wide minimal professional animations/effects (Apple-like polish, performance-first) | `feature/minimal-motion-polish` | 🔴 Not Started |
+
+**Acceptance Criteria:**
+- ✅ Animations are subtle, purposeful, and consistent across key UI surfaces
+- ✅ Motion respects reduced-motion preference (`prefers-reduced-motion`)
+- ✅ No significant performance regressions (Lighthouse/real UX stays strong)
+- ✅ UX improvements are intuitive, not distracting
+
+**Branch:** `feature/minimal-motion-polish`  
+**Dependencies:** Sprint 6 complete  
+**Estimated Time:** 4-6 hours
 
 ---
 
@@ -293,7 +314,7 @@ Transform JX Distribution Africa website from a marketing-only site to a **full-
 
 ## 📊 **PROGRESS TRACKING**
 
-**Overall Completion:** 25% (15/60 tasks)
+**Overall Completion:** 24% (15/62 tasks)
 
 | Sprint | Tasks | Completed | Progress |
 |--------|-------|-----------|----------|
@@ -303,9 +324,10 @@ Transform JX Distribution Africa website from a marketing-only site to a **full-
 | Sprint 3: Cart & Checkout | 9 | 2 | 22% |
 | Sprint 4: Content Updates | 12 | 0 | 0% |
 | Sprint 5: Pages & Features | 8 | 0 | 0% |
-| Sprint 6: UX & Responsive | 8 | 0 | 0% |
+| Sprint 6: UX & Responsive | 9 | 0 | 0% |
 | Sprint 7: SEO & Analytics | 7 | 0 | 0% |
 | Sprint 8: Production Launch | 7 | 0 | 0% |
+| Sprint 9: Experience Polish | 1 | 0 | 0% |
 | Post-Launch: Payments | 7 | 0 | 0% |
 
 ---

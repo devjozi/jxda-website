@@ -2,11 +2,13 @@
 
 ## Pre-Launch (Complete Before Production)
 
+> Truth-synced on 2026-03-01. Checkboxes reflect current repo state and validated commands (`npm run check`).
+
 ### Content
 - [ ] All placeholder text replaced with real content
-- [ ] Contact information accurate (phone, email, address)
-- [ ] Social media links point to real profiles
-- [ ] Product catalog complete with real products
+- [ ] Contact information accurate (phone, email, address) — verify against approved business copy
+- [ ] Social media links point to real profiles — TikTok still placeholder in `lib/site.ts`
+- [x] Product catalog complete with real products
 - [ ] Pricing is accurate and approved
 - [ ] About page reflects actual company info
 - [ ] Legal pages ready (Privacy Policy, Terms of Service)
@@ -14,25 +16,27 @@
 ### Functionality
 - [ ] All forms work and send emails
 - [ ] Contact form tested with real email
-- [ ] Checkout flow tested end-to-end
-- [ ] WhatsApp CTAs open correct chat and message
+- [x] Checkout flow implemented (WhatsApp-first workflow)
+- [ ] Checkout flow tested end-to-end on live domain
+- [ ] WhatsApp CTAs open correct chat and message with production number
 - [ ] Error states display helpful messages
 
 ### Technical
-- [ ] `npm run build` completes without errors
-- [ ] No TypeScript errors
-- [ ] No broken imports
+- [x] `npm run build:static` completes without errors
+- [x] No TypeScript errors
+- [x] No broken imports
 - [ ] Images load correctly and are optimized
-- [ ] 404 page renders with working navigation
+- [x] 404 page renders with working navigation
 
 ### Deployment
-- [ ] Preview deploy passes smoke test
+- [x] Preview/production smoke monitor workflow exists (`.github/workflows/live-smoke.yml`)
+- [ ] Preview deploy passes manual smoke test
 - [ ] Staging deploy passes QA checklist
 - [ ] Production deploy verified on custom domain
-- [ ] SSL certificate active and valid
-- [ ] Environment variables set in Vercel
+- [ ] SSL certificate active and valid (manual verification)
+- [ ] Environment variables set in GitHub Actions secrets
 
 ### Monitoring
 - [ ] Analytics configured
 - [ ] Error monitoring configured
-- [ ] Uptime monitoring configured
+- [x] Uptime monitoring configured (scheduled smoke checks every 30 minutes)

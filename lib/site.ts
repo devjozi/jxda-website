@@ -11,19 +11,19 @@ export const SITE = {
   // Replace with the official contact email for JX Distribution Africa.
   email: 'info@jxdistributionafrica.com',
   // Replace with the official phone number.
-  phone: '+233 XX XXX XXXX',
+  phone: '+233 53 883 8135',
   // Public note from the company profile.
   note: 'We do not sell or market alcoholic, gambling, and tobacco products.',
   // Replace social URLs with real profiles when available.
   social: {
-    facebook: '#',
-    twitter: '#',
-    linkedin: '#',
-    instagram: '#',
+    facebook: 'https://web.facebook.com/JxDistribution',
+    TikTok: '#',
+    linkedin: 'https://www.linkedin.com/company/jx-distribution/',
+    instagram: 'https://www.instagram.com/jxdistribution/',
   },
   whatsapp: {
     // Digits only for wa.me links.
-    number: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '233XXXXXXXXX').replace(/\D/g, ''),
+    number: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '233538838135').replace(/\D/g, ''),
     message: process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ?? "Hi, I want to grow sales and market coverage with JX Distribution Africa.",
   },
   contactForm: {
