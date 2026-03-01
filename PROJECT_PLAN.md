@@ -240,6 +240,35 @@ Transform JX Distribution Africa website from a marketing-only site to a **full-
 
 ---
 
+### **SPRINT 10: PRE-LAUNCH QUALITY & CONVERSION (USER-RAISED 2026-03-01)**
+
+**Goal:** Resolve final UX/content/performance blockers before `develop → main` release PR.
+
+| # | Task | Branch | Status |
+|---|------|--------|--------|
+| 10.1 | Replace services section images with suitable licensed assets | `feature/services-image-refresh` | 🔴 Not Started |
+| 10.2 | Verify and approve product prices using shared pricelist | `chore/price-verification` | 🔴 Not Started (Needs Input) |
+| 10.3 | Update sales channel records with approved “million” profile numbers | `feature/facts-metrics-update` | 🔴 Not Started (Needs Input) |
+| 10.4 | Replace “How We Work” with true testimonials and maintainable data source | `feature/testimonials-refresh` | ✅ Done |
+| 10.5 | Investigate and optimize `/shop` → product detail navigation latency in local preview | `fix/shop-navigation-latency` | 🟡 In Progress |
+| 10.6 | Fix product detail order-area visual overlay artifact | `fix/product-detail-overlay` | ✅ Done |
+| 10.7 | Improve shop first-open discoverability (guided search/category-first UX) | `feature/shop-guided-discovery` | ✅ Done |
+| 10.8 | Add useful animated product highlight text (cookie/preference aware, privacy-safe) | `feature/personalized-motion-copy` | 🔴 Not Started |
+| 10.9 | Add animated WhatsApp delivery promise broadcast (1h–48h CTA) | `feature/delivery-promise-banner` | 🔴 Not Started |
+
+**Acceptance Criteria:**
+- ✅ No confusing overlays or duplicate decorative layers on product detail pages
+- ✅ First-time shop visitors are guided to search or category selection before full browsing
+- ✅ Testimonials are editable via structured content data (no hardcoded JSX blocks)
+- ✅ Release-critical data (prices, channel metrics, legal copy) is approved by stakeholder source
+- ✅ Any personalization respects user privacy and consent requirements
+
+**Branches:** `feature/services-image-refresh`, `chore/price-verification`, `feature/facts-metrics-update`, `fix/shop-navigation-latency`, `feature/personalized-motion-copy`, `feature/delivery-promise-banner`  
+**Dependencies:** Sprint 4 + Sprint 6 baseline complete, stakeholder approvals for content-sensitive tasks  
+**Estimated Time:** 10-18 hours (excluding external approvals)
+
+---
+
 ### **SPRINT 7: SEO & ANALYTICS**
 
 **Goal:** Ensure site is discoverable and trackable

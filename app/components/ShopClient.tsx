@@ -61,15 +61,20 @@ export default function ShopClient({ products }: { products: Product[] }) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<SortOption>('default');
+  const [hasStartedBrowsing, setHasStartedBrowsing] = useState(false);
 
   const categoryCount = (cat: string) => products.filter((p) => p.category === cat).length;
 
+  const hasSearch = searchQuery.trim().length > 0;
+  const shouldShowResults = hasStartedBrowsing || Boolean(selectedCategory) || hasSearch;
+
   const filteredProducts = useMemo(
-    () => applyShopFilters({ products, selectedCategory, searchQuery, sortBy }),
-    [products, selectedCategory, searchQuery, sortBy],
+    () => (shouldShowResults ? applyShopFilters({ products, selectedCategory, searchQuery, sortBy }) : []),
+    [products, selectedCategory, searchQuery, sortBy, shouldShowResults],
   );
 
   const handleCategorySelect = (cat: string | null) => {
+    setHasStartedBrowsing(true);
     setSelectedCategory(cat);
     setSearchQuery('');
   };
@@ -140,10 +145,20 @@ export default function ShopClient({ products }: { products: Product[] }) {
                   className="form-control border-start-0 ps-0"
                   placeholder="Search by name, model, SKU…"
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                    if (e.target.value.trim()) {
+                      setHasStartedBrowsing(true);
+                    }
+                  }}
                 />
                 {searchQuery && (
-                  <button className="btn btn-outline-secondary" onClick={() => setSearchQuery('')}>
+                  <button
+                    className="btn btn-outline-secondary"
+                    onClick={() => {
+                      setSearchQuery('');
+                    }}
+                  >
                     <i className="fa fa-times" />
                   </button>
                 )}
@@ -153,8 +168,11 @@ export default function ShopClient({ products }: { products: Product[] }) {
             {/* Category pills */}
             <div className="col-12 col-md col-lg d-flex flex-wrap gap-1">
               <button
-                onClick={() => handleCategorySelect(null)}
-                className={`btn btn-sm ${!selectedCategory ? 'btn-primary' : 'btn-outline-secondary'}`}
+                onClick={() => {
+                  setHasStartedBrowsing(true);
+                  handleCategorySelect(null);
+                }}
+                className={`btn btn-sm ${!selectedCategory && shouldShowResults ? 'btn-primary' : 'btn-outline-secondary'}`}
               >
                 All ({products.length})
               </button>
@@ -185,7 +203,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
           </div>
 
           {/* Active filter indicator */}
-          {(selectedCategory || searchQuery) && (
+          {(selectedCategory || searchQuery || shouldShowResults) && (
             <div className="mt-2 d-flex align-items-center gap-2" style={{ fontSize: '0.82rem' }}>
               <span className="text-muted">Showing {filteredProducts.length} of {products.length} products</span>
               {selectedCategory && (
@@ -230,7 +248,38 @@ export default function ShopClient({ products }: { products: Product[] }) {
       {/* ── Product Grid ──────────────────────────────────────────────────── */}
       <section className="py-5">
         <div className="container">
-          {filteredProducts.length === 0 ? (
+          {!shouldShowResults && (
+            <div className="text-center py-5" style={{ maxWidth: '760px', margin: '0 auto' }}>
+              <i className="fa fa-compass fa-3x text-muted mb-3 d-block" />
+              <h4 style={{ color: '#1a2e4a', fontWeight: 700 }}>Find products faster</h4>
+              <p className="text-muted mb-4">
+                Start with a search, choose a category, or click below to browse the full catalogue.
+              </p>
+              <div className="d-flex flex-wrap justify-content-center gap-2 mb-3">
+                {Object.values(PRODUCT_CATEGORIES).map((cat) => (
+                  <button
+                    key={`quick-${cat}`}
+                    className="btn btn-outline-primary btn-sm"
+                    onClick={() => handleCategorySelect(cat)}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  setHasStartedBrowsing(true);
+                  setSelectedCategory(null);
+                  setSearchQuery('');
+                }}
+              >
+                Browse all products
+              </button>
+            </div>
+          )}
+
+          {shouldShowResults && filteredProducts.length === 0 ? (
             <div className="text-center py-5">
               <i className="fa fa-search fa-3x text-muted mb-3 d-block" />
               <h5 className="text-muted">No products found</h5>
@@ -243,7 +292,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
                 View all products
               </button>
             </div>
-          ) : (
+          ) : shouldShowResults ? (
             <div className="row g-4">
               {filteredProducts.map((p) => {
                 const cfg = CATEGORY_CONFIG[p.category] ?? { icon: 'fa fa-box', badge: 'bg-secondary', bg: '#6c757d', desc: '' };
@@ -346,10 +395,10 @@ export default function ShopClient({ products }: { products: Product[] }) {
                 );
               })}
             </div>
-          )}
+          ) : null}
 
           {/* Bottom CTA */}
-          {filteredProducts.length > 0 && (
+          {shouldShowResults && filteredProducts.length > 0 && (
             <div className="text-center mt-5 pt-4 border-top">
               <p className="text-muted mb-3">
                 Can&apos;t find what you&apos;re looking for? We distribute many more products across Ghana.
