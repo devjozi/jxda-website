@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import QuoteForm from './components/QuoteForm';
 import { buildWhatsAppUrl } from '../lib/site';
+import { HOMEPAGE_TESTIMONIALS, SALES_CHANNEL_METRICS } from '../lib/home-content';
 
 export default function Home() {
   // Centralized WhatsApp links for homepage CTAs.
@@ -408,32 +409,22 @@ export default function Home() {
               </div>
             </div>
             <div className="col-lg-6 testimonial-client">
-              <h2 className="column-title"><span>How We Work</span>Our Execution Model</h2>
+              <h2 className="column-title"><span>Client Voices</span>Testimonials</h2>
               <div className="owl-carousel owl-theme testimonial-slide owl-dark" id="testimonial-slide">
-                <div className="item">
-                  <div className="quote-item quote-square">
-                    <span className="quote-text">01 Market Assessment &amp; Channel Strategy  •  02 Territory Mapping &amp; Route Design  •  03 Product Stocking &amp; Distribution Planning  •  04 Structured Sales Execution (steps to a call)</span>
-                    <div className="quote-item-footer">
-                      <img className="testimonial-thumb" src="/images/clients/testimonial1.png" alt="testimonial" />
-                      <div className="quote-item-info">
-                        <p className="quote-author">Execution Sequence</p>
-                        <span className="quote-subtext">Operational Framework</span>
+                {HOMEPAGE_TESTIMONIALS.map((testimonial) => (
+                  <div className="item" key={testimonial.id}>
+                    <div className="quote-item quote-square">
+                      <span className="quote-text">{testimonial.quote}</span>
+                      <div className="quote-item-footer">
+                        <img className="testimonial-thumb" src={testimonial.image} alt={testimonial.author} />
+                        <div className="quote-item-info">
+                          <p className="quote-author">{testimonial.author}</p>
+                          <span className="quote-subtext">{testimonial.role}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="item">
-                  <div className="quote-item quote-square">
-                    <span className="quote-text">05 Activation &amp; Consumer Conversion  •  06 Customer Acquisition &amp; Data/Coverage Build  •  07 Reporting, Review &amp; Optimization  •  08 Standby 24/7 Call Center and Telesales Team</span>
-                    <div className="quote-item-footer">
-                      <img className="testimonial-thumb" src="/images/clients/testimonial2.png" alt="testimonial" />
-                      <div className="quote-item-info">
-                        <h3 className="quote-author">Execution Sequence</h3>
-                        <span className="quote-subtext">Performance Loop</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -450,33 +441,17 @@ export default function Home() {
             <div className="col-lg-7 col-md-12">
               <div className="container">
                 <div className="row text-center">
-                  <div className="col-lg-4 col-md-4">
-                    <div className="ts-facts-bg">
-                      <img src="/images/icon/fact1.png" alt="" />
-                      <div className="ts-facts-content">
-                        <h4 className="ts-facts-num"><span className="counterUp">31</span>m</h4>
-                        <p className="facts-desc">Retailers (Data Reach)</p>
+                  {SALES_CHANNEL_METRICS.map((metric) => (
+                    <div className="col-lg-4 col-md-4" key={metric.id}>
+                      <div className="ts-facts-bg">
+                        <img src={metric.icon} alt="" />
+                        <div className="ts-facts-content">
+                          <h4 className="ts-facts-num"><span className="counterUp">{metric.valueInMillions}</span>m</h4>
+                          <p className="facts-desc">{metric.label}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="col-lg-4 col-md-4">
-                    <div className="ts-facts-bg">
-                      <img src="/images/icon/fact2.png" alt="" />
-                      <div className="ts-facts-content">
-                        <h4 className="ts-facts-num"><span className="counterUp">31</span>m</h4>
-                        <p className="facts-desc">Wholesalers (Data Reach)</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-md-4">
-                    <div className="ts-facts-bg">
-                      <img src="/images/icon/fact3.png" alt="" />
-                      <div className="ts-facts-content">
-                        <h4 className="ts-facts-num"><span className="counterUp">31</span>m</h4>
-                        <p className="facts-desc">Key Accounts (Data Reach)</p>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
