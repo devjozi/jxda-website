@@ -1,101 +1,62 @@
 # PROGRESS LOG — JX Distribution Website
 
-**Last Updated:** 2026-02-20
-**Version:** 0.6.0  
+**Last Updated:** 2026-03-01  
+**Version:** 0.6.1  
 **Branch:** `develop`  
-**Status:** Shop catalogue overhauled (SEO, CRO, UX), internal routing lint blockers resolved, unit tests added (45 passing)
+**Status:** Truth-synced to repo + CI reality (checks passing, docs aligned)
+
+---
+
+## Truth snapshot (verified)
+
+Source of truth validation run on 2026-03-01:
+- `npm run check` ✅ passes end-to-end
+  - Lint: **0 errors**, warnings only (`no-img-element`, `no-css-tags`)
+  - TypeScript: ✅ pass
+  - Tests: ✅ 45/45 passing (4 test files)
+  - Static build: ✅ pass, **71 static pages generated**
+- Git branch: `develop` (tracking `origin/develop`)
+- Workflows present: deploy, quality gate, security scan, live smoke monitor
 
 ---
 
 ## Current state
 
-- **Homepage:** Hero, Features Light, Why JX, Our Services (6), FAQ + Testimonials, Facts, Quote/CTA — all converted from reference template.
-- **Commerce:** `/shop` (53 products, category cards, sticky filter/sort bar, trust strip, SEO metadata), `/shop/[slug]` (JSON-LD Product schema, rich metadata with Ghana-targeted keywords, trust signals, related products, WhatsApp CTA above fold), `/shop/checkout` (WhatsApp order workflow). Categories in `lib/products.ts`.
-- **JX customization:** Site config in `lib/site.ts`; Header/Footer use JX name, contact placeholders, Shop link; Quick Links and copyright updated.
-- **Testing:** 45 unit tests passing across 4 test files (`shop-filters`, `products`, `site`, `contact-route`).
-- **Preview and publish:** Use **PREVIEW_AND_PUBLISH.md** for step-by-step browser checks and Hostinger Node deploy.
+- **Homepage:** Core template sections implemented (hero, features, services, FAQ/testimonials, facts, CTA).
+- **Commerce:** `/shop` + `/shop/[slug]` + `/shop/checkout` implemented with WhatsApp-first ordering flow.
+- **Catalog:** 53+ products across 5 categories, with search/filter/sort and product detail pages.
+- **SEO/Schema:** Shop listing metadata + per-product metadata + JSON-LD (`Product`, `BreadcrumbList`).
+- **Testing:** 45 unit tests passing (`tests/products.test.ts`, `tests/shop-filters.test.ts`, `tests/site.test.ts`, `tests/contact-route.test.ts`).
+- **CI/CD:** Static Hostinger deploy workflow + quality gate + security + 30-min live smoke checks configured.
 
 ---
 
-## ✅ Completed
+## Important reality checks
 
-### Priority 0: Deployment Foundation ⚡ COMPLETE
-- [x] Static export as primary deployment mode (Hostinger Premium compatible)
-- [x] Build verified: `npm run build:static` generates 69 static pages
-- [x] Contact form via Formspree (serverless, no backend needed)
-- [x] GitHub Actions configured (`build → deploy to Hostinger preview/production`)
-- [x] Environment variables documented (`.env.example`)
-- [x] Deployment guides created:
-  - `HOSTINGER_STATIC_EXPORT.md` — Architecture & deployment process
-  - `GITHUB_ACTIONS_SETUP.md` — 5-minute GitHub secret setup
-- [x] Next.js config supports conditional static export
-- [x] Project prepared for future Node.js migration (Vercel/Hostinger Business)
-
-**Status:** Ready to deploy to Hostinger. See `GITHUB_ACTIONS_SETUP.md` for next steps.
-
-### Phase 1–4 (Foundation, Layout, Header, Footer)
-- Next.js static export mode, template assets in `/public`, `app/layout.tsx`, `app/components/Header.tsx`, `app/components/Footer.tsx`.
-
-### Phase 5: Homepage body sections
-| # | Section | Status |
-|---|---------|--------|
-| 1 | Hero/Banner carousel (3 slides) | ✅ |
-| 2 | Features Light (3 service boxes) | ✅ |
-| 3 | Why JX Distribution (6 benefits + center image) | ✅ |
-| 4 | Our Services (6 items) | ✅ |
-| 5 | FAQ (accordion) | ✅ |
-| 6 | Testimonials | ✅ |
-| 7 | Facts (stats) | ✅ |
-| 8 | Quote / CTA form | ✅ |
-| 9 | Latest news (template) | ⏳ Optional |
-| 10 | Quote request forms (integrated in CTA) | ✅ |
-
-### Commerce (enhanced — Sprint 2 + partial Sprint 3)
-- [x] Product list page (`/shop`) with category filter and search
-- [x] Product detail page (`/shop/[slug]`) with WhatsApp order form
-- [x] Checkout page (`/shop/checkout`) with WhatsApp order workflow
-- [x] 53 real Autoparts + multi-category products in `lib/products.ts`
-- [x] `PRODUCT_CATEGORIES` constants: Autoparts, FMCG, Electronics, Fabrics, Agricultural Inputs
-- [x] CSV import system (`scripts/import-products.ts`, `PRODUCT-DATA-TEMPLATE.csv`)
-- [x] `WhatsAppOrder` component for structured order messages
-
-### Shop catalogue SEO/CRO/UX overhaul (v0.6.0)
-- [x] `app/shop/page.tsx` converted to server component — exports full `Metadata` (title, description, OG, keywords)
-- [x] `app/components/ShopClient.tsx` — new client island: category cards with icons, sticky filter+sort bar, trust strip, hover-lift product cards, quick WhatsApp button per card
-- [x] `lib/shop-filters.ts` — pure filter/sort functions extracted from UI (testable, reusable)
-- [x] `app/shop/[slug]/page.tsx` — JSON-LD `Product` + `BreadcrumbList` schema, per-product `generateMetadata` (Ghana-targeted keywords), trust signals grid, related products section, above-fold WhatsApp CTA
-- [x] `app/shop/page.tsx` — page banner added (matches site style), server-side metadata
-- [x] Duplicate-safe sort (does not mutate source array)
-
-### Testing (v0.6.0)
-- [x] `tests/shop-filters.test.ts` — 22 tests covering filter, sort, combined logic
-- [x] `tests/products.test.ts` — 18 tests covering catalogue data integrity and utility functions
-- [x] All 45 tests passing (`npm test`)
-
-### JX customization (initial)
-- [x] `lib/site.ts` — site name, tagline, address, email, phone, social (placeholders)
-- [x] Header: logo → `/`, JX contact in top bar, Shop nav link, Contact / Request a Quote → `/#quote-area`
-- [x] Footer: JX description, Quick Links (Home, Shop, Services, FAQs, Contact), contact from SITE, copyright “JX Distribution”, social from SITE
-- [x] Real Ghana contact: +233 53 883 8135, Facebook, LinkedIn, Instagram updated in `lib/site.ts`
-- [ ] Replace template logos with JX branding assets when ready
+- `lib/site.ts` now contains real phone and core social links, with TikTok still placeholder (`#`).
+- Any doc claiming “real Ghana contact/social links are already live in code” is outdated.
+- `PROJECT_PLAN.md` reflects the historical planning baseline and is **not** an accurate completion tracker today.
+- `DEPLOYMENT_READY.md` is an older deployment snapshot (v0.5.0 assumptions and older page counts).
 
 ---
 
-## ⏳ Next steps
+## ✅ Completed (high confidence)
 
-### Immediate (Deploy to Hostinger)
-1. **Set up GitHub Actions secrets** (5 min) — See `GITHUB_ACTIONS_SETUP.md`
-   - Hostinger SSH credentials
-   - WhatsApp number and message
-   - Formspree contact form endpoint
-2. **Test deployment** — Push to `develop`, verify preview environment
-3. **QA on preview** — Browser testing checklist in `PREVIEW_CHECKLIST.md`
-4. **Deploy to production** — Merge `develop → main`, verify live site
+- Static export deployment path for Hostinger
+- Shop UX/CRO/SEO overhaul (v0.6.0 scope)
+- Filter/sort extraction to `lib/shop-filters.ts`
+- Product-page schema/metadata improvements
+- Unit tests for catalogue, filters, contact route, site config
+- CI workflows for quality/security/deploy/smoke checks
 
-### After Deploy
-- **Sprint 2 (remaining):** Source real product images, update homepage services images (tasks 2.2, 2.3, 2.8)
-- **Sprint 3 (remaining):** Full cart + localStorage persistence + order email (tasks 3.1–3.4, 3.6–3.8)
-- **See:** [PROJECT_PLAN.md](PROJECT_PLAN.md) for complete roadmap
+---
+
+## ⏳ Open / next priorities
+
+1. **Content truth:** Complete remaining social profile placeholders (TikTok) and verify all live URLs.
+2. **Go-live readiness:** Complete unchecked launch controls (legal pages, monitoring stack, final QA).
+3. **Commerce depth:** Implement cart persistence + checkout validation/order confirmation (planned Sprint 3 items).
+4. **Asset quality:** Replace template/placeholder imagery with licensed production assets.
 
 ---
 
@@ -103,75 +64,35 @@
 
 | Path | Purpose |
 |------|---------|
-| `app/page.tsx` | Homepage (all sections) |
-| `app/shop/page.tsx` | Shop listing — server component with SEO metadata + banner |
-| `app/shop/[slug]/page.tsx` | Product detail — JSON-LD schema, rich metadata, related products |
-| `app/shop/checkout/page.tsx` | Checkout placeholder |
-| `app/components/ShopClient.tsx` | Client island: category cards, sticky filter/sort, product grid |
-| `lib/shop-filters.ts` | Pure filter + sort functions (used by ShopClient) |
-| `lib/site.ts` | JX branding and contact config |
-| `lib/products.ts` | Product data (53 products) |
-| `app/components/Header.tsx` | Header (JX + Shop) |
-| `app/components/Footer.tsx` | Footer (JX + Quick Links) |
-| **PREVIEW_AND_PUBLISH.md** | What to do in the browser + how to build and publish |
-| `app/components/WhatsAppOrder.tsx` | WhatsApp order form component |
-| `lib/product-data-import.ts` | CSV import utilities |
-| `scripts/import-products.ts` | CLI import script |
-| **IMPORTING-PRODUCTS.md** | Product data import guide |
-| `tests/shop-filters.test.ts` | Unit tests — filter/sort logic (22 tests) |
-| `tests/products.test.ts` | Unit tests — catalogue data integrity (18 tests) |
+| `app/shop/page.tsx` | Shop listing shell + metadata |
+| `app/components/ShopClient.tsx` | Search/filter/sort UI + product cards |
+| `app/shop/[slug]/page.tsx` | Product details + structured data |
+| `app/shop/checkout/page.tsx` | WhatsApp-first checkout flow |
+| `lib/products.ts` | Product catalogue and categories |
+| `lib/shop-filters.ts` | Pure filter/sort logic |
+| `lib/site.ts` | Company/contact/social/WhatsApp config |
+| `.github/workflows/deploy.yml` | Hostinger static deployment |
+| `.github/workflows/quality-gate.yml` | Lint + typecheck + tests + build gate |
+| `.github/workflows/security.yml` | npm audit + CodeQL |
+| `.github/workflows/live-smoke.yml` | Preview/production health checks |
 
 ---
 
-## Recent changes (v0.6.0)
+## Known issues / debt
 
-- **Shop listing overhaul:** `app/shop/page.tsx` is now a server component exporting full SEO `Metadata`; client-side state delegated to new `ShopClient` component.
-- **ShopClient:** Category quick-nav cards with Font Awesome icons; sticky search + category pills + sort bar; trust strip; hover-lift product cards; per-card WhatsApp quick-order button.
-- **Filter/sort logic extracted:** `lib/shop-filters.ts` contains pure `filterProducts`, `sortProducts`, and `applyShopFilters` functions — decoupled from React, fully unit-testable.
-- **Product detail SEO:** `generateMetadata` now outputs per-product title, description, Ghana-targeted keywords, canonical URL, and Open Graph tags.
-- **JSON-LD schema:** Every product page now emits `Product` (with offers, availability, areaServed: Ghana) and `BreadcrumbList` structured data — eligible for rich results in Google Search.
-- **Trust signals:** Both listing and detail pages include the Official Distributor / Genuine Products / 16 Regions / 24/7 Support trust strip.
-- **Related products:** Product detail pages show up to 4 items from the same category.
-- **Unit tests:** 40 new tests added (22 × shop-filters, 18 × products). Total suite: 45 tests, all passing.
-
-## Recent changes (v0.5.0)
-
-- **Product catalog:** 54 real Autoparts + multi-category products; categories: Autoparts, FMCG, Electronics, Fabrics, Agricultural Inputs.
-- **Shop listing:** Category filter buttons + real-time search added to `/shop`.
-- **Product detail:** Price-on-request display and `WhatsAppOrder` component on `/shop/[slug]`.
-- **Checkout:** Replaced placeholder with 3-step guide and `WhatsAppOrder` (general inquiry mode).
-- **Carousel:** 2 new slides added (B2C + B2B) on homepage.
-- **WhatsApp config:** Real Ghana number + social links in `lib/site.ts`.
-- **Import system:** `scripts/import-products.ts` + `PRODUCT-DATA-TEMPLATE.csv`.
-- **Deployment docs:** Hostinger static deployment guide, .htaccess, verification script.
-
-## Latest updates (2026-02-20)
-
-- **Internal routing lint fixes:** Replaced internal `<a>` navigation with `next/link` in `app/about/page.tsx`, `app/components/Footer.tsx`, `app/components/Header.tsx`, `app/page.tsx`, `app/services/page.tsx`, and `app/services/[slug]/page.tsx`.
-- **Validation:** `npm run check` now passes end-to-end (`lint`, `typecheck`, `test`, `build:static`) with warnings only.
-- **Current lint posture:** 0 errors, warnings remain for `@next/next/no-img-element` and `@next/next/no-css-tags`.
-- **GitHub hygiene:** Existing open PR #1 was closed to keep execution focused on `develop`.
-
-## Previous changes (stable)
-
-- Layout, CSS, JS bootstrapping complete.
-- FAQ Bootstrap 5 accordion, hero carousel Bootstrap 5 controls.
-- `QuoteForm` client component, 404 page.
-
-## Known issues
-
-- **Icon fonts:** May show as squares; fix paths in CSS or use SVG/icons later if needed.
+- Lint warnings from intentional template compatibility patterns (`<img>` and stylesheet link tags).
+- Icon font rendering can degrade depending on asset path resolution.
+- Some planning/deployment docs are legacy snapshots and need periodic truth-sync updates.
 
 ---
 
 ## Versioning
 
-- **0.1.0** — Foundation, layout, Header, Footer, hero + features light.
-- **0.2.0** — Full homepage sections, commerce (shop/list/detail/checkout), JX config and Header/Footer customization, PREVIEW_CHECKLIST.
-- **0.3.0** — Planning phase complete: PROJECT_PLAN.md, BRANCHING_STRATEGY.md, AGENT_PROMPT.md, ready for CI/CD deployment.
-- **0.3.1** — Enable server mode, add initial deployment docs and env setup.
-- **0.3.2** — Align docs and CI/CD for Hostinger Node.js deployment.
-- **0.4.0** — Real product catalog infrastructure: enhanced schema, import system, category filter, search.
-- **0.5.0** — 54 real Autoparts catalog, WhatsApp order workflow, new carousel slides, real contact data, deployment docs.
-- **0.6.0** — Shop SEO/CRO/UX overhaul: server metadata, JSON-LD Product schema, ShopClient component, shop-filters lib, 40 new unit tests (45 total passing).
-After completing a logical chunk of work, bump `version` in `package.json` and add a short line under “Versioning” above.
+- **0.1.0** — Foundation, layout, header/footer, initial homepage sections.
+- **0.2.0** — Homepage completion + initial commerce pages.
+- **0.3.x** — Planning + CI/deployment groundwork.
+- **0.4.0** — Product catalog infrastructure + import tooling.
+- **0.5.0** — Expanded product data and WhatsApp commerce flow.
+- **0.6.0** — Shop SEO/CRO/UX overhaul + test expansion to 45 passing.
+- **0.6.1** — Truth-sync docs update, planning backlog refresh, site contact/social config refresh.
+- **Docs truth-sync (2026-03-01)** — status documentation aligned to current repo behavior.

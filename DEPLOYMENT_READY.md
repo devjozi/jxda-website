@@ -1,5 +1,7 @@
 # JX Distribution Shop - Deployment Ready ✓
 
+> Historical snapshot from 2026-02-18 (v0.5.0 context). For current status, use `PROGRESS.md` and `GO_LIVE_CHECKLIST.md`.
+
 **Date:** February 18, 2026  
 **Status:** Ready for Hostinger Deployment  
 **Version:** 0.5.0
