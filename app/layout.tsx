@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+import { CartProvider } from './components/CartProvider';
 
 export const metadata: Metadata = {
   title: "JX Distribution Africa - Just produce or import, we will sell.",
@@ -29,7 +30,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="/css/responsive.css" />
       </head>
       <body suppressHydrationWarning>
-        {children}
+        <CartProvider>{children}</CartProvider>
         
         {/* jQuery - Local copy */}
         <Script 

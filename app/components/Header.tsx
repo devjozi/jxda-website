@@ -16,9 +16,11 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { SITE, buildWhatsAppUrl } from '../../lib/site';
+import { useCart } from './CartProvider';
 
 export default function Header() {
   const pathname = usePathname();
+  const { itemCount } = useCart();
 
   const isHome = pathname === '/';
   const isShop = pathname === '/shop' || pathname.startsWith('/shop/');
@@ -135,14 +137,19 @@ export default function Header() {
                   </li>
                 </ul>
               </div>
-              <a
-                href={quoteUrl}
-                className="top-right-btn btn btn-primary"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Request a Quote
-              </a>
+              <div className="d-flex align-items-center gap-2">
+                <Link href="/shop/checkout" className="top-right-btn btn btn-outline-secondary" style={{ whiteSpace: 'nowrap' }}>
+                  <i className="fa fa-shopping-cart me-1" />Cart{itemCount > 0 ? ` (${itemCount})` : ''}
+                </Link>
+                <a
+                  href={quoteUrl}
+                  className="top-right-btn btn btn-primary"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Request a Quote
+                </a>
+              </div>
               {/* Top bar btn */}
             </nav>
           </div>

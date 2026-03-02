@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import WhatsAppOrder from '../../components/WhatsAppOrder';
+import CartCheckoutClient from '../../components/CartCheckoutClient';
 
 export const metadata = {
   title: 'Checkout — JX Distribution',
@@ -42,6 +43,12 @@ export default function CheckoutPage() {
             </div>
 
             <div className="checkout-form-container">
+              <CartCheckoutClient />
+            </div>
+
+            <div className="mt-5 pt-4 border-top">
+              <h4 className="mb-3">General Order / Custom Request</h4>
+              <p className="text-muted">If you need an item not currently in cart, send a direct request below.</p>
               <WhatsAppOrder />
             </div>
 
