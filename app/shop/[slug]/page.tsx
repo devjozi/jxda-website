@@ -11,6 +11,7 @@ import { notFound } from 'next/navigation';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import WhatsAppOrder from '../../components/WhatsAppOrder';
+import AddToCartButton from '../../components/AddToCartButton';
 import { getProductBySlug, getAllProducts, PRODUCT_CATEGORIES } from '../../../lib/products';
 import { buildWhatsAppUrl, SITE } from '../../../lib/site';
 
@@ -263,6 +264,7 @@ export default async function ProductPage({ params }: Props) {
                 >
                   <i className="fa fa-whatsapp me-2" />Order Now via WhatsApp
                 </a>
+                <AddToCartButton product={product} className="btn btn-lg btn-warning" />
                 <Link href="/contact" className="btn btn-lg btn-outline-secondary">
                   Request a Quote
                 </Link>

@@ -11,6 +11,7 @@ import Link from 'next/link';
 import { Product, PRODUCT_CATEGORIES } from '../../lib/products';
 import { buildWhatsAppUrl } from '../../lib/site';
 import { applyShopFilters, type SortOption } from '../../lib/shop-filters';
+import { useCart } from './CartProvider';
 
 // ─── Category config ────────────────────────────────────────────────────────
 
@@ -58,6 +59,7 @@ const SORT_OPTIONS: { value: SortOption; label: string }[] = [
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function ShopClient({ products }: { products: Product[] }) {
+  const { addToCart } = useCart();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<SortOption>('default');
@@ -377,6 +379,16 @@ export default function ShopClient({ products }: { products: Product[] }) {
                           >
                             View Details
                           </Link>
+                          <button
+                            type="button"
+                            className="btn btn-sm btn-outline-secondary"
+                            style={{ fontSize: '0.8rem', padding: '0.25rem 0.55rem' }}
+                            title="Add to cart"
+                            aria-label={`Add ${p.name} to cart`}
+                            onClick={() => addToCart(p, 1)}
+                          >
+                            <i className="fa fa-shopping-cart" />
+                          </button>
                           <a
                             href={buildWhatsAppUrl(whatsAppMsg)}
                             target="_blank"
