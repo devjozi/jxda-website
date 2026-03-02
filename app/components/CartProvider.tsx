@@ -32,34 +32,29 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 const STORAGE_KEY = 'jxd-cart';
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>([]);
-  const [isHydrated, setIsHydrated] = useState(false);
+  const [items, setItems] = useState<CartItem[]>(() => {
+    if (typeof window === 'undefined') {
+      return [];
+    }
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      return stored ? JSON.parse(stored) : [];
+    } catch (err) {
+      console.error('Failed to load cart from localStorage:', err);
+      return [];
+    }
+  });
 
-  // Load cart from localStorage on mount (client-only)
+  // Persist cart to localStorage whenever items change
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      try {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) {
-          setItems(JSON.parse(stored));
-        }
-      } catch (err) {
-        console.error('Failed to load cart from localStorage:', err);
-      }
-      setIsHydrated(true);
-    }
-  }, []);
-
-  // Persist cart to localStorage whenever items change (after hydration)
-  useEffect(() => {
-    if (isHydrated && typeof window !== 'undefined') {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
       } catch (err) {
         console.error('Failed to save cart to localStorage:', err);
       }
     }
-  }, [items, isHydrated]);
+  }, [items]);
 
   const addToCart = (product: Product, quantity = 1) => {
     setItems((prev) => {
