@@ -18,14 +18,15 @@
 ### Functionality
 - [ ] All forms work and send emails
 - [ ] Contact form tested with real email
-- [x] Checkout flow implemented (WhatsApp-first workflow)
+- [x] Checkout flow implemented (cart-aware + WhatsApp-first workflow)
 - [ ] Checkout flow tested end-to-end on live domain
 - [ ] WhatsApp CTAs open correct chat and message with production number
 - [ ] Error states display helpful messages
 - [x] Homepage testimonial block converted from process steps to testimonials with editable data source
 - [x] Shop first-open UX now guided (search/category-first, no forced full-catalog dump)
-- [ ] Shop navigation latency verified in production build (local dev first-hit compile excluded)
+- [x] Shop navigation latency verified in production build (local dev first-hit compile excluded)
 - [ ] Add delivery promise WhatsApp broadcast message with final approved copy (1h–48h)
+- [x] Legacy linked pages no longer 404 (`/features`, `/news`, `/projects`, `/gallery`)
 
 ### Technical
 - [x] `npm run build:static` completes without errors

@@ -105,9 +105,9 @@ Transform JX Distribution Africa website from a marketing-only site to a **full-
 
 | # | Task | Branch | Status |
 |---|------|--------|--------|
-| 3.1 | Build cart UI component | `feature/shopping-cart` | 🔴 Not Started |
-| 3.2 | Implement add-to-cart logic | `feature/shopping-cart` | 🔴 Not Started |
-| 3.3 | Cart persistence (localStorage) | `feature/shopping-cart` | 🔴 Not Started |
+| 3.1 | Build cart UI component | `feature/shopping-cart` | ✅ Done |
+| 3.2 | Implement add-to-cart logic | `feature/shopping-cart` | ✅ Done |
+| 3.3 | Cart persistence (localStorage) | `feature/shopping-cart` | ✅ Done |
 | 3.4 | Update shop page e-commerce design | `feature/shop-redesign` | 🔴 Not Started |
 | 3.5 | Build checkout page UI | `feature/whatsapp-integration` | ✅ Done |
 | 3.6 | Implement form validation | `feature/checkout-flow` | 🔴 Not Started |
@@ -168,10 +168,10 @@ Transform JX Distribution Africa website from a marketing-only site to a **full-
 
 | # | Task | Branch | Status |
 |---|------|--------|--------|
-| 5.1 | Create news page structure | `feature/news-page` | 🔴 Not Started |
-| 5.2 | Add 1 sample news post | `feature/news-page` | 🔴 Not Started |
-| 5.3 | Create gallery page | `feature/gallery-page` | 🔴 Not Started |
-| 5.4 | Add gallery to nav | `feature/gallery-page` | 🔴 Not Started |
+| 5.1 | Create news page structure | `feature/news-page` | ✅ Done |
+| 5.2 | Add 1 sample news post | `feature/news-page` | ✅ Done |
+| 5.3 | Create gallery page | `feature/gallery-page` | ✅ Done |
+| 5.4 | Add gallery to nav | `feature/gallery-page` | ✅ Done |
 | 5.5 | Implement newsletter signup | `feature/newsletter` | 🔴 Not Started |
 | 5.6 | Add interactive map to contact | `feature/contact-map` | 🔴 Not Started |
 | 5.7 | Update Contact Us info | `feature/contact-page-updates` | 🔴 Not Started |
@@ -204,7 +204,7 @@ Transform JX Distribution Africa website from a marketing-only site to a **full-
 | 6.6 | Cross-browser testing | `fix/browser-compatibility` | 🔴 Not Started |
 | 6.7 | Accessibility audit | `fix/accessibility` | 🔴 Not Started |
 | 6.8 | Performance optimization | `fix/performance` | 🔴 Not Started |
-| 6.9 | Fix navbar current-page indicator stuck on Home | `fix/nav-active-indicator` | 🔴 Not Started |
+| 6.9 | Fix navbar current-page indicator stuck on Home | `fix/nav-active-indicator` | ✅ Done |
 
 **Acceptance Criteria:**
 - ✅ Site works perfectly on mobile, tablet, desktop
@@ -250,7 +250,7 @@ Transform JX Distribution Africa website from a marketing-only site to a **full-
 | 10.2 | Verify and approve product prices using shared pricelist | `chore/price-verification` | 🔴 Not Started (Needs Input) |
 | 10.3 | Update sales channel records with approved “million” profile numbers | `feature/facts-metrics-update` | 🔴 Not Started (Needs Input) |
 | 10.4 | Replace “How We Work” with true testimonials and maintainable data source | `feature/testimonials-refresh` | ✅ Done |
-| 10.5 | Investigate and optimize `/shop` → product detail navigation latency in local preview | `fix/shop-navigation-latency` | 🟡 In Progress |
+| 10.5 | Investigate and optimize `/shop` → product detail navigation latency in local preview | `fix/shop-navigation-latency` | ✅ Done (first-hit compile clarified + guided discovery implemented) |
 | 10.6 | Fix product detail order-area visual overlay artifact | `fix/product-detail-overlay` | ✅ Done |
 | 10.7 | Improve shop first-open discoverability (guided search/category-first UX) | `feature/shop-guided-discovery` | ✅ Done |
 | 10.8 | Add useful animated product highlight text (cookie/preference aware, privacy-safe) | `feature/personalized-motion-copy` | 🔴 Not Started |
@@ -343,17 +343,17 @@ Transform JX Distribution Africa website from a marketing-only site to a **full-
 
 ## 📊 **PROGRESS TRACKING**
 
-**Overall Completion:** 24% (15/62 tasks)
+**Overall Completion:** 35% (22/62 tasks)
 
 | Sprint | Tasks | Completed | Progress |
 |--------|-------|-----------|----------|
 | Priority 0: Deployment | 5 | 0 | 0% |
 | Sprint 1: WhatsApp CTAs | 8 | 8 | 100% |
 | Sprint 2: Product Catalog | 8 | 5 | 63% |
-| Sprint 3: Cart & Checkout | 9 | 2 | 22% |
+| Sprint 3: Cart & Checkout | 9 | 5 | 56% |
 | Sprint 4: Content Updates | 12 | 0 | 0% |
-| Sprint 5: Pages & Features | 8 | 0 | 0% |
-| Sprint 6: UX & Responsive | 9 | 0 | 0% |
+| Sprint 5: Pages & Features | 8 | 4 | 50% |
+| Sprint 6: UX & Responsive | 9 | 1 | 11% |
 | Sprint 7: SEO & Analytics | 7 | 0 | 0% |
 | Sprint 8: Production Launch | 7 | 0 | 0% |
 | Sprint 9: Experience Polish | 1 | 0 | 0% |

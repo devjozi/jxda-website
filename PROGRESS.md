@@ -1,20 +1,20 @@
 # PROGRESS LOG — JX Distribution Website
 
-**Last Updated:** 2026-03-01  
-**Version:** 0.6.1  
+**Last Updated:** 2026-03-02  
+**Version:** 0.7.0  
 **Branch:** `develop`  
-**Status:** Truth-synced to repo + CI reality (checks passing, docs aligned)
+**Status:** Cart workflow + non-404 placeholder routes completed, validated, and merged
 
 ---
 
 ## Truth snapshot (verified)
 
-Source of truth validation run on 2026-03-01:
+Source of truth validation run on 2026-03-02:
 - `npm run check` ✅ passes end-to-end
   - Lint: **0 errors**, warnings only (`no-img-element`, `no-css-tags`)
   - TypeScript: ✅ pass
   - Tests: ✅ 45/45 passing (4 test files)
-  - Static build: ✅ pass, **71 static pages generated**
+  - Static build: ✅ pass, **77 static pages generated**
 - Git branch: `develop` (tracking `origin/develop`)
 - Workflows present: deploy, quality gate, security scan, live smoke monitor
 
@@ -23,11 +23,12 @@ Source of truth validation run on 2026-03-01:
 ## Current state
 
 - **Homepage:** Core template sections implemented (hero, features, services, FAQ/testimonials, facts, CTA).
-- **Commerce:** `/shop` + `/shop/[slug]` + `/shop/checkout` implemented with WhatsApp-first ordering flow.
+- **Commerce:** `/shop` + `/shop/[slug]` + `/shop/checkout` implemented with WhatsApp-first ordering flow and persistent shopping cart.
 - **Catalog:** 53+ products across 5 categories, with search/filter/sort and product detail pages.
 - **SEO/Schema:** Shop listing metadata + per-product metadata + JSON-LD (`Product`, `BreadcrumbList`).
 - **Testing:** 45 unit tests passing (`tests/products.test.ts`, `tests/shop-filters.test.ts`, `tests/site.test.ts`, `tests/contact-route.test.ts`).
 - **CI/CD:** Static Hostinger deploy workflow + quality gate + security + 30-min live smoke checks configured.
+- **Routing:** Placeholder pages added for previously broken nav links: `/features`, `/news`, `/news/[slug]`, `/projects`, `/gallery`.
 
 ---
 
@@ -44,6 +45,8 @@ Source of truth validation run on 2026-03-01:
 
 - Static export deployment path for Hostinger
 - Shop UX/CRO/SEO overhaul (v0.6.0 scope)
+- Shopping cart workflow (global cart state, add-to-cart from listing/detail, cart-aware checkout)
+- Placeholder route coverage for legacy links to avoid user-facing 404s
 - Filter/sort extraction to `lib/shop-filters.ts`
 - Product-page schema/metadata improvements
 - Unit tests for catalogue, filters, contact route, site config
@@ -55,7 +58,7 @@ Source of truth validation run on 2026-03-01:
 
 1. **Content truth:** Complete remaining social profile placeholders (TikTok) and verify all live URLs.
 2. **Go-live readiness:** Complete unchecked launch controls (legal pages, monitoring stack, final QA).
-3. **Commerce depth:** Implement cart persistence + checkout validation/order confirmation (planned Sprint 3 items).
+3. **Commerce depth:** Implement checkout validation + order confirmation pipeline (cart persistence/add-to-cart now complete).
 4. **Asset quality:** Replace template/placeholder imagery with licensed production assets.
 
 ---
@@ -67,7 +70,15 @@ Source of truth validation run on 2026-03-01:
 | `app/shop/page.tsx` | Shop listing shell + metadata |
 | `app/components/ShopClient.tsx` | Search/filter/sort UI + product cards |
 | `app/shop/[slug]/page.tsx` | Product details + structured data |
-| `app/shop/checkout/page.tsx` | WhatsApp-first checkout flow |
+| `app/shop/checkout/page.tsx` | Cart-aware + WhatsApp-first checkout flow |
+| `app/components/CartProvider.tsx` | Global cart context + localStorage persistence |
+| `app/components/AddToCartButton.tsx` | Reusable add-to-cart CTA |
+| `app/components/CartCheckoutClient.tsx` | Checkout cart rendering + totals |
+| `app/features/page.tsx` | Placeholder features page (non-404) |
+| `app/news/page.tsx` | Placeholder news listing (non-404) |
+| `app/news/[slug]/page.tsx` | Placeholder news detail pages (non-404) |
+| `app/projects/page.tsx` | Placeholder projects page (non-404) |
+| `app/gallery/page.tsx` | Placeholder gallery page (non-404) |
 | `lib/products.ts` | Product catalogue and categories |
 | `lib/shop-filters.ts` | Pure filter/sort logic |
 | `lib/site.ts` | Company/contact/social/WhatsApp config |
@@ -95,4 +106,5 @@ Source of truth validation run on 2026-03-01:
 - **0.5.0** — Expanded product data and WhatsApp commerce flow.
 - **0.6.0** — Shop SEO/CRO/UX overhaul + test expansion to 45 passing.
 - **0.6.1** — Truth-sync docs update, planning backlog refresh, site contact/social config refresh.
+- **0.7.0** — Shopping cart workflow completed, placeholder pages added for broken routes, closure pass validation on 77 static pages.
 - **Docs truth-sync (2026-03-01)** — status documentation aligned to current repo behavior.
