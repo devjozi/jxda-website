@@ -2,7 +2,21 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { notFound } from 'next/navigation';
 
-const serviceData: { [key: string]: any } = {
+interface ServiceFeature {
+  number: string;
+  title: string;
+  description: string;
+}
+
+interface ServiceEntry {
+  title: string;
+  image: string;
+  description: string;
+  fullDescription: string;
+  features: ServiceFeature[];
+}
+
+const serviceData: { [key: string]: ServiceEntry } = {
   'b2b-sales-merchandising': {
     title: 'B2B Sales & Merchandising',
     image: 'service1.jpg',
@@ -143,8 +157,15 @@ const serviceData: { [key: string]: any } = {
   }
 };
 
-export default function ServiceSingle({ params }: { params: { slug: string } }) {
-  const service = serviceData[params.slug];
+type Props = { params: Promise<{ slug: string }> };
+
+export async function generateStaticParams() {
+  return Object.keys(serviceData).map((slug) => ({ slug }));
+}
+
+export default async function ServiceSingle({ params }: Props) {
+  const { slug } = await params;
+  const service = serviceData[slug];
 
   if (!service) {
     notFound();
@@ -164,7 +185,7 @@ export default function ServiceSingle({ params }: { params: { slug: string } }) 
                 <ol className="breadcrumb">
                   <li>Home</li>
                   <li><a href="/services">Services</a></li>
-                  <li><a href={`/services/${params.slug}`}>{service.title}</a></li>
+                  <li><a href={`/services/${slug}`}>{service.title}</a></li>
                 </ol>
               </div>
             </div>
@@ -220,7 +241,7 @@ export default function ServiceSingle({ params }: { params: { slug: string } }) 
 
                 <h3 className="column-title">Service Features</h3>
                 
-                {service.features.map((feature: any, index: number) => (
+                {service.features.map((feature, index: number) => (
                   <div className="service-content" key={index}>
                     <div className="service-blocknumber">
                       <div className="pull-left">

@@ -51,7 +51,7 @@ export default function Home() {
                   <h2 className="slide-title title-light">Sell More Across Ghana</h2>
                   <h3 className="slide-sub-title">Without Hiring a Sales Team</h3>
                   <p className="slider-description lead">
-                    We help brands enter new markets, drive retail sails, and grow distribution across all 16 regions with measurable field execution and live reporting.
+                    We help brands enter new markets, drive retail sales, and grow distribution across all 16 regions with measurable field execution and live reporting.
                   </p>
                   <p>
                     <a className="slider btn btn-primary" href="/shop">Request a Call Back</a>
@@ -107,7 +107,7 @@ export default function Home() {
                     <img src="/images/icon/service-1.png" alt="" />
                   </div>
                   <h3 className="ts-feature-title">Get Your Products Into More Shops</h3>
-                  <p>We drive B2B sales directly to wholealers and retailers to increase availability and reorder volume</p>
+                  <p>We drive B2B sales directly to wholesalers and retailers to increase availability and reorder volume</p>
                   <a className="slider btn btn-primary" href="/shop">Read More</a>
                 </div>
               </div>
