@@ -4,9 +4,46 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { notFound } from 'next/navigation';
 
-const serviceData: { [key: string]: any } = {
+interface ServiceFeature {
+  number: string;
+  title: string;
+  description: string;
+}
+
+interface ServiceEntry {
+  title: string;
+  image: string;
+  description: string;
+  fullDescription: string;
+  features: ServiceFeature[];
+}
+
+const serviceData: { [key: string]: ServiceEntry } = {
   'route-to-market-and-route-to-consumer-development': {
     title: 'Route-to-Market & Route-to-Consumer Development',
+    image: 'service1.jpg',
+    description: 'Structured channel design and territory execution models that improve product availability and customer reach.',
+    fullDescription: 'We design and execute route-to-market and route-to-consumer strategies that align channels, territory potential, and sales targets. This helps brands build sustainable penetration and repeat coverage across Ghana.',
+    features: [
+      {
+        number: '01',
+        title: 'Market Assessment',
+        description: 'Evaluate market opportunity, channel mix, and demand patterns before rollout.'
+      },
+      {
+        number: '02',
+        title: 'Territory Mapping',
+        description: 'Map territories and route plans for efficient sales and distribution coverage.'
+      },
+      {
+        number: '03',
+        title: 'Execution Framework',
+        description: 'Implement structured steps-to-a-call and field execution standards.'
+      }
+    ]
+  },
+  'b2b-sales-merchandising': {
+    title: 'B2B Sales & Merchandising',
     image: 'service1.jpg',
     description: 'Structured channel design and territory execution models that improve product availability and customer reach.',
     fullDescription: 'We design and execute route-to-market and route-to-consumer strategies that align channels, territory potential, and sales targets. This helps brands build sustainable penetration and repeat coverage across Ghana.',
@@ -191,12 +228,15 @@ const serviceData: { [key: string]: any } = {
   }
 };
 
-export function generateStaticParams() {
+type Props = { params: Promise<{ slug: string }> };
+
+export async function generateStaticParams() {
   return Object.keys(serviceData).map((slug) => ({ slug }));
 }
 
-export default function ServiceSingle({ params }: { params: { slug: string } }) {
-  const service = serviceData[params.slug];
+export default async function ServiceSingle({ params }: Props) {
+  const { slug } = await params;
+  const service = serviceData[slug];
 
   if (!service) {
     notFound();
@@ -216,7 +256,7 @@ export default function ServiceSingle({ params }: { params: { slug: string } }) 
                 <ol className="breadcrumb">
                   <li>Home</li>
                   <li><Link href="/services">Services</Link></li>
-                  <li><Link href={`/services/${params.slug}`}>{service.title}</Link></li>
+                  <li><Link href={`/services/${slug}`}>{service.title}</Link></li>
                 </ol>
               </div>
             </div>
@@ -244,63 +284,27 @@ export default function ServiceSingle({ params }: { params: { slug: string } }) 
                     <li><Link href="/services/sales-automation-and-reporting">Sales Automation & Reporting</Link></li>
                   </ul>
                 </div>
-                <div className="widget no-padding testimonial-static">
-                  <div className="quote-item quote-classic">
-                    <span className="quote-text faq-quote-text">JX Distribution Africa combines disciplined field execution, data-backed reporting, and nationwide reach to grow market penetration.</span>
-                    <div className="quote-item-footer quote-footer-classic">
-                      <img className="testimonial-thumb" src="/images/clients/testimonial1.png" alt="testimonial" />
-                      <div className="quote-item-info">
-                        <p className="quote-author">Gabriel Denis</p>
-                        <span className="quote-subtext">Chairman, OKT</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
 
             {/* Main Content */}
             <div className="col-lg-8">
-              <div className="single-service-img">
-                <img src={`/images/services/${service.image}`} alt={service.title} />
+              <div className="image-column">
+                <img src={`/images/services/${service.image}`} alt={service.title} className="img-fluid" />
               </div>
-              <div className="service-content">
+              <div className="content-column">
                 <h2>{service.title}</h2>
-                
-                <div className="text-block mrb-40">
-                  <p>{service.fullDescription}</p>
-                  <p>With a decade of practical market execution experience and partnerships across multiple channels, our team delivers measurable outcomes at scale.</p>
-                </div>
-
-                <h3 className="column-title">Service Features</h3>
-                
-                {service.features.map((feature: any, index: number) => (
-                  <div className="service-content" key={index}>
-                    <div className="service-blocknumber">
-                      <div className="pull-left">
-                        <span className="block-number">{feature.number}</span>
+                <p>{service.fullDescription}</p>
+                <div className="row mt-4">
+                  {service.features.map((feature, index) => (
+                    <div className="col-md-4" key={index}>
+                      <div className="feature-box">
+                        <span className="feature-number">{feature.number}</span>
+                        <h4>{feature.title}</h4>
+                        <p>{feature.description}</p>
                       </div>
                     </div>
-                    <div className="service-content-area">
-                      <h3>{feature.title}</h3>
-                      <p className="service-text">{feature.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Call to Action */}
-              <div id="call-to-action" className="call-to-action-bg service-call-to-action">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-lg-8 align-self-center">
-                      <h3 className="call-to-action-title service-call-to-action">Ready to grow your business with {service.title}?</h3>
-                      <p>We support local and international brands with structured execution across Ghana and West Africa.</p>
-                    </div>
-                    <div className="col-lg-4 text-right">
-                      <Link className="btn btn-box" href="/contact">Contact Us</Link>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
