@@ -1,7 +1,7 @@
 /**
  * Unit tests for the contact API route validation and responses.
  */
-import { describe, expect, it, vi } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import { NextRequest } from 'next/server';
 
 vi.mock('resend', () => {
@@ -15,8 +15,23 @@ vi.mock('resend', () => {
 });
 
 describe('POST /api/contact', () => {
-  it('returns success for a valid payload', async () => {
+  let originalResendApiKey: string | undefined;
+
+  beforeAll(() => {
+    originalResendApiKey = process.env.RESEND_API_KEY;
     process.env.RESEND_API_KEY = 'test-key';
+  });
+
+  afterAll(() => {
+    if (originalResendApiKey === undefined) {
+      delete process.env.RESEND_API_KEY;
+    } else {
+      process.env.RESEND_API_KEY = originalResendApiKey;
+    }
+    vi.resetModules();
+  });
+
+  it('returns success for a valid payload', async () => {
     const { POST } = await import('../app/api/contact/route');
 
     const request = new NextRequest('http://localhost/api/contact', {
@@ -38,7 +53,6 @@ describe('POST /api/contact', () => {
   });
 
   it('returns 400 for missing fields', async () => {
-    process.env.RESEND_API_KEY = 'test-key';
     const { POST } = await import('../app/api/contact/route');
 
     const request = new NextRequest('http://localhost/api/contact', {
@@ -56,7 +70,6 @@ describe('POST /api/contact', () => {
   });
 
   it('returns 400 for invalid email', async () => {
-    process.env.RESEND_API_KEY = 'test-key';
     const { POST } = await import('../app/api/contact/route');
 
     const request = new NextRequest('http://localhost/api/contact', {

@@ -37,8 +37,7 @@ Start production server: `npm run start`
 
 ## Deploy
 
-- `develop` → preview (https://preview.jxdisributionafrica.com)
+- `develop` → preview (https://preview.jxdistributionafrica.com)
 - `main` → production (Hostinger static export)
 
 Secrets: see `.env.example`; store real values in GitHub Secrets.
-# Test

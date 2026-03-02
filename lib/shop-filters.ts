@@ -67,7 +67,7 @@ export function filterProducts(
  *   price_desc — most expensive first
  */
 export function sortProducts(products: Product[], sortBy: SortOption): Product[] {
-  if (sortBy === 'default') return products;
+  if (sortBy === 'default') return [...products];
 
   const sorted = [...products];
 

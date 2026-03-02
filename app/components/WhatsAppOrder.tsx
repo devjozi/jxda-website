@@ -37,16 +37,18 @@ export default function WhatsAppOrder({ product, prefilledQuantity = 1 }: WhatsA
 
     if (product) {
       orderLines.push(
-        ``,
-        `*Product:* ${product.name}`,
-        `*SKU:* ${product.sku}`,
-        `*Quantity:* ${quantity}`,
-        product.price > 0
-          ? `*Unit Price:* GHS ${product.price.toFixed(2)}`
-          : `*Price:* On Request`,
-        product.price > 0
-          ? `*Total:* GHS ${(product.price * quantity).toFixed(2)}`
-          : null,
+        ...[
+          ``,
+          `*Product:* ${product.name}`,
+          product.sku ? `*SKU:* ${product.sku}` : null,
+          `*Quantity:* ${quantity}`,
+          product.price > 0
+            ? `*Unit Price:* GHS ${product.price.toFixed(2)}`
+            : `*Price:* On Request`,
+          product.price > 0
+            ? `*Total:* GHS ${(product.price * quantity).toFixed(2)}`
+            : null,
+        ].filter((l): l is string => Boolean(l))
       );
     } else {
       const message = String(form.get('message') ?? '').trim();
@@ -65,7 +67,8 @@ export default function WhatsAppOrder({ product, prefilledQuantity = 1 }: WhatsA
     const whatsappUrl = buildWhatsAppUrl(whatsappMessage);
 
     if (whatsappUrl !== '#') {
-      window.open(whatsappUrl, '_blank', 'noreferrer');
+      const newWindow = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      if (newWindow) newWindow.opener = null;
       setSubmitted(true);
     }
   }
