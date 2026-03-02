@@ -64,7 +64,7 @@ export default function Home() {
                   <h2 className="slide-title title-light">Sales Execution at Scale</h2>
                   <h3 className="slide-sub-title">Nationwide Coverage Across 16 Regions</h3>
                   <p className="slider-description lead">
-                    We help brands enter new markets, drive retail sales, and grow distribution across all 16 regions with measurable field execution and live reporting.
+                    We support local and international brands with disciplined execution in retail, wholesale, key accounts, activations, and street channels.
                   </p>
                   <p>
                     <a className="slider btn btn-primary" href={whatsappLinks.callBack} target="_blank" rel="noreferrer">Request a Call Back</a>
@@ -163,9 +163,9 @@ export default function Home() {
                   <div className="feature-img">
                     <img src="/images/icon/service-1.png" alt="" />
                   </div>
-                  <h3 className="ts-feature-title">Get Your Products Into More Shops</h3>
-                  <p>We drive B2B sales directly to wholesalers and retailers to increase availability and reorder volume</p>
-                  <a className="slider btn btn-primary" href="/shop">Read More</a>
+                  <h3 className="ts-feature-title">Structured Sales Execution</h3>
+                  <p>We execute with a clear framework: assessment, territory design, stocking plans, conversion, and optimization.</p>
+                  <a className="slider btn btn-primary" href={whatsappLinks.featureLearnMore} target="_blank" rel="noreferrer">Read More</a>
                 </div>
               </div>
             </div>
@@ -204,113 +204,274 @@ export default function Home() {
           <div className="container">
             <div className="row text-center">
               <div className="col-md-12">
-                <h2 className="section-title">Why JX Distribution Africa?</h2>
-                <h3 className="section-sub-title">Disciplined Market Execution</h3>
+                <h2 className="section-title"><span>Why Partner With JX</span>Why Companies Choose JX Distribution Africa</h2>
               </div>
             </div>
-            {/* Title row end */}
             <div className="row">
-              <div className="col-md-4">
-                <div className="ts-service-box">
-                  <div className="ts-service-box-img pull-left">
-                    <img src="/images/icon/service-1.png" alt="" />
+              <div className="col-lg-4 col-md-12">
+                <div className="ts-service-wrapper">
+                  <div className="ts-service-box">
+                    <div className="ts-service-box-img">
+                      <img src="/images/icon/why-1.png" alt="" />
+                    </div>
+                    <div className="ts-service-box-info">
+                      <h3 className="service-box-title">Experienced Execution Team</h3>
+                      <p>Professional sales and distribution leadership with 10–20 years practical industry exposure.</p>
+                    </div>
                   </div>
-                  <div className="ts-service-box-info">
-                    <h3 className="service-box-title">Nationwide Reach</h3>
-                    <p>We cover all 16 regions of Ghana, ensuring your products reach every corner of the market.</p>
+                  <div className="gap-15"></div>
+                  <div className="ts-service-box">
+                    <div className="ts-service-box-img">
+                      <img src="/images/icon/why-2.png" alt="" />
+                    </div>
+                    <div className="ts-service-box-info">
+                      <h3 className="service-box-title">Tailored Activation Strength</h3>
+                      <p>Product and trade activations designed to accelerate visibility, trial, and sales conversion.</p>
+                    </div>
+                  </div>
+                  <div className="gap-15"></div>
+                  <div className="ts-service-box">
+                    <div className="ts-service-box-img">
+                      <img src="/images/icon/why-4.png" alt="" />
+                    </div>
+                    <div className="ts-service-box-info">
+                      <h3 className="service-box-title">Nationwide Coverage</h3>
+                      <p>Operational reach across all 16 regions in Ghana with structured regional penetration.</p>
+                    </div>
                   </div>
                 </div>
-                {/* Service 1 end */}
-                <div className="ts-service-box">
-                  <div className="ts-service-box-img pull-left">
-                    <img src="/images/icon/service-2.png" alt="" />
-                  </div>
-                  <div className="ts-service-box-info">
-                    <h3 className="service-box-title">Retail Execution</h3>
-                    <p>Disciplined field teams driving visibility, availability, and stock pressure at the point of sale.</p>
-                  </div>
-                </div>
-                {/* Service 2 end */}
-                <div className="ts-service-box">
-                  <div className="ts-service-box-img pull-left">
-                    <img src="/images/icon/service-3.png" alt="" />
-                  </div>
-                  <div className="ts-service-box-info">
-                    <h3 className="service-box-title">B2B Sales Growth</h3>
-                    <p>Direct engagement with wholesalers and key accounts to grow volume and reorder frequency.</p>
-                  </div>
-                </div>
-                {/* Service 3 end */}
               </div>
-              {/* Col end */}
-              <div className="col-md-4 text-center">
-                <img className="service-img" src="/images/services/service-center.png" alt="" />
+              <div className="col-lg-4 col-md-12">
+                <span className="service-img"><img className="img-fluid" src="/images/services/service_center.png" alt="" /></span>
               </div>
-              {/* Col end */}
-              <div className="col-md-4">
-                <div className="ts-service-box">
-                  <div className="ts-service-box-img pull-left">
-                    <img src="/images/icon/service-4.png" alt="" />
+              <div className="col-lg-4 col-md-12">
+                <div className="ts-service-wrapper ml-lg-auto">
+                  <div className="ts-service-box">
+                    <div className="ts-service-box-img">
+                      <img src="/images/icon/why-3.png" alt="" />
+                    </div>
+                    <div className="ts-service-box-info">
+                      <h3 className="service-box-title">Cost-Effective Engagement Models</h3>
+                      <p>Commission-based, target-based, project-based, and retainer-based options for flexible engagement.</p>
+                    </div>
                   </div>
-                  <div className="ts-service-box-info">
-                    <h3 className="service-box-title">Market Intelligence</h3>
-                    <p>Real-time reporting on pricing, competitor moves, and channel penetration progress.</p>
+                  <div className="gap-15"></div>
+                  <div className="ts-service-box">
+                    <div className="ts-service-box-img">
+                      <img src="/images/icon/why-5.png" alt="" />
+                    </div>
+                    <div className="ts-service-box-info">
+                      <h3 className="service-box-title">Automation & Accountability</h3>
+                      <p>Sales automation and reporting provide clear visibility into growth, coverage, and productivity.</p>
+                    </div>
+                  </div>
+                  <div className="gap-15"></div>
+                  <div className="ts-service-box">
+                    <div className="ts-service-box-img">
+                      <img src="/images/icon/why-6.png" alt="" />
+                    </div>
+                    <div className="ts-service-box-info">
+                      <h3 className="service-box-title">24/7 Customer Support</h3>
+                      <p>Standby call center and telesales support with strict compliance: no alcoholic, gambling, or tobacco products.</p>
+                    </div>
                   </div>
                 </div>
-                {/* Service 4 end */}
-                <div className="ts-service-box">
-                  <div className="ts-service-box-img pull-left">
-                    <img src="/images/icon/service-5.png" alt="" />
-                  </div>
-                  <div className="ts-service-box-info">
-                    <h3 className="service-box-title">Sales Automation</h3>
-                    <p>Structured tracking of every sales call, order, and activation for full visibility.</p>
-                  </div>
-                </div>
-                {/* Service 5 end */}
-                <div className="ts-service-box">
-                  <div className="ts-service-box-img pull-left">
-                    <img src="/images/icon/service-6.png" alt="" />
-                  </div>
-                  <div className="ts-service-box-info">
-                    <h3 className="service-box-title">Consumer Conversion</h3>
-                    <p>In-market activations and social media campaigns that turn awareness into measurable sales.</p>
-                  </div>
-                </div>
-                {/* Service 6 end */}
               </div>
-              {/* Col end */}
             </div>
-            {/* Content row end */}
           </div>
-          {/* Container end */}
         </div>
-        {/* Service area bg end */}
       </section>
 
-      {/* Quote / CTA Section */}
-      <section id="ts-quote" className="ts-quote no-padding">
+      {/* Our Services — 8 core pillars */}
+      <section className="ts-services solid-bg" id="ts-services">
+        <div className="container">
+          <div className="row text-center">
+            <div className="col-md-12">
+              <h2 className="section-title"><span>What We Do</span>Our Services</h2>
+            </div>
+          </div>
+          <div className="row ts-service-row-box">
+            {[
+              {
+                img: 'service1.jpg',
+                title: 'Route-to-Market & Route-to-Consumer Development',
+                desc: 'Channel strategy and route design for structured market penetration.',
+              },
+              {
+                img: 'service2.jpg',
+                title: 'Social Media Marketing & Activation Campaigns',
+                desc: 'Integrated digital and field activations that drive conversion.',
+              },
+              {
+                img: 'service3.jpg',
+                title: 'Distribution & Logistics Coordination',
+                desc: 'Stocking, warehousing, and distribution coordination across key channels.',
+              },
+              {
+                img: 'service4.jpg',
+                title: 'Market Research & Consumer Intelligence',
+                desc: 'Field insights and intelligence for better execution decisions.',
+              },
+              {
+                img: 'service5.jpg',
+                title: 'Procurement',
+                desc: 'Procurement support aligned to sales, channel, and replenishment needs.',
+              },
+              {
+                img: 'service6.jpg',
+                title: 'Sales Team Training & Performance Management',
+                desc: 'Sales capability development, supervision, and accountability.',
+              },
+              {
+                img: 'service2.jpg',
+                title: 'Call Center Services for Companies',
+                desc: '24/7 call center and telesales support for customer engagement.',
+              },
+              {
+                img: 'service6.jpg',
+                title: 'Sales Automation & Reporting',
+                desc: 'Automated tracking of sales, coverage, campaign, and team performance.',
+              },
+            ].map((s, i) => (
+              <div className="col-lg-3 col-md-6" key={i}>
+                <div className="ts-service-box">
+                  <div className="ts-service-image-wrapper">
+                    <img className="img-fluid" src={`/images/services/${s.img}`} alt={s.title} />
+                  </div>
+                  <div className="ts-service-content">
+                    <h3 className="service-title">{s.title}</h3>
+                    <p>{s.desc}</p>
+                    <p><a className="link-more" href={whatsappLinks.servicesTalk} target="_blank" rel="noreferrer">Talk to our Team<i className="icon icon-right-arrow2"></i></a></p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="row">
+            <div className="col-md-12 text-center">
+              <p>Additional support: Product branding, events support, digital marketing.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ + Testimonials — ref: index.html ~478 */}
+      <section className="testimonial-area" id="testimonial-area">
         <div className="container">
           <div className="row">
-            <div className="col-md-6">
-              <div className="quote-info">
-                <h2 className="section-title">Ready to grow your sales?</h2>
-                <h3 className="section-sub-title">Let's talk about your distribution needs.</h3>
-                <p>We help local and international brands win in the Ghanaian market through disciplined execution.</p>
-                <div className="quote-item">
-                  <div className="quote-icon"><i className="fa fa-whatsapp"></i></div>
-                  <div className="quote-text">
-                    <h4 className="quote-title">WhatsApp Us</h4>
-                    <p><a href={whatsappLinks.quickQuote} target="_blank" rel="noreferrer">Chat with our team now</a></p>
+            <div className="col-lg-6">
+              <div className="accordion-title">
+                <h3 className="column-title"><span>Our FAQ</span> Frequently Asked Questions</h3>
+              </div>
+              <div id="accordion" className="accordion-area">
+                <div className="card">
+                  <div className="card-header" id="headingOne">
+                    <h5 className="mb-0">
+                      <a href="#" className="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Do you operate nationwide in Ghana?
+                      </a>
+                    </h5>
+                  </div>
+                  <div className="collapse show" id="collapseOne" aria-labelledby="headingOne" data-bs-parent="#accordion">
+                    <div className="card-body">
+                      <p>Yes. We operate across all 16 regions with field teams, logistics, and warehousing support.</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="card">
+                  <div className="card-header" id="headingTwo">
+                    <h5 className="mb-0">
+                      <a href="#" className="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Can you support imported and made-in-Ghana products?
+                      </a>
+                    </h5>
+                  </div>
+                  <div className="collapse" id="collapseTwo" aria-labelledby="headingTwo" data-bs-parent="#accordion">
+                    <div className="card-body">
+                      <p>Yes. We support local and international brands launching or scaling products in Ghana.</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="card">
+                  <div className="card-header" id="headingThree">
+                    <h5 className="mb-0">
+                      <a href="#" className="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        What engagement models do you offer?
+                      </a>
+                    </h5>
+                  </div>
+                  <div className="collapse" id="collapseThree" aria-labelledby="headingThree" data-bs-parent="#accordion">
+                    <div className="card-body">
+                      <p>We offer commission-based, target-based, project-based, and retainer-based engagement models.</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-md-6">
-              <div className="quote-form-wrapper">
-                <QuoteForm />
+            <div className="col-lg-6 testimonial-client">
+              <h2 className="column-title"><span>Client Voices</span>Testimonials</h2>
+              <div className="owl-carousel owl-theme testimonial-slide owl-dark" id="testimonial-slide">
+                {HOMEPAGE_TESTIMONIALS.map((testimonial) => (
+                  <div className="item" key={testimonial.id}>
+                    <div className="quote-item quote-square">
+                      <span className="quote-text">{testimonial.quote}</span>
+                      <div className="quote-item-footer">
+                        <img className="testimonial-thumb" src={testimonial.image} alt={testimonial.author} />
+                        <div className="quote-item-info">
+                          <p className="quote-author">{testimonial.author}</p>
+                          <span className="quote-subtext">{testimonial.role}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Facts — ref: index.html ~592 */}
+      <section id="ts-facts-area" className="ts-facts-area-bg bg-overlay">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-5 col-md-12 column-left-title">
+              <h2 className="column-title">Sales Channel Records in Millions</h2>
+            </div>
+            <div className="col-lg-7 col-md-12">
+              <div className="container">
+                <div className="row text-center">
+                  {SALES_CHANNEL_METRICS.map((metric) => (
+                    <div className="col-lg-4 col-md-4" key={metric.id}>
+                      <div className="ts-facts-bg">
+                        <img src={metric.icon} alt="" />
+                        <div className="ts-facts-content">
+                          <h4 className="ts-facts-num"><span className="counterUp">{metric.valueInMillions}</span>m</h4>
+                          <p className="facts-desc">{metric.label}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quote / CTA — ref: index.html ~711 */}
+      <section className="quote-area solid-bg" id="quote-area">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-5">
+              <div className="quote_form">
+                <h2 className="column-title"><span>Ready to Grow Sales and Expand Coverage?</span>Get a Quick Quote</h2>
+                <div className="quote-img">
+                  <img className="img-fluid" src="/images/alltransport.png" alt="transport" />
+                </div>
+              </div>
+            </div>
+            <QuoteForm />
           </div>
         </div>
       </section>
