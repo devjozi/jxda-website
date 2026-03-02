@@ -103,9 +103,9 @@ export default function Header() {
                     <Link className={`nav-link${isShop ? ' active' : ''}`} href="/shop">Shop</Link>
                   </li>
                   <li className={`nav-item dropdown${isCompany ? ' active' : ''}`}>
-                    <a className={`nav-link${isCompany ? ' active' : ''}`} href="#" data-bs-toggle="dropdown">
+                    <button type="button" className={`nav-link${isCompany ? ' active' : ''}`} data-bs-toggle="dropdown" aria-expanded="false">
                       Company<i className="fa fa-angle-down"></i>
-                    </a>
+                    </button>
                     <ul className="dropdown-menu" role="menu">
                       <li><Link href="/about">About Us</Link></li>
                       <li><Link href="/services">Our Services</Link></li>
@@ -115,9 +115,9 @@ export default function Header() {
                   {/* li end */}
 
                   <li className={`nav-item dropdown${isServices ? ' active' : ''}`}>
-                    <a className={`nav-link${isServices ? ' active' : ''}`} href="#" data-bs-toggle="dropdown">
+                    <button type="button" className={`nav-link${isServices ? ' active' : ''}`} data-bs-toggle="dropdown" aria-expanded="false">
                       Services<i className="fa fa-angle-down"></i>
-                    </a>
+                    </button>
                     <ul className="dropdown-menu" role="menu">
                       <li><Link href="/services">All Services</Link></li>
                       <li><Link href="/services/route-to-market-and-route-to-consumer-development">Route-to-Market & Route-to-Consumer Development</Link></li>
@@ -145,7 +145,7 @@ export default function Header() {
                   href={quoteUrl}
                   className="top-right-btn btn btn-primary"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
                   Request a Quote
                 </a>

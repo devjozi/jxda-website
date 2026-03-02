@@ -134,7 +134,7 @@ Open the URL shown. Click through Home → Shop → one product → Checkout and
 ### 3. Publish to Hostinger (static)
 
 **CI/CD (recommended):**
-- Push to `develop` for internal preview at `https://preview.jxdisributionafrica.com`.
+- Push to `develop` for internal preview at `https://preview.jxdistributionafrica.com`.
 - Push to `main` for production; GitHub Actions deploys `/out` to Hostinger.
 
 **GitHub Secrets required (Actions):**

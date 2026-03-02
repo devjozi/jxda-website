@@ -36,7 +36,7 @@
 
 ### Preview/Staging
 - **Trigger:** Push to `develop`
-- **URL:** `https://preview.jxdisributionafrica.com`
+- **URL:** `https://preview.jxdistributionafrica.com`
 - **Purpose:** Internal preview before production
 
 ### Production (Automatic)

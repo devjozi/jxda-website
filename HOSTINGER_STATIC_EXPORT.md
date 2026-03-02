@@ -38,7 +38,7 @@ This creates `/out` directory with static HTML files.
 ```bash
 npm install
 npm run build:static
-npm run start  # Serves the /out directory
+npx serve out  # Serves the /out directory
 ```
 
 Then visit `http://localhost:3000` and verify:
@@ -127,7 +127,7 @@ See `.github/workflows/deploy.yml` for details.
 git checkout develop
 npm install
 npm run build:static
-npm run start
+npx serve out
 
 # Test in browser:
 # - Visit http://localhost:3000 (or actual preview domain)
@@ -259,7 +259,7 @@ Or use browser DevTools:
 |------|---------|
 | **Local dev** | `npm run dev` |
 | **Test build** | `npm run build:static` |
-| **Start production build** | `npm run start` |
+| **Test static export locally** | `npx serve out` |
 | **Deploy to preview** | `git push origin develop` |
 | **Deploy to production** | `git push origin main` |
 
