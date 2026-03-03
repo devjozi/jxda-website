@@ -67,7 +67,7 @@ echo "✓ Checking public assets..."
 IMAGE_DIRS=$(ls -d out/images/*/  2>/dev/null | wc -l)
 echo "  ✓ Image directories: $IMAGE_DIRS"
 
-if [ -f "out/css/style.css" ] || [ -f "out/public/css/style.css" ]; then
+if [ -f "out/css/style.css" ]; then
     echo "  ✓ CSS files found"
 else
     echo "  ⚠ Warning: Main CSS file not found"
