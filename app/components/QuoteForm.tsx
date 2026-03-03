@@ -27,7 +27,7 @@ export default function QuoteForm() {
 
     const whatsappUrl = buildWhatsAppUrl(whatsappMessage);
     if (whatsappUrl !== '#') {
-      window.open(whatsappUrl, '_blank', 'noreferrer');
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     }
 
     setSubmitted(true);
