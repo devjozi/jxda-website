@@ -37,7 +37,7 @@ describe('getAllProducts', () => {
 
 describe('getProductBySlug', () => {
   it('returns the correct product for a known slug', () => {
-    const product = getProductBySlug('toyota-hilux-air-filter');
+    const product = getProductBySlug('toyota-hilux-air-filter-17801-0l040');
     expect(product).toBeDefined();
     expect(product?.name).toContain('Hilux');
   });
