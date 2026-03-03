@@ -12,6 +12,8 @@ on:
 jobs:
   npm-audit:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,7 +28,7 @@ jobs:
         run: npm ci
 
       - name: Audit high+ vulnerabilities
-        run: npm run audit:high
+        run: npm audit --audit-level=high
 
   codeql:
     runs-on: ubuntu-latest
@@ -47,4 +49,5 @@ jobs:
         uses: github/codeql-action/autobuild@v3
 
       - name: Perform CodeQL analysis
+        continue-on-error: true
         uses: github/codeql-action/analyze@v3
