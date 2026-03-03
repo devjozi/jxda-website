@@ -16,12 +16,31 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
+/** Escape a string for safe inclusion in an HTML context. */
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+/** Return the URL only when it uses http: or https:, otherwise return '#'. */
+function sanitizeUrl(url: string): string {
+  try {
+    const parsed = new URL(url);
+    if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
+      return url;
+    }
+  } catch {
+    // invalid URL – fall through
+  }
+  return '#';
+}
+
 export async function POST(request: NextRequest) {
   try {
-    // Initialize Resend at runtime (not at module load time)
-    // This allows static export builds to succeed even without RESEND_API_KEY
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    
     if (!process.env.RESEND_API_KEY) {
       return NextResponse.json(
         {
@@ -31,6 +50,11 @@ export async function POST(request: NextRequest) {
         { status: 503 }
       );
     }
+
+    // Initialize Resend at runtime (not at module load time)
+    // This allows static export builds to succeed even without RESEND_API_KEY
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     const { name, email, website, message } = await request.json();
 
     // Validate required fields
@@ -57,12 +81,13 @@ export async function POST(request: NextRequest) {
     }
 
     // Send email using Resend
+    const emailFrom = process.env.CONTACT_EMAIL_FROM ?? 'JX Distribution <onboarding@resend.dev>';
+    const emailTo = process.env.CONTACT_EMAIL_TO ?? 'jxdigitalsupp@gmail.com';
     const data = await resend.emails.send({
-      from: 'JX Distribution <onboarding@resend.dev>', // Use this for testing
-      // After domain verification, change to: from: 'JX Distribution <contact@jxdistribution.africa>',
-      to: ['jxdigitalsupp@gmail.com'], // CHANGE THIS to your email for testing!
+      from: emailFrom,
+      to: [emailTo],
       replyTo: email, // User's email - allows you to reply directly
-      subject: `New Contact Form Submission from ${name}`,
+      subject: `New Contact Form Submission from ${escapeHtml(name)}`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -87,26 +112,26 @@ export async function POST(request: NextRequest) {
               <div class="content">
                 <div class="field">
                   <div class="label">Name:</div>
-                  <div class="value">${name}</div>
+                  <div class="value">${escapeHtml(name)}</div>
                 </div>
                 <div class="field">
                   <div class="label">Email:</div>
-                  <div class="value"><a href="mailto:${email}">${email}</a></div>
+                  <div class="value"><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></div>
                 </div>
                 ${website ? `
                 <div class="field">
                   <div class="label">Website:</div>
-                  <div class="value"><a href="${website}" target="_blank">${website}</a></div>
+                  <div class="value"><a href="${escapeHtml(sanitizeUrl(website))}" target="_blank">${escapeHtml(website)}</a></div>
                 </div>
                 ` : ''}
                 <div class="field">
                   <div class="label">Message:</div>
-                  <div class="value">${message.replace(/\n/g, '<br>')}</div>
+                  <div class="value">${escapeHtml(message).replace(/\n/g, '<br>')}</div>
                 </div>
               </div>
               <div class="footer">
                 <p>This email was sent from the JX Distribution Africa contact form.</p>
-                <p>Reply directly to this email to respond to ${name}.</p>
+                <p>Reply directly to this email to respond to ${escapeHtml(name)}.</p>
               </div>
             </div>
           </body>
@@ -114,8 +139,8 @@ export async function POST(request: NextRequest) {
       `,
     });
 
-    // Log success (helpful for debugging)
-    console.log('Email sent successfully:', data);
+    // Log success (message id only to avoid leaking PII into logs)
+    console.log('Email sent successfully, id:', data?.id);
 
     // Return success response
     return NextResponse.json({
