@@ -30,7 +30,6 @@ FILES=(
     "out/shop/index.html"
     "out/shop/checkout/index.html"
     "out/_next"
-    "out/public"
     "out/images"
 )
 
