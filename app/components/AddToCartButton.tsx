@@ -6,7 +6,7 @@
 
 import { useCart } from './CartProvider';
 import { Product } from '../../lib/products';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function AddToCartButton({
   product,
@@ -18,11 +18,19 @@ export default function AddToCartButton({
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [showAdded, setShowAdded] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
 
   const handleAddToCart = () => {
     addToCart(product, quantity);
     setShowAdded(true);
-    setTimeout(() => setShowAdded(false), 2000);
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setShowAdded(false), 2000);
   };
 
   return (
