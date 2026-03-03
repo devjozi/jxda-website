@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import FeaturedProductBanner from '../components/FeaturedProductBanner';
 
 export default function About() {
   return (
@@ -142,6 +143,7 @@ export default function About() {
         </div>
       </section>
 
+      <FeaturedProductBanner />
       <Footer />
     </>
   );

@@ -26,7 +26,7 @@ const CATEGORY_CONFIG: Record<string, { icon: string; badge: string; bg: string;
     icon: 'fa fa-shopping-basket',
     badge: 'bg-success',
     bg: '#198754',
-    desc: 'Vegetable oil, rice and everyday consumer goods for retail and wholesale distribution.',
+    desc: 'Rice, vegetable oil and everyday food & beverage products for retail and wholesale distribution.',
   },
   [PRODUCT_CATEGORIES.ELECTRONICS]: {
     icon: 'fa fa-bolt',

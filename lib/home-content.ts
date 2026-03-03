@@ -9,7 +9,7 @@ export type Testimonial = {
 export type SalesChannelMetric = {
   id: string;
   icon: string;
-  valueInMillions: number;
+  value: number;
   label: string;
 };
 
@@ -36,19 +36,19 @@ export const SALES_CHANNEL_METRICS: SalesChannelMetric[] = [
   {
     id: 'retailers',
     icon: '/images/icon/fact1.png',
-    valueInMillions: 31,
-    label: 'Retailers (Data Reach)',
+    value: 403200,
+    label: 'Retailers across West Africa',
   },
   {
     id: 'wholesalers',
     icon: '/images/icon/fact2.png',
-    valueInMillions: 31,
-    label: 'Wholesalers (Data Reach)',
+    value: 580612,
+    label: 'Wholesalers across West Africa',
   },
   {
     id: 'key-accounts',
     icon: '/images/icon/fact3.png',
-    valueInMillions: 31,
-    label: 'Key Accounts (Data Reach)',
+    value: 16200,
+    label: 'Key Accounts across West Africa',
   },
 ];

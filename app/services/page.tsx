@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import FeaturedProductBanner from '../components/FeaturedProductBanner';
 
 export default function Services() {
   const services = [
@@ -126,6 +127,7 @@ export default function Services() {
         </div>
       </section>
 
+      <FeaturedProductBanner />
       <Footer />
     </>
   );

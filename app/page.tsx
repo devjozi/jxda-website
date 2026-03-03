@@ -7,6 +7,7 @@
 import Link from 'next/link';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import FeaturedProductBanner from './components/FeaturedProductBanner';
 import QuoteForm from './components/QuoteForm';
 import { buildWhatsAppUrl } from '../lib/site';
 import { HOMEPAGE_TESTIMONIALS, SALES_CHANNEL_METRICS } from '../lib/home-content';
@@ -436,7 +437,7 @@ export default function Home() {
         <div className="container">
           <div className="row">
             <div className="col-lg-5 col-md-12 column-left-title">
-              <h2 className="column-title">Sales Channel Records in Millions</h2>
+              <h2 className="column-title">Sales Channel Records</h2>
             </div>
             <div className="col-lg-7 col-md-12">
               <div className="container">
@@ -446,7 +447,7 @@ export default function Home() {
                       <div className="ts-facts-bg">
                         <img src={metric.icon} alt="" />
                         <div className="ts-facts-content">
-                          <h4 className="ts-facts-num"><span className="counterUp">{metric.valueInMillions}</span>m</h4>
+                          <h4 className="ts-facts-num"><span className="counterUp">{metric.value.toLocaleString()}</span></h4>
                           <p className="facts-desc">{metric.label}</p>
                         </div>
                       </div>
@@ -476,6 +477,7 @@ export default function Home() {
         </div>
       </section>
 
+      <FeaturedProductBanner />
       <Footer />
     </>
   );

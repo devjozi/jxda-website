@@ -3,6 +3,7 @@
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import FeaturedProductBanner from '../components/FeaturedProductBanner';
 import { SITE } from '../../lib/site';
 
 export default function Contact() {
@@ -213,6 +214,7 @@ export default function Contact() {
         </div>
       </section>
 
+      <FeaturedProductBanner />
       <Footer />
     </>
   );
