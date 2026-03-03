@@ -1,11 +1,13 @@
-name: Build and Deploy (Next.js static → Hostinger)
+# Purpose: Build static export and deploy to Hostinger via SSH.
+# This workflow builds Next.js in static export mode and deploys /out directory to Hostinger.
+# Works with Hostinger Premium (static hosting). No Node.js server needed.
+name: Build & Deploy Static (Hostinger)
 
 on:
   push:
     branches:
-      - main
       - develop
-      - 'feature/**'
+      - main
 
 jobs:
   build-and-deploy:
@@ -17,27 +19,29 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
-
-      - name: Export static site
-        run: npm run export
+      - name: Build (static export)
+        run: npm run build:static
+        env:
+          NEXT_PUBLIC_WHATSAPP_NUMBER: ${{ secrets.NEXT_PUBLIC_WHATSAPP_NUMBER }}
+          NEXT_PUBLIC_WHATSAPP_MESSAGE: ${{ secrets.NEXT_PUBLIC_WHATSAPP_MESSAGE }}
+          NEXT_PUBLIC_CONTACT_FORM_ACTION: ${{ secrets.NEXT_PUBLIC_CONTACT_FORM_ACTION }}
 
       - name: Determine deploy target
-        id: deploy_target
         run: |
           BRANCH=${GITHUB_REF#refs/heads/}
-          if [ "$BRANCH" = "main" ]; then TARGET="public_html"; \
-          elif [ "$BRANCH" = "develop" ]; then TARGET="staging"; \
-          else TARGET="previews/$BRANCH"; fi
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
-          echo "TARGET=$TARGET" >> $GITHUB_ENV
-          echo "Deploying branch $BRANCH to $TARGET"
+          if [ "$BRANCH" = "develop" ]; then
+            echo "TARGET_PATH=${{ secrets.HOSTINGER_DEPLOY_PATH_PREVIEW }}" >> $GITHUB_ENV
+            echo "Deploying develop to ${{ secrets.HOSTINGER_DEPLOY_PATH_PREVIEW }}"
+          else
+            echo "TARGET_PATH=${{ secrets.HOSTINGER_DEPLOY_PATH_PROD }}" >> $GITHUB_ENV
+            echo "Deploying main to ${{ secrets.HOSTINGER_DEPLOY_PATH_PROD }}"
+          fi
 
       - name: Prepare SSH key
         run: |
@@ -48,7 +52,17 @@ jobs:
 
       - name: Deploy to Hostinger (rsync)
         run: |
-          TARGET_PATH="${{ secrets.HOSTINGER_DEPLOY_PATH }}/${TARGET}"
           echo "Deploy path: $TARGET_PATH"
-          rsync -avz --delete -e "ssh -p ${{ secrets.HOSTINGER_PORT }}" ./out/ "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:$TARGET_PATH/"
+          rsync -avz --delete \
+            --exclude ".git" \
+            --exclude "node_modules" \
+            --exclude ".github" \
+            --exclude "reference" \
+            -e "ssh -p ${{ secrets.HOSTINGER_PORT }}" ./out/ "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:$TARGET_PATH/"
+
+      - name: Verify deployment
+        run: |
+          echo "✓ Static files deployed to Hostinger"
+          echo "Branch: $BRANCH"
+          echo "Deploy target: $TARGET_PATH"
 

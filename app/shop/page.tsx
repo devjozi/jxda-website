@@ -1,16 +1,28 @@
 /**
  * Shop — product listing page (commerce).
- * Uses same layout chrome as main site (Header/Footer).
+ * Server component: exports SEO metadata and renders page chrome.
+ * Client-side filtering/search/sort is delegated to <ShopClient />.
  */
 
-import Link from 'next/link';
+import type { Metadata } from 'next';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ShopClient from '../components/ShopClient';
 import { getAllProducts } from '../../lib/products';
 
-export const metadata = {
-  title: 'Shop — JX Distribution Africa',
-  description: 'Service packages from JX Distribution Africa across sales, marketing and distribution.',
+export const metadata: Metadata = {
+  title: 'Shop — Auto Parts, FMCG, Electronics & More | JX Distribution Africa',
+  description:
+    'Buy genuine auto parts, FMCG goods, electronics, Ankara fabrics, and agricultural inputs in Ghana. Toyota, Honda, Ford, Mitsubishi filters, brake pads, and more. Nationwide delivery across all 16 regions. Order via WhatsApp.',
+  keywords:
+    'auto parts Ghana, oil filter Ghana, brake pads Ghana, Toyota parts Ghana, Honda parts Ghana, FMCG distributor Ghana, fertilizer Ghana, Ankara fabric Ghana, electronics Ghana, JX Distribution Africa shop',
+  openGraph: {
+    title: 'Shop — Auto Parts, FMCG, Electronics & More | JX Distribution Africa',
+    description:
+      'Genuine auto parts, FMCG, electronics and agricultural inputs available across all 16 regions of Ghana. Order via WhatsApp.',
+    type: 'website',
+    siteName: 'JX Distribution Africa',
+  },
 };
 
 export default function ShopPage() {
@@ -19,27 +31,31 @@ export default function ShopPage() {
   return (
     <>
       <Header />
-      <div className="container py-5">
-        <h1 className="mb-4">Shop</h1>
-        <p className="lead text-muted mb-5">
-          Service packages from JX Distribution Africa across sales, marketing, distribution and research.
-        </p>
-        <div className="row">
-          {products.map((p) => (
-            <div className="col-md-6 col-lg-3 mb-4" key={p.id}>
-              <div className="card h-100 shadow-sm">
-                <img src={p.image} className="card-img-top" alt={p.name} style={{ height: '180px', objectFit: 'cover' }} />
-                <div className="card-body d-flex flex-column">
-                  <h5 className="card-title">{p.name}</h5>
-                  <p className="card-text small text-muted flex-grow-1">{p.description.slice(0, 80)}…</p>
-                  <p className="mb-2"><strong>{p.currency} {p.price}</strong></p>
-                  <Link href={`/shop/${p.slug}`} className="btn btn-primary">View details</Link>
-                </div>
+
+      {/* ── Page Banner ──────────────────────────────────────────────────── */}
+      <div
+        className="banner-area"
+        id="banner-area"
+        style={{ backgroundImage: 'url(/images/banner/banner1.jpg)' }}
+      >
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col">
+              <div className="banner-heading">
+                <h1 className="banner-title">Our Product Catalogue</h1>
+                <ol className="breadcrumb">
+                  <li>Home</li>
+                  <li>Shop</li>
+                </ol>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
+
+      {/* ── Client Island (filtering, search, grid) ───────────────────────── */}
+      <ShopClient products={products} />
+
       <Footer />
     </>
   );

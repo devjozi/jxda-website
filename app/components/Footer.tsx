@@ -2,6 +2,7 @@
  * Footer — Logicraft structure; JX branding and contact from lib/site.
  */
 
+import Link from 'next/link';
 import { SITE } from '../../lib/site';
 
 export default function Footer() {
@@ -14,7 +15,7 @@ export default function Footer() {
               <div className="footer-logo">
                 <img src="/images/footer-logo.png" alt={SITE.name} />
               </div>
-              <p>{SITE.name} — {SITE.tagline}. Your trusted logistics and distribution partner.</p>
+              <p>{SITE.name} — {SITE.tagline} We sell products, grow brands, and strengthen market penetration through disciplined execution.</p>
               <h3 className="widget-title">Subscribe Newsletter!</h3>
               <form className="newsletter-form" id="newsletter-form" action="#" method="post">
                 <div className="form-group">
@@ -37,11 +38,11 @@ export default function Footer() {
             <div className="col-lg-4 col-md-6 footer-widget">
               <h3 className="widget-title">Quick Links</h3>
               <ul className="list-dash">
-                <li><a href="/">Home</a></li>
-                <li><a href="/shop">Shop</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/services">Our Services</a></li>
-                <li><a href="/contact">Contact Us</a></li>
+                <li><Link href="/">Home</Link></li>
+                <li><Link href="/shop">Shop</Link></li>
+                <li><Link href="/about">About Us</Link></li>
+                <li><Link href="/services">Our Services</Link></li>
+                <li><Link href="/contact">Contact Us</Link></li>
               </ul>
             </div>
             
@@ -99,7 +100,7 @@ export default function Footer() {
               <div className="footer-social text-right">
                 <ul>
                   <li><a href={SITE.social.facebook} aria-label="Facebook"><i className="fa fa-facebook"></i></a></li>
-                  <li><a href={SITE.social.twitter} aria-label="Twitter"><i className="fa fa-twitter"></i></a></li>
+                  <li><a href={SITE.social.tiktok} aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i className="fa fa-music"></i></a></li>
                   <li><a href={SITE.social.linkedin} aria-label="LinkedIn"><i className="fa fa-linkedin"></i></a></li>
                   <li><a href={SITE.social.instagram} aria-label="Instagram"><i className="fa fa-instagram"></i></a></li>
                 </ul>

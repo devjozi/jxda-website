@@ -11,7 +11,7 @@ JX Distribution sells online. Deliver a working commerce experience quickly; oth
 
 ## Tech
 
-- **Stack:** Next.js (static export), TypeScript, template/Bootstrap assets. Hostinger.
+- **Stack:** Next.js (server-capable), TypeScript, template/Bootstrap assets. Hostinger.
 - **Commerce:** Same Next.js app (recommended). Payment provider TBD.
 
 ---

@@ -1,5 +1,7 @@
 # AI COLLABORATION RULES — JX Distribution Website
 
+**⚡ If you are an AI agent working on this project, read [AGENT_PROMPT.md](AGENT_PROMPT.md) first for complete execution instructions.**
+
 This file defines how AI tools must assist on this project.
 
 The goal is:
@@ -20,7 +22,7 @@ The goal is:
 2. **Teach, don’t just output**
    - Assume the developer wants to understand:
      - Next.js behavior
-     - Static export logic
+   - Server vs static deployment
      - Folder structure decisions
    - Use plain language, not buzzwords
 
@@ -71,5 +73,5 @@ If anything is ambiguous:
 Success is:
 - The developer can explain what was done
 - The codebase is understandable without AI
-- The site builds and exports cleanly
+- The site builds cleanly
 

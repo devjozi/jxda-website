@@ -1,4 +1,5 @@
 # Preview and publish — JX Distribution
+<!-- Purpose: Steps for local preview, internal preview, and publish. -->
 
 Use this to **preview locally** and then **publish** the site.
 
@@ -112,32 +113,43 @@ Open **http://localhost:3000** (or the URL shown in the terminal).
 
 ---
 
-## Part 2: Build and publish
+## Part 2: Build and publish (static hosting)
 
 ### 1. Build static export
 
 ```bash
-npm run build
+npm run build:static
 ```
 
-- **Expect:** Build finishes without errors.  
-- Output is in the **`out`** folder (Next.js static export).
+- **Expect:** Build finishes without errors and outputs `/out`.
 
 ### 2. Test the built site locally (optional)
-
-Serve the `out` folder with a static server, e.g.:
 
 ```bash
 npx serve out
 ```
 
-Open the URL shown (e.g. http://localhost:3000). Click through Home → Shop → one product → Checkout and 404 as above to confirm behavior matches dev.
+Open the URL shown. Click through Home → Shop → one product → Checkout and 404 as above to confirm behavior matches dev.
 
-### 3. Publish to Hostinger
+### 3. Publish to Hostinger (static)
 
-1. Upload the **contents** of the `out` folder to your Hostinger **public_html** (or the folder that serves your domain).  
-2. Do **not** upload the `out` folder itself; upload the files inside it (e.g. `index.html`, `shop/`, assets, etc.).  
-3. Ensure the site is served over the correct domain (and that DNS points to Hostinger if needed).
+**CI/CD (recommended):**
+- Push to `develop` for internal preview at `https://preview.jxdistributionafrica.com`.
+- Push to `main` for production; GitHub Actions deploys `/out` to Hostinger.
+
+**GitHub Secrets required (Actions):**
+- `HOSTINGER_SSH_KEY`
+- `HOSTINGER_HOST`
+- `HOSTINGER_PORT`
+- `HOSTINGER_USER`
+- `HOSTINGER_DEPLOY_PATH_PREVIEW` (preview root path)
+- `HOSTINGER_DEPLOY_PATH_PROD` (production root path)
+
+**Manual (if needed):**
+1. Upload the **contents of `/out`** to the preview folder:
+  - `/home/u959952771/domains/jxdistributionafrica.com/public_html/preview`
+2. Upload the **contents of `/out`** to production:
+  - `/home/u959952771/domains/jxdistributionafrica.com/public_html`
 
 ### 4. After publish — what to check on the live site
 
@@ -148,10 +160,15 @@ Open the URL shown (e.g. http://localhost:3000). Click through Home → Shop →
 - A wrong URL (e.g. `/shop/not-a-product`) shows the 404 page.  
 - Update **`lib/site.ts`** with real Ghana contact details and social links, then rebuild and re-upload so the live site shows correct info.
 
+### 5. Contact form (serverless)
+
+- Set `NEXT_PUBLIC_CONTACT_FORM_ACTION` in `.env.local` to your provider endpoint (Formspree/Getform/etc.).
+- Example (Formspree): `https://formspree.io/f/yourFormId`
+
 ---
 
 ## Summary
 
 - **Preview:** `npm run dev` → open http://localhost:3000 → use the table and sections above to click and verify.  
-- **Publish:** `npm run build` → upload contents of `out` to Hostinger `public_html` → re-check the same flows on the live URL.  
+- **Publish:** `npm run build` → deploy to Hostinger Node app (CI/CD preferred) → re-check the same flows on the live URL.  
 - **Content:** Edit `lib/site.ts` (and optionally `lib/products.ts`) when you have final copy, then build and deploy again.

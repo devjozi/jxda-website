@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+import { CartProvider } from './components/CartProvider';
 
 export const metadata: Metadata = {
-  title: "JX Distribution Africa - Sales, Marketing & Distribution",
+  title: "JX Distribution Africa - Just produce or import, we will sell.",
   description:
-    "JX Distribution Africa is a registered Ghanaian company focused on sales, marketing, distribution of products and research across Africa, with coverage across all 16 regions of Ghana.",
+    "JX Distribution Africa is a registered market execution and distribution company headquartered in Ghana, delivering sales execution, distribution management, marketing activation, market research, and sales automation across all 16 regions.",
   keywords:
-    "JX Distribution Africa, sales, marketing, distribution, research, B2B, B2C, Ghana, 16 regions, Africa, route to market, logistics",
+    "JX Distribution Africa, Ghana distribution company, sales execution, route to market, route to consumer, distribution management, marketing activation, market research, call center services, sales automation",
 };
 
 export default function RootLayout({
@@ -29,7 +30,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="/css/responsive.css" />
       </head>
       <body suppressHydrationWarning>
-        {children}
+        <CartProvider>{children}</CartProvider>
         
         {/* jQuery - Local copy */}
         <Script 
@@ -38,8 +39,6 @@ export default function RootLayout({
         />
         
         <Script src="/js/bootstrap.bundle.min.js" strategy="lazyOnload" />
-        <Script src="/js/waypoints.min.js" strategy="lazyOnload" />
-        <Script src="/js/jquery.counterup.min.js" strategy="lazyOnload" />
         <Script src="/js/owl.carousel.min.js" strategy="lazyOnload" />
         <Script src="/js/custom.js" strategy="lazyOnload" />
       </body>

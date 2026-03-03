@@ -1,32 +1,13 @@
+// Purpose: Contact page with serverless form submission for static hosting.
 'use client';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { useState } from 'react';
+import FeaturedProductBanner from '../components/FeaturedProductBanner';
+import { SITE } from '../../lib/site';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    website: '',
-    message: ''
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // You can add email sending logic here
-    alert('Thank you for your message. We will get back to you soon!');
-    setFormData({ name: '', email: '', website: '', message: '' });
-  };
+  const formAction = SITE.contactForm.action;
 
   return (
     <>
@@ -59,7 +40,7 @@ export default function Contact() {
               <div className="text-center">
                 <i className="fa fa-map-marker" style={{ fontSize: '48px', color: '#007bff', marginBottom: '20px' }}></i>
                 <h4>Interactive Map</h4>
-                <p>Find us at our headquarters in Accra, Ghana</p>
+                <p>Find us at our headquarters in Ghana</p>
               </div>
             </div>
           </div>
@@ -75,8 +56,7 @@ export default function Contact() {
                 <div className="col-lg-6">
                   <h3 className="column-title">Contact Us</h3>
                   <p className="contact-content">
-                    JX Distribution Africa is your trusted partner for sales, marketing, and distribution across Ghana and Africa. 
-                    Reach out to us to discuss how we can help grow your business.
+                    Ready to grow sales and expand coverage? JX Distribution Africa supports local and international brands with structured sales execution, nationwide distribution, activations, digital marketing, call center solutions, and measurable reporting.
                   </p>
                   
                   <div className="contact-info-box contact-box info-box">
@@ -87,7 +67,7 @@ export default function Contact() {
                         </span>
                         <div className="ts-contact-content">
                           <h3 className="ts-contact-title">Find Us</h3>
-                          <p>Accra, Ghana<br />Headquarters: Greater Accra Region</p>
+                          <p>{SITE.address}</p>
                         </div>
                       </div>
 
@@ -97,7 +77,7 @@ export default function Contact() {
                         </span>
                         <div className="ts-contact-content">
                           <h3 className="ts-contact-title">Call Us</h3>
-                          <p>+233 (0) 30 123 4567<br />+233 (0) 50 987 6543</p>
+                          <p>{SITE.phone}</p>
                         </div>
                       </div>
 
@@ -107,7 +87,7 @@ export default function Contact() {
                         </span>
                         <div className="ts-contact-content">
                           <h3 className="ts-contact-title">Mail Us</h3>
-                          <p>info@jxdistribution.africa<br />support@jxdistribution.africa</p>
+                          <p>{SITE.email}</p>
                         </div>
                       </div>
                     </div>
@@ -118,63 +98,60 @@ export default function Contact() {
                 <div className="col-lg-6">
                   <h3 className="column-title">Get in Touch</h3>
                   <div className="contact-submit-box contact-box form-box">
-                    <form className="contact-form" id="contact-form" onSubmit={handleSubmit}>
+                    <form
+                      className="contact-form"
+                      id="contact-form"
+                      action={formAction || undefined}
+                      method="POST"
+                    >
                       <div className="error-container"></div>
                       <div className="row">
                         <div className="col-lg-12">
                           <div className="form-group">
-                            <input 
-                              className="form-control form-name" 
-                              id="name" 
-                              name="name" 
-                              placeholder="Full Name" 
-                              type="text" 
-                              value={formData.name}
-                              onChange={handleChange}
-                              required 
+                            <input
+                              className="form-control form-name"
+                              id="name"
+                              name="name"
+                              placeholder="Full Name"
+                              type="text"
+                              required
                             />
                           </div>
                         </div>
 
                         <div className="col-lg-12">
                           <div className="form-group">
-                            <input 
-                              className="form-control form-website" 
-                              id="website" 
-                              name="website" 
-                              placeholder="Website (Optional)" 
-                              type="url" 
-                              value={formData.website}
-                              onChange={handleChange}
+                            <input
+                              className="form-control form-website"
+                              id="website"
+                              name="website"
+                              placeholder="Website (Optional)"
+                              type="url"
                             />
                           </div>
                         </div>
 
                         <div className="col-lg-12">
                           <div className="form-group">
-                            <input 
-                              className="form-control form-email" 
-                              id="email" 
-                              name="email" 
-                              placeholder="Email Address" 
-                              type="email" 
-                              value={formData.email}
-                              onChange={handleChange}
-                              required 
+                            <input
+                              className="form-control form-email"
+                              id="email"
+                              name="email"
+                              placeholder="Email Address"
+                              type="email"
+                              required
                             />
                           </div>
                         </div>
 
                         <div className="col-lg-12">
                           <div className="form-group">
-                            <textarea 
-                              className="form-control form-message required-field" 
-                              id="message" 
-                              name="message" 
-                              placeholder="Tell us about your project or requirements..." 
+                            <textarea
+                              className="form-control form-message required-field"
+                              id="message"
+                              name="message"
+                              placeholder="Tell us about your product, target channels, and required support..."
                               rows={8}
-                              value={formData.message}
-                              onChange={handleChange}
                               required
                             ></textarea>
                           </div>
@@ -198,7 +175,7 @@ export default function Contact() {
         <div className="container">
           <div className="row text-center">
             <div className="col-md-12">
-              <h2 className="section-title"><span>Why Choose</span>JX Distribution Africa?</h2>
+              <h2 className="section-title"><span>Why Partner With JX</span>Why Companies Choose JX Distribution Africa</h2>
             </div>
           </div>
           <div className="row">
@@ -206,8 +183,8 @@ export default function Contact() {
               <div className="ts-feature-box">
                 <div className="ts-feature-info">
                   <img src="/images/icon/why-1.png" alt="Experience" />
-                  <h3 className="ts-feature-title">17 Years Experience</h3>
-                  <p>Deep understanding of the Ghanaian and African markets with proven track record.</p>
+                  <h3 className="ts-feature-title">Nationwide Reach &amp; Faster Penetration</h3>
+                  <p>Coverage across Ghana and West African markets with stronger product visibility and sales execution.</p>
                 </div>
               </div>
             </div>
@@ -215,8 +192,8 @@ export default function Contact() {
               <div className="ts-feature-box">
                 <div className="ts-feature-info">
                   <img src="/images/icon/why-2.png" alt="Coverage" />
-                  <h3 className="ts-feature-title">Nationwide Coverage</h3>
-                  <p>Active presence across all 16 regions of Ghana with stationed teams.</p>
+                  <h3 className="ts-feature-title">Execution Strength</h3>
+                  <p>Experienced sales and distribution professionals, tailored activations, and cost-effective engagement models.</p>
                 </div>
               </div>
             </div>
@@ -224,15 +201,20 @@ export default function Contact() {
               <div className="ts-feature-box">
                 <div className="ts-feature-info">
                   <img src="/images/icon/why-3.png" alt="Results" />
-                  <h3 className="ts-feature-title">Proven Results</h3>
-                  <p>Measurable outcomes with real-time reporting and performance tracking.</p>
+                  <h3 className="ts-feature-title">Automation &amp; 24/7 Support</h3>
+                  <p>Automated reporting, accountability, and 24/7 customer support with telesales operations.</p>
                 </div>
               </div>
+            </div>
+            <div className="col-md-12 text-center">
+              <p>Engagement Models: Commission-Based | Target-Based | Project-Based | Retainer-Based</p>
+              <p>{SITE.note}</p>
             </div>
           </div>
         </div>
       </section>
 
+      <FeaturedProductBanner />
       <Footer />
     </>
   );

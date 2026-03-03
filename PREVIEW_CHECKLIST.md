@@ -1,6 +1,18 @@
 # Preview checklist — after `npm run dev`
+<!-- Purpose: Verify local and internal preview behavior before release. -->
 
 Use this when previewing changes at http://localhost:3000 (or the port shown in the terminal).
+
+---
+
+## Internal preview (develop)
+
+Use the same checks below on `https://www.preview.jxdistributionafrica.com` after deploy.
+
+- [ ] **Homepage** — Header, carousel, FAQ, and quote form render correctly.
+- [ ] **Shop** — Product list and details load with correct images.
+- [ ] **Checkout** — Placeholder page renders and links back.
+- [ ] **API** — `POST /api/contact` returns success with a valid payload.
 
 ---
 

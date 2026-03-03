@@ -1,61 +1,65 @@
 # PROGRESS LOG — JX Distribution Website
 
-**Last Updated:** 2025-02-07  
-**Version:** 0.2.0  
-**Branch:** `feature/theme-next` (or current)  
-**Status:** Template sections + commerce + JX customization in place
+**Last Updated:** 2026-03-02  
+**Version:** 0.7.0  
+**Branch:** `develop`  
+**Status:** Cart workflow + non-404 placeholder routes completed, validated, and merged
+
+---
+
+## Truth snapshot (verified)
+
+Source of truth validation run on 2026-03-02:
+- `npm run check` ✅ passes end-to-end
+  - Lint: **0 errors**, warnings only (`no-img-element`, `no-css-tags`)
+  - TypeScript: ✅ pass
+  - Tests: ✅ 45/45 passing (4 test files)
+  - Static build: ✅ pass, **77 static pages generated**
+- Git branch: `develop` (tracking `origin/develop`)
+- Workflows present: deploy, quality gate, security scan, live smoke monitor
 
 ---
 
 ## Current state
 
-- **Homepage:** Hero, Features Light, Why JX, Our Services (6), FAQ + Testimonials, Facts, Quote/CTA — all converted from reference template.
-- **Commerce:** `/shop` (product list), `/shop/[slug]` (product detail), `/shop/checkout` (placeholder). Product data in `lib/products.ts`.
-- **JX customization:** Site config in `lib/site.ts`; Header/Footer use JX name, contact placeholders, Shop link; Quick Links and copyright updated.
-- **Preview and publish:** Use **PREVIEW_AND_PUBLISH.md** for step-by-step browser checks and Hostinger publish.
+- **Homepage:** Core template sections implemented (hero, features, services, FAQ/testimonials, facts, CTA).
+- **Commerce:** `/shop` + `/shop/[slug]` + `/shop/checkout` implemented with WhatsApp-first ordering flow and persistent shopping cart.
+- **Catalog:** 53+ products across 5 categories, with search/filter/sort and product detail pages.
+- **SEO/Schema:** Shop listing metadata + per-product metadata + JSON-LD (`Product`, `BreadcrumbList`).
+- **Testing:** 45 unit tests passing (`tests/products.test.ts`, `tests/shop-filters.test.ts`, `tests/site.test.ts`, `tests/contact-route.test.ts`).
+- **CI/CD:** Static Hostinger deploy workflow + quality gate + security + 30-min live smoke checks configured.
+- **Routing:** Placeholder pages added for previously broken nav links: `/features`, `/news`, `/news/[slug]`, `/projects`, `/gallery`.
 
 ---
 
-## ✅ Completed
+## Important reality checks
 
-### Phase 1–4 (Foundation, Layout, Header, Footer)
-- Next.js + static export, template assets in `/public`, `app/layout.tsx`, `app/components/Header.tsx`, `app/components/Footer.tsx`.
-
-### Phase 5: Homepage body sections
-| # | Section | Status |
-|---|---------|--------|
-| 1 | Hero/Banner carousel (3 slides) | ✅ |
-| 2 | Features Light (3 service boxes) | ✅ |
-| 3 | Why JX Distribution (6 benefits + center image) | ✅ |
-| 4 | Our Services (6 items) | ✅ |
-| 5 | FAQ (accordion) | ✅ |
-| 6 | Testimonials | ✅ |
-| 7 | Facts (stats) | ✅ |
-| 8 | Quote / CTA form | ✅ |
-| 9 | Latest news (template) | ⏳ Optional |
-| 10 | Quote request forms (integrated in CTA) | ✅ |
-
-### Commerce (initial)
-- [x] Product list page (`/shop`)
-- [x] Product detail page (`/shop/[slug]`)
-- [x] Checkout placeholder (`/shop/checkout`)
-- [x] Static product data (`lib/products.ts`)
-
-### JX customization (initial)
-- [x] `lib/site.ts` — site name, tagline, address, email, phone, social (placeholders)
-- [x] Header: logo → `/`, JX contact in top bar, Shop nav link, Contact / Request a Quote → `/#quote-area`
-- [x] Footer: JX description, Quick Links (Home, Shop, Services, FAQs, Contact), contact from SITE, copyright “JX Distribution”, social from SITE
-- [ ] Replace placeholders with real Ghana contact and social URLs when ready
-- [ ] Replace template logos with JX branding assets when ready
+- `lib/site.ts` now contains real phone and core social links, with TikTok still placeholder (`#`).
+- Any doc claiming “real Ghana contact/social links are already live in code” is outdated.
+- `PROJECT_PLAN.md` reflects the historical planning baseline and is **not** an accurate completion tracker today.
+- `DEPLOYMENT_READY.md` is an older deployment snapshot (v0.5.0 assumptions and older page counts).
 
 ---
 
-## ⏳ Next steps
+## ✅ Completed (high confidence)
 
-- **Preview:** Run `npm run dev`, open http://localhost:3000, follow **PREVIEW_CHECKLIST.md**.
-- **Payment:** Add Paystack (or chosen provider) to checkout when ready.
-- **Content:** Replace placeholder copy and add real contact details in `lib/site.ts`.
-- **Optional:** Latest news section on homepage; About/Contact as standalone pages if needed.
+- Static export deployment path for Hostinger
+- Shop UX/CRO/SEO overhaul (v0.6.0 scope)
+- Shopping cart workflow (global cart state, add-to-cart from listing/detail, cart-aware checkout)
+- Placeholder route coverage for legacy links to avoid user-facing 404s
+- Filter/sort extraction to `lib/shop-filters.ts`
+- Product-page schema/metadata improvements
+- Unit tests for catalogue, filters, contact route, site config
+- CI workflows for quality/security/deploy/smoke checks
+
+---
+
+## ⏳ Open / next priorities
+
+1. **Content truth:** Complete remaining social profile placeholders (TikTok) and verify all live URLs.
+2. **Go-live readiness:** Complete unchecked launch controls (legal pages, monitoring stack, final QA).
+3. **Commerce depth:** Implement checkout validation + order confirmation pipeline (cart persistence/add-to-cart now complete).
+4. **Asset quality:** Replace template/placeholder imagery with licensed production assets.
 
 ---
 
@@ -63,35 +67,44 @@
 
 | Path | Purpose |
 |------|---------|
-| `app/page.tsx` | Homepage (all sections) |
-| `app/shop/page.tsx` | Shop product list |
-| `app/shop/[slug]/page.tsx` | Product detail |
-| `app/shop/checkout/page.tsx` | Checkout placeholder |
-| `lib/site.ts` | JX branding and contact config |
-| `lib/products.ts` | Product data |
-| `app/components/Header.tsx` | Header (JX + Shop) |
-| `app/components/Footer.tsx` | Footer (JX + Quick Links) |
-| **PREVIEW_AND_PUBLISH.md** | What to do in the browser + how to build and publish |
+| `app/shop/page.tsx` | Shop listing shell + metadata |
+| `app/components/ShopClient.tsx` | Search/filter/sort UI + product cards |
+| `app/shop/[slug]/page.tsx` | Product details + structured data |
+| `app/shop/checkout/page.tsx` | Cart-aware + WhatsApp-first checkout flow |
+| `app/components/CartProvider.tsx` | Global cart context + localStorage persistence |
+| `app/components/AddToCartButton.tsx` | Reusable add-to-cart CTA |
+| `app/components/CartCheckoutClient.tsx` | Checkout cart rendering + totals |
+| `app/features/page.tsx` | Placeholder features page (non-404) |
+| `app/news/page.tsx` | Placeholder news listing (non-404) |
+| `app/news/[slug]/page.tsx` | Placeholder news detail pages (non-404) |
+| `app/projects/page.tsx` | Placeholder projects page (non-404) |
+| `app/gallery/page.tsx` | Placeholder gallery page (non-404) |
+| `lib/products.ts` | Product catalogue and categories |
+| `lib/shop-filters.ts` | Pure filter/sort logic |
+| `lib/site.ts` | Company/contact/social/WhatsApp config |
+| `.github/workflows/deploy.yml` | Hostinger static deployment |
+| `.github/workflows/quality-gate.yml` | Lint + typecheck + tests + build gate |
+| `.github/workflows/security.yml` | npm audit + CodeQL |
+| `.github/workflows/live-smoke.yml` | Preview/production health checks |
 
 ---
 
-## Recent changes (ready for review)
+## Known issues / debt
 
-- **Layout:** Full template CSS loaded (animate, font-awesome, icon-font, owl.carousel, responsive). JS: waypoints, counterUp, owl.carousel, custom.js so carousel, testimonials, and fact counters work.
-- **FAQ:** Updated to Bootstrap 5 accordion (data-bs-toggle / accordion-item) so expand/collapse works.
-- **Hero carousel:** Uses data-bs-ride / data-bs-target / data-bs-slide for Bootstrap 5.
-- **Quote form:** Replaced with `QuoteForm` client component; submit shows “Thank you — We’ll be in touch” (no backend yet).
-- **404:** `app/not-found.tsx` with Header/Footer and Home/Shop links.
-
-## Known issues
-
-- **Icon fonts:** May show as squares; fix paths in CSS or use SVG/icons later if needed.
+- Lint warnings from intentional template compatibility patterns (`<img>` and stylesheet link tags).
+- Icon font rendering can degrade depending on asset path resolution.
+- Some planning/deployment docs are legacy snapshots and need periodic truth-sync updates.
 
 ---
 
 ## Versioning
 
-- **0.1.0** — Foundation, layout, Header, Footer, hero + features light.
-- **0.2.0** — Full homepage sections, commerce (shop/list/detail/checkout), JX config and Header/Footer customization, PREVIEW_CHECKLIST.
-
-After completing a logical chunk of work, bump `version` in `package.json` and add a short line under “Versioning” above.
+- **0.1.0** — Foundation, layout, header/footer, initial homepage sections.
+- **0.2.0** — Homepage completion + initial commerce pages.
+- **0.3.x** — Planning + CI/deployment groundwork.
+- **0.4.0** — Product catalog infrastructure + import tooling.
+- **0.5.0** — Expanded product data and WhatsApp commerce flow.
+- **0.6.0** — Shop SEO/CRO/UX overhaul + test expansion to 45 passing.
+- **0.6.1** — Truth-sync docs update, planning backlog refresh, site contact/social config refresh.
+- **0.7.0** — Shopping cart workflow completed, placeholder pages added for broken routes, closure pass validation on 77 static pages.
+- **Docs truth-sync (2026-03-01)** — status documentation aligned to current repo behavior.

@@ -1,25 +1,37 @@
 {
   "name": "jx-distribution-official-website",
-  "version": "0.2.0",
+  "version": "0.7.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "next build",
+    "build:static": "STATIC_EXPORT=true next build",
+    "export": "npm run build:static",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run lint && npm run typecheck && npm run test && npm run build:static",
+    "audit:high": "npm audit --audit-level=high",
+    "audit:fix": "npm audit fix",
+    "test": "vitest run",
+    "import-products": "tsx scripts/import-products.ts"
   },
   "dependencies": {
     "next": "^16.1.6",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "resend": "^6.9.2"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "csv-parse": "^5.5.6",
     "eslint": "^9",
-    "eslint-config-next": "16.1.2",
-    "typescript": "^5"
+    "eslint-config-next": "^16.1.6",
+    "tsx": "^4.19.5",
+    "typescript": "^5",
+    "vitest": "^4.0.18"
   }
 }

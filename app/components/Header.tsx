@@ -5,15 +5,33 @@
  * - Home
  * - Shop
  * - Company (About, Services, Contact)
- * - Services (with all 6 service links)
+ * - Services (with all 8 service links)
  * - Contact
  * 
  * Removed: Projects dropdown, Features dropdown, News dropdown (until implemented)
  */
 
-import { SITE } from '../../lib/site';
+'use client';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { SITE, buildWhatsAppUrl } from '../../lib/site';
+import { useCart } from './CartProvider';
 
 export default function Header() {
+  const pathname = usePathname();
+  const { itemCount } = useCart();
+
+  const isHome = pathname === '/';
+  const isShop = pathname === '/shop' || pathname.startsWith('/shop/');
+  const isAbout = pathname === '/about';
+  const isServices = pathname === '/services' || pathname.startsWith('/services/');
+  const isContact = pathname === '/contact';
+  const isCompany = isAbout || isServices || isContact;
+
+  // WhatsApp CTA for the primary header button.
+  const quoteUrl = buildWhatsAppUrl('Hi, I want support with sales execution and distribution in Ghana.');
+
   return (
     <div className="site-top-2">
       <header className="header nav-down" id="header-2">
@@ -21,9 +39,9 @@ export default function Header() {
           <div className="row">
             <div className="logo-area clearfix">
               <div className="logo col-lg-3 col-md-12">
-                <a href="/">
+                <Link href="/">
                   <img src="/images/logo.png" alt={SITE.name} />
-                </a>
+                </Link>
               </div>
               <div className="col-lg-9 col-md-12 pull-right">
                 <ul className="top-info unstyled">
@@ -57,11 +75,15 @@ export default function Header() {
         <div className="site-nav-inner site-navigation navigation navdown">
           <div className="container">
             <nav className="navbar navbar-expand-lg">
+              {/* Logo shown only when nav is in fixed/sticky state (scrolled) */}
+              <Link href="/" className="sticky-brand">
+                <img src="/images/logo.png" alt={SITE.name} />
+              </Link>
               <button
                 className="navbar-toggler"
                 type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent"
                 aria-expanded="false"
                 aria-label="Toggle navigation"
@@ -74,46 +96,60 @@ export default function Header() {
 
               <div className="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
                 <ul className="navbar-nav">
-                  <li className="nav-item active">
-                    <a className="nav-link" href="/">Home</a>
+                  <li className={`nav-item${isHome ? ' active' : ''}`}>
+                    <Link className={`nav-link${isHome ? ' active' : ''}`} href="/">Home</Link>
                   </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/shop">Shop</a>
+                  <li className={`nav-item${isShop ? ' active' : ''}`}>
+                    <Link className={`nav-link${isShop ? ' active' : ''}`} href="/shop">Shop</Link>
                   </li>
-                  <li className="nav-item dropdown">
-                    <a className="nav-link" href="#" data-toggle="dropdown">
+                  <li className={`nav-item dropdown${isCompany ? ' active' : ''}`}>
+                    <button type="button" className={`nav-link dropdown-toggle${isCompany ? ' active' : ''}`} data-bs-toggle="dropdown" aria-expanded="false">
                       Company<i className="fa fa-angle-down"></i>
-                    </a>
+                    </button>
                     <ul className="dropdown-menu" role="menu">
-                      <li><a href="/about">About Us</a></li>
-                      <li><a href="/services">Our Services</a></li>
-                      <li><a href="/contact">Contact Us</a></li>
+                      <li><Link href="/about">About Us</Link></li>
+                      <li><Link href="/services">Our Services</Link></li>
+                      <li><Link href="/contact">Contact Us</Link></li>
                     </ul>
                   </li>
                   {/* li end */}
 
-                  <li className="nav-item dropdown">
-                    <a className="nav-link" href="#" data-toggle="dropdown">
+                  <li className={`nav-item dropdown${isServices ? ' active' : ''}`}>
+                    <button type="button" className={`nav-link dropdown-toggle${isServices ? ' active' : ''}`} data-bs-toggle="dropdown" aria-expanded="false">
                       Services<i className="fa fa-angle-down"></i>
-                    </a>
+                    </button>
                     <ul className="dropdown-menu" role="menu">
-                      <li><a href="/services">All Services</a></li>
-                      <li><a href="/services/b2b-sales-merchandising">B2B Sales & Merchandising</a></li>
-                      <li><a href="/services/b2c-consumer-activation">B2C Consumer Activation</a></li>
-                      <li><a href="/services/route-to-market-development">Route to Market Development</a></li>
-                      <li><a href="/services/market-surveys-research">Market Surveys & Research</a></li>
-                      <li><a href="/services/logistics-distribution-management">Logistics & Distribution Management</a></li>
-                      <li><a href="/services/branding-events-digital-marketing">Branding, Events & Digital Marketing</a></li>
+                      <li><Link href="/services">All Services</Link></li>
+                      <li><Link href="/services/route-to-market-and-route-to-consumer-development">Route-to-Market & Route-to-Consumer Development</Link></li>
+                      <li><Link href="/services/social-media-marketing-and-activation-campaigns">Social Media Marketing & Activation Campaigns</Link></li>
+                      <li><Link href="/services/distribution-and-logistics-coordination">Distribution & Logistics Coordination</Link></li>
+                      <li><Link href="/services/market-research-and-consumer-intelligence">Market Research & Consumer Intelligence</Link></li>
+                      <li><Link href="/services/procurement">Procurement</Link></li>
+                      <li><Link href="/services/sales-team-training-and-performance-management">Sales Team Training & Performance Management</Link></li>
+                      <li><Link href="/services/call-center-services-for-companies">Call Center Services for Companies</Link></li>
+                      <li><Link href="/services/sales-automation-and-reporting">Sales Automation & Reporting</Link></li>
                     </ul>
                   </li>
                   {/* li end */}
 
-                  <li className="nav-item">
-                    <a className="nav-link" href="/contact">Contact</a>
+                  <li className={`nav-item${isContact ? ' active' : ''}`}>
+                    <Link className={`nav-link${isContact ? ' active' : ''}`} href="/contact">Contact</Link>
                   </li>
                 </ul>
               </div>
-              <a href="/contact" className="top-right-btn btn btn-primary">Request a Quote</a>
+              <div className="d-flex align-items-center gap-2">
+                <Link href="/shop/checkout" className="top-right-btn btn btn-outline-secondary" style={{ whiteSpace: 'nowrap' }}>
+                  <i className="fa fa-shopping-cart me-1" />Cart{itemCount > 0 ? ` (${itemCount})` : ''}
+                </Link>
+                <a
+                  href={quoteUrl}
+                  className="top-right-btn btn btn-primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Request a Quote
+                </a>
+              </div>
               {/* Top bar btn */}
             </nav>
           </div>
