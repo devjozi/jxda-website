@@ -24,7 +24,9 @@ export const SITE = {
   },
   whatsapp: {
     // Digits only for wa.me links.
-    number: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '233538838135').replace(/\D/g, ''),
+    number: (((process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '233546613884').replace(/\D/g, '')) === '233538838135'
+      ? '233546613884'
+      : (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '233546613884').replace(/\D/g, '')),
     message: process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ?? "Hi, I want to grow sales and market coverage with JX Distribution Africa.",
   },
   contactForm: {

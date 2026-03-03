@@ -56,7 +56,7 @@ export default function CheckoutPage() {
               <Link href="/shop" className="btn btn-outline-primary">Back to Shop</Link>
               <p className="text-muted mt-3">
                 Questions? Contact us directly:<br />
-                <a href="tel:+233538838135">+233 53 883 8135</a> or
+                <a href="tel:+233546613884">+233 54 661 3884</a> or
                 <a href="mailto:info@jxdistributionafrica.com"> info@jxdistributionafrica.com</a>
               </p>
             </div>
