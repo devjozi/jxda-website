@@ -59,6 +59,22 @@ Migrate the Logicraft Bootstrap/HTML template into a structured Next.js project 
 ### Phase 5+ — Commerce (Priority)
 - After minimal marketing pages are in place: product listing, product detail pages, checkout, payment integration. Same Next.js app.
 
+### Phase 6+ — User-Friendly Product CMS (Future Sprint, Node-first)
+- Goal: replace developer-driven CSV/catalog updates with non-technical editing workflow.
+- Prerequisite: Node-capable hosting is active (for robust CMS sync/publish and server route support).
+- Target capabilities:
+	- Product CRUD
+	- Category management + storefront mapping
+	- Media library workflow
+	- Editorial workflow (draft/review/publish)
+	- Migration from current static catalog source
+	- Fallback strategy to last validated static snapshot
+
+**Functional alternatives for this phase:**
+- Headless CMS (Sanity/Contentful/Strapi Cloud) — preferred long-term admin UX
+- Git-based CMS (Decap) — static-friendly with lower infra complexity
+- Airtable/Google Sheets + sync script — fastest adoption for non-technical operators
+
 ---
 
 ## Success Criteria (Migration)

@@ -26,8 +26,13 @@ function readCSV(filePath: string): ProductCSVRow[] {
       columns: true,
       skip_empty_lines: true,
       trim: true,
-    });
-    return records;
+    }) as unknown[];
+
+    if (records.some((record) => typeof record !== 'object' || record === null)) {
+      throw new Error('CSV parse result contains non-object rows');
+    }
+
+    return records as ProductCSVRow[];
   } catch (error) {
     console.error(`Error reading CSV file: ${error}`);
     process.exit(1);

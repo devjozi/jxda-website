@@ -269,6 +269,42 @@ Transform JX Distribution Africa website from a marketing-only site to a **full-
 
 ---
 
+### **SPRINT 11: USER-FRIENDLY PRODUCT CMS (FUTURE, NODE-FIRST)**
+
+**Goal:** Move product/shop management from developer CSV edits to a non-technical content workflow with safer publishing controls.
+
+| # | Task | Branch | Status |
+|---|------|--------|--------|
+| 11.1 | Select CMS approach and confirm operating model | `chore/cms-approach-evaluation` | 🔴 Not Started |
+| 11.2 | Model product/category schema + validation rules | `feature/cms-product-schema` | 🔴 Not Started |
+| 11.3 | Build product CRUD workflow for non-technical editors | `feature/cms-product-crud` | 🔴 Not Started |
+| 11.4 | Add category management and storefront mapping | `feature/cms-category-management` | 🔴 Not Started |
+| 11.5 | Add media library workflow for product images | `feature/cms-media-workflow` | 🔴 Not Started |
+| 11.6 | Add editorial workflow (draft → review → publish) | `feature/cms-editorial-workflow` | 🔴 Not Started |
+| 11.7 | Migrate current catalog from CSV/products.ts to CMS | `chore/cms-catalog-migration` | 🔴 Not Started |
+| 11.8 | Add fallback strategy to last good static snapshot | `feature/cms-publish-fallback` | 🔴 Not Started |
+
+**User-friendly alternatives (to choose in 11.1):**
+
+| Option | Editor UX | Best Fit | Tradeoffs |
+|---|---|---|---|
+| Headless CMS (Sanity/Contentful/Strapi Cloud) | Strong GUI, roles, workflows | Preferred long-term once Node hosting is available | More setup + vendor/platform overhead |
+| Git-based CMS (Decap) | Simple admin UI over Git | Low-cost, static-friendly teams | Editorial flow tied to Git/PR model |
+| Airtable/Google Sheets + sync script | Very familiar UI for non-devs | Fastest initial adoption | Weaker governance/media lifecycle |
+
+**Acceptance Criteria:**
+- ✅ Non-technical user can create/edit/archive products without touching code
+- ✅ Category/tags/media are manageable from admin UI
+- ✅ Draft/review/publish path is in place
+- ✅ Catalog migration from current CSV/static source is completed and verified
+- ✅ If CMS publishing fails, storefront can recover from last valid build snapshot
+
+**Branches:** `chore/cms-approach-evaluation`, `feature/cms-product-schema`, `feature/cms-product-crud`, `feature/cms-category-management`, `feature/cms-media-workflow`, `feature/cms-editorial-workflow`, `chore/cms-catalog-migration`, `feature/cms-publish-fallback`  
+**Dependencies:** Node-capable hosting migration complete (server routes and CMS sync path available)  
+**Estimated Time:** 1.5–2.5 weeks (excluding stakeholder UAT sign-off)
+
+---
+
 ### **SPRINT 7: SEO & ANALYTICS**
 
 **Goal:** Ensure site is discoverable and trackable
