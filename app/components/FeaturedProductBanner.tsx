@@ -41,10 +41,28 @@ export default function FeaturedProductBanner() {
                 textTransform: 'uppercase',
                 letterSpacing: '1px',
                 display: 'inline-block',
-                marginBottom: '12px',
+                marginBottom: '8px',
+                marginRight: '8px',
               }}
             >
               Featured — Limited Stock
+            </span>
+            <span
+              style={{
+                background: 'rgba(255,255,255,0.15)',
+                color: '#fff',
+                fontWeight: 700,
+                fontSize: '0.75rem',
+                padding: '4px 14px',
+                borderRadius: '20px',
+                textTransform: 'uppercase',
+                letterSpacing: '1px',
+                display: 'inline-block',
+                marginBottom: '8px',
+                border: '1px solid rgba(255,255,255,0.4)',
+              }}
+            >
+              Low Sugar · Diabetic-Friendly
             </span>
             <h3
               style={{
@@ -59,8 +77,9 @@ export default function FeaturedProductBanner() {
               <span style={{ color: '#f0c040' }}>Now Available</span>
             </h3>
             <p style={{ color: '#d4f0d4', marginBottom: '20px', fontSize: '0.95rem' }}>
-              Clean, well-processed grains — perfect for households, retailers and caterers.
-              Available in two sizes. Order now via WhatsApp or the shop.
+              Specially processed to carry lower sugar and starch levels — making it suitable for
+              diabetics and anyone looking to avoid sugar spikes after eating rice.
+              Clean, quality grains for households, retailers and caterers. Available in two sizes.
             </p>
 
             {/* Price variants */}
@@ -110,7 +129,7 @@ export default function FeaturedProductBanner() {
           {/* CTA */}
           <div className="col-lg-4 col-md-7 text-center">
             <p style={{ color: '#d4f0d4', fontSize: '0.9rem', marginBottom: '16px' }}>
-              Moving fast — stock is limited. Place your order today.
+              Moving fast — stock is limited. A healthier rice for everyday eating. Place your order today.
             </p>
             <Link
               href="/shop?category=Food+%26+Beverages"
