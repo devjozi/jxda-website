@@ -17,7 +17,6 @@ export default function Home() {
   const whatsappLinks = {
     quickQuote: buildWhatsAppUrl('Hi, just produce or import, we will sell. I need a quick quote.'),
     callBack: buildWhatsAppUrl('Hi, please call me back about nationwide sales execution and distribution.'),
-    featureLearnMore: buildWhatsAppUrl('Hi, I want to learn more about your execution model and services.'),
     servicesTalk: buildWhatsAppUrl('Hi, I want to talk to your team about growing sales and market penetration.'),
   };
 
@@ -168,7 +167,7 @@ export default function Home() {
                   </div>
                   <h3 className="ts-feature-title">Structured Sales Execution</h3>
                   <p>We execute with a clear framework: assessment, territory design, stocking plans, conversion, and optimization.</p>
-                  <a className="slider btn btn-primary" href={whatsappLinks.featureLearnMore} target="_blank" rel="noreferrer">Read More</a>
+                  <Link className="slider btn btn-primary" href="/services/route-to-market-and-route-to-consumer-development">Read More</Link>
                 </div>
               </div>
             </div>
@@ -180,7 +179,7 @@ export default function Home() {
                   </div>
                   <h3 className="ts-feature-title">Nationwide Operational Footprint</h3>
                   <p>Operations across all 16 regions of Ghana with field teams, logistics coordination, and warehousing support.</p>
-                  <a className="slider btn btn-primary" href={whatsappLinks.featureLearnMore} target="_blank" rel="noreferrer">Read More</a>
+                  <Link className="slider btn btn-primary" href="/services/distribution-and-logistics-coordination">Read More</Link>
                 </div>
               </div>
             </div>
@@ -192,7 +191,7 @@ export default function Home() {
                   </div>
                   <h3 className="ts-feature-title">Measurable Reporting</h3>
                   <p>Sales automation systems provide structured tracking of performance, penetration progress, and execution quality.</p>
-                  <a className="slider btn btn-primary" href={whatsappLinks.featureLearnMore} target="_blank" rel="noreferrer">Read More</a>
+                  <Link className="slider btn btn-primary" href="/services/sales-automation-and-reporting">Read More</Link>
                 </div>
               </div>
               {/* feature box-3 end */}
