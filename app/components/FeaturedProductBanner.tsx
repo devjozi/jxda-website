@@ -10,7 +10,6 @@ export default function FeaturedProductBanner() {
   const featured = getFeaturedProducts();
   if (featured.length === 0) return null;
 
-  // Group featured products by unique image (show one image, list all variants)
   const riceProducts = featured.filter((p) => p.tags?.includes('rice'));
   const representative = riceProducts[0];
   if (!representative) return null;
@@ -29,8 +28,6 @@ export default function FeaturedProductBanner() {
     >
       <div className="container">
         <div className="row align-items-center">
-
-          {/* Badge + Heading */}
           <div className="col-lg-5 col-md-12 mb-4 mb-lg-0 text-center text-lg-left">
             <span
               className="animated fadeInDown"
@@ -86,7 +83,6 @@ export default function FeaturedProductBanner() {
               Clean, quality grains for households, retailers and caterers. Available in two sizes.
             </p>
 
-            {/* Price variants */}
             <div className="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start" style={{ gap: '12px' }}>
               {riceProducts.map((p) => (
                 <Link
@@ -113,7 +109,6 @@ export default function FeaturedProductBanner() {
             </div>
           </div>
 
-          {/* Product image */}
           <div className="col-lg-3 col-md-5 mb-4 mb-md-0 text-center">
             <Link href={`/shop/${representative.slug}`}>
               <img
@@ -132,7 +127,6 @@ export default function FeaturedProductBanner() {
             </Link>
           </div>
 
-          {/* CTA */}
           <div className="col-lg-4 col-md-7 text-center">
             <p style={{ color: '#d4f0d4', fontSize: '0.9rem', marginBottom: '16px' }}>
               Moving fast — stock is limited. A healthier rice for everyday eating. Place your order today.
@@ -166,7 +160,6 @@ export default function FeaturedProductBanner() {
               Browse all products
             </Link>
           </div>
-
         </div>
       </div>
     </section>

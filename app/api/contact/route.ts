@@ -134,7 +134,9 @@ export async function POST(request: NextRequest) {
       `,
     });
 
-    const messageId = emailResult?.data?.id;
+    const messageId = ('data' in emailResult && emailResult.data)
+      ? emailResult.data.id
+      : undefined;
     console.log('Email sent successfully, id:', messageId);
 
     return NextResponse.json({
