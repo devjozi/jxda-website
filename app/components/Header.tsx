@@ -37,14 +37,14 @@ export default function Header() {
       <header className="header nav-down" id="header-2">
         <div className="container">
           <div className="row">
-            <div className="logo-area clearfix">
-              <div className="logo col-lg-3 col-md-12">
+            <div className="logo-area d-flex flex-column flex-lg-row align-items-center justify-content-lg-between">
+              <div className="logo text-center text-lg-start mb-2 mb-lg-0">
                 <Link href="/">
                   <img src="/images/logo.png" alt={SITE.name} />
                 </Link>
               </div>
-              <div className="col-lg-9 col-md-12 pull-right">
-                <ul className="top-info unstyled">
+              <div className="text-center text-lg-end">
+                <ul className="top-info unstyled d-inline-flex flex-wrap justify-content-center justify-content-lg-end">
                   <li>
                     <span className="info-icon">
                       <i className="icon icon-phone3"></i>
