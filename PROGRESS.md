@@ -60,6 +60,7 @@ Source of truth validation run on 2026-03-02:
 2. **Go-live readiness:** Complete unchecked launch controls (legal pages, monitoring stack, final QA).
 3. **Commerce depth:** Implement checkout validation + order confirmation pipeline (cart persistence/add-to-cart now complete).
 4. **Asset quality:** Replace template/placeholder imagery with licensed production assets.
+5. **Future sprint prep (Node-first CMS):** Add user-friendly product/catalog management roadmap (CRUD, categories, media, editorial workflow, migration from CSV/static catalog).
 
 ---
 
