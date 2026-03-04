@@ -7,9 +7,102 @@
 .site-navigation .nav-link.dropdown-toggle {
   background: transparent;
   border: none;
+  text-rendering: optimizeLegibility;
+  display: inline-block;
+  padding: 5px 15px;
+  line-height: 80px;
+  font-size: 14px;
+  margin: 0;
+  text-transform: uppercase;
+  position: relative;
+  font-weight: 700;
+  color: #fff;
+  transition: 350ms;
+}
+
+.site-navigation .nav-link.dropdown-toggle:focus,
+.site-navigation .nav-link.dropdown-toggle:hover {
+  background: transparent;
+  color: #fff;
+}
+
+.site-navigation .nav-item.show > .nav-link.dropdown-toggle,
+.site-navigation .nav-item.active > .nav-link.dropdown-toggle {
+  color: #fff;
+}
+
+.site-navigation .nav-link.dropdown-toggle:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  border-bottom: 3px solid transparent;
+  transform: scale(0) translateZ(0);
+  transition: transform 0.45s ease, opacity 0.55s ease;
+}
+
+.site-navigation .nav-item:hover > .nav-link.dropdown-toggle:before,
+.site-navigation .nav-item.active > .nav-link.dropdown-toggle:before,
+.site-navigation .nav-item.show > .nav-link.dropdown-toggle:before {
+  border-color: #FFCC00;
+  opacity: 1;
+  transform: scale(1) translateZ(0);
 }
 
 /* Hide Bootstrap's built-in ::after caret — Font Awesome angle icon is used instead */
 .site-navigation .dropdown-toggle::after {
   display: none;
+}
+
+.site-navigation .nav-link.dropdown-toggle i {
+  font-weight: 700;
+  padding-left: 5px;
+}
+
+/* Keep first feature row from climbing over the banner on homepage */
+.ts-features-light--after-banner .feature-light-row {
+  margin-top: 0;
+}
+
+.featured-product-banner {
+  margin-bottom: 12px;
+}
+
+.featured-banner-price-link:hover {
+  background: rgba(255, 255, 255, 0.24) !important;
+}
+
+.featured-banner-image {
+  animation-duration: 2.8s;
+  animation-iteration-count: infinite;
+}
+
+.featured-banner-cta {
+  animation: featuredCtaPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes featuredCtaPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .site-navigation .nav-link.dropdown-toggle {
+    line-height: 1.4;
+    width: 100%;
+    text-align: left;
+  }
+
+  .featured-product-banner {
+    margin-bottom: 0;
+  }
 }

@@ -157,7 +157,7 @@ export default function Home() {
       <FeaturedProductBanner />
 
       {/* Features Light Section */}
-      <section id="ts-features-light" className="ts-features-light">
+      <section id="ts-features-light" className="ts-features-light ts-features-light--after-banner">
         <div className="container">
           <div className="row feature-light-row">
             <div className="col-md-4 text-center">
