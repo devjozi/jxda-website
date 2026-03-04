@@ -93,7 +93,7 @@ export default function Footer() {
           <div className="row">
             <div className="col-lg-6 col-md-12">
               <div className="copyright-info">
-                <span>© {new Date().getFullYear()} {SITE.name}. Theme: Logicraft (Furioustheme).</span>
+                <span>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</span>
               </div>
             </div>
             <div className="col-lg-6 col-md-12">
