@@ -32,29 +32,34 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 const STORAGE_KEY = 'jxd-cart';
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>(() => {
-    if (typeof window === 'undefined') {
-      return [];
-    }
+  const [items, setItems] = useState<CartItem[]>([]);
+  const [isHydratedFromStorage, setIsHydratedFromStorage] = useState(false);
+
+  // Load cart from localStorage after mount to keep initial SSR/CSR render consistent.
+  useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      return stored ? JSON.parse(stored) : [];
+      setItems(stored ? JSON.parse(stored) : []);
     } catch (err) {
       console.error('Failed to load cart from localStorage:', err);
-      return [];
+      setItems([]);
+    } finally {
+      setIsHydratedFromStorage(true);
     }
-  });
+  }, []);
 
   // Persist cart to localStorage whenever items change
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-      } catch (err) {
-        console.error('Failed to save cart to localStorage:', err);
-      }
+    if (!isHydratedFromStorage) {
+      return;
     }
-  }, [items]);
+
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    } catch (err) {
+      console.error('Failed to save cart to localStorage:', err);
+    }
+  }, [items, isHydratedFromStorage]);
 
   const addToCart = (product: Product, quantity = 1) => {
     setItems((prev) => {
