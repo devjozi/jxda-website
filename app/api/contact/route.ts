@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
     // Send email using Resend
     const emailFrom = process.env.CONTACT_EMAIL_FROM ?? 'JX Distribution <onboarding@resend.dev>';
     const emailTo = process.env.CONTACT_EMAIL_TO ?? 'jxdigitalsupp@gmail.com';
-    const data = await resend.emails.send({
+    const emailResult = await resend.emails.send({
       from: emailFrom,
       to: [emailTo],
       replyTo: email, // User's email - allows you to reply directly
@@ -140,7 +140,10 @@ export async function POST(request: NextRequest) {
     });
 
     // Log success (message id only to avoid leaking PII into logs)
-    console.log('Email sent successfully, id:', data?.id);
+    const messageId = ('data' in emailResult && emailResult.data)
+      ? emailResult.data.id
+      : undefined;
+    console.log('Email sent successfully, id:', messageId);
 
     // Return success response
     return NextResponse.json({
