@@ -2,3 +2,14 @@
 .sticky-brand { display: none; }
 .site-nav-inner.fixed .sticky-brand { display: inline-block; margin-right: 15px; }
 .site-nav-inner.fixed .sticky-brand img { height: 40px; width: auto; }
+
+/* Navbar dropdown trigger buttons: strip browser-default button chrome */
+.site-navigation .nav-link.dropdown-toggle {
+  background: transparent;
+  border: none;
+}
+
+/* Hide Bootstrap's built-in ::after caret — Font Awesome angle icon is used instead */
+.site-navigation .dropdown-toggle::after {
+  display: none;
+}
