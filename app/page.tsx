@@ -154,6 +154,8 @@ export default function Home() {
       </div>
       {/* Carousel end */}
 
+      <FeaturedProductBanner />
+
       {/* Features Light Section */}
       <section id="ts-features-light" className="ts-features-light">
         <div className="container">
@@ -477,7 +479,6 @@ export default function Home() {
         </div>
       </section>
 
-      <FeaturedProductBanner />
       <Footer />
     </>
   );
