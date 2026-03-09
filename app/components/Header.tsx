@@ -94,8 +94,8 @@ export default function Header() {
               </button>
               {/* End of Navbar toggler */}
 
-              <div className="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
-                <ul className="navbar-nav">
+              <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav me-auto">
                   <li className={`nav-item${isHome ? ' active' : ''}`}>
                     <Link className={`nav-link${isHome ? ' active' : ''}`} href="/">Home</Link>
                   </li>
@@ -104,7 +104,7 @@ export default function Header() {
                   </li>
                   <li className={`nav-item dropdown${isCompany ? ' active' : ''}`}>
                     <button type="button" className={`nav-link dropdown-toggle${isCompany ? ' active' : ''}`} data-bs-toggle="dropdown" aria-expanded="false">
-                      Company<i className="fa fa-angle-down"></i>
+                      Company<i className="fa fa-angle-down ms-1"></i>
                     </button>
                     <ul className="dropdown-menu" role="menu">
                       <li><Link href="/about">About Us</Link></li>
@@ -116,7 +116,7 @@ export default function Header() {
 
                   <li className={`nav-item dropdown${isServices ? ' active' : ''}`}>
                     <button type="button" className={`nav-link dropdown-toggle${isServices ? ' active' : ''}`} data-bs-toggle="dropdown" aria-expanded="false">
-                      Services<i className="fa fa-angle-down"></i>
+                      Services<i className="fa fa-angle-down ms-1"></i>
                     </button>
                     <ul className="dropdown-menu" role="menu">
                       <li><Link href="/services">All Services</Link></li>
