@@ -12,7 +12,7 @@ jobs:
       matrix:
         target:
           - name: preview
-            url: https://www.preview.jxdistributionafrica.com
+            url: https://preview.jxdistributionafrica.com
           - name: production
             url: https://www.jxdistributionafrica.com
     steps:
