@@ -103,9 +103,9 @@ export default function Header() {
                     <Link className={`nav-link${isShop ? ' active' : ''}`} href="/shop">Shop</Link>
                   </li>
                   <li className={`nav-item dropdown${isCompany ? ' active' : ''}`}>
-                    <button type="button" className={`nav-link dropdown-toggle${isCompany ? ' active' : ''}`} data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="#" role="button" className={`nav-link dropdown-toggle${isCompany ? ' active' : ''}`} data-bs-toggle="dropdown" aria-expanded="false">
                       Company<i className="fa fa-angle-down ms-1"></i>
-                    </button>
+                    </a>
                     <ul className="dropdown-menu" role="menu">
                       <li><Link href="/about">About Us</Link></li>
                       <li><Link href="/services">Our Services</Link></li>
@@ -115,9 +115,9 @@ export default function Header() {
                   {/* li end */}
 
                   <li className={`nav-item dropdown${isServices ? ' active' : ''}`}>
-                    <button type="button" className={`nav-link dropdown-toggle${isServices ? ' active' : ''}`} data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="#" role="button" className={`nav-link dropdown-toggle${isServices ? ' active' : ''}`} data-bs-toggle="dropdown" aria-expanded="false">
                       Services<i className="fa fa-angle-down ms-1"></i>
-                    </button>
+                    </a>
                     <ul className="dropdown-menu" role="menu">
                       <li><Link href="/services">All Services</Link></li>
                       <li><Link href="/services/route-to-market-and-route-to-consumer-development">Route-to-Market & Route-to-Consumer Development</Link></li>
