@@ -35,14 +35,16 @@ export default function Contact() {
         {/* Map */}
         <div className="contact-map">
           <div className="map" id="map">
-            {/* Google Map will be initialized here */}
-            <div style={{ height: '400px', backgroundColor: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div className="text-center">
-                <i className="fa fa-map-marker" style={{ fontSize: '48px', color: '#007bff', marginBottom: '20px' }}></i>
-                <h4>Interactive Map</h4>
-                <p>Find us at our headquarters in Ghana</p>
-              </div>
-            </div>
+            <iframe
+              src="https://maps.google.com/maps?q=GE-225-5007+Kwabenya+Taifa+North+Accra+Ghana&output=embed"
+              width="100%"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="JX Distribution Africa — GE-225-5007 Kwabenya / Taifa North, Accra"
+            />
           </div>
         </div>
 
