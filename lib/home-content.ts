@@ -36,19 +36,19 @@ export const SALES_CHANNEL_METRICS: SalesChannelMetric[] = [
   {
     id: 'retailers',
     icon: '/images/icon/fact1.png',
-    value: 403200,
+    value: 63041,
     label: 'Retailers across West Africa',
   },
   {
     id: 'wholesalers',
     icon: '/images/icon/fact2.png',
-    value: 580612,
+    value: 36200,
     label: 'Wholesalers across West Africa',
   },
   {
     id: 'key-accounts',
     icon: '/images/icon/fact3.png',
-    value: 16200,
+    value: 9800,
     label: 'Key Accounts across West Africa',
   },
 ];
