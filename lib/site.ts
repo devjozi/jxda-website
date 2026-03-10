@@ -6,15 +6,14 @@
 export const SITE = {
   name: 'JX Distribution Africa',
   tagline: 'Just produce or import, we will sell.',
-  // Registered Ghanaian company with coverage across all 16 regions.
-  address: 'MPMW+CHM, Near Mr Adjei, Taifa, Kwabenya.',
+  address: 'JX Distribution Africa, Mr. Adjei Station, Kwabenya, Accra, Ghana',
   // Replace with the official contact email for JX Distribution Africa.
   email: 'info@jxdistributionafrica.com',
   // Replace with the official phone number.
   phone: '+233 53 883 8135',
   // Public note from the company profile.
   note: 'We do not sell or market alcoholic, gambling, and tobacco products.',
-  // Replace social URLs with real profiles when available.
+  // Social profiles — all set to live handles.
   social: {
     facebook: 'https://web.facebook.com/JxDistribution',
     // twitter: '#',
