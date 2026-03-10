@@ -100,7 +100,7 @@ export default function Footer() {
               <div className="footer-social text-right">
                 <ul>
                   <li><a href={SITE.social.facebook} aria-label="Facebook"><i className="fa fa-facebook"></i></a></li>
-                  <li><a href={SITE.social.tiktok} aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i className="fa fa-music"></i></a></li>
+                  <li><a href={SITE.social.tiktok} aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i className="fa fa-video-camera"></i></a></li>
                   <li><a href={SITE.social.linkedin} aria-label="LinkedIn"><i className="fa fa-linkedin"></i></a></li>
                   <li><a href={SITE.social.instagram} aria-label="Instagram"><i className="fa fa-instagram"></i></a></li>
                 </ul>

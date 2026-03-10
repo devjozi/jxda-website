@@ -1,9 +1,9 @@
 # PROGRESS LOG — JX Distribution Website
 
-**Last Updated:** 2026-03-09
+**Last Updated:** 2026-03-10
 **Version:** 0.7.1
 **Branch:** `develop`
-**Status:** Cart workflow + non-404 placeholder routes completed, validated, and merged
+**Status:** Cart workflow + non-404 placeholder routes completed; UX polish backported from `main`
 
 ---
 
@@ -34,7 +34,7 @@ Source of truth validation run on 2026-03-02:
 
 ## Important reality checks
 
-- `lib/site.ts` now contains real phone and core social links, with TikTok still placeholder (`#`).
+- `lib/site.ts` now contains real phone and core social links; verify TikTok handle is correct.
 - Any doc claiming “real Ghana contact/social links are already live in code” is outdated.
 - `PROJECT_PLAN.md` reflects the historical planning baseline and is **not** an accurate completion tracker today.
 - `DEPLOYMENT_READY.md` is an older deployment snapshot (v0.5.0 assumptions and older page counts).
@@ -57,7 +57,7 @@ Source of truth validation run on 2026-03-02:
 ## ⏳ Open / next priorities
 
 1. **CI/CD pipeline fix:** Deploy workflow secrets audit (especially `HOSTINGER_PORT` — Hostinger uses `65002` not `22`). Preview subdomain needs Hostinger hPanel subdomain pointing to `/public_html/preview`. Fix `www.` prefix in `live-smoke.yml` preview URL check.
-2. **Content truth:** Complete remaining social profile placeholders (TikTok) and verify all live URLs.
+2. **Content truth:** Verify all social profile URLs (incl. TikTok) and update any remaining placeholders.
 3. **Immediate content fixes:** Update `lib/site.ts` address to `GE-225-5007 Kwabenya / Taifa North`. Implement interactive map embed on contact page. Replace placeholder images via direct Hostinger FTP (no rebuild needed for same-filename swaps).
 4. **Go-live readiness:** Complete unchecked launch controls (legal pages, monitoring stack, final QA).
 5. **Commerce depth:** Implement checkout validation + order confirmation pipeline.
@@ -112,5 +112,5 @@ Source of truth validation run on 2026-03-02:
 - **0.6.0** — Shop SEO/CRO/UX overhaul + test expansion to 45 passing.
 - **0.6.1** — Truth-sync docs update, planning backlog refresh, site contact/social config refresh.
 - **0.7.0** — Shopping cart workflow completed, placeholder pages added for broken routes, closure pass validation on 77 static pages.
-- **0.7.1** — Docs truth-sync: open priorities updated with CI/CD fix steps, address/map tasks, immediate FTP image path. Sprint 11 expanded in PROJECT_PLAN.md with Phase A (Sanity CMS, static-compatible) and Phase B (promo codes, Node.js + Supabase required).
-- **Docs truth-sync (2026-03-01)** — status documentation aligned to current repo behavior.
+- **0.7.1** — Docs truth-sync + UX polish (footer TikTok icon, header cart spacing) + CI/CD next-priority checklist; Sprint 11 expanded (CMS Phase A + promo Phase B).
+- **Docs truth-sync (2026-03-10)** — status documentation aligned to current repo behavior.
