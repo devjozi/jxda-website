@@ -139,7 +139,7 @@ export default function Header() {
               </div>
               <div className="d-flex align-items-center gap-2">
                 <Link href="/shop/checkout" className="top-right-btn btn btn-outline-secondary" style={{ whiteSpace: 'nowrap' }}>
-                  <i className="fa fa-shopping-cart me-1" />Cart{itemCount > 0 ? ` (${itemCount})` : ''}
+                  <i className="fa fa-shopping-cart me-1" /> Cart{itemCount > 0 ? ` (${itemCount})` : ''}
                 </Link>
                 <a
                   href={quoteUrl}
