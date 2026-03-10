@@ -36,14 +36,14 @@ export default function Contact() {
         <div className="contact-map">
           <div className="map" id="map">
             <iframe
-              src="https://maps.google.com/maps?q=GE-225-5007+Kwabenya+Taifa+North+Accra+Ghana&output=embed"
+              src="https://maps.google.com/maps?q=MPMW%2BCHM+Near+Mr+Adjei+Taifa+Kwabenya+Ghana&output=embed"
               width="100%"
               height="400"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="JX Distribution Africa — GE-225-5007 Kwabenya / Taifa North, Accra"
+              title="JX Distribution Africa — MPMW+CHM, Near Mr Adjei, Taifa, Kwabenya"
             />
           </div>
         </div>
