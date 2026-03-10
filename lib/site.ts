@@ -7,7 +7,7 @@ export const SITE = {
   name: 'JX Distribution Africa',
   tagline: 'Just produce or import, we will sell.',
   // Registered Ghanaian company with coverage across all 16 regions.
-  address: 'Headquartered in Ghana with operations across all 16 regions',
+  address: 'MPMW+CHM, Near Mr Adjei, Taifa, Kwabenya.',
   // Replace with the official contact email for JX Distribution Africa.
   email: 'info@jxdistributionafrica.com',
   // Replace with the official phone number.
