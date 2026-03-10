@@ -34,6 +34,11 @@ const STORAGE_KEY = 'jxd-cart';
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isHydratedFromStorage, setIsHydratedFromStorage] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Load cart from localStorage after mount to keep initial SSR/CSR render consistent.
   useEffect(() => {
@@ -118,7 +123,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
     clearCart,
   };
 
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+  return (
+    <CartContext.Provider value={value}>
+      <div style={{ visibility: isMounted ? 'visible' : 'hidden' }}>
+        {children}
+      </div>
+    </CartContext.Provider>
+  );
 }
 
 export function useCart() {

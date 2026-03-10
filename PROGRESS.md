@@ -1,9 +1,9 @@
 # PROGRESS LOG — JX Distribution Website
 
-**Last Updated:** 2026-03-02  
-**Version:** 0.7.0  
-**Branch:** `develop`  
-**Status:** Cart workflow + non-404 placeholder routes completed, validated, and merged
+**Last Updated:** 2026-03-10  
+**Version:** 0.7.1  
+**Branch:** `improve/site-ux-and-consistency`  
+**Status:** UX improvements, TikTok icon fix, and hydration safety merged
 
 ---
 
@@ -108,4 +108,5 @@ Source of truth validation run on 2026-03-02:
 - **0.6.0** — Shop SEO/CRO/UX overhaul + test expansion to 45 passing.
 - **0.6.1** — Truth-sync docs update, planning backlog refresh, site contact/social config refresh.
 - **0.7.0** — Shopping cart workflow completed, placeholder pages added for broken routes, closure pass validation on 77 static pages.
-- **Docs truth-sync (2026-03-01)** — status documentation aligned to current repo behavior.
+- **0.7.1** — Fixed TikTok icon in footer, improved Cart button spacing, and added hydration safety to CartProvider to prevent SSR mismatches.
+- **Docs truth-sync (2026-03-10)** — status documentation aligned to current repo behavior.
