@@ -39,7 +39,7 @@ jobs:
       pull-requests: write
     env:
       AUTO_APPROVE_ACTOR: dependabot[bot]
-      APPROVE_ON_CI_PASS: 'true'
+      APPROVE_ON_CI_PASS: 'false'
     steps:
       - name: Auto-approve when eligible
         uses: actions/github-script@v7
