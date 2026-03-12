@@ -48,7 +48,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.HOSTINGER_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -p "${{ secrets.HOSTINGER_PORT }}" "${{ secrets.HOSTINGER_HOST }}" >> ~/.ssh/known_hosts
+          ssh-keyscan -T 30 -p "${{ secrets.HOSTINGER_PORT }}" "${{ secrets.HOSTINGER_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
 
       - name: Deploy to Hostinger (rsync)
         run: |
@@ -58,7 +58,8 @@ jobs:
             --exclude "node_modules" \
             --exclude ".github" \
             --exclude "reference" \
-            -e "ssh -p ${{ secrets.HOSTINGER_PORT }}" ./out/ "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:$TARGET_PATH/"
+            -e "ssh -p ${{ secrets.HOSTINGER_PORT }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
+            ./out/ "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:$TARGET_PATH/"
 
       - name: Verify deployment
         run: |
