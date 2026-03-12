@@ -269,39 +269,84 @@ Transform JX Distribution Africa website from a marketing-only site to a **full-
 
 ---
 
-### **SPRINT 11: USER-FRIENDLY PRODUCT CMS (FUTURE, NODE-FIRST)**
+### **SPRINT 11: USER-FRIENDLY PRODUCT & CONTENT CMS**
 
-**Goal:** Move product/shop management from developer CSV edits to a non-technical content workflow with safer publishing controls.
+**Goal:** Move product/shop management, promotional campaigns, and site content from developer-only edits to a non-technical GUI dashboard with safe publishing controls and redeemable promo codes.
+
+> **Recommended phasing:**
+> - **Phase A** — Sanity CMS for product/content management. Works on **current static Hostinger hosting**. No hosting upgrade required.
+> - **Phase B** — Promo codes and campaign management. Requires **Node.js-capable hosting** (Hostinger Business/VPS or Vercel) and a database (Supabase). Do this alongside or after the payment integration sprint.
+
+---
+
+#### Phase A — CMS for Products, Content & Media ⭐ RECOMMENDED FIRST
+
+**Works on current static Hostinger hosting. Sanity CMS (free tier) is the recommended approach.**
 
 | # | Task | Branch | Status |
 |---|------|--------|--------|
-| 11.1 | Select CMS approach and confirm operating model | `chore/cms-approach-evaluation` | 🔴 Not Started |
-| 11.2 | Model product/category schema + validation rules | `feature/cms-product-schema` | 🔴 Not Started |
-| 11.3 | Build product CRUD workflow for non-technical editors | `feature/cms-product-crud` | 🔴 Not Started |
-| 11.4 | Add category management and storefront mapping | `feature/cms-category-management` | 🔴 Not Started |
-| 11.5 | Add media library workflow for product images | `feature/cms-media-workflow` | 🔴 Not Started |
-| 11.6 | Add editorial workflow (draft → review → publish) | `feature/cms-editorial-workflow` | 🔴 Not Started |
-| 11.7 | Migrate current catalog from CSV/products.ts to CMS | `chore/cms-catalog-migration` | 🔴 Not Started |
-| 11.8 | Add fallback strategy to last good static snapshot | `feature/cms-publish-fallback` | 🔴 Not Started |
+| 11.1 | Set up Sanity project + studio (free tier, hosted GUI) | `feature/cms-sanity-setup` | 🔴 Not Started |
+| 11.2 | Model product/category/media schema in Sanity | `feature/cms-product-schema` | 🔴 Not Started |
+| 11.3 | Connect Next.js build to Sanity API (build-time fetch) | `feature/cms-nextjs-integration` | 🔴 Not Started |
+| 11.4 | Add webhook → GitHub Actions rebuild on Sanity publish | `feature/cms-publish-webhook` | 🔴 Not Started |
+| 11.5 | Build CRUD workflow: create, edit, archive products | `feature/cms-product-crud` | 🔴 Not Started |
+| 11.6 | Add category management and storefront mapping | `feature/cms-category-management` | 🔴 Not Started |
+| 11.7 | Add media library workflow (Sanity asset upload for images) | `feature/cms-media-workflow` | 🔴 Not Started |
+| 11.8 | Add editorial workflow (draft → review → publish) | `feature/cms-editorial-workflow` | 🔴 Not Started |
+| 11.9 | Migrate current catalog from `lib/products.ts` to Sanity | `chore/cms-catalog-migration` | 🔴 Not Started |
+| 11.10 | Add fallback strategy to last good static snapshot | `feature/cms-publish-fallback` | 🔴 Not Started |
+| 11.11 | Extend CMS schema for services, testimonials, banners | `feature/cms-sitewide-content` | 🔴 Not Started |
 
-**User-friendly alternatives (to choose in 11.1):**
+**Approach comparison (for task 11.1 decision):**
 
-| Option | Editor UX | Best Fit | Tradeoffs |
+| Option | Editor UX | Static Hosting Compatible | Recommended? |
 |---|---|---|---|
-| Headless CMS (Sanity/Contentful/Strapi Cloud) | Strong GUI, roles, workflows | Preferred long-term once Node hosting is available | More setup + vendor/platform overhead |
-| Git-based CMS (Decap) | Simple admin UI over Git | Low-cost, static-friendly teams | Editorial flow tied to Git/PR model |
-| Airtable/Google Sheets + sync script | Very familiar UI for non-devs | Fastest initial adoption | Weaker governance/media lifecycle |
+| **Sanity CMS** (hosted studio, free tier) | Excellent GUI, roles, media library, live preview | ✅ Yes — build-time fetch + webhook rebuild | ⭐ Yes |
+| Git-based CMS (Decap/Netlify CMS) | Simple admin UI over Git | ✅ Yes | Acceptable fallback |
+| Airtable / Google Sheets + sync script | Very familiar for non-devs | ✅ Yes (rebuild on export) | Quick-start only, limited media |
+| Strapi / Payload (self-hosted) | Full control, strong GUI | ❌ No — requires Node.js hosting | Phase B only |
 
-**Acceptance Criteria:**
-- ✅ Non-technical user can create/edit/archive products without touching code
-- ✅ Category/tags/media are manageable from admin UI
-- ✅ Draft/review/publish path is in place
-- ✅ Catalog migration from current CSV/static source is completed and verified
-- ✅ If CMS publishing fails, storefront can recover from last valid build snapshot
+**Phase A Acceptance Criteria:**
+- ✅ Non-technical user can create, edit, and archive products without touching code
+- ✅ Product images uploaded and managed from the CMS media library
+- ✅ Category/tags manageable from admin UI
+- ✅ Saving and publishing in CMS triggers an automatic site rebuild and deploy
+- ✅ Catalog migrated from `lib/products.ts` — no more CSV imports needed
+- ✅ Services, testimonials, and site banners also editable from CMS
+- ✅ If publish fails, storefront recovers from last valid build snapshot
 
-**Branches:** `chore/cms-approach-evaluation`, `feature/cms-product-schema`, `feature/cms-product-crud`, `feature/cms-category-management`, `feature/cms-media-workflow`, `feature/cms-editorial-workflow`, `chore/cms-catalog-migration`, `feature/cms-publish-fallback`  
-**Dependencies:** Node-capable hosting migration complete (server routes and CMS sync path available)  
-**Estimated Time:** 1.5–2.5 weeks (excluding stakeholder UAT sign-off)
+**Branches:** `feature/cms-sanity-setup`, `feature/cms-product-schema`, `feature/cms-nextjs-integration`, `feature/cms-publish-webhook`, `feature/cms-product-crud`, `feature/cms-category-management`, `feature/cms-media-workflow`, `feature/cms-editorial-workflow`, `chore/cms-catalog-migration`, `feature/cms-publish-fallback`, `feature/cms-sitewide-content`
+**Dependencies:** CI/CD deploy pipeline stable (webhook must be able to trigger deploys reliably)
+**Estimated Time:** 1.5–2 weeks
+
+---
+
+#### Phase B — Promo Codes & Campaign Management 🔒 REQUIRES NODE.JS HOSTING
+
+**Requires: Hostinger VPS / Business plan or Vercel + Supabase (free tier). Do alongside payment integration sprint.**
+
+| # | Task | Branch | Status |
+|---|------|--------|--------|
+| 11.12 | Migrate hosting to Node.js-capable plan (Vercel or Hostinger VPS) | `chore/hosting-node-migration` | 🔴 Not Started |
+| 11.13 | Set up Supabase project (database for promos, codes, redemptions) | `feature/promo-supabase-setup` | 🔴 Not Started |
+| 11.14 | Design promo codes schema (code, type, discount, limit, expiry, uses) | `feature/promo-schema` | 🔴 Not Started |
+| 11.15 | Build promo code generator and admin UI in CMS/dashboard | `feature/promo-admin-ui` | 🔴 Not Started |
+| 11.16 | Build server-side promo code validation API route | `feature/promo-validation-api` | 🔴 Not Started |
+| 11.17 | Integrate promo code input into checkout flow | `feature/promo-checkout` | 🔴 Not Started |
+| 11.18 | Track redemptions and enforce usage limits/expiry | `feature/promo-redemption-tracking` | 🔴 Not Started |
+| 11.19 | Add promotional banners CMS schema (tied to active campaigns) | `feature/promo-banners-cms` | 🔴 Not Started |
+
+**Phase B Acceptance Criteria:**
+- ✅ Admin can create promo codes with: discount type (%, fixed), usage limit, expiry date
+- ✅ Customers can enter a code at checkout and see the discount applied in real time
+- ✅ Each code validates server-side (not client-side) — cannot be spoofed
+- ✅ Usage count is tracked; codes are auto-disabled when limit or expiry is reached
+- ✅ Admin can view redemption log per code
+- ✅ Active promo campaigns can be displayed as banners managed from the CMS
+
+**Branches:** `chore/hosting-node-migration`, `feature/promo-supabase-setup`, `feature/promo-schema`, `feature/promo-admin-ui`, `feature/promo-validation-api`, `feature/promo-checkout`, `feature/promo-redemption-tracking`, `feature/promo-banners-cms`
+**Dependencies:** Phase A complete, Node.js hosting migration complete, Supabase project created
+**Estimated Time:** 2–3 weeks
 
 ---
 
@@ -379,7 +424,7 @@ Transform JX Distribution Africa website from a marketing-only site to a **full-
 
 ## 📊 **PROGRESS TRACKING**
 
-**Overall Completion:** 35% (22/62 tasks)
+**Overall Completion:** ~27% (22/81 tasks)
 
 | Sprint | Tasks | Completed | Progress |
 |--------|-------|-----------|----------|
@@ -393,6 +438,9 @@ Transform JX Distribution Africa website from a marketing-only site to a **full-
 | Sprint 7: SEO & Analytics | 7 | 0 | 0% |
 | Sprint 8: Production Launch | 7 | 0 | 0% |
 | Sprint 9: Experience Polish | 1 | 0 | 0% |
+| Sprint 10: Pre-Launch Quality | 9 | 4 | 44% |
+| Sprint 11A: CMS — Products & Content | 11 | 0 | 0% |
+| Sprint 11B: Promo Codes & Campaigns | 8 | 0 | 0% |
 | Post-Launch: Payments | 7 | 0 | 0% |
 
 ---
@@ -435,6 +483,7 @@ Each sprint should include teaching moments on:
 | Date | Version | Changes |
 |------|---------|---------|
 | 2026-02-15 | 1.0.0 | Initial plan created with all todos mapped to branches |
+| 2026-03-09 | 1.1.0 | Sprint 11 expanded: Phase A (Sanity CMS, static-compatible, recommended) + Phase B (promo codes/campaigns, requires Node.js hosting + Supabase). Progress table updated to 81 tasks. |
 
 ---
 

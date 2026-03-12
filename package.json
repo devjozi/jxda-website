@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:static": "STATIC_EXPORT=true next build",
+    "build:static": "STATIC_EXPORT=true next build && cp .htaccess.hostinger out/.htaccess",
     "export": "npm run build:static",
     "start": "next start",
     "lint": "eslint .",
@@ -28,7 +28,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "csv-parse": "^6.1.0",
-    "eslint": "^10",
+    "eslint": "^9",
     "eslint-config-next": "^16.1.6",
     "tsx": "^4.19.5",
     "typescript": "^5",

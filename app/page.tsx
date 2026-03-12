@@ -325,12 +325,12 @@ export default function Home() {
                 desc: 'Sales capability development, supervision, and accountability.',
               },
               {
-                img: 'service2.jpg',
+                img: 'service7.jpg',
                 title: 'Call Center Services for Companies',
                 desc: '24/7 call center and telesales support for customer engagement.',
               },
               {
-                img: 'service6.jpg',
+                img: 'service8.jpg',
                 title: 'Sales Automation & Reporting',
                 desc: 'Automated tracking of sales, coverage, campaign, and team performance.',
               },
@@ -341,8 +341,8 @@ export default function Home() {
                     <img className="img-fluid" src={`/images/services/${s.img}`} alt={s.title} />
                   </div>
                   <div className="ts-service-content">
-                    <h3 className="service-title">{s.title}</h3>
-                    <p>{s.desc}</p>
+                    <h3 className="service-title" style={{ minHeight: '56px' }}>{s.title}</h3>
+                    <p style={{ minHeight: '72px' }}>{s.desc}</p>
                     <p><a className="link-more" href={whatsappLinks.servicesTalk} target="_blank" rel="noreferrer">Talk to our Team<i className="icon icon-right-arrow2"></i></a></p>
                   </div>
                 </div>

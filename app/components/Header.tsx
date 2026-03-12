@@ -94,8 +94,8 @@ export default function Header() {
               </button>
               {/* End of Navbar toggler */}
 
-              <div className="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
-                <ul className="navbar-nav">
+              <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav me-auto">
                   <li className={`nav-item${isHome ? ' active' : ''}`}>
                     <Link className={`nav-link${isHome ? ' active' : ''}`} href="/">Home</Link>
                   </li>
@@ -103,9 +103,9 @@ export default function Header() {
                     <Link className={`nav-link${isShop ? ' active' : ''}`} href="/shop">Shop</Link>
                   </li>
                   <li className={`nav-item dropdown${isCompany ? ' active' : ''}`}>
-                    <button type="button" className={`nav-link dropdown-toggle${isCompany ? ' active' : ''}`} data-bs-toggle="dropdown" aria-expanded="false">
-                      Company<i className="fa fa-angle-down"></i>
-                    </button>
+                    <a href="#" role="button" className={`nav-link dropdown-toggle${isCompany ? ' active' : ''}`} data-bs-toggle="dropdown" aria-expanded="false">
+                      Company<i className="fa fa-angle-down ms-1"></i>
+                    </a>
                     <ul className="dropdown-menu" role="menu">
                       <li><Link href="/about">About Us</Link></li>
                       <li><Link href="/services">Our Services</Link></li>
@@ -115,9 +115,9 @@ export default function Header() {
                   {/* li end */}
 
                   <li className={`nav-item dropdown${isServices ? ' active' : ''}`}>
-                    <button type="button" className={`nav-link dropdown-toggle${isServices ? ' active' : ''}`} data-bs-toggle="dropdown" aria-expanded="false">
-                      Services<i className="fa fa-angle-down"></i>
-                    </button>
+                    <a href="#" role="button" className={`nav-link dropdown-toggle${isServices ? ' active' : ''}`} data-bs-toggle="dropdown" aria-expanded="false">
+                      Services<i className="fa fa-angle-down ms-1"></i>
+                    </a>
                     <ul className="dropdown-menu" role="menu">
                       <li><Link href="/services">All Services</Link></li>
                       <li><Link href="/services/route-to-market-and-route-to-consumer-development">Route-to-Market & Route-to-Consumer Development</Link></li>
