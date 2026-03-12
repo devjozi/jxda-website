@@ -39,7 +39,7 @@ jobs:
       pull-requests: write
     env:
       AUTO_APPROVE_ACTOR: dependabot[bot]
-      APPROVE_ON_CI_PASS: 'true'
+      APPROVE_ON_CI_PASS: 'false'
     steps:
       - name: Auto-approve when eligible
         uses: actions/github-script@v7
@@ -84,7 +84,8 @@ jobs:
     name: Enable Auto Merge (Squash)
     runs-on: ubuntu-latest
     needs: [ci-tests, auto-approve]
-    if: ${{ !github.event.pull_request.draft && !github.event.pull_request.head.repo.fork }}
+    # Guardrail: never auto-merge into `main` (release PRs must be merged by a human).
+    if: ${{ !github.event.pull_request.draft && !github.event.pull_request.head.repo.fork && github.event.pull_request.user.login == 'dependabot[bot]' && github.event.pull_request.base.ref == 'develop' }}
     permissions:
       contents: write
       pull-requests: write
