@@ -29,7 +29,7 @@
     "@types/react-dom": "^19",
     "csv-parse": "^6.1.0",
     "eslint": "^9",
-    "eslint-config-next": "^16.1.6",
+    "eslint-config-next": "^16.1.7",
     "tsx": "^4.19.5",
     "typescript": "^5",
     "vitest": "^4.0.18"
