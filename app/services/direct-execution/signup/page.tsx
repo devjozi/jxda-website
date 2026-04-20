@@ -5,10 +5,12 @@ import Footer from '../../../components/Footer';
 import FeaturedProductBanner from '../../../components/FeaturedProductBanner';
 import { SITE } from '../../../../lib/site';
 
+const BRAND_NAME = 'JX Distribution Africa';
+
 export const metadata: Metadata = {
-  title: 'Partner With JX Distribution Africa | Direct Execution Signup',
+  title: `Partner With ${BRAND_NAME} | Direct Execution Signup`,
   description:
-    'Submit your business details and partner with JX Distribution Africa for direct sales execution and market expansion.',
+    `Submit your business details and partner with ${BRAND_NAME} for direct sales execution and market expansion.`,
 };
 
 export default function DirectExecutionSignupPage() {
