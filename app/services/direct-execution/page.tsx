@@ -92,8 +92,8 @@ export default function DirectExecutionPage() {
                 Outsource Your Sales. Accelerate Your Growth.
               </h2>
               <p className="lead mb-4 direct-execution-lead">
-                Stop worrying about hiring and training. Partner with JXC to deploy an expert sales force across
-                Africa today.
+                Stop worrying about hiring and training. Partner with JX Distribution Africa to deploy an expert
+                sales force across Africa today.
               </p>
               <div className="d-flex flex-wrap gap-3 mb-4">
                 <Link className="btn btn-primary" href="/services/direct-execution/signup/">
