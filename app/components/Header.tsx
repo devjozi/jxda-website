@@ -128,7 +128,7 @@ export default function Header() {
                       <li><Link href="/services/sales-team-training-and-performance-management">Sales Team Training & Performance Management</Link></li>
                       <li><Link href="/services/call-center-services-for-companies">Call Center Services for Companies</Link></li>
                       <li><Link href="/services/sales-automation-and-reporting">Sales Automation & Reporting</Link></li>
-                      <li><Link href="/services/direct-execution">Direct Execution</Link></li>
+                      <li><Link href="/services/direct-execution/">Direct Execution</Link></li>
                     </ul>
                   </li>
                   {/* li end */}
