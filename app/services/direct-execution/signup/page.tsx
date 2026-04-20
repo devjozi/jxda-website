@@ -6,7 +6,7 @@ import FeaturedProductBanner from '../../../components/FeaturedProductBanner';
 import { SITE } from '../../../../lib/site';
 
 export const metadata: Metadata = {
-  title: 'Partner With JXC | Direct Execution Signup',
+  title: 'Partner With JX Distribution Africa | Direct Execution Signup',
   description:
     'Submit your business details and partner with JX Distribution Africa for direct sales execution and market expansion.',
 };
