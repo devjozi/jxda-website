@@ -5,18 +5,6 @@
 
 import { Product, PRODUCT_CATEGORIES, ProductCategory } from './products';
 
-// Available service images for cycling through products
-const AVAILABLE_IMAGES = [
-  '/images/services/service1.jpg',
-  '/images/services/service2.jpg',
-  '/images/services/service3.jpg',
-  '/images/services/service4.jpg',
-  '/images/services/service5.jpg',
-  '/images/services/service6.jpg',
-  '/images/services/service7.jpg',
-  '/images/services/service8.jpg',
-];
-
 /**
  * CSV row data structure
  */
@@ -26,6 +14,7 @@ export interface ProductCSVRow {
   Description: string;
   Price?: string | number;
   SKU?: string;
+  Image?: string;
 }
 
 /**
@@ -46,6 +35,9 @@ export interface ImportResult {
   errors: string[];
   warnings: string[];
   summary: {
+    totalRows: number;
+    imported: number;
+    skippedMissingImage: number;
     total: number;
     byCategory: Record<string, number>;
   };
@@ -134,6 +126,10 @@ export function validateProductRow(
     }
   }
 
+  if (!row.Image || row.Image.trim() === '') {
+    errors.push(`Row ${rowNumber}: Image is required`);
+  }
+
   return {
     valid: errors.length === 0,
     errors,
@@ -141,15 +137,23 @@ export function validateProductRow(
   };
 }
 
+export interface ImportOptions {
+  imageExists?: (imageFileName: string) => boolean;
+}
+
 /**
  * Convert CSV rows to Product array
  */
-export function convertCSVToProducts(rows: ProductCSVRow[]): ImportResult {
+export function convertCSVToProducts(
+  rows: ProductCSVRow[],
+  options: ImportOptions = {}
+): ImportResult {
   const products: Product[] = [];
   const allErrors: string[] = [];
   const allWarnings: string[] = [];
   const existingSlugs = new Set<string>();
   const categoryCount: Record<string, number> = {};
+  let skippedMissingImage = 0;
 
   rows.forEach((row, index) => {
     const rowNumber = index + 1;
@@ -175,8 +179,15 @@ export function convertCSVToProducts(rows: ProductCSVRow[]): ImportResult {
       price = typeof row.Price === 'number' ? row.Price : parseFloat(row.Price);
     }
 
-    // Assign image cyclically
-    const image = AVAILABLE_IMAGES[index % AVAILABLE_IMAGES.length];
+    const imageFileName = row.Image?.trim() || '';
+    if (options.imageExists && !options.imageExists(imageFileName)) {
+      skippedMissingImage++;
+      allWarnings.push(
+        `Row ${rowNumber}: Skipped product "${row.Name.trim()}" because image file was not found: ${imageFileName}`
+      );
+      return;
+    }
+    const image = `/images/products/${imageFileName}`;
 
     // Count by category
     const category = row.Category.trim();
@@ -205,6 +216,9 @@ export function convertCSVToProducts(rows: ProductCSVRow[]): ImportResult {
     errors: allErrors,
     warnings: allWarnings,
     summary: {
+      totalRows: rows.length,
+      imported: products.length,
+      skippedMissingImage,
       total: products.length,
       byCategory: categoryCount,
     },
