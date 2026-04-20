@@ -18,20 +18,20 @@
     "import-products": "tsx scripts/import-products.ts"
   },
   "dependencies": {
-    "next": "^16.1.6",
+    "next": "^16.2.4",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "resend": "^6.9.3"
+    "resend": "^6.9.4"
   },
   "devDependencies": {
     "@types/node": "^25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "csv-parse": "^6.1.0",
-    "eslint": "^9",
-    "eslint-config-next": "^16.1.6",
+    "csv-parse": "^6.2.1",
+    "eslint": "^10",
+    "eslint-config-next": "^16.2.4",
     "tsx": "^4.19.5",
-    "typescript": "^5",
-    "vitest": "^4.0.18"
+    "typescript": "^6",
+    "vitest": "^4.1.1"
   }
 }
