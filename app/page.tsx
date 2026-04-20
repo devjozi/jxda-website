@@ -297,7 +297,7 @@ export default function Home() {
               {
                 img: 'service1.jpg',
                 title: 'Route-to-Market & Route-to-Consumer Development',
-                desc: 'Channel strategy and route design for structured market penetration.',
+                desc: "Stop guessing where your stock ends up. We build a disciplined supply chain that connects your factory directly to over 36,000 wholesalers and 63,000 retailers across West Africa. Whether it's modern supermarkets in the city or rural kiosks up north, we handle the mapping, the stocking, and the field execution so you can focus on production.",
               },
               {
                 img: 'service2.jpg',
