@@ -32,6 +32,6 @@
     "eslint-config-next": "^16.1.6",
     "tsx": "^4.19.5",
     "typescript": "^5",
-    "vitest": "^4.0.18"
+    "vitest": "^4.1.1"
   }
 }
