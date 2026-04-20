@@ -57,7 +57,7 @@ export default function Services() {
       img: 'service7.jpg',
       title: 'Direct Execution',
       desc: 'Outsource your sales execution to JXC and activate expert teams that generate leads, engage customers, and close deals quickly.',
-      link: '/services/direct-execution'
+      link: '/services/direct-execution/'
     }
   ];
 
