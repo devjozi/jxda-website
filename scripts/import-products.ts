@@ -15,6 +15,7 @@ import {
 } from '../lib/product-data-import';
 
 const PRODUCTS_FILE = path.join(__dirname, '..', 'lib', 'products.ts');
+const PRODUCT_IMAGES_DIR = path.join(__dirname, '..', 'public', 'images', 'products');
 
 /**
  * Read and parse CSV file
@@ -80,7 +81,9 @@ function printReport(result: ReturnType<typeof convertCSVToProducts>): void {
 
   if (result.success) {
     console.log('SUCCESS:');
-    console.log(`  ✓ Imported ${result.summary.total} products`);
+    console.log(`  ✓ Imported ${result.summary.imported} products`);
+    console.log(`  - CSV rows processed: ${result.summary.totalRows}`);
+    console.log(`  - Skipped (missing image): ${result.summary.skippedMissingImage}`);
     console.log('\nBreakdown by category:');
     Object.entries(result.summary.byCategory).forEach(([category, count]) => {
       console.log(`  - ${category}: ${count} products`);
@@ -120,7 +123,16 @@ function main() {
   console.log(`Parsed ${rows.length} rows from CSV\n`);
 
   // Convert to products
-  const result = convertCSVToProducts(rows);
+  const result = convertCSVToProducts(rows, {
+    imageExists: (imageFileName: string) => {
+      if (!imageFileName || imageFileName.trim() === '') {
+        return false;
+      }
+
+      const imagePath = path.join(PRODUCT_IMAGES_DIR, imageFileName);
+      return fs.existsSync(imagePath);
+    },
+  });
 
   // Print report
   printReport(result);
