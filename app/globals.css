@@ -83,6 +83,194 @@
   animation: featuredCtaPulse 1.8s ease-in-out infinite;
 }
 
+.direct-execution-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.direct-execution-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(245, 247, 250, 0.96), rgba(245, 247, 250, 0.88));
+  pointer-events: none;
+}
+
+.direct-execution-hero > .container,
+.direct-execution-band > .container,
+.direct-execution-process > .container,
+.direct-execution-signup > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.direct-execution-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  background: rgba(9, 49, 110, 0.08);
+  color: #0f3d7a;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.direct-execution-lead {
+  max-width: 620px;
+  font-size: 20px;
+  line-height: 1.6;
+  color: #3c4656;
+}
+
+.direct-execution-proof-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.direct-execution-proof-pill,
+.direct-execution-band-card,
+.direct-execution-process-card,
+.direct-execution-stat-card,
+.direct-execution-benefit-item {
+  border: 1px solid rgba(15, 61, 122, 0.12);
+  background: #fff;
+  box-shadow: 0 18px 45px rgba(10, 29, 58, 0.08);
+}
+
+.direct-execution-proof-pill {
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #0f3d7a;
+}
+
+.direct-execution-visual {
+  position: relative;
+  padding: 18px 0 44px;
+}
+
+.direct-execution-image-card img {
+  border-radius: 20px;
+}
+
+.direct-execution-stat-card {
+  position: absolute;
+  right: 0;
+  max-width: 220px;
+  padding: 18px;
+  border-radius: 18px;
+}
+
+.direct-execution-stat-card strong,
+.direct-execution-band-card h3,
+.direct-execution-process-card h3 {
+  display: block;
+  margin-bottom: 8px;
+  color: #0d2447;
+  font-weight: 800;
+}
+
+.direct-execution-stat-card span,
+.direct-execution-band-card p,
+.direct-execution-process-card p,
+.direct-execution-benefit-item span,
+.direct-execution-cta-note {
+  color: #5d6878;
+}
+
+.direct-execution-stat-card-top {
+  top: 24px;
+}
+
+.direct-execution-stat-card-bottom {
+  bottom: 0;
+  left: 0;
+  right: auto;
+}
+
+.direct-execution-band {
+  padding: 12px 0 24px;
+}
+
+.direct-execution-band-card,
+.direct-execution-process-card,
+.direct-execution-form-card {
+  height: 100%;
+  border-radius: 20px;
+  padding: 26px;
+}
+
+.direct-execution-band-card {
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+}
+
+.direct-execution-process {
+  padding-bottom: 22px;
+}
+
+.direct-execution-process-card {
+  background: #fff;
+}
+
+.direct-execution-process-card .block-number {
+  margin-bottom: 18px;
+}
+
+.direct-execution-cta-note {
+  font-size: 13px;
+}
+
+.direct-execution-signup {
+  position: relative;
+}
+
+.direct-execution-benefit-list {
+  display: grid;
+  gap: 12px;
+  margin: 22px 0 28px;
+}
+
+.direct-execution-benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 16px;
+}
+
+.direct-execution-benefit-item i {
+  color: #0f3d7a;
+}
+
+.direct-execution-form-card {
+  background: linear-gradient(180deg, #ffffff, #f9fbfe);
+}
+
+.direct-execution-form-header {
+  margin-bottom: 24px;
+}
+
+@media screen and (max-width: 991px) {
+  .direct-execution-lead {
+    font-size: 18px;
+  }
+
+  .direct-execution-stat-card {
+    position: relative;
+    max-width: none;
+    margin-top: 16px;
+  }
+
+  .direct-execution-stat-card-bottom {
+    margin-top: 12px;
+  }
+}
+
 @keyframes featuredCtaPulse {
   0% {
     transform: scale(1);
