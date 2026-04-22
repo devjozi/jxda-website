@@ -2,7 +2,7 @@
 
 **Generated:** 2026-03-09
 **Sources:** PROJECT_PLAN.md · PROGRESS.md · GO_LIVE_CHECKLIST.md · session notes
-**Branch:** `develop`
+**Branch:** `feat/shop-core-refactor`
 
 > This is the single source of truth for all open work.
 > Update status inline: `[ ]` = pending · `[~]` = in progress · `[x]` = done
@@ -10,6 +10,11 @@
 ---
 
 ## 🚨 GROUP 1 — CRITICAL BLOCKERS (Fix Before Anything Else)
+
+- [~] **Shop core refactor on dedicated branch** — Buy Now + qty controls + checkout modal + WhatsApp checkout cleanup are being implemented on `feat/shop-core-refactor`
+- [x] **Enforce main → develop sync before feature PR flow** — `develop` was 19 commits behind `main`; synced via PR #71 and follow-up ancestry PR #72
+- [x] **Retarget active feature PR to develop** — PR #70 base moved from `main` to `develop` after branch rebase
+- [x] **Branch clutter cleanup pass complete** — stale local/remote branches removed after sync merge; retained `codex/pr58` and `codex/pr63` for manual review
 
 These are blocking the entire CI/CD pipeline and the preview environment.
 

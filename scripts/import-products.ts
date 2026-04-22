@@ -129,7 +129,15 @@ function main() {
         return false;
       }
 
-      const imagePath = path.join(PRODUCT_IMAGES_DIR, imageFileName);
+      // Normalize to a plain filename to prevent path traversal via CSV input.
+      // path.basename strips any directory components; if the result differs from
+      // the original input the value contained separators and must be rejected.
+      const safeName = path.basename(imageFileName.trim());
+      if (!safeName || safeName !== imageFileName.trim()) {
+        return false;
+      }
+
+      const imagePath = path.join(PRODUCT_IMAGES_DIR, safeName);
       return fs.existsSync(imagePath);
     },
   });

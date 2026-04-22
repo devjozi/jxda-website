@@ -8,8 +8,8 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Product, PRODUCT_CATEGORIES } from '../../lib/products';
-import { buildWhatsAppUrl } from '../../lib/site';
 import { applyShopFilters, type SortOption } from '../../lib/shop-filters';
 import { useCart } from './CartProvider';
 
@@ -56,14 +56,40 @@ const SORT_OPTIONS: { value: SortOption; label: string }[] = [
   { value: 'price_desc', label: 'Price: High → Low' },
 ];
 
+function escapeRegex(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+// UI-only cleanup to hide part/SKU codes in visible card titles.
+function stripProductCodesForTitle(name: string, sku?: string): string {
+  let cleaned = name;
+
+  if (sku) {
+    const skuPattern = sku
+      .split(/[-\s]+/)
+      .filter(Boolean)
+      .map((part) => escapeRegex(part))
+      .join('[-\\s]*');
+    cleaned = cleaned.replace(new RegExp(`\\(?\\b${skuPattern}\\b\\)?`, 'ig'), '');
+  }
+
+  cleaned = cleaned.replace(/^\s*[A-Z0-9]{3,}(?:[-\s][A-Z0-9]{2,}){1,6}\s+/, '');
+  cleaned = cleaned.replace(/\(\s*[A-Z0-9]{3,}(?:[-\s][A-Z0-9]{2,}){1,6}\s*\)/g, '');
+  cleaned = cleaned.replace(/\s{2,}/g, ' ').trim();
+
+  return cleaned || name;
+}
+
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function ShopClient({ products }: { products: Product[] }) {
-  const { addToCart } = useCart();
+  const router = useRouter();
+  const { addToCart, items } = useCart();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<SortOption>('default');
   const [hasStartedBrowsing, setHasStartedBrowsing] = useState(false);
+  const [quantityByProduct, setQuantityByProduct] = useState<Record<string, number>>({});
 
   const categoryCount = (cat: string) => products.filter((p) => p.category === cat).length;
 
@@ -79,6 +105,24 @@ export default function ShopClient({ products }: { products: Product[] }) {
     setHasStartedBrowsing(true);
     setSelectedCategory(cat);
     setSearchQuery('');
+  };
+
+  const getQty = (productId: string) => Math.max(1, quantityByProduct[productId] ?? 1);
+
+  const updateQty = (productId: string, qty: number) => {
+    setQuantityByProduct((prev) => ({ ...prev, [productId]: Math.max(1, qty) }));
+  };
+
+  const handleBuyNow = (product: Product) => {
+    const qty = getQty(product.id);
+    const alreadyInCart = items.some((item) => item.id === product.id);
+
+    addToCart(product, qty);
+
+    // First add redirects to details page; repeat adds stay on listing.
+    if (!alreadyInCart) {
+      router.push(`/shop/${product.slug}`);
+    }
   };
 
   return (
@@ -285,11 +329,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
             <div className="text-center py-5">
               <i className="fa fa-search fa-3x text-muted mb-3 d-block" />
               <h5 className="text-muted">No products found</h5>
-              <p className="text-muted">Try adjusting your search or filter, or{' '}
-                <a href={buildWhatsAppUrl('Hi, I am looking for a product not listed in your catalogue. Can you help?')} target="_blank" rel="noopener noreferrer">
-                  ask us on WhatsApp
-                </a>.
-              </p>
+              <p className="text-muted">Try adjusting your search or filter, or contact our team for help.</p>
               <button className="btn btn-outline-primary mt-2" onClick={() => { setSelectedCategory(null); setSearchQuery(''); }}>
                 View all products
               </button>
@@ -298,17 +338,29 @@ export default function ShopClient({ products }: { products: Product[] }) {
             <div className="row g-4">
               {filteredProducts.map((p) => {
                 const cfg = CATEGORY_CONFIG[p.category] ?? { icon: 'fa fa-box', badge: 'bg-secondary', bg: '#6c757d', desc: '' };
-                const whatsAppMsg = `Hi, I'm interested in: ${p.name}${p.sku ? ` (SKU: ${p.sku})` : ''}. Please send me more information and pricing.`;
+                const displayName = stripProductCodesForTitle(p.name, p.sku);
+                const qty = getQty(p.id);
                 return (
                   <div className="col-sm-6 col-lg-4 col-xl-3" key={p.id}>
                     <div
                       className="card h-100"
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`View details for ${displayName}`}
                       style={{
                         border: 'none',
                         borderRadius: '12px',
                         overflow: 'hidden',
                         boxShadow: '0 2px 12px rgba(0,0,0,0.08)',
                         transition: 'transform 0.2s, box-shadow 0.2s',
+                        cursor: 'pointer',
+                      }}
+                      onClick={() => router.push(`/shop/${p.slug}`)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          router.push(`/shop/${p.slug}`);
+                        }
                       }}
                       onMouseEnter={(e) => {
                         (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
@@ -320,7 +372,13 @@ export default function ShopClient({ products }: { products: Product[] }) {
                       }}
                     >
                       {/* Product image */}
-                      <div style={{ position: 'relative', overflow: 'hidden', height: '180px' }}>
+                      <div
+                        style={{
+                          position: 'relative',
+                          overflow: 'hidden',
+                          height: '180px',
+                        }}
+                      >
                         <img
                           src={p.image}
                           alt={`${p.name} — JX Distribution Africa`}
@@ -346,13 +404,8 @@ export default function ShopClient({ products }: { products: Product[] }) {
 
                       <div className="card-body d-flex flex-column p-3">
                         <h6 className="card-title mb-1" style={{ fontWeight: 700, fontSize: '0.9rem', lineHeight: 1.35, color: '#1a2e4a' }}>
-                          {p.name}
+                          {displayName}
                         </h6>
-                        {p.sku && (
-                          <p className="mb-1" style={{ fontSize: '0.7rem', color: '#9ca3af' }}>
-                            SKU: {p.sku}
-                          </p>
-                        )}
                         <p className="card-text flex-grow-1 mb-2" style={{ fontSize: '0.8rem', color: '#6b7280', lineHeight: 1.5 }}>
                           {p.description.length > 90 ? `${p.description.slice(0, 90)}…` : p.description}
                         </p>
@@ -371,35 +424,49 @@ export default function ShopClient({ products }: { products: Product[] }) {
                         </div>
 
                         {/* CTAs */}
-                        <div className="d-flex gap-2">
-                          <Link
-                            href={`/shop/${p.slug}`}
-                            className="btn btn-primary btn-sm flex-grow-1"
-                            style={{ fontSize: '0.8rem' }}
-                          >
-                            View Details
-                          </Link>
+                        <div className="d-flex gap-2 align-items-center">
+                          <div className="d-flex align-items-center border rounded" style={{ minWidth: '96px', overflow: 'hidden' }}>
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-light border-0"
+                              style={{ width: '32px', borderRadius: 0 }}
+                              aria-label={`Decrease quantity for ${displayName}`}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                updateQty(p.id, qty - 1);
+                              }}
+                            >
+                              -
+                            </button>
+                            <span className="text-center" style={{ width: '32px', fontSize: '0.85rem', fontWeight: 700 }}>
+                              {qty}
+                            </span>
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-light border-0"
+                              style={{ width: '32px', borderRadius: 0 }}
+                              aria-label={`Increase quantity for ${displayName}`}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                updateQty(p.id, qty + 1);
+                              }}
+                            >
+                              +
+                            </button>
+                          </div>
                           <button
                             type="button"
-                            className="btn btn-sm btn-outline-secondary"
-                            style={{ fontSize: '0.8rem', padding: '0.25rem 0.55rem' }}
-                            title="Add to cart"
-                            aria-label={`Add ${p.name} to cart`}
-                            onClick={() => addToCart(p, 1)}
+                            className="btn btn-primary btn-sm flex-grow-1"
+                            style={{ fontSize: '0.8rem' }}
+                            title="Buy now"
+                            aria-label={`Buy ${displayName} now`}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleBuyNow(p);
+                            }}
                           >
-                            <i className="fa fa-shopping-cart" />
+                            Buy Now
                           </button>
-                          <a
-                            href={buildWhatsAppUrl(whatsAppMsg)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn btn-sm"
-                            style={{ background: '#25D366', color: '#fff', border: 'none', fontSize: '0.8rem', padding: '0.25rem 0.6rem' }}
-                            title="Order via WhatsApp"
-                            aria-label={`Order ${p.name} via WhatsApp`}
-                          >
-                            <i className="fa fa-whatsapp" />
-                          </a>
                         </div>
                       </div>
                     </div>
@@ -413,16 +480,8 @@ export default function ShopClient({ products }: { products: Product[] }) {
           {shouldShowResults && filteredProducts.length > 0 && (
             <div className="text-center mt-5 pt-4 border-top">
               <p className="text-muted mb-3">
-                Can&apos;t find what you&apos;re looking for? We distribute many more products across Ghana.
+                Can&apos;t find what you&apos;re looking for? Our team can help you locate the right product quickly.
               </p>
-              <a
-                href={buildWhatsAppUrl("Hi, I'm looking for a product that's not in your catalogue. Can you help?")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-success me-2"
-              >
-                <i className="fa fa-whatsapp me-2" />Request a Custom Quote
-              </a>
               <Link href="/contact" className="btn btn-outline-secondary">
                 Contact Our Team
               </Link>
