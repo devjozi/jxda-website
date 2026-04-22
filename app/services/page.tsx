@@ -52,6 +52,12 @@ export default function Services() {
       title: 'Sales Automation & Reporting',
       desc: 'Automated sales reporting, market coverage tracking, team productivity monitoring, and execution dashboards.',
       link: '/services/sales-automation-and-reporting'
+    },
+    {
+      img: 'service7.jpg',
+      title: 'Direct Execution',
+      desc: 'Outsource your sales execution to JXC and activate expert teams that generate leads, engage customers, and close deals quickly.',
+      link: '/services/direct-execution/'
     }
   ];
 
