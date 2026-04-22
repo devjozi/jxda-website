@@ -26,6 +26,7 @@ Use the provided `PRODUCT-DATA-TEMPLATE.csv` file as a starting point. The CSV m
 | Description | Yes | Product description (50-500 chars recommended) | "High-quality vegetable cooking oil..." |
 | Price | No | Product price (use 0 or leave empty for "Price on Request") | 45.00 |
 | SKU | No | Stock Keeping Unit for inventory | "FMCG-001" |
+| Image | Yes | Image filename in `public/images/products/` (filename only) | "pf63e-gm-vehicles-oil-filter.jpg" |
 
 ### Valid Categories
 
@@ -38,13 +39,13 @@ Use the provided `PRODUCT-DATA-TEMPLATE.csv` file as a starting point. The CSV m
 ### Example CSV
 
 ```csv
-Name,Category,Description,Price,SKU
-Premium Vegetable Oil 5L,FMCG,"High-quality vegetable cooking oil ideal for retail distribution.",45.00,FMCG-001
-Rice 25kg Bag,FMCG,"Premium quality rice perfect for retail and wholesale distribution.",180.00,FMCG-002
-Automotive Oil Filter,Spareparts,"Compatible oil filter for major vehicle brands.",35.50,SP-001
-LED Bulb 12W,Electronics,"Energy-efficient 12W LED bulb with long lifespan.",18.00,ELEC-001
-Cotton Print Fabric,Fabrics,"High-quality printed cotton fabric for tailoring.",0,FAB-001
-NPK Fertilizer 50kg,Agricultural Inputs,"Balanced NPK fertilizer for crop enhancement.",220.00,AGRI-001
+Name,Category,Description,Price,SKU,Image
+Premium Vegetable Oil 5L,Food & Beverages,"High-quality vegetable cooking oil ideal for retail distribution.",45.00,FMCG-001,organic-zomi-palm-oil.webp
+Rice 25kg Bag,Food & Beverages,"Premium quality rice perfect for retail and wholesale distribution.",180.00,FMCG-002,snap-rice-5kg.png
+GM Vehicles Oil Filter (PF63E),Autoparts,"High-efficiency oil filter for GM vehicles. Part No. PF63E.",78,PF63E,pf63e-gm-vehicles-oil-filter.jpg
+LED Bulb 12W,Electronics,"Energy-efficient 12W LED bulb with long lifespan.",18.00,ELEC-001,tv-guard.png
+Cotton Print Fabric,Fabrics,"High-quality printed cotton fabric for tailoring.",0,FAB-001,reed-diffuser.webp
+NPK Fertilizer 50kg,Agricultural Inputs,"Balanced NPK fertilizer for crop enhancement.",220.00,AGRI-001,washing-powder.jpg
 ```
 
 ## Import Process
@@ -76,6 +77,7 @@ The script will display a report showing:
 
 - **Errors**: Critical issues that prevent import (missing required fields, invalid categories)
 - **Warnings**: Non-critical issues (short/long descriptions)
+- **Warnings**: Non-critical issues (short/long descriptions, skipped rows due to missing images)
 - **Success Summary**: Number of products imported, breakdown by category
 
 **Example Report:**
@@ -87,6 +89,8 @@ WARNINGS:
 
 SUCCESS:
   ✓ Imported 12 products
+  - CSV rows processed: 14
+  - Skipped (missing image): 2
 
 Breakdown by category:
   - FMCG: 4 products
@@ -133,9 +137,10 @@ The import script automatically generates the following fields:
 |-------|-------------------|
 | ID | Sequential numbers (1, 2, 3, ...) |
 | Slug | URL-friendly version of product name (e.g., "premium-vegetable-oil-5l") |
-| Image | Assigned cyclically from available service images |
 | Currency | Defaults to "GHS" |
 | inStock | Defaults to `true` |
+
+The `Image` field is now read directly from CSV and must reference an existing file in `public/images/products/`.
 
 ## Data Validation
 
@@ -175,9 +180,9 @@ Warnings (non-critical) are shown for:
 
 ## Product Images
 
-### Current Setup (Placeholder Images)
+### Current Setup (Real Product Images)
 
-By default, products use images from `public/images/services/` assigned cyclically. This allows the shop to function immediately without product-specific images.
+Products use filenames provided in CSV and resolve to `/images/products/{filename}` at runtime.
 
 ### Adding Real Product Images
 
@@ -211,11 +216,13 @@ public/images/products/
 - Supported formats: JPG, PNG, WEBP
 - Recommended size: < 200KB, optimized for web
 
-**To switch to real images:**
-1. Add images to `public/images/products/`
-2. Update `lib/product-data-import.ts` image assignment logic
+**Required workflow:**
+1. Add/rename images in `public/images/products/`
+2. Set `Image` column in CSV with filename only
 3. Re-import products
 4. Rebuild static site
+
+If a CSV row references a missing image file, that row is skipped and reported as a warning (not a hard error).
 
 ## Troubleshooting
 
