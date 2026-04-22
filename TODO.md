@@ -2,7 +2,7 @@
 
 **Generated:** 2026-03-09
 **Sources:** PROJECT_PLAN.md · PROGRESS.md · GO_LIVE_CHECKLIST.md · session notes
-**Branch:** `develop`
+**Branch:** `feat/shop-core-refactor`
 
 > This is the single source of truth for all open work.
 > Update status inline: `[ ]` = pending · `[~]` = in progress · `[x]` = done
@@ -10,6 +10,8 @@
 ---
 
 ## 🚨 GROUP 1 — CRITICAL BLOCKERS (Fix Before Anything Else)
+
+- [~] **Shop core refactor on dedicated branch** — Buy Now + qty controls + checkout modal + WhatsApp checkout cleanup are being implemented on `feat/shop-core-refactor`
 
 These are blocking the entire CI/CD pipeline and the preview environment.
 

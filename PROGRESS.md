@@ -1,9 +1,9 @@
 # PROGRESS LOG — JX Distribution Website
 
-**Last Updated:** 2026-03-10
+**Last Updated:** 2026-04-21
 **Version:** 0.7.1
-**Branch:** `develop`
-**Status:** Cart workflow + non-404 placeholder routes completed; UX polish backported from `main`
+**Branch:** `feat/shop-core-refactor`
+**Status:** Shop core refactor in progress; cart workflow is being tightened into a Buy Now + quantity + WhatsApp checkout flow
 
 ---
 
@@ -15,7 +15,7 @@ Source of truth validation run on 2026-03-02:
   - TypeScript: ✅ pass
   - Tests: ✅ 45/45 passing (4 test files)
   - Static build: ✅ pass, **77 static pages generated**
-- Git branch: `develop` (tracking `origin/develop`)
+- Git branch: `feat/shop-core-refactor`
 - Workflows present: deploy, quality gate, security scan, live smoke monitor
 
 ---
@@ -24,6 +24,7 @@ Source of truth validation run on 2026-03-02:
 
 - **Homepage:** Core template sections implemented (hero, features, services, FAQ/testimonials, facts, CTA).
 - **Commerce:** `/shop` + `/shop/[slug]` + `/shop/checkout` implemented with WhatsApp-first ordering flow and persistent shopping cart.
+- **Shop refactor branch:** `feat/shop-core-refactor` is the active implementation branch for Buy Now, quantity controls, checkout modal, and WhatsApp checkout cleanup.
 - **Catalog:** 53+ products across 5 categories, with search/filter/sort and product detail pages.
 - **SEO/Schema:** Shop listing metadata + per-product metadata + JSON-LD (`Product`, `BreadcrumbList`).
 - **Testing:** 45 unit tests passing (`tests/products.test.ts`, `tests/shop-filters.test.ts`, `tests/site.test.ts`, `tests/contact-route.test.ts`).
@@ -56,13 +57,14 @@ Source of truth validation run on 2026-03-02:
 
 ## ⏳ Open / next priorities
 
-1. **CI/CD pipeline fix:** Deploy workflow secrets audit (especially `HOSTINGER_PORT` — Hostinger uses `65002` not `22`). Preview subdomain needs Hostinger hPanel subdomain pointing to `/public_html/preview`. Fix `www.` prefix in `live-smoke.yml` preview URL check.
-2. **Content truth:** Verify all social profile URLs (incl. TikTok) and update any remaining placeholders.
-3. **Immediate content fixes:** Update `lib/site.ts` address to `GE-225-5007 Kwabenya / Taifa North`. Implement interactive map embed on contact page. Replace placeholder images via direct Hostinger FTP (no rebuild needed for same-filename swaps).
-4. **Go-live readiness:** Complete unchecked launch controls (legal pages, monitoring stack, final QA).
-5. **Commerce depth:** Implement checkout validation + order confirmation pipeline.
-6. **Asset quality:** Replace template/placeholder imagery with licensed production assets.
-7. **Sprint 11 — CMS & Promo Codes (future):**
+1. **Shop core refactor finish:** Validate the Buy Now cart flow, quantity steppers, once-per-visit product modal, and WhatsApp checkout template on the dedicated branch.
+2. **CI/CD pipeline fix:** Deploy workflow secrets audit (especially `HOSTINGER_PORT` — Hostinger uses `65002` not `22`). Preview subdomain needs Hostinger hPanel subdomain pointing to `/public_html/preview`. Fix `www.` prefix in `live-smoke.yml` preview URL check.
+3. **Content truth:** Verify all social profile URLs (incl. TikTok) and update any remaining placeholders.
+4. **Immediate content fixes:** Update `lib/site.ts` address to `GE-225-5007 Kwabenya / Taifa North`. Implement interactive map embed on contact page. Replace placeholder images via direct Hostinger FTP (no rebuild needed for same-filename swaps).
+5. **Go-live readiness:** Complete unchecked launch controls (legal pages, monitoring stack, final QA).
+6. **Commerce depth:** Implement checkout validation + order confirmation pipeline.
+7. **Asset quality:** Replace template/placeholder imagery with licensed production assets.
+8. **Sprint 11 — CMS & Promo Codes (future):**
    - **Phase A (⭐ do first, no hosting change needed):** Sanity CMS integration — GUI dashboard for products, categories, images, services, testimonials. On publish, webhook triggers auto-rebuild + deploy to Hostinger. Eliminates need for code edits or CSV imports to update content.
    - **Phase B (requires Node.js hosting + Supabase):** Redeemable promo codes with server-side validation, usage tracking, expiry. Promotional campaign banners managed from CMS. Scheduled alongside or after payment integration (both require same hosting upgrade).
 

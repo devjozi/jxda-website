@@ -1,7 +1,7 @@
 # PROJECT PLAN — JX Distribution E-Commerce
 
 **Version:** 1.0.0  
-**Last Updated:** 2026-02-15  
+**Last Updated:** 2026-04-21  
 **Status:** Planning Complete → Execution Ready
 
 ---
@@ -127,6 +127,8 @@ Transform JX Distribution Africa website from a marketing-only site to a **full-
 **Branches:** `feature/shopping-cart`, `feature/shop-redesign`, `feature/checkout-flow`  
 **Dependencies:** Sprint 2 complete (real products needed)  
 **Estimated Time:** 12-16 hours
+
+**Execution note:** The current refinement pass for this sprint is on `feat/shop-core-refactor` and focuses on Buy Now, quantity controls, once-per-product checkout prompting, and WhatsApp checkout cleanup. This is an implementation pass within Sprint 3, not a new sprint.
 
 ---
 
