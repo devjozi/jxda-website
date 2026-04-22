@@ -61,7 +61,7 @@ export default function ProductCheckoutModal({ product }: ProductCheckoutModalPr
     [items, product.id],
   );
 
-  const qty = Math.max(1, cartItem?.qty ?? 1);
+  const qty = Math.max(1, cartItem?.quantity ?? 1);
 
   useEffect(() => {
     const seen = hasSeenProductCheckoutModal(product.slug);
