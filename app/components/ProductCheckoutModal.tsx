@@ -2,9 +2,47 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { useCart } from './CartProvider';
-import { buildCheckoutMessage, buildWhatsAppCheckoutUrl } from '../../lib/whatsapp';
-import { hasSeenProductCheckoutModal, markProductCheckoutModalSeen } from '../../lib/modal';
 
+type CheckoutMessageInput = {
+  name: string;
+  qty: number;
+  price: number;
+};
+
+const PRODUCT_CHECKOUT_MODAL_SEEN_KEY = 'product-checkout-modal-seen';
+
+function getProductCheckoutModalSeenStorageKey(slug: string) {
+  return `${PRODUCT_CHECKOUT_MODAL_SEEN_KEY}:${slug}`;
+}
+
+function hasSeenProductCheckoutModal(slug: string) {
+  if (typeof window === 'undefined') return true;
+
+  try {
+    return window.localStorage.getItem(getProductCheckoutModalSeenStorageKey(slug)) === 'true';
+  } catch {
+    return false;
+  }
+}
+
+function markProductCheckoutModalSeen(slug: string) {
+  if (typeof window === 'undefined') return;
+
+  try {
+    window.localStorage.setItem(getProductCheckoutModalSeenStorageKey(slug), 'true');
+  } catch {
+    // Ignore storage failures so the checkout flow still works.
+  }
+}
+
+function buildCheckoutMessage({ name, qty, price }: CheckoutMessageInput) {
+  return `Hi, I want to checkout ${qty} x ${name} at ${price} each.`;
+}
+
+function buildWhatsAppCheckoutUrl(message: string) {
+  if (!message.trim()) return '#';
+  return `https://wa.me/?text=${encodeURIComponent(message)}`;
+}
 type ProductCheckoutModalProps = {
   product: {
     id: string;
