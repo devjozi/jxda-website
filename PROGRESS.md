@@ -1,9 +1,9 @@
 # PROGRESS LOG — JX Distribution Website
 
-**Last Updated:** 2026-04-22
+**Last Updated:** 2026-05-05
 **Version:** 0.7.1
 **Branch:** `feat/shop-core-refactor`
-**Status:** Shop core refactor in progress on `feat/shop-core-refactor`; `develop` has been resynced with `main` and feature PR flow is now normalized to target `develop`
+**Status:** Mandatory sync rerun completed (`main` was 2 commits ahead of `develop`), deploy verification hardened for preview 404 detection, and feature flow remains `feature -> develop`
 
 ---
 
@@ -47,6 +47,22 @@ Source of truth validation run on 2026-03-02:
 - Branch cleanup completed:
   - Local stale branches deleted; remote stale branches removed after sync merge.
   - Kept for manual review: `codex/pr58`, `codex/pr63`.
+
+## Branch sync + preview hardening (2026-05-05)
+
+- `develop` **was behind** `main` by **2 commits** at verification start (`origin/develop...origin/main = 180 | 2`).
+- Sync action taken:
+  - Created `sync/main-to-develop` from `origin/develop`.
+  - Merged `origin/main` into sync branch (no conflicts).
+  - Opened sync PR to `develop` (link added after PR creation).
+- Validation evidence on sync branch:
+  - `npm run typecheck` ✅
+  - `npm run test` ✅ (45/45)
+  - `npm run build:static` ✅
+  - `npm run lint` ✅ (warnings only; no errors)
+- Preview 404 remediation:
+  - `.github/workflows/deploy.yml` now verifies remote `index.html` + `.htaccess` after rsync.
+  - Workflow now performs immediate HTTP status checks against preview/prod URL and fails on `404`/`000`.
 
 ---
 

@@ -63,7 +63,23 @@ jobs:
 
       - name: Verify deployment
         run: |
-          echo "✓ Static files deployed to Hostinger"
-          echo "Branch: $BRANCH"
-          echo "Deploy target: $TARGET_PATH"
+          echo "Verifying deployed files on remote host..."
+          ssh -p "${{ secrets.HOSTINGER_PORT }}" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+            "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}" \
+            "test -f \"$TARGET_PATH/index.html\" && test -f \"$TARGET_PATH/.htaccess\""
+          echo "✓ Required files found: index.html and .htaccess"
 
+      - name: Verify preview/prod URL responds
+        run: |
+          if [ "$BRANCH" = "develop" ]; then
+            TARGET_URL="https://preview.jxdistributionafrica.com/"
+          else
+            TARGET_URL="https://jxdistributionafrica.com/"
+          fi
+          echo "Checking URL: $TARGET_URL"
+          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$TARGET_URL")
+          if [ "$STATUS_CODE" = "404" ] || [ "$STATUS_CODE" = "000" ]; then
+            echo "Deploy verification failed for $TARGET_URL (status: $STATUS_CODE)"
+            exit 1
+          fi
+          echo "✓ URL is reachable ($STATUS_CODE)"

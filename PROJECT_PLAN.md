@@ -1,8 +1,10 @@
 # PROJECT PLAN — JX Distribution E-Commerce
 
 **Version:** 1.0.0  
-**Last Updated:** 2026-04-22  
-**Status:** Planning Complete → Execution Ready
+**Last Updated:** 2026-05-05  
+**Status:** Execution Active (truth-synced: `main -> develop` sync rerun completed; preview deploy verification hardened)
+
+> Truth-sync note (2026-05-05): `origin/develop` was behind `origin/main` by 2 commits and was resynced via `sync/main-to-develop` PR flow before any feature movement.
 
 ---
 
