@@ -64,7 +64,7 @@ jobs:
       - name: Verify deployment
         run: |
           echo "Verifying deployed files on remote host..."
-          ssh -p "${{ secrets.HOSTINGER_PORT }}" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+          ssh -p "${{ secrets.HOSTINGER_PORT }}" \
             "${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}" \
             "test -f \"$TARGET_PATH/index.html\" && test -f \"$TARGET_PATH/.htaccess\""
           echo "✓ Required files found: index.html and .htaccess"
@@ -77,8 +77,11 @@ jobs:
             TARGET_URL="https://jxdistributionafrica.com/"
           fi
           echo "Checking URL: $TARGET_URL"
-          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$TARGET_URL")
-          if [ "$STATUS_CODE" = "404" ] || [ "$STATUS_CODE" = "000" ]; then
+          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            --max-time 30 \
+            --retry 3 --retry-delay 5 --retry-max-time 60 \
+            "$TARGET_URL")
+          if [ "$STATUS_CODE" = "000" ] || [ "$STATUS_CODE" -ge 400 ] 2>/dev/null; then
             echo "Deploy verification failed for $TARGET_URL (status: $STATUS_CODE)"
             exit 1
           fi
