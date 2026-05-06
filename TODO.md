@@ -2,7 +2,7 @@
 
 **Generated:** 2026-03-09
 **Sources:** PROJECT_PLAN.md · PROGRESS.md · GO_LIVE_CHECKLIST.md · session notes
-**Branch:** `develop`
+**Branch:** `feat/shop-core-refactor`
 
 > This is the single source of truth for all open work.
 > Update status inline: `[ ]` = pending · `[~]` = in progress · `[x]` = done
@@ -10,6 +10,11 @@
 ---
 
 ## 🚨 GROUP 1 — CRITICAL BLOCKERS (Fix Before Anything Else)
+
+- [~] **Shop core refactor on dedicated branch** — Buy Now + qty controls + checkout modal + WhatsApp checkout cleanup are being implemented on `feat/shop-core-refactor`
+- [x] **Enforce main → develop sync before feature PR flow** — `develop` was 19 commits behind `main`; synced via PR #71 and follow-up ancestry PR #72
+- [x] **Retarget active feature PR to develop** — PR #70 base moved from `main` to `develop` after branch rebase
+- [x] **Branch clutter cleanup pass complete** — stale local/remote branches removed after sync merge; retained `codex/pr58` and `codex/pr63` for manual review
 
 These are blocking the entire CI/CD pipeline and the preview environment.
 
@@ -21,6 +26,11 @@ These are blocking the entire CI/CD pipeline and the preview environment.
   - `HOSTINGER_DEPLOY_PATH_PROD` — e.g. `/home/username/public_html`
   - `HOSTINGER_DEPLOY_PATH_PREVIEW` — e.g. `/home/username/public_html/preview`
   - Branch: `fix/cicd-secrets-audit`
+
+- [x] **Enforce redeploy verification in CI**
+  - Added remote post-rsync file checks (`index.html`, `.htaccess`) in `.github/workflows/deploy.yml`
+  - Added immediate HTTP status validation for preview/prod URL in deploy workflow (fails on 404/000)
+  - Branch: `sync/main-to-develop` (2026-05-05)
 
 - [ ] **Add `preview` subdomain in Hostinger hPanel**
   - hPanel → Domains → Subdomains → add `preview.jxdistributionafrica.com`
@@ -71,6 +81,12 @@ Suggested branch: `fix/content-quick-wins`
   - File: `lib/site.ts:21`
   - Confirm `https://www.tiktok.com/@jxdistribution` is the correct handle
 
+- [x] **Wire service7 and service8 images to correct homepage service cards**
+  - ✅ COMPLETED: Services now use centralized metadata in `lib/services-data.ts`
+  - Homepage, services listing, and service detail pages all read from single source
+  - Image filenames are managed in one place, eliminating drift
+  - See [IMAGE_UPDATES.md](IMAGE_UPDATES.md) for future image update procedures
+
 ---
 
 ## 📝 GROUP 3 — CONTENT FEATURES (New, User-Raised)
@@ -100,9 +116,10 @@ New sections and content to add to the site. Each should be its own branch.
   - Branch: `feature/partners-brands`
 
 - [ ] **Update full site with production-ready pictures**
-  - For same-filename replacements: upload directly via Hostinger File Manager FTP to `public_html/images/<folder>/` — no rebuild needed
-  - For new filenames or new image slots: add to `public/images/`, update references in code, rebuild
-  - Folders to update: `/images/banner/`, `/images/slider/`, `/images/services/`, `/images/clients/`, `/images/parallax/`, `/images/team/`
+  - **See [IMAGE_UPDATES.md](IMAGE_UPDATES.md) for comprehensive image update procedures**
+  - Quick replacements (same filename): Use Hostinger FTP, no rebuild needed
+  - New filenames or new image slots: Update code references, rebuild, and deploy
+  - Folder structure: `/images/banner/`, `/images/slider/`, `/images/services/{home,catalog}/`, `/images/clients/`, `/images/parallax/`, `/images/team/`
   - Branch (if code changes needed): `fix/production-images`
 
 ---

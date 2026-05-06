@@ -10,10 +10,10 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import WhatsAppOrder from '../../components/WhatsAppOrder';
 import AddToCartButton from '../../components/AddToCartButton';
+import ProductCheckoutModal from '../../components/ProductCheckoutModal';
 import { getProductBySlug, getAllProducts, PRODUCT_CATEGORIES } from '../../../lib/products';
-import { buildWhatsAppUrl, SITE } from '../../../lib/site';
+import { SITE } from '../../../lib/site';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -137,8 +137,6 @@ export default async function ProductPage({ params }: Props) {
   };
 
   const badgeClass = CATEGORY_BADGE[product.category] ?? 'bg-secondary';
-  const quickOrderMsg = `Hi, I want to order: ${product.name}${product.sku ? ` (SKU: ${product.sku})` : ''}. Please confirm availability and pricing.`;
-
   return (
     <>
       {/* Structured data */}
@@ -255,19 +253,15 @@ export default async function ProductPage({ params }: Props) {
 
               {/* Primary CTA — above the fold */}
               <div className="d-flex flex-wrap gap-2 mb-4">
-                <a
-                  href={buildWhatsAppUrl(quickOrderMsg)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-lg"
-                  style={{ background: '#25D366', color: '#fff', border: 'none', fontWeight: 700 }}
-                >
-                  <i className="fa fa-whatsapp me-2" />Order Now via WhatsApp
-                </a>
                 <AddToCartButton product={product} className="btn btn-lg btn-warning" />
-                <Link href="/contact" className="btn btn-lg btn-outline-secondary">
-                  Request a Quote
-                </Link>
+                <ProductCheckoutModal
+                  product={{
+                    id: product.id,
+                    slug: product.slug,
+                    name: product.name,
+                    price: product.price,
+                  }}
+                />
               </div>
 
               {/* Description */}
@@ -299,19 +293,6 @@ export default async function ProductPage({ params }: Props) {
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* ── Order Form ──────────────────────────────────────────────────── */}
-          <div className="row mt-5 pt-4 border-top">
-            <div className="col-lg-8 offset-lg-2">
-              <h3 className="mb-1" style={{ fontWeight: 800, color: '#1a2e4a' }}>
-                Place Your Order
-              </h3>
-              <p className="text-muted mb-4" style={{ fontSize: '0.9rem' }}>
-                Fill in your details below — we&apos;ll open WhatsApp with your order pre-filled for fast fulfilment.
-              </p>
-              <WhatsAppOrder product={product} />
             </div>
           </div>
 
@@ -364,7 +345,7 @@ export default async function ProductPage({ params }: Props) {
                         {rp.price > 0 ? `GHS ${rp.price.toFixed(2)}` : 'Price on Request'}
                       </p>
                       <Link href={`/shop/${rp.slug}`} className="btn btn-primary btn-sm w-100" style={{ fontSize: '0.8rem' }}>
-                        View Details
+                        Buy Now
                       </Link>
                     </div>
                   </div>

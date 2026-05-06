@@ -15,7 +15,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { SITE, buildWhatsAppUrl } from '../../lib/site';
+import { SITE } from '../../lib/site';
 import { useCart } from './CartProvider';
 
 export default function Header() {
@@ -28,9 +28,6 @@ export default function Header() {
   const isServices = pathname === '/services' || pathname.startsWith('/services/');
   const isContact = pathname === '/contact';
   const isCompany = isAbout || isServices || isContact;
-
-  // WhatsApp CTA for the primary header button.
-  const quoteUrl = buildWhatsAppUrl('Hi, I want support with sales execution and distribution in Ghana.');
 
   return (
     <div className="site-top-2">
@@ -142,14 +139,9 @@ export default function Header() {
                 <Link href="/shop/checkout" className="top-right-btn btn btn-outline-secondary" style={{ whiteSpace: 'nowrap' }}>
                   <i className="fa fa-shopping-cart me-1" /> Cart{itemCount > 0 ? ` (${itemCount})` : ''}
                 </Link>
-                <a
-                  href={quoteUrl}
-                  className="top-right-btn btn btn-primary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Request a Quote
-                </a>
+                <Link href="/shop" className="top-right-btn btn btn-primary">
+                  Buy Now
+                </Link>
               </div>
               {/* Top bar btn */}
             </nav>

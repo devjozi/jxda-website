@@ -5,7 +5,7 @@
  */
 
 import { useCart } from './CartProvider';
-import { buildWhatsAppUrl } from '../../lib/site';
+import { buildWhatsAppCheckoutUrl, formatGhs } from '../../lib/whatsapp';
 import Link from 'next/link';
 
 export default function CartCheckoutClient() {
@@ -25,9 +25,10 @@ export default function CartCheckoutClient() {
 
   // Build WhatsApp message with all cart items
   const cartSummary = items
-    .map((item) => `- ${item.name} (x${item.quantity}) — GHS ${(item.price * item.quantity).toFixed(2)}`)
+    .map((item) => `- ${item.name} (x${item.qty}) — GHS ${formatGhs(item.price * item.qty)}`)
     .join('\n');
-  const whatsAppMessage = `Hi, I want to place an order:\n\n${cartSummary}\n\n*Total: GHS ${totalPrice.toFixed(2)}*\n\nPlease confirm availability and delivery details.`;
+  const whatsAppMessage = `Hello, I want to order:\n\n${cartSummary}\n\nTotal: GHS ${formatGhs(totalPrice)}\n\nName:\nLocation:`;
+  const checkoutUrl = buildWhatsAppCheckoutUrl(whatsAppMessage);
 
   return (
     <div>
@@ -43,7 +44,7 @@ export default function CartCheckoutClient() {
             <div className="flex-grow-1">
               <h6 className="mb-1">{item.name}</h6>
               <p className="mb-0 text-muted" style={{ fontSize: '0.85rem' }}>
-                GHS {item.price.toFixed(2)} × {item.quantity}
+                GHS {item.price.toFixed(2)} × {item.qty}
               </p>
             </div>
             <div className="d-flex align-items-center gap-2">
@@ -52,7 +53,7 @@ export default function CartCheckoutClient() {
                 className="form-control form-control-sm"
                 style={{ width: '70px' }}
                 min="1"
-                value={item.quantity}
+                value={item.qty}
                 onChange={(e) => updateQuantity(item.id, parseInt(e.target.value) || 1)}
                 aria-label={`Quantity for ${item.name}`}
               />
@@ -65,7 +66,7 @@ export default function CartCheckoutClient() {
               </button>
             </div>
             <div className="text-end" style={{ minWidth: '100px' }}>
-              <strong>GHS {(item.price * item.quantity).toFixed(2)}</strong>
+              <strong>GHS {formatGhs(item.price * item.qty)}</strong>
             </div>
           </div>
         ))}
@@ -80,7 +81,7 @@ export default function CartCheckoutClient() {
 
       <div className="d-flex flex-wrap gap-2">
         <a
-          href={buildWhatsAppUrl(whatsAppMessage)}
+          href={checkoutUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-lg"

@@ -116,7 +116,7 @@ export default function DirectExecutionPage() {
                 <div className="single-service-img mb-0 direct-execution-image-card">
                   <img
                     className="img-fluid"
-                    src="/images/services/service7.jpg"
+                    src="/images/services/catalog/direct-execution.jpg"
                     alt="JX Distribution Africa direct execution sales force"
                   />
                 </div>
