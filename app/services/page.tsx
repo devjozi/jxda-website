@@ -42,13 +42,13 @@ export default function Services() {
       link: '/services/sales-team-training-and-performance-management'
     },
     {
-      img: 'service2.jpg',
+      img: 'service7.jpg',
       title: 'Call Center Services for Companies',
       desc: 'Standby 24/7 call center and telesales support with structured customer engagement and follow-up.',
       link: '/services/call-center-services-for-companies'
     },
     {
-      img: 'service6.jpg',
+      img: 'service8.jpg',
       title: 'Sales Automation & Reporting',
       desc: 'Automated sales reporting, market coverage tracking, team productivity monitoring, and execution dashboards.',
       link: '/services/sales-automation-and-reporting'
