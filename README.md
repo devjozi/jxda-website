@@ -26,11 +26,12 @@ Start production server: `npm run start`
 - **[PROJECT_PLAN.md](PROJECT_PLAN.md)** — Complete task list, sprint breakdown, acceptance criteria ⭐ START HERE
 - **[AGENT_PROMPT.md](AGENT_PROMPT.md)** — Instructions for AI agents to execute tasks autonomously
 - **[BRANCHING_STRATEGY.md](BRANCHING_STRATEGY.md)** — Git workflow, one branch per task
+- **[IMAGE_UPDATES.md](IMAGE_UPDATES.md)** — Comprehensive guide for updating all site images ⭐ REFER WHEN UPDATING IMAGES
 
 ### For Context
 - **[PROJECT_DIRECTION.md](PROJECT_DIRECTION.md)** — scope, commerce subdomain, priorities
 - **[PROGRESS.md](PROGRESS.md)** — current phase and checklist
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** — stack and deployment
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** — stack, deployment, and image folder structure
 - **[HANDOFF.md](HANDOFF.md)** — quick restart and deploy
 - **[DEV_SETUP.md](DEV_SETUP.md)** — environment and AI tooling for continuation
 - **[PREVIEW_AND_PUBLISH.md](PREVIEW_AND_PUBLISH.md)** — what to click and expect in the browser, then how to build and publish

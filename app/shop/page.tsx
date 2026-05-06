@@ -32,27 +32,6 @@ export default function ShopPage() {
     <>
       <Header />
 
-      {/* ── Page Banner ──────────────────────────────────────────────────── */}
-      <div
-        className="banner-area"
-        id="banner-area"
-        style={{ backgroundImage: 'url(/images/banner/banner1.jpg)' }}
-      >
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col">
-              <div className="banner-heading">
-                <h1 className="banner-title">Our Product Catalogue</h1>
-                <ol className="breadcrumb">
-                  <li>Home</li>
-                  <li>Shop</li>
-                </ol>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* ── Client Island (filtering, search, grid) ───────────────────────── */}
       <ShopClient products={products} />
 
