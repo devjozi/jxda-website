@@ -76,6 +76,12 @@ Suggested branch: `fix/content-quick-wins`
   - File: `lib/site.ts:21`
   - Confirm `https://www.tiktok.com/@jxdistribution` is the correct handle
 
+- [x] **Wire service7 and service8 images to correct homepage service cards**
+  - ✅ COMPLETED: Services now use centralized metadata in `lib/services-data.ts`
+  - Homepage, services listing, and service detail pages all read from single source
+  - Image filenames are managed in one place, eliminating drift
+  - See [IMAGE_UPDATES.md](IMAGE_UPDATES.md) for future image update procedures
+
 ---
 
 ## 📝 GROUP 3 — CONTENT FEATURES (New, User-Raised)
@@ -105,9 +111,10 @@ New sections and content to add to the site. Each should be its own branch.
   - Branch: `feature/partners-brands`
 
 - [ ] **Update full site with production-ready pictures**
-  - For same-filename replacements: upload directly via Hostinger File Manager FTP to `public_html/images/<folder>/` — no rebuild needed
-  - For new filenames or new image slots: add to `public/images/`, update references in code, rebuild
-  - Folders to update: `/images/banner/`, `/images/slider/`, `/images/services/`, `/images/clients/`, `/images/parallax/`, `/images/team/`
+  - **See [IMAGE_UPDATES.md](IMAGE_UPDATES.md) for comprehensive image update procedures**
+  - Quick replacements (same filename): Use Hostinger FTP, no rebuild needed
+  - New filenames or new image slots: Update code references, rebuild, and deploy
+  - Folder structure: `/images/banner/`, `/images/slider/`, `/images/services/{home,catalog}/`, `/images/clients/`, `/images/parallax/`, `/images/team/`
   - Branch (if code changes needed): `fix/production-images`
 
 ---
