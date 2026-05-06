@@ -221,7 +221,7 @@ export const servicesData: Record<string, ServiceMetadata> = {
   'direct-execution': {
     slug: 'direct-execution',
     title: 'Direct Execution',
-    catalogImg: 'direct-execution.jpg',
+    catalogImg: 'direct-execution.png',
     homeImg: 'service8.jpg',
     description: 'Outsource your sales execution to JXC and activate expert teams that generate leads, engage customers, and close deals quickly.',
     fullDescription: 'Outsource your sales execution to JX Distribution Africa and deploy an expert team for lead generation, customer engagement, and deal closure.'
