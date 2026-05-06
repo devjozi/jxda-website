@@ -98,7 +98,7 @@ export default function Home() {
           {/* Carousel item 3 end */}
 
           {/* Carousel item 4 */}
-          <div className="carousel-item" style={{backgroundImage: 'url(/images/slider/bg2.jpg)'}}>
+          <div className="carousel-item" style={{backgroundImage: 'url(/images/slider/bg4.jpg)'}}>
             <div className="container">
               <div className="slider-content text-left">
                 <div className="col-md-12">
@@ -120,7 +120,7 @@ export default function Home() {
           {/* Carousel item 4 end */}
 
           {/* Carousel item 5 */}
-          <div className="carousel-item" style={{backgroundImage: 'url(/images/slider/bg1.jpg)'}}>
+          <div className="carousel-item" style={{backgroundImage: 'url(/images/slider/bg5.jpg)'}}>
             <div className="container">
               <div className="slider-content text-center">
                 <div className="col-md-12">
