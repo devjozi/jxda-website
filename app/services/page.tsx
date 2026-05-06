@@ -2,64 +2,10 @@ import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import FeaturedProductBanner from '../components/FeaturedProductBanner';
+import { getServicesArray } from '../../lib/services-data';
 
 export default function Services() {
-  const services = [
-    {
-      img: 'service1.jpg',
-      title: 'Route-to-Market & Route-to-Consumer Development',
-      desc: 'Structured market entry planning, territory mapping, and channel strategy to improve product availability and conversion.',
-      link: '/services/route-to-market-and-route-to-consumer-development'
-    },
-    {
-      img: 'service2.jpg',
-      title: 'Social Media Marketing & Activation Campaigns',
-      desc: 'Integrated digital and on-ground activation campaigns that drive awareness, trial, and repeat buying.',
-      link: '/services/social-media-marketing-and-activation-campaigns'
-    },
-    {
-      img: 'service3.jpg',
-      title: 'Distribution & Logistics Coordination',
-      desc: 'Distribution planning, warehousing coordination, and channel fulfillment support across retail, wholesale, and key accounts.',
-      link: '/services/distribution-and-logistics-coordination'
-    },
-    {
-      img: 'service4.jpg',
-      title: 'Market Research & Consumer Intelligence',
-      desc: 'Field research and market intelligence that provide decision-ready insights for pricing, placement, and growth.',
-      link: '/services/market-research-and-consumer-intelligence'
-    },
-    {
-      img: 'service5.jpg',
-      title: 'Procurement',
-      desc: 'Procurement execution support for product sourcing and trade requirements aligned with your market expansion goals.',
-      link: '/services/procurement'
-    },
-    {
-      img: 'service6.jpg',
-      title: 'Sales Team Training & Performance Management',
-      desc: 'Sales capability development, supervision, and performance management to improve execution quality and accountability.',
-      link: '/services/sales-team-training-and-performance-management'
-    },
-    {
-      img: 'service7.jpg',
-      title: 'Call Center Services for Companies',
-      desc: 'Standby 24/7 call center and telesales support with structured customer engagement and follow-up.',
-      link: '/services/call-center-services-for-companies'
-    },
-    {
-      img: 'service8.jpg',
-      title: 'Sales Automation & Reporting',
-      desc: 'Automated sales reporting, market coverage tracking, team productivity monitoring, and execution dashboards.',
-      link: '/services/sales-automation-and-reporting'
-    },
-    {
-      img: 'service7.jpg',
-      title: 'Direct Execution',
-      desc: 'Outsource your sales execution to JXC and activate expert teams that generate leads, engage customers, and close deals quickly.',
-      link: '/services/direct-execution/'
-    }
-  ];
+  const services = getServicesArray();
 
   return (
     <>
@@ -97,12 +43,12 @@ export default function Services() {
                 <div className="col-lg-3 col-md-6" key={index}>
                   <div className="ts-service-box">
                     <div className="ts-service-image-wrapper">
-                      <img className="img-fluid" src={`/images/services/${service.img}`} alt={service.title} />
+                      <img className="img-fluid" src={`/images/services/catalog/${service.catalogImg}`} alt={service.title} />
                     </div>
                     <div className="ts-service-content">
                       <h3 className="service-title">{service.title}</h3>
-                      <p>{service.desc}</p>
-                      <p><Link className="link-more" href={service.link}>Read More <i className="icon icon-right-arrow2"></i></Link></p>
+                      <p>{service.description}</p>
+                      <p><Link className="link-more" href={`/services/${service.slug}`}>Read More <i className="icon icon-right-arrow2"></i></Link></p>
                     </div>
                   </div>
                 </div>

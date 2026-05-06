@@ -11,6 +11,7 @@ import FeaturedProductBanner from './components/FeaturedProductBanner';
 import QuoteForm from './components/QuoteForm';
 import { buildWhatsAppUrl } from '../lib/site';
 import { HOMEPAGE_TESTIMONIALS, SALES_CHANNEL_METRICS } from '../lib/home-content';
+import { getServicesArray } from '../lib/services-data';
 
 export default function Home() {
   // Centralized WhatsApp links for homepage CTAs.
@@ -293,56 +294,15 @@ export default function Home() {
             </div>
           </div>
           <div className="row ts-service-row-box">
-            {[
-              {
-                img: 'service1.jpg',
-                title: 'Route-to-Market & Route-to-Consumer Development',
-                desc: "Stop guessing where your stock ends up. We build a disciplined supply chain that connects your factory directly to over 36,000 wholesalers and 63,000 retailers across West Africa. Whether it's modern supermarkets in the city or rural kiosks up north, we handle the mapping, the stocking, and the field execution so you can focus on production.",
-              },
-              {
-                img: 'service2.jpg',
-                title: 'Social Media Marketing & Activation Campaigns',
-                desc: 'Integrated digital and field activations that drive conversion.',
-              },
-              {
-                img: 'service3.jpg',
-                title: 'Distribution & Logistics Coordination',
-                desc: 'Stocking, warehousing, and distribution coordination across key channels.',
-              },
-              {
-                img: 'service4.jpg',
-                title: 'Market Research & Consumer Intelligence',
-                desc: 'Field insights and intelligence for better execution decisions.',
-              },
-              {
-                img: 'service5.jpg',
-                title: 'Procurement',
-                desc: 'Procurement support aligned to sales, channel, and replenishment needs.',
-              },
-              {
-                img: 'service6.jpg',
-                title: 'Sales Team Training & Performance Management',
-                desc: 'Sales capability development, supervision, and accountability.',
-              },
-              {
-                img: 'service7.jpg',
-                title: 'Call Center Services for Companies',
-                desc: '24/7 call center and telesales support for customer engagement.',
-              },
-              {
-                img: 'service8.jpg',
-                title: 'Sales Automation & Reporting',
-                desc: 'Automated tracking of sales, coverage, campaign, and team performance.',
-              },
-            ].map((s, i) => (
-              <div className="col-lg-3 col-md-6" key={i}>
+            {getServicesArray().slice(0, 8).map((service) => (
+              <div className="col-lg-3 col-md-6" key={service.slug}>
                 <div className="ts-service-box">
                   <div className="ts-service-image-wrapper">
-                    <img className="img-fluid" src={`/images/services/${s.img}`} alt={s.title} />
+                    <img className="img-fluid" src={`/images/services/home/${service.homeImg}`} alt={service.title} />
                   </div>
                   <div className="ts-service-content">
-                    <h3 className="service-title" style={{ minHeight: '56px' }}>{s.title}</h3>
-                    <p style={{ minHeight: '72px' }}>{s.desc}</p>
+                    <h3 className="service-title" style={{ minHeight: '56px' }}>{service.title}</h3>
+                    <p style={{ minHeight: '72px' }}>{service.description}</p>
                     <p><a className="link-more" href={whatsappLinks.servicesTalk} target="_blank" rel="noreferrer">Talk to our Team<i className="icon icon-right-arrow2"></i></a></p>
                   </div>
                 </div>
