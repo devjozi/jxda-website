@@ -18,7 +18,7 @@ export default function SignupForm() {
 
     try {
       const payload = { name, email, phone, company, page: 'sales-solutions-landing' };
-      const ok = await (await import('../../../../../../lib/submit-lead')).submitLead(payload, formspreeId);
+      const ok = await (await import('../../../../lib/submit-lead')).submitLead(payload, formspreeId);
       if (ok) {
         setSuccess(true);
         setName('');
