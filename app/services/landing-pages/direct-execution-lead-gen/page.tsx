@@ -11,7 +11,7 @@ export default function DirectExecutionLandingPage() {
     <main className="container" style={{ padding: '3rem 1rem' }}>
       <section style={{ maxWidth: 920, margin: '0 auto' }}>
         <h1>Get a Direct Execution Plan</h1>
-        <p className="lead">Fast, data-driven field execution across all 16 regions. Submit your brief and we'll follow up with a tailored plan.</p>
+        <p className="lead">Fast, data-driven field execution across all 16 regions. Submit your brief and we&apos;ll follow up with a tailored plan.</p>
 
         <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
           <div style={{ flex: '1 1 360px' }}>

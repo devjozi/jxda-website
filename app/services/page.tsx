@@ -39,8 +39,8 @@ export default function Services() {
             </div>
 
             <div className="row">
-              {services.map((service, index) => (
-                <div className="col-lg-3 col-md-6" key={index}>
+              {services.map((service) => (
+                <div className="col-lg-3 col-md-6" key={service.slug}>
                   <div className="ts-service-box">
                     <div className="ts-service-image-wrapper">
                       <img className="img-fluid" src={`/images/services/catalog/${service.catalogImg}`} alt={service.title} />

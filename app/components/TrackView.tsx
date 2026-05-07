@@ -7,7 +7,7 @@ export default function TrackView({ contentName, contentId }: { contentName: str
   useEffect(() => {
     try {
       trackMetaPixelEvent('ViewContent', { content_name: contentName, content_ids: [contentId] });
-      trackGAEvent('view_item', { items: [{ id: contentId, name: contentName }] });
+      trackGAEvent('view_item', { items: [{ item_id: contentId, item_name: contentName }] });
     } catch (err) {
       // ignore
     }

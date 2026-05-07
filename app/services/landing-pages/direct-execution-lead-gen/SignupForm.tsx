@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import trackMetaPixelEvent from '../../../../../../lib/meta-pixel';
-import trackGAEvent from '../../../../../../lib/ga';
+import { submitLead } from '../../../../lib/submit-lead';
 
 export default function SignupForm() {
   const [name, setName] = useState('');
@@ -20,7 +19,7 @@ export default function SignupForm() {
 
     try {
       const payload = { name, email, phone, company, page: 'direct-execution-landing' };
-      const ok = await (await import('../../../../../../lib/submit-lead')).submitLead(payload, formspreeId);
+      const ok = await submitLead(payload, formspreeId);
       if (ok) {
         setSuccess(true);
         setName('');
@@ -38,26 +37,26 @@ export default function SignupForm() {
   };
 
   if (success) {
-    return <div className="alert alert-success">Thanks — we'll contact you soon.</div>;
+    return <div className="alert alert-success">Thanks — we&apos;ll contact you soon.</div>;
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <div className="mb-3">
-        <label className="form-label">Name</label>
-        <input className="form-control" value={name} onChange={(e) => setName(e.target.value)} required />
+        <label className="form-label" htmlFor="signup-name">Name</label>
+        <input id="signup-name" className="form-control" value={name} onChange={(e) => setName(e.target.value)} required />
       </div>
       <div className="mb-3">
-        <label className="form-label">Email</label>
-        <input type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <label className="form-label" htmlFor="signup-email">Email</label>
+        <input id="signup-email" type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} required />
       </div>
       <div className="mb-3">
-        <label className="form-label">Phone</label>
-        <input className="form-control" value={phone} onChange={(e) => setPhone(e.target.value)} />
+        <label className="form-label" htmlFor="signup-phone">Phone</label>
+        <input id="signup-phone" className="form-control" value={phone} onChange={(e) => setPhone(e.target.value)} />
       </div>
       <div className="mb-3">
-        <label className="form-label">Company</label>
-        <input className="form-control" value={company} onChange={(e) => setCompany(e.target.value)} />
+        <label className="form-label" htmlFor="signup-company">Company</label>
+        <input id="signup-company" className="form-control" value={company} onChange={(e) => setCompany(e.target.value)} />
       </div>
 
       <button className="btn btn-primary" type="submit" disabled={sending}>

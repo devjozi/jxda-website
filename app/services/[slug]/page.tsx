@@ -7,15 +7,19 @@ import { notFound } from 'next/navigation';
 import { getServiceBySlug, getServicesArray } from '../../../lib/services-data';
 
 type Props = { params: Promise<{ slug: string }> };
+const dedicatedServiceSlugs = new Set(['direct-execution']);
 
 export async function generateStaticParams() {
   const services = getServicesArray();
-  return services.map((service) => ({ slug: service.slug }));
+  return services
+    .filter((service) => !dedicatedServiceSlugs.has(service.slug))
+    .map((service) => ({ slug: service.slug }));
 }
 
 export default async function ServiceSingle({ params }: Props) {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
+  const services = getServicesArray();
 
   if (!service) {
     notFound();
@@ -55,14 +59,11 @@ export default async function ServiceSingle({ params }: Props) {
               <div className="sidebar">
                 <div className="widget no-padding no-border">
                   <ul className="service-menu">
-                    <li><Link href="/services/route-to-market-and-route-to-consumer-development">Route-to-Market & Route-to-Consumer Development</Link></li>
-                    <li><Link href="/services/social-media-marketing-and-activation-campaigns">Social Media Marketing & Activation Campaigns</Link></li>
-                    <li><Link href="/services/distribution-and-logistics-coordination">Distribution & Logistics Coordination</Link></li>
-                    <li><Link href="/services/market-research-and-consumer-intelligence">Market Research & Consumer Intelligence</Link></li>
-                    <li><Link href="/services/procurement">Procurement</Link></li>
-                    <li><Link href="/services/sales-team-training-and-performance-management">Sales Team Training & Performance Management</Link></li>
-                    <li><Link href="/services/call-center-services-for-companies">Call Center Services for Companies</Link></li>
-                    <li><Link href="/services/sales-automation-and-reporting">Sales Automation & Reporting</Link></li>
+                    {services.map((sidebarService) => (
+                      <li key={sidebarService.slug}>
+                        <Link href={`/services/${sidebarService.slug}`}>{sidebarService.title}</Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="widget no-padding testimonial-static">
