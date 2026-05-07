@@ -40,5 +40,6 @@ Start production server: `npm run start`
 
 - `develop` → preview (https://preview.jxdistributionafrica.com)
 - `main` → production (Hostinger static export)
+- Preview path contract: `HOSTINGER_DEPLOY_PATH_PREVIEW` must match the exact hPanel document root for `preview.jxdistributionafrica.com` (no `www` prefix).
 
 Secrets: see `.env.example`; store real values in GitHub Secrets.

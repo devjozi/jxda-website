@@ -145,6 +145,11 @@ Open the URL shown. Click through Home → Shop → one product → Checkout and
 - `HOSTINGER_DEPLOY_PATH_PREVIEW` (preview root path)
 - `HOSTINGER_DEPLOY_PATH_PROD` (production root path)
 
+Preview contract:
+- Canonical preview URL: `https://preview.jxdistributionafrica.com/`
+- `HOSTINGER_DEPLOY_PATH_PREVIEW` must exactly match the hPanel document root for that subdomain.
+- Deploy workflow now verifies remote `index.html` and `.htaccess`, then checks HTTP status immediately after deploy.
+
 **Manual (if needed):**
 1. Upload the **contents of `/out`** to the preview folder:
   - `/home/u959952771/domains/jxdistributionafrica.com/public_html/preview`
@@ -170,5 +175,5 @@ Open the URL shown. Click through Home → Shop → one product → Checkout and
 ## Summary
 
 - **Preview:** `npm run dev` → open http://localhost:3000 → use the table and sections above to click and verify.  
-- **Publish:** `npm run build` → deploy to Hostinger Node app (CI/CD preferred) → re-check the same flows on the live URL.  
+- **Publish:** `npm run build:static` → deploy `/out` to Hostinger (CI/CD preferred) → re-check the same flows on the live URL.  
 - **Content:** Edit `lib/site.ts` (and optionally `lib/products.ts`) when you have final copy, then build and deploy again.

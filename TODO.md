@@ -27,6 +27,11 @@ These are blocking the entire CI/CD pipeline and the preview environment.
   - `HOSTINGER_DEPLOY_PATH_PREVIEW` — e.g. `/home/username/public_html/preview`
   - Branch: `fix/cicd-secrets-audit`
 
+- [x] **Enforce redeploy verification in CI**
+  - Added remote post-rsync file checks (`index.html`, `.htaccess`) in `.github/workflows/deploy.yml`
+  - Added immediate HTTP status validation for preview/prod URL in deploy workflow (fails on 404/000)
+  - Branch: `sync/main-to-develop` (2026-05-05)
+
 - [ ] **Add `preview` subdomain in Hostinger hPanel**
   - hPanel → Domains → Subdomains → add `preview.jxdistributionafrica.com`
   - Point document root to `/public_html/preview` (must match `HOSTINGER_DEPLOY_PATH_PREVIEW`)

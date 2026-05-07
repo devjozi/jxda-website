@@ -65,7 +65,11 @@ function stripProductCodesForTitle(name: string, sku?: string): string {
   let cleaned = name;
 
   if (sku) {
-    const skuPattern = escapeRegex(sku).replace(/[-\s]+/g, '[-\\s]*');
+    const skuPattern = sku
+      .split(/[-\s]+/)
+      .filter(Boolean)
+      .map((part) => escapeRegex(part))
+      .join('[-\\s]*');
     cleaned = cleaned.replace(new RegExp(`\\(?\\b${skuPattern}\\b\\)?`, 'ig'), '');
   }
 
@@ -340,12 +344,23 @@ export default function ShopClient({ products }: { products: Product[] }) {
                   <div className="col-sm-6 col-lg-4 col-xl-3" key={p.id}>
                     <div
                       className="card h-100"
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`View details for ${displayName}`}
                       style={{
                         border: 'none',
                         borderRadius: '12px',
                         overflow: 'hidden',
                         boxShadow: '0 2px 12px rgba(0,0,0,0.08)',
                         transition: 'transform 0.2s, box-shadow 0.2s',
+                        cursor: 'pointer',
+                      }}
+                      onClick={() => router.push(`/shop/${p.slug}`)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          router.push(`/shop/${p.slug}`);
+                        }
                       }}
                       onMouseEnter={(e) => {
                         (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
@@ -362,16 +377,6 @@ export default function ShopClient({ products }: { products: Product[] }) {
                           position: 'relative',
                           overflow: 'hidden',
                           height: '180px',
-                          cursor: 'pointer',
-                        }}
-                        onClick={() => router.push(`/shop/${p.slug}`)}
-                        aria-label={`View details for ${displayName}`}
-                        role="button"
-                        tabIndex={0}
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter' || e.key === ' ') {
-                            router.push(`/shop/${p.slug}`);
-                          }
                         }}
                       >
                         <img
@@ -426,7 +431,10 @@ export default function ShopClient({ products }: { products: Product[] }) {
                               className="btn btn-sm btn-light border-0"
                               style={{ width: '32px', borderRadius: 0 }}
                               aria-label={`Decrease quantity for ${displayName}`}
-                              onClick={() => updateQty(p.id, qty - 1)}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                updateQty(p.id, qty - 1);
+                              }}
                             >
                               -
                             </button>
@@ -438,7 +446,10 @@ export default function ShopClient({ products }: { products: Product[] }) {
                               className="btn btn-sm btn-light border-0"
                               style={{ width: '32px', borderRadius: 0 }}
                               aria-label={`Increase quantity for ${displayName}`}
-                              onClick={() => updateQty(p.id, qty + 1)}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                updateQty(p.id, qty + 1);
+                              }}
                             >
                               +
                             </button>

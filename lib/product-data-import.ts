@@ -180,6 +180,15 @@ export function convertCSVToProducts(
     }
 
     const imageFileName = row.Image?.trim() || '';
+    // Reject filenames containing path separators or traversal sequences to prevent
+    // generating broken URLs or referencing paths outside the products image folder.
+    if (imageFileName.includes('/') || imageFileName.includes('\\') || imageFileName.includes('..')) {
+      skippedMissingImage++;
+      allWarnings.push(
+        `Row ${rowNumber}: Skipped product "${row.Name.trim()}" because image filename contains invalid path characters: ${imageFileName}`
+      );
+      return;
+    }
     if (options.imageExists && !options.imageExists(imageFileName)) {
       skippedMissingImage++;
       allWarnings.push(
