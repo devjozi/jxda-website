@@ -13,7 +13,7 @@ export default function SalesSolutionsLandingPage() {
         <h1>Unlock Your Sales Potential</h1>
         <p className="lead">
           Expert sales team training, automation systems, and performance management designed for growth. Tell us your
-          goals and let's build your winning sales strategy.
+          goals and let&rsquo;s build your winning sales strategy.
         </p>
 
         <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>

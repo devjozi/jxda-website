@@ -1,16 +1,20 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import trackGAEvent from '../lib/ga';
 
 describe('ga utility', () => {
+  const gtagMock = vi.fn();
+
   beforeEach(() => {
-    // @ts-ignore
-    global.gtag = vi.fn();
+    vi.stubGlobal('gtag', gtagMock);
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    vi.unstubAllGlobals();
   });
 
   it('calls gtag with correct args', () => {
-    // @ts-ignore
     trackGAEvent('conversion', { value: 0 });
-    // @ts-ignore
-    expect(global.gtag).toHaveBeenCalledWith('event', 'conversion', { value: 0 });
+    expect(gtagMock).toHaveBeenCalledWith('event', 'conversion', { value: 0 });
   });
 });
