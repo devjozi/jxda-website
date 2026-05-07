@@ -1,16 +1,20 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import trackMetaPixelEvent from '../lib/meta-pixel';
 
 describe('meta-pixel utility', () => {
+  const fbqMock = vi.fn();
+
   beforeEach(() => {
-    // @ts-ignore
-    global.fbq = vi.fn();
+    vi.stubGlobal('fbq', fbqMock);
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    vi.unstubAllGlobals();
   });
 
   it('calls fbq with correct args', () => {
-    // @ts-ignore
     trackMetaPixelEvent('Lead', { foo: 'bar' });
-    // @ts-ignore
-    expect(global.fbq).toHaveBeenCalledWith('track', 'Lead', { foo: 'bar' });
+    expect(fbqMock).toHaveBeenCalledWith('track', 'Lead', { foo: 'bar' });
   });
 });

@@ -36,7 +36,7 @@ For anyone (or AI) continuing work on this project. Capture of the current machi
 - This project follows Test-Driven Development (TDD) as an implementation rule: write tests for new behavior before or alongside implementation.
 - Run tests with `npm run test` (uses `vitest`).
 - Developers must add unit tests for new modules and integration tests for pages that contain business logic (e.g., signup flows).
-- CI will run `npm run test` and `npm run lint` on PRs; include test instructions in PR descriptions.
+- CI quality gate runs lint, typecheck, tests, and static build (`npm run check`) on PRs; include validation instructions in PR descriptions.
 
 Basic commands:
 ```bash

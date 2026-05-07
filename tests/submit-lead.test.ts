@@ -1,24 +1,39 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { submitLead } from '../lib/submit-lead';
 
 describe('submitLead', () => {
+  const fetchMock = vi.fn();
+  const fbqMock = vi.fn();
+  const gtagMock = vi.fn();
+
   beforeEach(() => {
-    // @ts-ignore
-    global.fetch = vi.fn(() => Promise.resolve({ ok: true })) as any;
-    // @ts-ignore
-    global.fbq = vi.fn();
-    // @ts-ignore
-    global.gtag = vi.fn();
+    fetchMock.mockResolvedValue({ ok: true });
+    vi.stubGlobal('fetch', fetchMock);
+    vi.stubGlobal('fbq', fbqMock);
+    vi.stubGlobal('gtag', gtagMock);
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    vi.unstubAllGlobals();
   });
 
   it('posts to formspree and fires analytics', async () => {
-    const ok = await submitLead({ page: 'direct-execution' }, 'test-id');
+    const payload = { page: 'sales-solutions-lead-gen' };
+    const ok = await submitLead(payload, 'test-id');
     expect(ok).toBe(true);
-    // @ts-ignore
-    expect(global.fetch).toHaveBeenCalled();
-    // @ts-ignore
-    expect(global.fbq).toHaveBeenCalled();
-    // @ts-ignore
-    expect(global.gtag).toHaveBeenCalled();
+    expect(fetchMock).toHaveBeenCalledWith('https://formspree.io/f/test-id', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    expect(fbqMock).toHaveBeenCalledWith('track', 'Lead', {
+      content_name: 'sales-solutions-lead-gen',
+      content_ids: ['sales-solutions-lead-gen'],
+    });
+    expect(gtagMock).toHaveBeenCalledWith('event', 'conversion', {
+      event_category: 'lead',
+      value: 0,
+    });
   });
 });
