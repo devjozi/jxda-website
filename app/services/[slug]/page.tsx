@@ -1,6 +1,7 @@
 // Purpose: Service detail page with static params for export builds.
 import Link from 'next/link';
 import Header from '../../components/Header';
+import TrackView from '../../components/TrackView';
 import Footer from '../../components/Footer';
 import { notFound } from 'next/navigation';
 import { getServiceBySlug, getServicesArray } from '../../../lib/services-data';
@@ -23,6 +24,8 @@ export default async function ServiceSingle({ params }: Props) {
   return (
     <>
       <Header />
+      {/* Client-side tracking for analytics */}
+      <TrackView contentName={service.title} contentId={service.slug} />
 
       {/* Banner Area */}
       <div className="banner-area" id="banner-area" style={{backgroundImage: 'url(/images/banner/banner4.jpg)'}}>
