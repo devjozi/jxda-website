@@ -8,9 +8,9 @@ import { getServiceBySlug, getServicesArray } from '../../../lib/services-data';
 
 type Props = { params: Promise<{ slug: string }> };
 const dedicatedServiceSlugs = new Set(['direct-execution']);
+const services = getServicesArray();
 
 export async function generateStaticParams() {
-  const services = getServicesArray();
   return services
     .filter((service) => !dedicatedServiceSlugs.has(service.slug))
     .map((service) => ({ slug: service.slug }));
@@ -19,7 +19,6 @@ export async function generateStaticParams() {
 export default async function ServiceSingle({ params }: Props) {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
-  const services = getServicesArray();
 
   if (!service) {
     notFound();
@@ -59,7 +58,9 @@ export default async function ServiceSingle({ params }: Props) {
               <div className="sidebar">
                 <div className="widget no-padding no-border">
                   <ul className="service-menu">
-                    {services.map((sidebarService) => (
+                    {services
+                      .filter((sidebarService) => !dedicatedServiceSlugs.has(sidebarService.slug))
+                      .map((sidebarService) => (
                       <li key={sidebarService.slug}>
                         <Link href={`/services/${sidebarService.slug}`}>{sidebarService.title}</Link>
                       </li>

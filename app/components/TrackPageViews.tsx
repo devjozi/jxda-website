@@ -4,7 +4,17 @@ import { useEffect, useRef } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import trackMetaPixelEvent from '../../lib/meta-pixel';
 
-export default function TrackPageViews({ gaMeasurementId }: { gaMeasurementId?: string }) {
+type WindowWithGtag = Window & {
+  gtag?: (command: string, targetId: string, config?: Record<string, unknown>) => void;
+};
+
+export default function TrackPageViews({
+  gaMeasurementId,
+  metaPixelId,
+}: {
+  gaMeasurementId?: string;
+  metaPixelId?: string;
+}) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const isFirstRender = useRef(true);
@@ -17,17 +27,19 @@ export default function TrackPageViews({ gaMeasurementId }: { gaMeasurementId?: 
 
     const query = searchParams.toString();
     const pagePath = query ? `${pathname}?${query}` : pathname;
-    const w = window as any;
+    const w = window as WindowWithGtag;
 
     try {
       if (gaMeasurementId && typeof w.gtag === 'function') {
         w.gtag('config', gaMeasurementId, { page_path: pagePath });
       }
-      trackMetaPixelEvent('PageView');
+      if (metaPixelId) {
+        trackMetaPixelEvent('PageView');
+      }
     } catch (err) {
       // ignore
     }
-  }, [gaMeasurementId, pathname, searchParams]);
+  }, [gaMeasurementId, metaPixelId, pathname, searchParams]);
 
   return null;
 }

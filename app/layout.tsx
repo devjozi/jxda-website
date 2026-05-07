@@ -64,7 +64,7 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <CartProvider>{children}</CartProvider>
         <Suspense fallback={null}>
-          <TrackPageViews gaMeasurementId={gaMeasurementId} />
+          <TrackPageViews gaMeasurementId={gaMeasurementId} metaPixelId={metaPixelId} />
         </Suspense>
         {metaPixelId && (
           <noscript>
