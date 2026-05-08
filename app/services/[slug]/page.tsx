@@ -1,15 +1,19 @@
 // Purpose: Service detail page with static params for export builds.
 import Link from 'next/link';
 import Header from '../../components/Header';
+import TrackView from '../../components/TrackView';
 import Footer from '../../components/Footer';
 import { notFound } from 'next/navigation';
 import { getServiceBySlug, getServicesArray } from '../../../lib/services-data';
 
 type Props = { params: Promise<{ slug: string }> };
+const dedicatedServiceSlugs = new Set(['direct-execution']);
+const services = getServicesArray();
 
 export async function generateStaticParams() {
-  const services = getServicesArray();
-  return services.map((service) => ({ slug: service.slug }));
+  return services
+    .filter((service) => !dedicatedServiceSlugs.has(service.slug))
+    .map((service) => ({ slug: service.slug }));
 }
 
 export default async function ServiceSingle({ params }: Props) {
@@ -23,6 +27,8 @@ export default async function ServiceSingle({ params }: Props) {
   return (
     <>
       <Header />
+      {/* Client-side tracking for analytics */}
+      <TrackView contentName={service.title} contentId={service.slug} />
 
       {/* Banner Area */}
       <div className="banner-area" id="banner-area" style={{backgroundImage: 'url(/images/banner/banner4.jpg)'}}>
@@ -52,14 +58,13 @@ export default async function ServiceSingle({ params }: Props) {
               <div className="sidebar">
                 <div className="widget no-padding no-border">
                   <ul className="service-menu">
-                    <li><Link href="/services/route-to-market-and-route-to-consumer-development">Route-to-Market & Route-to-Consumer Development</Link></li>
-                    <li><Link href="/services/social-media-marketing-and-activation-campaigns">Social Media Marketing & Activation Campaigns</Link></li>
-                    <li><Link href="/services/distribution-and-logistics-coordination">Distribution & Logistics Coordination</Link></li>
-                    <li><Link href="/services/market-research-and-consumer-intelligence">Market Research & Consumer Intelligence</Link></li>
-                    <li><Link href="/services/procurement">Procurement</Link></li>
-                    <li><Link href="/services/sales-team-training-and-performance-management">Sales Team Training & Performance Management</Link></li>
-                    <li><Link href="/services/call-center-services-for-companies">Call Center Services for Companies</Link></li>
-                    <li><Link href="/services/sales-automation-and-reporting">Sales Automation & Reporting</Link></li>
+                    {services
+                      .filter((sidebarService) => !dedicatedServiceSlugs.has(sidebarService.slug))
+                      .map((sidebarService) => (
+                      <li key={sidebarService.slug}>
+                        <Link href={`/services/${sidebarService.slug}`}>{sidebarService.title}</Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="widget no-padding testimonial-static">

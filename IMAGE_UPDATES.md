@@ -162,7 +162,7 @@ git push origin [branch-name]
 | Sales Team Training | sales-team-training-and-performance-management | sales-training.jpg |
 | Call Center Services | call-center-services-for-companies | call-center-services.jpg |
 | Sales Automation | sales-automation-and-reporting | sales-automation.jpg |
-| Direct Execution | direct-execution | direct-execution.jpg |
+| Direct Execution | direct-execution | direct-execution.png |
 
 **File:** `lib/services-data.ts` → `catalogImg` field for each service
 
@@ -176,7 +176,7 @@ git push origin [branch-name]
 
 | Page | Filename | Code Location |
 |---|---|---|
-| Shop | banner1.jpg | `app/shop/page.tsx` |
+| Shop | _(no banner image)_ | Banner removed from `app/shop/page.tsx` |
 | Services | banner5.jpg | `app/services/page.tsx` |
 | Service Detail | banner4.jpg | `app/services/[slug]/page.tsx` |
 | Direct Execution | banner2.jpg | `app/services/direct-execution/page.tsx` |
