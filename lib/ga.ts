@@ -3,7 +3,7 @@ export const trackGAEvent = (eventName: string, params?: Record<string, unknown>
   if (w && typeof w.gtag === 'function') {
     try {
       w.gtag('event', eventName, params || {});
-    } catch (err) {
+    } catch {
       // ignore
     }
   }
