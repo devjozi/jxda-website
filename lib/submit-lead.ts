@@ -16,7 +16,7 @@ export async function submitLead(payload: Record<string, unknown>, formspreeId?:
     try {
       trackMetaPixelEvent('Lead', { content_name: page, content_ids: [page] });
       trackGAEvent('conversion', { event_category: 'lead', value: 0 });
-    } catch (err) {
+    } catch {
       // ignore
     }
     return true;
