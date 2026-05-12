@@ -12,10 +12,11 @@ export async function submitLead(payload: Record<string, unknown>, formspreeId?:
   });
 
   if (res.ok) {
+    const page = typeof payload.page === 'string' ? payload.page : 'lead';
     try {
-      trackMetaPixelEvent('Lead', { content_name: payload.page ?? 'lead', content_ids: [payload.page ?? 'lead'] });
+      trackMetaPixelEvent('Lead', { content_name: page, content_ids: [page] });
       trackGAEvent('conversion', { event_category: 'lead', value: 0 });
-    } catch (err) {
+    } catch {
       // ignore
     }
     return true;

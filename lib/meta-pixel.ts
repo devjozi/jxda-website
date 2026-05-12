@@ -3,7 +3,7 @@ export const trackMetaPixelEvent = (eventName: string, data?: Record<string, unk
   if (w && typeof w.fbq === 'function') {
     try {
       w.fbq('track', eventName, data || {});
-    } catch (err) {
+    } catch {
       // swallow errors to avoid breaking UI
     }
   }
