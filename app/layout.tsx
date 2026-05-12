@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-  const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+  const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? '1705999587410766';
 
   return (
     <html lang="en" suppressHydrationWarning>
