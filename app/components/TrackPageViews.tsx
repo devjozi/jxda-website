@@ -36,7 +36,7 @@ export default function TrackPageViews({
       if (metaPixelId) {
         trackMetaPixelEvent('PageView');
       }
-    } catch (err) {
+    } catch {
       // ignore
     }
   }, [gaMeasurementId, metaPixelId, pathname, searchParams]);
