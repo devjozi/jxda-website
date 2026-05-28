@@ -189,7 +189,7 @@ New sections and content to add to the site. Each should be its own branch.
 - [ ] Generate sitemap.xml | Branch: `feature/seo-metadata`
 - [ ] Add robots.txt | Branch: `feature/seo-metadata`
 - [ ] Add structured data (schema.org) | Branch: `feature/seo-metadata`
-- [ ] Add Google Analytics (GA4) | Branch: `feature/analytics`
+- [ ] Verify Google Analytics (GA4) and Meta Pixel tracking | Branch: `feature/analytics`
 - [ ] Add error monitoring (Sentry free tier) | Branch: `feature/monitoring`
 
 ---
@@ -223,7 +223,7 @@ From `GO_LIVE_CHECKLIST.md` — must all be checked before merging to `main`:
 - [ ] All GitHub Actions secrets set correctly (blocked by Group 1)
 
 ### Monitoring
-- [ ] Google Analytics configured and receiving data
+- [ ] Verify Google Analytics and Meta Pixel are configured and receiving data
 - [ ] Error monitoring (Sentry) configured
 
 ---

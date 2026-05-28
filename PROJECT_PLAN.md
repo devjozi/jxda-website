@@ -365,7 +365,7 @@ Transform JX Distribution Africa website from a marketing-only site to a **full-
 | 7.2 | Generate sitemap.xml | `feature/seo-metadata` | 🔴 Not Started |
 | 7.3 | Add robots.txt | `feature/seo-metadata` | 🔴 Not Started |
 | 7.4 | Implement structured data | `feature/seo-metadata` | 🔴 Not Started |
-| 7.5 | Add Google Analytics | `feature/analytics` | 🔴 Not Started |
+| 7.5 | Add Google Analytics | `feature/analytics` | In Progress |
 | 7.6 | Add error monitoring (Sentry) | `feature/monitoring` | 🔴 Not Started |
 | 7.7 | Set up uptime monitoring | `feature/monitoring` | 🔴 Not Started |
 

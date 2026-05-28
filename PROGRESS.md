@@ -1,9 +1,9 @@
 # PROGRESS LOG — JX Distribution Website
 
-**Last Updated:** 2026-05-05
+**Last Updated:** 2026-05-28
 **Version:** 0.7.1
-**Branch:** `feat/shop-core-refactor`
-**Status:** Mandatory sync rerun completed (`main` was 2 commits ahead of `develop`), deploy verification hardened for preview 404 detection, and feature flow remains `feature -> develop`
+**Branch:** `codex/fix-meta-pixel-production-deploy`
+**Status:** Analytics/Meta Pixel production deploy fix in progress; branch flow remains `feature -> develop`
 
 ---
 
@@ -26,6 +26,7 @@ Source of truth validation run on 2026-03-02:
 - **Commerce:** `/shop` + `/shop/[slug]` + `/shop/checkout` implemented with WhatsApp-first ordering flow and persistent shopping cart.
 - **Shop refactor branch:** `feat/shop-core-refactor` is the active implementation branch for Buy Now, quantity controls, checkout modal, and WhatsApp checkout cleanup.
 - **Branch governance:** `main -> develop` sync enforced via PRs #71 and #72; active feature PR #70 now targets `develop`.
+- **Analytics/Meta Pixel:** production deploy fix branch active on `codex/fix-meta-pixel-production-deploy`, pending preview/prod verification.
 - **Catalog:** 53+ products across 5 categories, with search/filter/sort and product detail pages.
 - **SEO/Schema:** Shop listing metadata + per-product metadata + JSON-LD (`Product`, `BreadcrumbList`).
 - **Testing:** 45 unit tests passing (`tests/products.test.ts`, `tests/shop-filters.test.ts`, `tests/site.test.ts`, `tests/contact-route.test.ts`).

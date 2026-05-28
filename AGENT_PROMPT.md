@@ -413,7 +413,7 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 - [ ] Cross-browser tested (Chrome, Safari, Firefox)
 
 ### SEO & Analytics
-- [ ] Google Analytics installed and tracking
+- [ ] Verify Google Analytics and Meta Pixel installed and tracking
 - [ ] Meta tags on all pages
 - [ ] Sitemap.xml generated
 - [ ] Robots.txt configured
