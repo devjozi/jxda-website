@@ -76,7 +76,7 @@ export default function Footer() {
                 </span>
                 <div className="ts-contact-content">
                   <h3 className="ts-contact-title">Phone</h3>
-                  <p>{SITE.phone}</p>
+                  <p>{SITE.phone.display}</p>
                 </div>
                 {/* Contact content end */}
               </div>

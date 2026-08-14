@@ -48,7 +48,7 @@ export default function Header() {
                     </span>
                     <div className="info-wrapper">
                       <p className="info-title">Contact</p>
-                      <p className="info-subtitle">{SITE.phone}</p>
+                      <p className="info-subtitle">{SITE.phone.display}</p>
                     </div>
                   </li>
                   <li>

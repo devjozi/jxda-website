@@ -9,8 +9,12 @@ export const SITE = {
   address: 'JX Distribution Africa, Mr. Adjei Station, Kwabenya, Accra, Ghana',
   // Replace with the official contact email for JX Distribution Africa.
   email: 'info@jxdistributionafrica.com',
-  // Replace with the official phone number.
-  phone: '+233 53 883 8135',
+  // Official contact phone number.
+  phone: {
+    display: '+233 53 187 3637',
+    href: 'tel:+233531873637',
+    digits: '233531873637',
+  },
   // Public note from the company profile.
   note: 'We do not sell or market alcoholic, gambling, and tobacco products.',
   // Social profiles — all set to live handles.
@@ -23,7 +27,7 @@ export const SITE = {
   },
   whatsapp: {
     // Digits only for wa.me links.
-    number: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '233546613884').replace(/\D/g, ''),
+    number: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '233531873637').replace(/\D/g, ''),
     message: process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ?? "Hi, I want to grow sales and market coverage with JX Distribution Africa.",
   },
   contactForm: {
