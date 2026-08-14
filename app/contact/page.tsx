@@ -79,7 +79,7 @@ export default function Contact() {
                         </span>
                         <div className="ts-contact-content">
                           <h3 className="ts-contact-title">Call Us</h3>
-                          <p>{SITE.phone}</p>
+                          <p>{SITE.phone.display}</p>
                         </div>
                       </div>
 
