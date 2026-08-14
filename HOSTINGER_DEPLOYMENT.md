@@ -221,7 +221,7 @@ public_html/
 
 **Solution 2:** Verify WhatsApp number is set in environment:
 - Check `lib/site.ts` has valid `whatsapp.number`
-- Default: `233546613884` (Ghana number)
+- Default: `233531873637` (Ghana number)
 
 **Solution 3:** Test on mobile device (better WhatsApp integration)
 
@@ -270,9 +270,10 @@ For Hostinger-specific issues:
 
 For Hostinger, the site uses defaults:
 
-- **WhatsApp Number:** `+233 53 883 8135` (from `lib/site.ts`)
+- **WhatsApp Number:** `+233 53 187 3637` (from `lib/site.ts`)
 - **Contact Email:** `info@jxdistributionafrica.com`
-- **Company Phone:** `+233 53 883 8135`
+- **Company Phone:** `+233 53 187 3637`
+- **Secondary Phone:** `+233 53 883 8135`
 
 To change these values:
 

@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 
 export default function DirectExecutionSignupPage() {
   const formAction = SITE.contactForm.action;
+  const contactNumbers = [SITE.phone.primary, SITE.phone.secondary].filter(Boolean);
 
   const benefits = [
     'A specialist will review your brief',
@@ -90,7 +91,11 @@ export default function DirectExecutionSignupPage() {
                     </span>
                     <div className="ts-contact-content">
                       <h3 className="ts-contact-title">Call Us</h3>
-                      <p>{SITE.phone}</p>
+                      {contactNumbers.map((number) => (
+                        <p className="mb-0" key={number}>
+                          {number}
+                        </p>
+                      ))}
                     </div>
                   </div>
 

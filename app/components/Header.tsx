@@ -21,6 +21,7 @@ import { useCart } from './CartProvider';
 export default function Header() {
   const pathname = usePathname();
   const { itemCount } = useCart();
+  const contactNumbers = [SITE.phone.primary, SITE.phone.secondary].filter(Boolean);
 
   const isHome = pathname === '/';
   const isShop = pathname === '/shop' || pathname.startsWith('/shop/');
@@ -48,7 +49,11 @@ export default function Header() {
                     </span>
                     <div className="info-wrapper">
                       <p className="info-title">Contact</p>
-                      <p className="info-subtitle">{SITE.phone}</p>
+                      {contactNumbers.map((number) => (
+                        <p className="info-subtitle mb-0" key={number}>
+                          {number}
+                        </p>
+                      ))}
                     </div>
                   </li>
                   <li>

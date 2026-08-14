@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import CartCheckoutClient from '../../components/CartCheckoutClient';
+import { SITE } from '../../../lib/site';
 
 export const metadata = {
   title: 'Checkout — JX Distribution',
@@ -15,6 +16,8 @@ export const metadata = {
 };
 
 export default function CheckoutPage() {
+  const contactNumbers = [SITE.phone.primary, SITE.phone.secondary].filter(Boolean);
+
   return (
     <>
       <Header />
@@ -49,8 +52,14 @@ export default function CheckoutPage() {
               <Link href="/shop" className="btn btn-outline-primary">Back to Shop</Link>
               <p className="text-muted mt-3">
                 Questions? Contact us directly:<br />
-                <a href="tel:+233546613884">+233 54 661 3884</a> or
-                <a href="mailto:info@jxdistributionafrica.com"> info@jxdistributionafrica.com</a>
+                {contactNumbers.map((number, index) => (
+                  <span key={number}>
+                    <a href={`tel:${number.replace(/\s+/g, '')}`}>{number}</a>
+                    {index === 0 ? <><br /></> : null}
+                  </span>
+                ))}
+                <br />
+                <a href="mailto:info@jxdistributionafrica.com">info@jxdistributionafrica.com</a>
               </p>
             </div>
           </div>

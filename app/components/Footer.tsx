@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { SITE } from '../../lib/site';
 
 export default function Footer() {
+  const contactNumbers = [SITE.phone.primary, SITE.phone.secondary].filter(Boolean);
+
   return (
     <footer className="footer" id="footer">
       <div className="footer-main bg-overlay">
@@ -76,7 +78,11 @@ export default function Footer() {
                 </span>
                 <div className="ts-contact-content">
                   <h3 className="ts-contact-title">Phone</h3>
-                  <p>{SITE.phone}</p>
+                  {contactNumbers.map((number) => (
+                    <p className="mb-0" key={number}>
+                      {number}
+                    </p>
+                  ))}
                 </div>
                 {/* Contact content end */}
               </div>

@@ -8,6 +8,7 @@ import { SITE } from '../../lib/site';
 
 export default function Contact() {
   const formAction = SITE.contactForm.action;
+  const contactNumbers = [SITE.phone.primary, SITE.phone.secondary].filter(Boolean);
 
   return (
     <>
@@ -79,7 +80,11 @@ export default function Contact() {
                         </span>
                         <div className="ts-contact-content">
                           <h3 className="ts-contact-title">Call Us</h3>
-                          <p>{SITE.phone}</p>
+                          {contactNumbers.map((number) => (
+                            <p className="mb-0" key={number}>
+                              {number}
+                            </p>
+                          ))}
                         </div>
                       </div>
 
