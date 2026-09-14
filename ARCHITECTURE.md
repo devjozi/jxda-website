@@ -1,75 +1,41 @@
-# Architecture — JX Distribution
-<!-- Purpose: Summarize architecture and deployment model. -->
+# Architecture
 
-## Stack
+## System shape
 
-- **Next.js for entire project:** Main site and commerce are in the same Next.js app (server-capable), with static export used on current hosting plan.
-- **Main site:** TypeScript, Bootstrap/template CSS and JS in `/public`; design matches `reference/original-template/`
-- **Commerce (planned):** Product list, product detail, checkout, payment; route TBD (e.g. `/shop`) or subdomain
-- **Build:** `npm run build` (server) or `npm run build:static` (current hosting)
-- **Hosting:** Hostinger static now; upgrade to Node.js plan later
+The application uses Next.js and TypeScript with the App Router. Shared page structure is implemented with reusable React components, while domain data that appears in multiple views is centralized under `lib/`.
 
-## Structure
+The result is a conventional web application rather than a collection of page-specific implementations: layout, presentation, and shared data have clear boundaries, which makes changes easier to reason about and test.
 
-- `app/` — Next.js App Router (layout, pages, components)
-- `public/` — CSS, JS, images, fonts (template assets)
-- Commerce routes or separate app TBD
+## Why static export
 
-## Data
+The current hosting target supports static files rather than a continuously running Next.js server. The application therefore supports a static export through the `STATIC_EXPORT=true` build path.
 
-- Product data: static (e.g. JSON) at build time for now; backend/API later if needed
-- Payment: provider TBD (e.g. Paystack, Stripe); integrate when checkout is in place
-- **Services metadata:** Centralized in `lib/services-data.ts` (single source of truth for title, slug, description, and image filenames across all pages)
+That constraint has a useful consequence: the deployed artifact is self-contained and does not require a Node.js process. It also creates an explicit architectural boundary. Features that need server-side execution, persistent state, authenticated APIs, or real-time data cannot be implemented inside the static output alone.
 
-## Images
+For the current workload, that trade-off is deliberate. A smaller runtime surface is easier to deploy and operate than introducing a backend before the application needs one.
 
-Services use a **context-aware folder structure** to support independent updates:
+## Data boundaries
 
-- `public/images/services/home/` — Homepage service card images (service1.jpg–service8.jpg)
-- `public/images/services/catalog/` — Services listing and detail page images (slug-based filenames: `route-to-market.jpg`, `social-media-marketing.jpg`, etc.)
-- `public/images/banner/` — Page banner backgrounds
-- `public/images/slider/` — Homepage carousel images (bg1.jpg–bg5.jpg)
-- `public/images/clients/` — Testimonial avatars and logos
-- `public/images/parallax/` — Parallax section backgrounds
-- `public/images/team/` — Team member photos (future)
+Shared service metadata lives in `lib/services-data.ts` rather than being duplicated across the homepage, listing pages, and detail pages. This makes the data a single source of truth and prevents small content changes from creating inconsistent copies.
 
-**Key Design:**
-- `lib/services-data.ts` centralizes service metadata and image filenames, preventing drift
-- Homepage and services listing/detail pages can use different images for the same service
-- Slug-based naming in catalog makes images self-documenting (no need to guess which service "service3.jpg" belongs to)
+Environment-dependent values are read from configuration rather than embedded in components. This keeps deploy-specific configuration out of the application structure and makes the same codebase usable across environments.
 
-**Updating Images:** See [IMAGE_UPDATES.md](IMAGE_UPDATES.md) for comprehensive instructions.
+## Delivery path
 
-## CI/CD
+The repository uses GitHub Actions for the path from source to deployed artifact.
 
-- GitHub Actions: static export deploy to Hostinger via SSH (see `.github/workflows/deploy.yml`)
+1. Dependencies are installed from the lockfile.
+2. Linting, TypeScript validation, and automated tests run as quality gates.
+3. The application is built as a static export.
+4. The generated artifact is deployed over SSH/rsync.
+5. The deployment is checked for expected files and an HTTP response rather than treating a successful upload as proof of a healthy release.
 
-### Static Export Constraints
-- API routes (e.g., `/api/contact`) are not available on static hosting.
-- Use external serverless endpoints for forms and email.
+Security checks run separately through dependency auditing and CodeQL.
 
-## Deployment
+## Trade-offs
 
-### Development
-- Local: `npm run dev` (http://localhost:3000)
-- Hot reload enabled
+The static approach deliberately gives up server-side features in exchange for simpler hosting and a smaller operational surface.
 
-### Preview/Staging
-- **Trigger:** Push to `develop`
-- **URL:** `https://preview.jxdistributionafrica.com`
-- **Purpose:** Internal preview before production
+That is acceptable while the application primarily serves content, catalogue data, forms backed by external services, and client-side interactions. If requirements later include real-time inventory, authenticated APIs, server-side transactions, or persistent application state, the clean migration point is the boundary between the static web application and the external service layer.
 
-### Production (Automatic)
-- **Trigger:** Push to `main`
-- **URL:** `https://www.jxdistributionafrica.com` (custom domain)
-- **Process:**
-	1. Push to `main`
-	2. GitHub Actions deploys static export
-	3. Verify production
-
-### Environment Variables
-- **Local:** `.env.local` (gitignored)
-- **Hostinger:** Not required for static export
-- **Required (static):**
-	- `NEXT_PUBLIC_CONTACT_FORM_ACTION` -- Serverless form endpoint
-	- `NEXT_PUBLIC_WHATSAPP_NUMBER` -- WhatsApp business number (future)
+The architecture therefore optimizes for today's operational constraint without making tomorrow's migration mysterious.

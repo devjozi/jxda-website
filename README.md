@@ -1,45 +1,57 @@
-# JX Distribution — Website
-<!-- Purpose: Project overview, setup, and deployment pointers. -->
+# JX Distribution Website — Engineering Surface
 
-JX Distribution sells online. This repo is the main site and (planned) commerce subdomain.
+This repository contains a production web application built with Next.js and TypeScript. It was shaped around a simple constraint: the current deployment target supports static hosting, so the application must produce a deployable static export without giving up a clear path to server-backed capabilities later.
 
-**Stack:** Next.js (server-capable), TypeScript, Bootstrap/template assets. Deployed to Hostinger.
+The repository is useful as an engineering sample because the implementation is real: reusable React components, centralized domain data, automated validation, static builds, deployment automation, and post-deployment checks all live alongside the application code.
 
-**Priority:** Get a working commerce experience (product list, product details, checkout, payment). Marketing pages concluded to a minimal set first.
+## Stack
 
-## Quick start
+- Next.js / React
+- TypeScript
+- Bootstrap and existing front-end assets
+- Vitest for automated tests
+- GitHub Actions for validation, security checks, and deployment
+
+## Architecture
+
+The application uses the Next.js App Router. The static deployment path is enabled at build time with `STATIC_EXPORT=true`, producing an `out/` directory suitable for a static host.
+
+Application data that is shared across pages is kept behind small modules in `lib/` rather than duplicated inside components. This keeps rendering concerns separate from domain data and reduces drift between listing, detail, and landing pages.
+
+See [ARCHITECTURE.md](ARCHITECTURE.md) for the reasoning behind the deployment model and its trade-offs.
+
+## Development
 
 ```bash
 npm install
 npm run dev
 ```
 
-Build: `npm run build`
-Build (static hosting): `npm run build:static`
-Start production server: `npm run start`
+Useful checks:
 
-## Key docs
+```bash
+npm run lint
+npm run typecheck
+npm run test
+npm run build:static
+```
 
-> Status source of truth: use `PROGRESS.md` first (truth-synced). Treat older plan/deployment docs as historical snapshots unless updated more recently.
+The combined gate is:
 
-### For Execution
-- **[PROJECT_PLAN.md](PROJECT_PLAN.md)** — Complete task list, sprint breakdown, acceptance criteria ⭐ START HERE
-- **[AGENT_PROMPT.md](AGENT_PROMPT.md)** — Instructions for AI agents to execute tasks autonomously
-- **[BRANCHING_STRATEGY.md](BRANCHING_STRATEGY.md)** — Git workflow, one branch per task
-- **[IMAGE_UPDATES.md](IMAGE_UPDATES.md)** — Comprehensive guide for updating all site images ⭐ REFER WHEN UPDATING IMAGES
+```bash
+npm run check
+```
 
-### For Context
-- **[PROJECT_DIRECTION.md](PROJECT_DIRECTION.md)** — scope, commerce subdomain, priorities
-- **[PROGRESS.md](PROGRESS.md)** — current phase and checklist
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** — stack, deployment, and image folder structure
-- **[HANDOFF.md](HANDOFF.md)** — quick restart and deploy
-- **[DEV_SETUP.md](DEV_SETUP.md)** — environment and AI tooling for continuation
-- **[PREVIEW_AND_PUBLISH.md](PREVIEW_AND_PUBLISH.md)** — what to click and expect in the browser, then how to build and publish
+A local static build writes the generated site to `out/`.
 
-## Deploy
+## Delivery
 
-- `develop` → preview (https://preview.jxdistributionafrica.com)
-- `main` → production (Hostinger static export)
-- Preview path contract: `HOSTINGER_DEPLOY_PATH_PREVIEW` must match the exact hPanel document root for `preview.jxdistributionafrica.com` (no `www` prefix).
+The repository uses GitHub Actions to validate changes before they ship. The quality gate runs linting, TypeScript checks, tests, and the static build. Deployment then publishes the generated output and verifies both the remote files and the reachable application.
 
-Secrets: see `.env.example`; store real values in GitHub Secrets.
+Security scanning includes dependency auditing and CodeQL analysis.
+
+The deployed environment and business-specific configuration are intentionally supplied through runtime/repository configuration rather than documented as part of the public engineering surface.
+
+## Repository boundary
+
+This public repository contains the implementation and the engineering decisions needed to understand it. Internal task history, agent instructions, private deployment notes, business-operational documentation, and working-session material are kept outside the public surface.
