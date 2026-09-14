@@ -1,9 +1,9 @@
 # Engineering decisions
 
-A small set of decisions explains the current shape of the application.
+These decisions explain the current shape of the application.
 
 ### Static export
-The deployment target supports static files, so the application builds a self-contained export instead of requiring a continuously running Next.js server. The trade-off is that server-side features belong behind an external service boundary.
+The deployment target supports static files, so the application builds a self-contained export instead of requiring a continuously running Next.js server. Server-side features belong behind an external service boundary.
 
 ### Centralized domain data
 Service metadata is shared by several views. It lives in a typed module so titles, slugs, descriptions, and image references do not drift between pages.

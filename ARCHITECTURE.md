@@ -4,21 +4,21 @@
 
 The application uses Next.js and TypeScript with the App Router. Shared page structure is implemented with reusable React components, while domain data that appears in multiple views is centralized under `lib/`.
 
-The result is a conventional web application rather than a collection of page-specific implementations: layout, presentation, and shared data have clear boundaries, which makes changes easier to reason about and test.
+Shared layout, page components, and domain data have separate responsibilities.
 
 ## Why static export
 
 The current hosting target supports static files rather than a continuously running Next.js server. The application therefore supports a static export through the `STATIC_EXPORT=true` build path.
 
-That constraint has a useful consequence: the deployed artifact is self-contained and does not require a Node.js process. It also creates an explicit architectural boundary. Features that need server-side execution, persistent state, authenticated APIs, or real-time data cannot be implemented inside the static output alone.
+The deployed artifact is self-contained and does not require a Node.js process. Features that need server-side execution, persistent state, authenticated APIs, or real-time data cannot be implemented inside the static output alone.
 
-For the current workload, that trade-off is deliberate. A smaller runtime surface is easier to deploy and operate than introducing a backend before the application needs one.
+For the current workload, this keeps the deployment and runtime surface small. Server-backed features belong outside the static application when they are needed.
 
 ## Data boundaries
 
-Shared service metadata lives in `lib/services-data.ts` rather than being duplicated across the homepage, listing pages, and detail pages. This makes the data a single source of truth and prevents small content changes from creating inconsistent copies.
+Shared service metadata lives in `lib/services-data.ts` rather than being duplicated across the homepage, listing pages, and detail pages. This gives those views one source of truth.
 
-Environment-dependent values are read from configuration rather than embedded in components. This keeps deploy-specific configuration out of the application structure and makes the same codebase usable across environments.
+Environment-dependent values are read from configuration rather than embedded in components. Deploy-specific configuration therefore stays outside the application structure.
 
 ## Delivery path
 
@@ -34,8 +34,6 @@ Security checks run separately through dependency auditing and CodeQL.
 
 ## Trade-offs
 
-The static approach deliberately gives up server-side features in exchange for simpler hosting and a smaller operational surface.
+The static approach gives up server-side features in exchange for simpler hosting and a smaller runtime surface.
 
-That is acceptable while the application primarily serves content, catalogue data, forms backed by external services, and client-side interactions. If requirements later include real-time inventory, authenticated APIs, server-side transactions, or persistent application state, the clean migration point is the boundary between the static web application and the external service layer.
-
-The architecture therefore optimizes for today's operational constraint without making tomorrow's migration mysterious.
+That is acceptable while the application primarily serves content, catalogue data, forms backed by external services, and client-side interactions. Real-time inventory, authenticated APIs, server-side transactions, or persistent application state require an external service layer.

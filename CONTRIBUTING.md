@@ -1,8 +1,6 @@
-# Public development notes
+# Development notes
 
-This repository is intended to show the implementation, architecture, and release discipline of the application. Keep changes small, reviewable, and supported by the existing automated checks.
-
-Before opening a pull request, run:
+Keep changes small and reviewable. Run:
 
 ```bash
 npm run lint
@@ -11,4 +9,6 @@ npm run test
 npm run build:static
 ```
 
-Avoid committing credentials, live integration identifiers, environment-specific infrastructure details, generated build output, or internal project-management material.
+Do not commit credentials, live integration identifiers, private business data, customer data, environment-specific infrastructure details, generated build output, or internal project-management material.
+
+Public code should contain implementation and technical documentation only. Keep private working notes, agent instructions, handoff material, and operational records outside the repository.
