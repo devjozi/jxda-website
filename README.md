@@ -58,4 +58,4 @@ Deploy-specific values such as hosts, credentials, paths, analytics identifiers,
 
 The public tree contains application code, tests, build and delivery mechanics, and the engineering decisions needed to understand those parts.
 
-Do not add credentials, live integration identifiers, private business data, customer data, internal operational documents, agent instructions, task history, handoff notes, or other company-confidential material to the public tree.
+Do not add credentials, live integration identifiers, private business data, customer data, internal operational documents, private project-management material, or other company-confidential material to the public tree.
