@@ -7,11 +7,16 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# dependencies
+# Dependencies
 node_modules
 dist-ssr
-*.local
 /node_modules
+
+# Local environment files
+.env
+.env.*
+!.env.example
+*.local
 
 # Editor directories and files
 .vscode/*
@@ -24,18 +29,17 @@ dist-ssr
 *.sln
 *.sw?
 
-# next.js
+# Next.js
 /.next/
 /out/
 tsconfig.tsbuildinfo
 
-# production
-/dist
+# Production
+dist/
 
-# debug
+# Debug
 npm-debug.log*
 
-# others
+# Private source/supporting files
 *.bak
-*.txt
 Company Profile JX DISTRIBUTITION Africa final.pdf

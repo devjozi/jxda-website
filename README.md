@@ -1,45 +1,61 @@
-# JX Distribution — Website
-<!-- Purpose: Project overview, setup, and deployment pointers. -->
+# JX Distribution Website
 
-JX Distribution sells online. This repo is the main site and (planned) commerce subdomain.
+This repository contains a production web application built with Next.js and TypeScript.
 
-**Stack:** Next.js (server-capable), TypeScript, Bootstrap/template assets. Deployed to Hostinger.
+The current deployment target supports static hosting, so the application builds a static export. Features that need server-side execution sit outside that output.
 
-**Priority:** Get a working commerce experience (product list, product details, checkout, payment). Marketing pages concluded to a minimal set first.
+The code includes reusable React components, shared domain data, automated tests, a static build, deployment automation, and post-deployment checks.
 
-## Quick start
+## Stack
+
+- Next.js / React
+- TypeScript
+- Bootstrap and existing front-end assets
+- Vitest for automated tests
+- GitHub Actions for validation, security checks, and deployment
+
+## Architecture
+
+The application uses the Next.js App Router. The static deployment path is enabled at build time with `STATIC_EXPORT=true`, producing an `out/` directory suitable for a static host.
+
+Application data that is shared across pages is kept behind small modules in `lib/` rather than duplicated inside components. This keeps rendering concerns separate from domain data.
+
+See [ARCHITECTURE.md](ARCHITECTURE.md) for the deployment model, data boundaries, and trade-offs.
+
+## Development
 
 ```bash
 npm install
 npm run dev
 ```
 
-Build: `npm run build`
-Build (static hosting): `npm run build:static`
-Start production server: `npm run start`
+Useful checks:
 
-## Key docs
+```bash
+npm run lint
+npm run typecheck
+npm run test
+npm run build:static
+```
 
-> Status source of truth: use `PROGRESS.md` first (truth-synced). Treat older plan/deployment docs as historical snapshots unless updated more recently.
+The combined gate is:
 
-### For Execution
-- **[PROJECT_PLAN.md](PROJECT_PLAN.md)** — Complete task list, sprint breakdown, acceptance criteria ⭐ START HERE
-- **[AGENT_PROMPT.md](AGENT_PROMPT.md)** — Instructions for AI agents to execute tasks autonomously
-- **[BRANCHING_STRATEGY.md](BRANCHING_STRATEGY.md)** — Git workflow, one branch per task
-- **[IMAGE_UPDATES.md](IMAGE_UPDATES.md)** — Comprehensive guide for updating all site images ⭐ REFER WHEN UPDATING IMAGES
+```bash
+npm run check
+```
 
-### For Context
-- **[PROJECT_DIRECTION.md](PROJECT_DIRECTION.md)** — scope, commerce subdomain, priorities
-- **[PROGRESS.md](PROGRESS.md)** — current phase and checklist
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** — stack, deployment, and image folder structure
-- **[HANDOFF.md](HANDOFF.md)** — quick restart and deploy
-- **[DEV_SETUP.md](DEV_SETUP.md)** — environment and AI tooling for continuation
-- **[PREVIEW_AND_PUBLISH.md](PREVIEW_AND_PUBLISH.md)** — what to click and expect in the browser, then how to build and publish
+A local static build writes the generated site to `out/`.
 
-## Deploy
+## Delivery
 
-- `develop` → preview (https://preview.jxdistributionafrica.com)
-- `main` → production (Hostinger static export)
-- Preview path contract: `HOSTINGER_DEPLOY_PATH_PREVIEW` must match the exact hPanel document root for `preview.jxdistributionafrica.com` (no `www` prefix).
+GitHub Actions runs linting, TypeScript checks, tests, and the static build before deployment. The deployment publishes the generated output and verifies the remote files and the reachable application.
 
-Secrets: see `.env.example`; store real values in GitHub Secrets.
+Security scanning includes dependency auditing and CodeQL analysis.
+
+Deploy-specific values such as hosts, credentials, paths, analytics identifiers, and contact integrations are supplied through repository configuration. They are not part of the public source tree.
+
+## Repository boundary
+
+The public tree contains application code, tests, build and delivery mechanics, and the engineering decisions needed to understand those parts.
+
+Do not add credentials, live integration identifiers, private business data, customer data, internal operational documents, private project-management material, or other company-confidential material to the public tree.
