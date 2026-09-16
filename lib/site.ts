@@ -9,8 +9,10 @@ export const SITE = {
   address: 'JX Distribution Africa, Mr. Adjei Station, Kwabenya, Accra, Ghana',
   // Replace with the official contact email for JX Distribution Africa.
   email: 'info@jxdistributionafrica.com',
-  // Official contact phone number.
+  // Official contact phone numbers.
   phone: {
+    primary: '+233 53 187 3637',
+    secondary: '+233 53 883 8135',
     display: '+233 53 187 3637',
     href: 'tel:+233531873637',
     digits: '233531873637',
