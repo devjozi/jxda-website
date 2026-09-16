@@ -309,11 +309,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="row">
-            <div className="col-md-12 text-center">
-              <p>Additional support: Product branding, events support, digital marketing.</p>
-            </div>
-          </div>
         </div>
       </section>
 
